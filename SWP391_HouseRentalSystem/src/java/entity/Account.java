@@ -127,5 +127,10 @@ public class Account {
     public void setProfile_Picture(String Profile_Picture) {
         this.Profile_Picture = Profile_Picture;
     }
+
+    @Override
+    public String toString() {
+        return "Account{" + "Id=" + Id + ", Fullname=" + Fullname + ", Gender=" + Gender + ", Address=" + Address + ", Email=" + Email + ", Password=" + Password + ", Phone_Number=" + Phone_Number + ", Role_ID=" + Role_ID + ", Status=" + Status + ", Secure_Question_ID=" + Secure_Question_ID + ", Secure_Answer_ID=" + Secure_Answer_ID + ", Profile_Picture=" + Profile_Picture + '}';
+    }
     
 }

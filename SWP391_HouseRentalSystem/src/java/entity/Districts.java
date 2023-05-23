@@ -9,5 +9,35 @@ package entity;
  * @author Thang
  */
 public class Districts {
+    private int Id;
+    private String District;
+
+    public Districts(int Id, String District) {
+        this.Id = Id;
+        this.District = District;
+    }
+
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int Id) {
+        this.Id = Id;
+    }
+
+    public String getDistrict() {
+        return District;
+    }
+
+    public void setDistrict(String District) {
+        this.District = District;
+    }
+
+    @Override
+    public String toString() {
+        return "Districts{" + "Id=" + Id + ", District=" + District + '}';
+    }
+
+
     
 }
