@@ -10,21 +10,22 @@ package entity;
  */
 public class Account {
     private int Id;
-    private String Fullname, Gender, Address, Email, Password, Phone_Number;
+    private String Fullname, Address, Email, Password, Phone_Number;
+    private boolean Gender;
     private int Role_ID, Status, Secure_Question_ID, Secure_Answer_ID;
     private String Profile_Picture;
    
     public Account() {
     }
 
-    public Account(int Id, String Fullname, String Gender, String Address, String Email, String Password, String Phone_Number, int Role_ID, int Status, int Secure_Question_ID, int Secure_Answer_ID, String Profile_Picture) {
+    public Account(int Id, String Fullname, String Address, String Email, String Password, String Phone_Number, boolean Gender, int Role_ID, int Status, int Secure_Question_ID, int Secure_Answer_ID, String Profile_Picture) {
         this.Id = Id;
         this.Fullname = Fullname;
-        this.Gender = Gender;
         this.Address = Address;
         this.Email = Email;
         this.Password = Password;
         this.Phone_Number = Phone_Number;
+        this.Gender = Gender;
         this.Role_ID = Role_ID;
         this.Status = Status;
         this.Secure_Question_ID = Secure_Question_ID;
@@ -46,14 +47,6 @@ public class Account {
 
     public void setFullname(String Fullname) {
         this.Fullname = Fullname;
-    }
-
-    public String getGender() {
-        return Gender;
-    }
-
-    public void setGender(String Gender) {
-        this.Gender = Gender;
     }
 
     public String getAddress() {
@@ -86,6 +79,14 @@ public class Account {
 
     public void setPhone_Number(String Phone_Number) {
         this.Phone_Number = Phone_Number;
+    }
+
+    public boolean isGender() {
+        return Gender;
+    }
+
+    public void setGender(boolean Gender) {
+        this.Gender = Gender;
     }
 
     public int getRole_ID() {
@@ -127,10 +128,6 @@ public class Account {
     public void setProfile_Picture(String Profile_Picture) {
         this.Profile_Picture = Profile_Picture;
     }
-
-    @Override
-    public String toString() {
-        return "Account{" + "Id=" + Id + ", Fullname=" + Fullname + ", Gender=" + Gender + ", Address=" + Address + ", Email=" + Email + ", Password=" + Password + ", Phone_Number=" + Phone_Number + ", Role_ID=" + Role_ID + ", Status=" + Status + ", Secure_Question_ID=" + Secure_Question_ID + ", Secure_Answer_ID=" + Secure_Answer_ID + ", Profile_Picture=" + Profile_Picture + '}';
-    }
-    
+    //ss
 }
+    
