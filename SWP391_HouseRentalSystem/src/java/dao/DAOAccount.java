@@ -18,7 +18,7 @@ import model.DBConnect;
  *
  * @author win
  */
-public class DAOAccount extends DBConnect{
+public class DAOAccount extends DBConnect {
 
     public int addAccount(Account acc) {
         int n = 0;
@@ -49,7 +49,7 @@ public class DAOAccount extends DBConnect{
             pre.setInt(9, acc.getSecure_Question_ID());
             pre.setInt(10, acc.getSecure_Answer_ID());
             pre.setString(11, acc.getProfile_Picture());
-            //run
+            // run
             n = pre.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(DAOAccount.class.getName()).log(Level.SEVERE, null, ex);
@@ -85,7 +85,7 @@ public class DAOAccount extends DBConnect{
             pre.setInt(9, acc.getSecure_Question_ID());
             pre.setInt(10, acc.getSecure_Answer_ID());
             pre.setString(11, acc.getProfile_Picture());
-            //RUN
+            // RUN
             n = pre.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(DAOAccount.class.getName()).log(Level.SEVERE, null, ex);
@@ -99,7 +99,7 @@ public class DAOAccount extends DBConnect{
         ResultSet rs = this.getData(sql);
         try {
             while (rs.next()) {
-                String Fullname  = rs.getString(1);
+                String Fullname = rs.getString(1);
                 Boolean Gender = rs.getBoolean(2);
                 String Address = rs.getString(3);
                 String Email = rs.getString(4);
@@ -111,7 +111,8 @@ public class DAOAccount extends DBConnect{
                 int Secure_Answer_ID = rs.getInt(10);
                 String Profile_Picture = rs.getString(11);
                 // create object
-                Account acc = new Account(Role_ID, Fullname, Address, Email, Password, Phone_Number, true, Role_ID, Status, Secure_Question_ID, Secure_Answer_ID, Profile_Picture);
+                Account acc = new Account(Role_ID, Fullname, Address, Email, Password, Phone_Number, true, Role_ID,
+                        Status, Secure_Question_ID, Secure_Answer_ID, Profile_Picture);
                 vector.add(acc);
             }
         } catch (SQLException ex) {
@@ -119,14 +120,14 @@ public class DAOAccount extends DBConnect{
         }
         return vector;
     }
-    
+
     public Vector<Account> getAll(String sql) {
         Vector<Account> vector = new Vector<Account>();
-        //String sql = "select * from Account";
+        // String sql = "select * from Account";
         ResultSet rs = this.getData(sql);
         try {
             while (rs.next()) {
-                String Fullname  = rs.getString(1);
+                String Fullname = rs.getString(1);
                 Boolean Gender = rs.getBoolean(2);
                 String Address = rs.getString(3);
                 String Email = rs.getString(4);
@@ -138,7 +139,8 @@ public class DAOAccount extends DBConnect{
                 int Secure_Answer_ID = rs.getInt(10);
                 String Profile_Picture = rs.getString(11);
                 // create object
-                Account acc = new Account(Role_ID, Fullname, Address, Email, Password, Phone_Number, true, Role_ID, Status, Secure_Question_ID, Secure_Answer_ID, Profile_Picture);
+                Account acc = new Account(Role_ID, Fullname, Address, Email, Password, Phone_Number, true, Role_ID,
+                        Status, Secure_Question_ID, Secure_Answer_ID, Profile_Picture);
                 vector.add(acc);
             }
         } catch (SQLException ex) {
@@ -146,19 +148,15 @@ public class DAOAccount extends DBConnect{
         }
         return vector;
     }
-    
-   
-
-
 
     public int removeAccount(int email) {
         int n = 0;
         String sql = "delete from Account where Email=" + email;
         try {
             Statement state = conn.createStatement();
-            ResultSet rs1 = this.getData("select * from Account where Email=" + email);          
+            ResultSet rs1 = this.getData("select * from Account where Email=" + email);
             if (rs1.next()) {
-                n = -1; 
+                n = -1;
             } else {
                 n = state.executeUpdate(sql);
             }
