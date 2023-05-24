@@ -1,81 +1,89 @@
+<%-- 
+    Document   : login
+    Created on : Feb 28, 2023, 9:11:34 PM
+    Author     : ADMIN
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Sign Up Form by Colorlib</title>
-
-<!-- Font Icon -->
-<link rel="stylesheet"
-	href="fonts/material-icon/css/material-design-iconic-font.min.css">
-
-<!-- Main css -->
-<link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-
-	<div class="main">
-
-		<!-- Sing in  Form -->
-		<section class="sign-in">
-			<div class="container">
-				<div class="signin-content">
-					<div class="signin-image">
-						<figure>
-							<img src="images/signin-image.jpg" alt="sing up image">
-						</figure>
-						<a href="registration.jsp" class="signup-image-link">Create an
-							account</a>
-					</div>
-
-					<div class="signin-form">
-						<h2 class="form-title">Sign up</h2>
-						<form method="" action="" class="register-form"
-							id="login-form">
-							<div class="form-group">
-								<label for="username"><i
-									class="zmdi zmdi-account material-icons-name"></i></label> <input
-									type="text" name="username" id="username"
-									placeholder="Your Name" />
-							</div>
-							<div class="form-group">
-								<label for="password"><i class="zmdi zmdi-lock"></i></label> <input
-									type="password" name="password" id="password"
-									placeholder="Password" />
-							</div>
-							<div class="form-group">
-								<input type="checkbox" name="remember-me" id="remember-me"
-									class="agree-term" /> <label for="remember-me"
-									class="label-agree-term"><span><span></span></span>Remember
-									me</label>
-							</div>
-							<div class="form-group form-button">
-								<input type="submit" name="signin" id="signin"
-									class="form-submit" value="Log in" />
-							</div>
-						</form>
-						<div class="social-login">
-							<span class="social-label">Or login with</span>
-							<ul class="socials">
-								<li><a href="#"><i
-										class="display-flex-center zmdi zmdi-facebook"></i></a></li>
-								<li><a href="#"><i
-										class="display-flex-center zmdi zmdi-twitter"></i></a></li>
-								<li><a href="#"><i
-										class="display-flex-center zmdi zmdi-google"></i></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
-	</div>
-
-	<!-- JS -->
-	<script src="vendor/jquery/jquery.min.js"></script>
-	<script src="js/main.js"></script>
-</body>
-<!-- This templates was made by Colorlib (https://colorlib.com) -->
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Login</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            body{
+                background-image: url('images/background_house.jpg');
+                width: 100%;
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+            .sub input:hover{
+                background-color: #ccc;
+                color: black;
+            }
+            .sub input{
+                color: white;
+                height: 40px;
+                width: 250px;
+                background-color: #333;
+                border-radius: 4px;
+                cursor: pointer;
+                margin-bottom: 5px;
+                margin-top: 20px
+            }
+            p{
+                font-size: 18px;
+            }
+            .fx p{
+                margin-top: 10px;
+            }
+            .fx input{
+                height: 30px;
+                width: 238px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                padding-left: 8px;
+                /*                margin-bottom: 20px;*/
+            }
+            .regi{
+                margin-bottom: 1em;
+                font-size: 15px;
+            }
+        </style>
+    </head>
+    <body>
+        <div style="display: grid;place-items: center;height: 600px">
+            <div style="margin-top: 10em;width: 30%; height: 330px;background-color: #e8e8e8;border-radius: 20px;box-shadow: 2px 2px 5px #ccc;">
+                <form action="login" method="post">
+                    <div style="padding: 20px 0">
+                        <h1 style="text-align: center">Login</h1>
+                    </div>
+                    <div style="font-size: 20px" class="ws">
+                        <div style="margin: 0 25%">
+                            <div class="fx">
+                                <p>Email:</p>
+                                <input type="text" name="username" required="">
+                                <p style="color: red;display: block;margin-top: 3px;width: 250px;font-size: 15px">${erlogin}</p>
+                                <p>Password:</p>
+                                <input type="password" name="password" required="">
+                            </div>
+                            <div class="sub">
+                                <input type="submit" value="Login">
+                            </div>
+                            <div class="regi" >
+                                <a href="register">Forgot password?</a>
+                            </div>
+                            <div class="regi" >
+                                <label>Don't have an account?</label><a href="register">Sign up</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
 </html>
