@@ -166,8 +166,34 @@ public class DAOAccount extends DBConnect {
         return n;
     }
 
+    public Account loginAccount(String email, String password) {
+        String sql = "SELECT\n"
+                + "      ,[Fullname]\n"
+                + "      ,[Email]\n"
+                + "      ,[Password]\n"
+                + "  FROM [SWP391_HouseRentalSystem].[dbo].[Account]"
+                + "  WHERE [Email] = ? and [Password] = ?";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, email);
+            ps.setString(2, password);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Account acc = new Account();
+                acc.setFullname(rs.getString("Fullname"));
+                acc.setEmail(rs.getString("Email"));
+                acc.setPassword(rs.getString("Password"));
+                return acc;
+            }
+        } catch (Exception e) {
+        }
+        return null;
+    }
+
     public static void main(String[] args) {
-        DAOAccount dao = new dao.DAOAccount();
+        DAOAccount dao = new DAOAccount();
+        dao.loginAccount("TrungHieu@gmail.com", "123456");
+        System.out.println(dao);
 
     }
     ////test
