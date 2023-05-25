@@ -81,8 +81,8 @@ public class Account {
         this.Phone_Number = Phone_Number;
     }
 
-    public boolean isGender() {
-        return Gender;
+    public int getGender() {
+        return Gender ? 0 : 1;
     }
 
     public void setGender(boolean Gender) {
