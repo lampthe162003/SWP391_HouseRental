@@ -4,8 +4,6 @@
  */
 package controller;
 
-import dao.DAOAccount;
-import entity.Account;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -16,9 +14,9 @@ import jakarta.servlet.http.HttpSession;
 
 /**
  *
- * @author ADMIN
+ * @author Trung Hieu
  */
-public class Controller_Login extends HttpServlet {
+public class Controller_Logout extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,6 +27,13 @@ public class Controller_Login extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession();
+        session.removeAttribute("acc");
+        response.sendRedirect("home");
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -42,8 +47,7 @@ public class Controller_Login extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        request.getRequestDispatcher("login.jsp").include(request, response);
+        processRequest(request, response);
     }
 
     /**
@@ -57,22 +61,17 @@ public class Controller_Login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-
-        DAOAccount dao = new DAOAccount();
-        Account acc = dao.Login(email, password);
-        if (acc == null) {
-            response.getWriter().println("Login k duoc");
-        } else {
-            HttpSession session = request.getSession();
-            session.setAttribute("acc", acc);
-            response.sendRedirect("home.jsp");
-        }
+        processRequest(request, response);
     }
-}
+
     /**
      * Returns a short description of the servlet.
      *
      * @return a String containing servlet description
      */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
+}
