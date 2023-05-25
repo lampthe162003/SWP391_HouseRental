@@ -67,7 +67,7 @@ public class Controller_Login extends HttpServlet {
         } else {
             HttpSession session = request.getSession();
             session.setAttribute("acc", acc);
-            response.sendRedirect("home.jsp");
+            response.sendRedirect("home");
         }
     }
 }
