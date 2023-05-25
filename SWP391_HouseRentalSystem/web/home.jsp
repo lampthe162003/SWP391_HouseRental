@@ -4,6 +4,7 @@
     Author     : Trung Hieu
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
@@ -84,10 +85,16 @@
                                     <li><a href="listings.html">Properties</a></li>
                                     <li><a href="blog.html">Blog</a></li>
                                     <li><a href="contact.html">Contact</a></li>
-                                    <li><a href="login.jsp">Sign In</a></li>
-                                    <li><a href="registration.jsp">Sign Up</a></li>
-
+                                        <c:if test="${sessionScope.acc == null}">
+                                        <li><a href="login">Sign In</a></li>
+                                        <li><a href="registration.jsp">Sign Up</a></li>
+                                        </c:if> 
+                                        <c:if test="${sessionScope.acc != null}">
+                                        <li><a href="#">Hello ${sessionScope.acc.fullname}</a></li>
+                                        <li><a href="logout">Sign Out</a></li>
+                                        </c:if>
                                 </ul>
+
 
                                 <!-- Search Form -->
                                 <div class="south-search-form">
@@ -165,13 +172,24 @@
                             <form action="#" method="post" id="advanceSearch">
                                 <div class="row">
 
-                                    <div class="col-12 col-md-4 col-lg-3">
+                                    <!--                                    <div class="col-12 col-md-4 col-lg-3">
+                                                                            <div class="form-group">
+                                                                                <input type="input" class="form-control" name="input" placeholder="Keyword">
+                                                                            </div>
+                                                                        </div>-->
+                                    <div class="col-12 col-md-3 col-lg-3">
                                         <div class="form-group">
-                                            <input type="input" class="form-control" name="input" placeholder="Keyword">
+                                            <select class="form-control" id="catagories">
+                                                <option>All Catagories</option>
+                                                <option>Apartment</option>
+                                                <option>Bar</option>
+                                                <option>Farm</option>
+                                                <option>House</option>
+                                                <option>Store</option>
+                                            </select>
                                         </div>
                                     </div>
-
-                                    <div class="col-12 col-md-4 col-lg-3">
+                                    <div class="col-12 col-md-3 col-lg-3">
                                         <div class="form-group">
                                             <select class="form-control" id="cities">
                                                 <option>All Cities</option>
@@ -189,20 +207,9 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-12 col-md-4 col-lg-3">
-                                        <div class="form-group">
-                                            <select class="form-control" id="catagories">
-                                                <option>All Catagories</option>
-                                                <option>Apartment</option>
-                                                <option>Bar</option>
-                                                <option>Farm</option>
-                                                <option>House</option>
-                                                <option>Store</option>
-                                            </select>
-                                        </div>
-                                    </div>
 
-                                    <div class="col-12 col-md-4 col-lg-3">
+
+<!--                                    <div class="col-12 col-md-4 col-lg-3">
                                         <div class="form-group">
                                             <select class="form-control" id="offers">
                                                 <option>All Offers</option>
@@ -213,22 +220,22 @@
                                                 <option>10% OFF</option>
                                             </select>
                                         </div>
-                                    </div>
+                                    </div>-->
 
-                                    <div class="col-12 col-md-4 col-xl-3">
-                                        <div class="form-group">
-                                            <select class="form-control" id="listings">
-                                                <option>All Listings</option>
-                                                <option>Listings 1</option>
-                                                <option>Listings 2</option>
-                                                <option>Listings 3</option>
-                                                <option>Listings 4</option>
-                                                <option>Listings 5</option>
-                                            </select>
-                                        </div>
-                                    </div>
+                                    <!--                                    <div class="col-12 col-md-4 col-xl-3">
+                                                                            <div class="form-group">
+                                                                                <select class="form-control" id="listings">
+                                                                                    <option>All Listings</option>
+                                                                                    <option>Listings 1</option>
+                                                                                    <option>Listings 2</option>
+                                                                                    <option>Listings 3</option>
+                                                                                    <option>Listings 4</option>
+                                                                                    <option>Listings 5</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>-->
                                     <!-- hehehe -->
-                                    <div class="col-12 col-md-4 col-xl-2">
+                                    <div class="col-12 col-md-3 col-lg-3">
                                         <div class="form-group">
                                             <select class="form-control" id="bedrooms">
                                                 <option>Bedrooms</option>
@@ -241,7 +248,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-12 col-md-4 col-xl-2">
+                                    <div class="col-12 col-md-3 col-lg-3">
                                         <div class="form-group">
                                             <select class="form-control" id="bathrooms">
                                                 <option>Bathrooms</option>
@@ -254,7 +261,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-12 col-md-8 col-lg-12 col-xl-5 d-flex">
+                                    <div class="col-12 col-md-4">
                                         <!-- Space Range -->
                                         <div class="slider-range">
                                             <div data-min="120" data-max="820" data-unit=" sq. ft" class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value-min="120" data-value-max="820">
@@ -262,107 +269,25 @@
                                                 <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
                                                 <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
                                             </div>
-                                            <div class="range">120 sq. ft - 820 sq. ft</div>
+                                            <div class="range"></div>
                                         </div>
-
+                                    </div>
+                                    <div class="col-12 col-md-4 offset-md-4">
                                         <!-- Distance Range -->
                                         <div class="slider-range">
-                                            <div data-min="10" data-max="1300" data-unit=" mil" class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value-min="10" data-value-max="1300">
+                                            <div data-min="120" data-max="820" data-unit=" sq. ft" class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value-min="120" data-value-max="820">
                                                 <div class="ui-slider-range ui-widget-header ui-corner-all"></div>
                                                 <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
                                                 <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
                                             </div>
-                                            <div class="range">10 mil - 1300 mil</div>
+                                            <div class="range"></div>
                                         </div>
                                     </div>
 
-                                    <div class="col-12 search-form-second-steps">
-                                        <div class="row">
 
-                                            <div class="col-12 col-md-4 col-lg-3">
-                                                <div class="form-group">
-                                                    <select class="form-control" id="types">
-                                                        <option>All Types</option>
-                                                        <option>Apartment <span>(30)</span></option>
-                                                        <option>Land <span>(69)</span></option>
-                                                        <option>Villas <span>(103)</span></option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-12 col-md-4 col-lg-3">
-                                                <div class="form-group">
-                                                    <select class="form-control" id="catagories2">
-                                                        <option>All Catagories</option>
-                                                        <option>Apartment</option>
-                                                        <option>Bar</option>
-                                                        <option>Farm</option>
-                                                        <option>House</option>
-                                                        <option>Store</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-12 col-md-4 col-lg-3">
-                                                <div class="form-group">
-                                                    <select class="form-control" id="Actions">
-                                                        <option>All Actions</option>
-                                                        <option>Sales</option>
-                                                        <option>Booking</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-12 col-md-4 col-lg-3">
-                                                <div class="form-group">
-                                                    <select class="form-control" id="city2">
-                                                        <option>All City</option>
-                                                        <option>City 1</option>
-                                                        <option>City 2</option>
-                                                        <option>City 3</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-12 col-md-4">
-                                                <div class="form-group">
-                                                    <select class="form-control" id="Actions3">
-                                                        <option>All Actions</option>
-                                                        <option>Sales</option>
-                                                        <option>Booking</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-12 col-md-4">
-                                                <div class="form-group">
-                                                    <select class="form-control" id="city3">
-                                                        <option>All City</option>
-                                                        <option>City 1</option>
-                                                        <option>City 2</option>
-                                                        <option>City 3</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-12 col-md-4">
-                                                <div class="form-group">
-                                                    <select class="form-control" id="city5">
-                                                        <option>All City</option>
-                                                        <option>City 1</option>
-                                                        <option>City 2</option>
-                                                        <option>City 3</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-12 d-flex justify-content-between align-items-end">
+                                    <div class="col-12 col-md-offset-4 col-md-4 offset-md-4 d-flex justify-content-between align-items-end">
                                         <!-- More Filter -->
-                                        <div class="more-filter">
-                                            <a href="#" id="moreFilter">+ More filters</a>
-                                        </div>
+
                                         <!-- Submit -->
                                         <div class="form-group mb-0">
                                             <button type="submit" class="btn south-btn">Search</button>
