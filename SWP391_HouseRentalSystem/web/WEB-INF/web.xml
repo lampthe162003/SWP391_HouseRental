@@ -4,9 +4,33 @@
         <servlet-name>Controller_Login</servlet-name>
         <servlet-class>controller.Controller_Login</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Controller_Create_Blog</servlet-name>
+        <servlet-class>controller.Controller_Create_Blog</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controller_Change_Password</servlet-name>
+        <servlet-class>controller.Controller_Change_Password</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controller_Register</servlet-name>
+        <servlet-class>controller.Controller_Register</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Controller_Login</servlet-name>
         <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller_Create_Blog</servlet-name>
+        <url-pattern>/createblog</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller_Change_Password</servlet-name>
+        <url-pattern>/changepassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller_Register</servlet-name>
+        <url-pattern>/register</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
