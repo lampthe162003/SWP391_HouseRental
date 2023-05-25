@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -12,6 +13,7 @@
 
         <!-- Main css -->
         <link rel="stylesheet" href="css/style.css">
+      
     </head>
     <body>
 
@@ -24,68 +26,74 @@
                         <div class="signup-form">
                             <h2 class="form-title">Sign up</h2>
 
-                            <form method="" action="" class="register-form"
+                            <form method="post" action="register" id="frm" class="register-form"
                                   id="register-form">
 
                                 <div class="form-group">
                                     <label for="email"><i class="zmdi zmdi-email"></i></label> <input
-                                        type="email" name="email" id="email" placeholder="Email" />
+                                        type="email" name="email" value="${email}" placeholder="Email" required=""/>
+                                    <p style="color: red">${alertE}</p>
                                 </div>
                                 <div class="form-group">
                                     <label for="pass"><i class="zmdi zmdi-lock"></i></label> <input
-                                        type="password" name="pass" id="pass" placeholder="Password" />
+                                        type="password" name="pass" value="${password}" id="pass" placeholder="Password" required=""/>
+                                    <p style="color: red">${alertP}</p>
                                 </div>
                                 <div class="form-group">
                                     <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-                                    <input type="password" name="re_pass" id="re_pass"
-                                           placeholder="Repeat your password" />
+                                    <input type="password" name="repass" value="${repassword}" id="re_pass"
+                                           placeholder="Repeat your password" required=""/>
                                 </div>
                                 <div class="form-group">
                                     <label for="name"><i
                                             class="zmdi zmdi-account material-icons-name"></i></label> <input
-                                        type="text" name="name" id="name" placeholder="Full Name" />
+                                                type="text" name="fullname" value="${fullname}" id="fullname" placeholder="Full Name" required=""/>
+                                            <p style="color: red">${alertF}</p>
                                 </div>
                                 <div class="form-group" style="display: flex ; justify-content: left">
-                                    <input type="radio">Male
-                                    <input type="radio">Female
+                                    <input type="radio" name="gender" value="1" ${gender.equals("1")?"checked":""} required="">Male
+                                    <input type="radio" name="gender" value="0" ${gender.equals("0")?"checked":""} required="">Female
                                 </div>
                                 <div class="form-group">
                                     <label for="contact"><i class="zmdi zmdi-lock-outline"></i></label>
-                                    <input type="number" name="phonenumber" id="phonenumber"
-                                           placeholder="Phone numbers" />
+                                    <input type="number" name="phonenumber"
+                                           placeholder="Phone numbers" value="${phone}" required=""/>
                                 </div>
                                 <div class="form-group">
                                     <label for="adress"><i
-                                            class="zmdi zmdi-account material-icons-name"></i></label> <input
-                                        type="text" name="adress" id="adress" placeholder="Adress" />
+                                            class="zmdi zmdi-account material-icons-name"></i></label> 
+                                            <input type="text" name="adress" placeholder="Adress" value="${address}" required=""/>
                                 </div>
                                 <div class="form-group" style="display: flex ; justify-content: left">
-                                    <input type="radio">User
-                                    <input type="radio">Customers
+                                    <c:forEach items="${lsR}" var="r">
+                                        <input type="radio" name="role" value="${r.getId()}" ${r.getId()== roleId ?"checked":""} required="">${r.getRole()}
+                                    </c:forEach>
                                 </div>
-                                <div>
-                                    <input type="file">
-                                </div>
+                                
                                 <div class="form-group zmdi zmdi-account material-icons-name">Security question:
-                                    <select style="width: 150px ; border-radius: 10px; padding-left: 10px " name="question" id="question" placeholder="">
-                                        <option>Hello</option>
-                                        <option>Hello</option>
-                                        <option>Hello</option>
-                                        <option>Hello</option>
-                                        <option>Hello</option>
+                                    <select required="" onchange="change()" style="width: 150px ; border-radius: 10px; padding-left: 10px " name="question">
+                                        <c:forEach items="${lsQ}" var="q">
+                                            <c:if test="${idQ!=null}">
+                                                <option value="${q.getId()}" ${q.getId() == idQ ? "selected" : ""}>${q.getQuestion()}</option>
+                                            </c:if>
+                                            <c:if test="${idQ==null}">
+                                                <option value="${q.getId()}">${q.getQuestion()}</option>
+                                            </c:if>
+                                        </c:forEach>
                                     </select>
                                 </div>
                                 <div class="form-group zmdi zmdi-account material-icons-name">Security answers:
-                                    <select style="width: 150px ; border-radius: 10px; padding-left: 10px " name="answers" id="answers" placeholder="">
-                                        <option>Hello</option>
-                                        <option>Hello</option>
-                                        <option>Hello</option>
-                                        <option>Hello</option>
-                                        <option>Hello</option>
+                                    <select required="" style="width: 150px ; border-radius: 10px; padding-left: 10px " name="answer">
+                                        <c:forEach items="${lsA}" var="a">
+                                            <option value="${a.getId()}">${a.getAnswer()}</option>
+                                        </c:forEach>
                                     </select>
                                 </div>
+                                <div>
+                                    Profile picture: <input type="file" name="file" value="${picture}" size="60" required="">
+                                </div>
                                 <div class="form-group form-button">
-                                    <input type="submit" name="signup" id="signup"
+                                    <input type="submit" name="signup"
                                            class="form-submit" value="Register" />
                                 </div>
                             </form>
@@ -105,7 +113,11 @@
         <!-- JS -->
         <script src="vendor/jquery/jquery.min.js"></script>
         <script src="js/main.js"></script>
-
+        <script>
+                                        function change() {
+                                            var a = document.getElementById('frm').submit();
+                                        }
+        </script>
 
 
     </body>

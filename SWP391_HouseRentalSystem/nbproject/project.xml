@@ -16,6 +16,18 @@
                     <file>${&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD}</file>
                 </library>
                 <library dirs="200">
+<<<<<<< HEAD
+                    <file>${file.reference.jakarta.servlet.jsp.jstl-2.0.0.jar-1}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
+                <library dirs="200">
+                    <file>${file.reference.jakarta.servlet.jsp.jstl-api-2.0.0.jar-1}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
+                <library dirs="200">
+                    <file>${file.reference.sqljdbc42.jar-1}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
+=======
                     <file>${&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD}</file>
                 </library>
                 <library dirs="200">
@@ -53,6 +65,7 @@
                 </library>
                 <library dirs="200">
                     <file>${file.reference.sqljdbc42.jar}</file>
+>>>>>>> 4d61a23a9cd06bf53ec1eb1382b553b69f7cd1d4
                 </library>
             </web-module-libraries>
             <web-module-additional-libraries/>
