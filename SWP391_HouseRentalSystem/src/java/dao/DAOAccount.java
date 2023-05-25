@@ -19,7 +19,7 @@ import model.DBConnect;
  * @author win
  */
 public class DAOAccount extends DBConnect {
-
+    
     public int addAccount(Account acc) {
         int n = 0;
         String sql = "INSERT INTO [dbo].[Account]\n"
@@ -56,7 +56,7 @@ public class DAOAccount extends DBConnect {
         }
         return n;
     }
-
+    
     public int updateAccount(Account acc) {
         int n = 0;
         String sql = "UPDATE [dbo].[Account]\n"
@@ -71,7 +71,7 @@ public class DAOAccount extends DBConnect {
                 + "      ,[Secure_Answer_ID] = ?\n"
                 + "      ,[Profile_Picture] = ?\n"
                 + " WHERE [Email] = ?";
-
+        
         try {
             PreparedStatement pre = conn.prepareStatement(sql);
             pre.setString(1, acc.getFullname());
@@ -92,7 +92,7 @@ public class DAOAccount extends DBConnect {
         }
         return n;
     }
-
+    
     public Vector<Account> getAll() {
         Vector<Account> vector = new Vector<Account>();
         String sql = "select * from Account";
@@ -120,7 +120,7 @@ public class DAOAccount extends DBConnect {
         }
         return vector;
     }
-
+    
     public Vector<Account> getAll(String sql) {
         Vector<Account> vector = new Vector<Account>();
         // String sql = "select * from Account";
@@ -148,7 +148,7 @@ public class DAOAccount extends DBConnect {
         }
         return vector;
     }
-
+    
     public int removeAccount(int email) {
         int n = 0;
         String sql = "delete from Account where Email=" + email;
@@ -165,10 +165,38 @@ public class DAOAccount extends DBConnect {
         }
         return n;
     }
-
+    
+    public Account Login(String email, String password) {
+        String sql = "SELECT * FROM Account WHERE Email = ? and Password = ?";
+        try {
+            PreparedStatement pre = conn.prepareStatement(sql);
+            pre.setString(1, email);
+            pre.setString(2, password);
+            ResultSet rs = pre.executeQuery();
+            while (rs.next()) {                
+                return new Account(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getBoolean(7),
+                        rs.getInt(8),
+                        rs.getInt(9),
+                        rs.getInt(10),
+                        rs.getInt(11),
+                        rs.getString(12));
+            }
+        } catch (Exception e) {
+            Logger.getLogger(DAOAccount.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return null;
+    }    
+    
     public static void main(String[] args) {
         DAOAccount dao = new DAOAccount();
-
+        Account acc = dao.Login("TrungHieu@gmail.com", "123456");
+        System.out.println(acc);
     }
     ////test
 }
