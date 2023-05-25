@@ -12,17 +12,46 @@ import java.sql.DriverManager;
  * @author ADMIN
  */
 public class DBContext {
-    public Connection getConnection()throws Exception{
-        String url = "jdbc:sqlserver://"+serverName+":"+portNumber+"\\"+instance+";databaseName="+dbName;
-        if((instance==null)||instance.trim().isEmpty())
-            url = "jdbc:sqlserver://"+serverName+":"+portNumber+";databaseName="+dbName;
+
+    public Connection getConnection() throws Exception {
+        String url = "jdbc:sqlserver://" + serverName + ":" + portNumber + "\\" + instance + ";databaseName=" + dbName;
+        if ((instance == null) || instance.trim().isEmpty()) {
+            url = "jdbc:sqlserver://" + serverName + ":" + portNumber + ";databaseName=" + dbName;
+        }
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         return DriverManager.getConnection(url, userID, password);
     }
-    private final String serverName = "DESKTOP-B08T7A9\\TRANHUNG";
+
+//    private final String serverName = "DESKTOP-B08T7A9\\TRANHUNG";
+//    private final String dbName = "SWP391_HouseRentalSystem";
+//    private final String portNumber = "1433";
+//    private final String instance = "";
+//    private final String userID = "sa";
+//    private final String password = "123";
+    
+//    private final String serverName = "Hayashi";
+//    private final String dbName = "SWP391_HouseRentalSystem";
+//    private final String portNumber = "1433";
+//    private final String instance = "";
+//    private final String userID = "HayashiHayate";
+//    private final String password = "TodakaHayasumi1";
+
+    private final String serverName = "localhost";
     private final String dbName = "SWP391_HouseRentalSystem";
     private final String portNumber = "1433";
     private final String instance = "";
     private final String userID = "sa";
-    private final String password = "123";
+    private final String password = "abc123";
+}
+
+class Using {
+
+    public static void main(String[] args) {
+        try {
+            new DBContext().getConnection();
+            System.out.println("Ket noi thanh cong");
+        } catch (Exception e) {
+            System.out.println("Ket Noi that bai" + e.getMessage());
+        }
+    }
 }
