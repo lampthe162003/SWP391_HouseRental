@@ -5,11 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="style_blogpost.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <link rel="icon" href="img/core-img/favicon.ico">
     <!-- Style CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css'>
+    <link rel='stylesheet' href='https://cdn.rawgit.com/bootstrap-wysiwyg/bootstrap3-wysiwyg/master/src/bootstrap3-wysihtml5.css'><link rel="stylesheet" href="./style.css">
     <title>Blogpost</title>
 </head>
 
@@ -141,52 +142,31 @@
     <div class="south-search-area">
         <div class="container">
             <div class="row">
-                <div class="col-12">
-                    <div class="advanced-search-form">
-                        <!-- Search Title -->
-                        <div class="search-title">
-                            <p>Post Blogs</p>
-                        </div>
-                        <!-- Search Form -->
-                        <form>
-                            
-                            <div class="form-group">
-                              <label for="topic">Chủ đề:</label>
-                              <input type="text" id="topic" name="topic" required>
-                            </div>
-                            <div class="form-group">
-                              <label for="content">Nội dung:</label>
-                              <textarea id="content" name="content" required></textarea>
-                            </div>
-                            <div class="form-group">
-                              <label for="like_count">Số lượt thích:</label>
-                              <div class="like-input">
-                                <button type="button" class="like-btn" onclick="decrementLikeCount()"><i class="fas fa-thumbs-up"></i></button>
-                                <input type="number" id="like_count" name="like_count" value="0" min="0" readonly>
-                                <button type="button" class="like-btn" onclick="incrementLikeCount()"><i class="fas fa-thumbs-up"></i></button>
-                              </div>
-                            </div>
-                            <div class="form-group">
-                              <input type="submit" value="Đăng bài">
-                            </div>
-                          </form>
-                        
-                          <script>
-                            function incrementLikeCount() {
-                              var likeCountInput = document.getElementById("like_count");
-                              likeCountInput.value = parseInt(likeCountInput.value) + 1;
-                            }
-                        
-                            function decrementLikeCount() {
-                              var likeCountInput = document.getElementById("like_count");
-                              var likeCount = parseInt(likeCountInput.value);
-                              if (likeCount > 0) {
-                                likeCountInput.value = likeCount - 1;
-                              }
-                            }
-                          </script>
-                    </div>
-                </div>
+                <div class="col-md-12">
+                    <form method="post" role="form">
+                      <div class="form-group">
+                        <input type="text" class="form-control" name="title" placeholder="Title"/>
+                      </div>
+                      <div class="form-group">
+                        <label> Image </label>
+                        <div class="input-group">
+                          
+                          <span class="input-group-btn">
+                            <span class="btn btn-primary btn-file">
+                              Browse <input type="file" name="bimgs" multiple>
+                            </span>
+                           </span>
+                          <input type="text" class="form-control" readonly>
+                         </div>
+                      </div>
+                      <div class="form-group">
+                        <textarea class="form-control bcontent" name="content"></textarea>
+                      </div>
+                      <div class="form-group">
+                         <input type="submit" name="Submit" value="Publish" class="btn btn-primary form-control" />
+                      </div>
+                    </form>
+                  </div>
             </div>
         </div>
     </div>
@@ -331,6 +311,10 @@
     <script src="js/jquery-ui.min.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
+    <!-- partial -->
+  <script src='https://code.jquery.com/jquery-1.11.3.min.js'></script>
+  <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
+  <script src='https://cdn.rawgit.com/bootstrap-wysiwyg/bootstrap3-wysiwyg/master/dist/bootstrap3-wysihtml5.all.min.js'></script><script  src="./js/script.js"></script>
 </body>
 
 </html>
