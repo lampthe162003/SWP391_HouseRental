@@ -66,7 +66,7 @@ public class Controller_Login extends HttpServlet {
             response.getWriter().println("Login k duoc");
         } else {
             HttpSession session = request.getSession();
-            response.sendRedirect("index.html");
+            response.sendRedirect("home.jsp");
         }
     }
 }
