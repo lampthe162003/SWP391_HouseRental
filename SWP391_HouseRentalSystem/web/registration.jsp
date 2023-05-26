@@ -102,7 +102,7 @@
                             <figure>
                                 <img src="images/signup-image.jpg" alt="sing up image">
                             </figure>
-                            <a href="login.jsp" class="signup-image-link">I am already</a>
+                            <a href="Login.jsp" class="signup-image-link">I am already</a>
                         </div>
                     </div>
                 </div>

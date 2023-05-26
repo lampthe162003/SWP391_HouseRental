@@ -31,13 +31,13 @@
 
                         <div class="signin-form">
                             <h2 class="form-title">Sign up</h2>
-                            <form action="login" method="post"  class="register-form"
+                            <form method="" action="" class="register-form"
                                   id="login-form">
                                 <div class="form-group">
                                     <label for="username"><i
                                             class="zmdi zmdi-account material-icons-name"></i></label> <input
-                                        type="email" name="email" id="email"
-                                        placeholder="Your Email" />
+                                        type="text" name="username" id="username"
+                                        placeholder="Your Name" />
                                 </div>
                                 <div class="form-group">
                                     <label for="password"><i class="zmdi zmdi-lock"></i></label> <input
@@ -48,10 +48,21 @@
                                     <a href="#" style="text-decoration: none"> Forgot Password ?</a>
                                 </div>
                                 <div class="form-group form-button">
-                                    <input type="submit"
+                                    <input type="submit" name="signin" id="signin"
                                            class="form-submit" value="Log in" />
                                 </div>
                             </form>
+                            <!--						<div class="social-login">
+                                                                                    <span class="social-label">Or login with</span>
+                                                                                    <ul class="socials">
+                                                                                            <li><a href="#"><i
+                                                                                                            class="display-flex-center zmdi zmdi-facebook"></i></a></li>
+                                                                                            <li><a href="#"><i
+                                                                                                            class="display-flex-center zmdi zmdi-twitter"></i></a></li>
+                                                                                            <li><a href="#"><i
+                                                                                                            class="display-flex-center zmdi zmdi-google"></i></a></li>
+                                                                                    </ul>
+                                                                            </div>-->
                         </div>
                     </div>
                 </div>
