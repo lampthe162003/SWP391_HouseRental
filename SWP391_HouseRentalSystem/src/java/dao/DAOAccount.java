@@ -194,7 +194,7 @@ public class DAOAccount extends DBConnect {
         return null;
     }
 
-    public void signup(String fullname, int gender, String adress, String email, String password, String phonenumbers, int roleid, int status, int squestion, int aquestion, String img) {
+    public void addAccount(String fullname, int gender, String adress, String email, String password, String phonenumbers, int roleid, int status, int squestion, int aquestion, String img) {
         String sql = "INSERT INTO [dbo].[Account]\n"
                 + "           ([Fullname]\n"
                 + "           ,[Gender]\n"
@@ -228,7 +228,7 @@ public class DAOAccount extends DBConnect {
 
     public static void main(String[] args) {
         DAOAccount dao = new DAOAccount();
-        dao.signup("Thang", 1, "Ha Noi", "thang@gmail.com", "abc123", "9999999999", 1, 1, 1, 1, "NULL");
+        dao.addAccount("Thang", 1, "Ha Noi", "thang@gmail.com", "abc123", "9999999999", 1, 1, 1, 1, "NULL");
         
     }
     ////test

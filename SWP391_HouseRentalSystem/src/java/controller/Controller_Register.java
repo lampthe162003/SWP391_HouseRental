@@ -149,7 +149,7 @@ public class Controller_Register extends HttpServlet {
                         Pattern f = Pattern.compile("^[a-zA-Z\\s]+$");
                         if (f.matcher(fullname).find()) {
                             check.addAccount(fullname, gender, address, email, password, phone, roleId, questionId, answerId, picture);
-                            response.sendRedirect("Login.jsp");
+                            response.sendRedirect("login.jsp");
                         } else {
                             request.setAttribute("alertF", "Full name must start with letter!");
                             request.getRequestDispatcher("registration.jsp").forward(request, response);
