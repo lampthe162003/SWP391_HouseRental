@@ -20,6 +20,10 @@
         <servlet-class>controller.Controller_Register</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>Controller_Home</servlet-name>
+        <servlet-class>controller.Controller_Home</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>Controller_Logout</servlet-name>
         <servlet-class>controller.Controller_Logout</servlet-class>
     </servlet>
