@@ -15,6 +15,10 @@
         <servlet-name>Controller_Logout</servlet-name>
         <servlet-class>controller.Controller_Logout</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Controller_Register</servlet-name>
+        <servlet-class>controller.Controller_Register</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Controller_Login</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -26,6 +30,10 @@
     <servlet-mapping>
         <servlet-name>Controller_Logout</servlet-name>
         <url-pattern>/logout</url-pattern>
+    </servlet-mapping>  
+    <servlet-mapping>
+        <servlet-name>Controller_Register</servlet-name>
+        <url-pattern>/register</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
