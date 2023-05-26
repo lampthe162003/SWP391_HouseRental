@@ -37,7 +37,7 @@ public class DBConnect {
 
     public DBConnect() {
         this("jdbc:sqlserver://localhost:1433;databaseName=SWP391_HouseRentalSystem",
-                "sa", "123");
+                "sa", "abc123");
     }
 
     public ResultSet getData(String sql) {
