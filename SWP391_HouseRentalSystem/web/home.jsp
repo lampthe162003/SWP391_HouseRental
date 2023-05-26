@@ -87,7 +87,7 @@
                                     <li><a href="contact.html">Contact</a></li>
                                         <c:if test="${sessionScope.acc == null}">
                                         <li><a href="login">Sign In</a></li>
-                                        <li><a href="registration.jsp">Sign Up</a></li>
+                                        <li><a href="register">Sign Up</a></li>
                                         </c:if> 
                                         <c:if test="${sessionScope.acc != null}">
                                         <li><a href="#">Hello ${sessionScope.acc.fullname}</a></li>
