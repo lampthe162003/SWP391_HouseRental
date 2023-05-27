@@ -1,3 +1,10 @@
+<%-- 
+    Document   : single-listings
+    Created on : May 27, 2023, 2:35:54 PM
+    Author     : Thang
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,7 +59,7 @@
                 <nav class="classy-navbar justify-content-between" id="southNav">
 
                     <!-- Logo -->
-                    <a class="nav-brand" href="index.html"><img src="img/core-img/logo.png" alt=""></a>
+                    <a class="nav-brand" href="home.jsp"><img src="img/core-img/logo.png" alt=""></a>
 
                     <!-- Navbar Toggler -->
                     <div class="classy-navbar-toggler">
@@ -70,30 +77,30 @@
                         <!-- Nav Start -->
                         <div class="classynav">
                             <ul>
-                                <li><a href="index.html">Home</a></li>
+                                <li><a href="home.jsp">Home</a></li>
                                 <li><a href="#">Pages</a>
                                     <ul class="dropdown">
-                                        <li><a href="index.html">Home</a></li>
-                                        <li><a href="about-us.html">About Us</a></li>
+                                        <li><a href="home.jsp">Home</a></li>
+                                        <li><a href="about-us.jsp">About Us</a></li>
                                         <li><a href="#">Listings</a>
                                             <ul class="dropdown">
-                                                <li><a href="listings.html">Listings</a></li>
-                                                <li><a href="single-listings.html">Single Listings</a></li>
+                                                <li><a href="listings.jsp">Listings</a></li>
+                                                <li><a href="single-listings.jsp">Single Listings</a></li>
                                             </ul>
                                         </li>
                                         <li><a href="#">Blog</a>
                                             <ul class="dropdown">
-                                                <li><a href="blog.html">Blog</a></li>
-                                                <li><a href="single-blog.html">Single Blog</a></li>
+                                                <li><a href="blog.jsp">Blog</a></li>
+                                                <li><a href="single-blog.jsp">Single Blog</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="contact.html">Contact</a></li>
-                                        <li><a href="elements.html">Elements</a></li>
+                                        <li><a href="contact.jsp">Contact</a></li>
+                                        <li><a href="elements.jsp">Elements</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="about-us.html">About Us</a></li>
-                                <li><a href="listings.html">Properties</a></li>
-                                <li><a href="blog.html">Blog</a></li>
+                                <li><a href="about-us.jsp">About Us</a></li>
+                                <li><a href="listings.jsp">Properties</a></li>
+                                <li><a href="blog.jsp">Blog</a></li>
                                 <li><a href="#">Mega Menu</a>
                                     <div class="megamenu">
                                         <ul class="single-mega cn-col-4">
@@ -130,7 +137,7 @@
                                         </ul>
                                     </div>
                                 </li>
-                                <li><a href="contact.html">Contact</a></li>
+                                <li><a href="contact.jsp">Contact</a></li>
                             </ul>
 
                             <!-- Search Form -->
