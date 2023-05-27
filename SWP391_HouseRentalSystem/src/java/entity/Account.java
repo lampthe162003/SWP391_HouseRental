@@ -9,16 +9,17 @@ package entity;
  * @author win
  */
 public class Account {
+
     private int Id;
     private String Fullname, Address, Email, Password, Phone_Number;
     private boolean Gender;
     private int Role_ID, Status, Secure_Question_ID, Secure_Answer_ID;
     private String Profile_Picture;
-   
+
     public Account() {
     }
 
-    public Account(int Id, String Fullname, String Address, String Email, String Password, String Phone_Number, boolean Gender, int Role_ID, int Status, int Secure_Question_ID, int Secure_Answer_ID, String Profile_Picture) {
+    public Account(int Id, String Fullname, boolean Gender, String Address, String Email, String Password, String Phone_Number, int Role_ID, int Status, int Secure_Question_ID, int Secure_Answer_ID, String Profile_Picture) {
         this.Id = Id;
         this.Fullname = Fullname;
         this.Address = Address;
@@ -82,7 +83,7 @@ public class Account {
     }
 
     public int getGender() {
-        return Gender ? 0 : 1;
+        return Gender ? 1 : 0;
     }
 
     public void setGender(boolean Gender) {
@@ -133,6 +134,5 @@ public class Account {
     public String toString() {
         return "Account{" + "Id=" + Id + ", Fullname=" + Fullname + ", Address=" + Address + ", Email=" + Email + ", Password=" + Password + ", Phone_Number=" + Phone_Number + ", Gender=" + Gender + ", Role_ID=" + Role_ID + ", Status=" + Status + ", Secure_Question_ID=" + Secure_Question_ID + ", Secure_Answer_ID=" + Secure_Answer_ID + ", Profile_Picture=" + Profile_Picture + '}';
     }
-    
+
 }
-    

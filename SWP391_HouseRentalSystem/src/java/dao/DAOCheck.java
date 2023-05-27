@@ -65,4 +65,20 @@ public class DAOCheck {
             System.out.println("Have error!");
         }
     }
+    public boolean checkExistPassword(String email, String pass){
+        try {
+            String stmSql = "select * from Account where Email = ? and Password = ?";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(stmSql);
+            ps.setString(1, email);
+            ps.setString(2, pass);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                return true;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
 }

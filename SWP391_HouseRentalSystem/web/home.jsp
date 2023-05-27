@@ -50,7 +50,7 @@
                         </div>
 
                         <!-- Menu -->
-                        <div class="classy-menu">
+                        <div class="classy-menu" style="position: relative">
 
                             <!-- close btn -->
                             <div class="classycloseIcon">
@@ -87,14 +87,20 @@
                                     <li><a href="contact.html">Contact</a></li>
                                         <c:if test="${sessionScope.acc == null}">
                                         <li><a href="login">Sign In</a></li>
-                                        <li><a href="registration.jsp">Sign Up</a></li>
+                                        <li><a href="register">Sign Up</a></li>
                                         </c:if> 
                                         <c:if test="${sessionScope.acc != null}">
-                                        <li><a href="#">Hello ${sessionScope.acc.fullname}</a></li>
+                                        <li><a onmouseover="showInf()" id="user" href="#">Hello ${sessionScope.acc.fullname}</a></li>
                                         <li><a href="logout">Sign Out</a></li>
                                         </c:if>
                                 </ul>
-
+                                <div id="inf" style="display: none;position: absolute;background-color: black; 
+                                     width: 13em;color: white;right: 13em;top: 4em;padding: 1em">
+                                    <ul>
+                                        <li><a href="#">Change Information</a></li>
+                                        <li><a href="changepassword">Change Password</a</li>
+                                    </ul>
+                                </div>
 
                                 <!-- Search Form -->
                                 <div class="south-search-form">
@@ -209,18 +215,18 @@
 
 
 
-<!--                                    <div class="col-12 col-md-4 col-lg-3">
-                                        <div class="form-group">
-                                            <select class="form-control" id="offers">
-                                                <option>All Offers</option>
-                                                <option>100% OFF</option>
-                                                <option>75% OFF</option>
-                                                <option>50% OFF</option>
-                                                <option>25% OFF</option>
-                                                <option>10% OFF</option>
-                                            </select>
-                                        </div>
-                                    </div>-->
+                                    <!--                                    <div class="col-12 col-md-4 col-lg-3">
+                                                                            <div class="form-group">
+                                                                                <select class="form-control" id="offers">
+                                                                                    <option>All Offers</option>
+                                                                                    <option>100% OFF</option>
+                                                                                    <option>75% OFF</option>
+                                                                                    <option>50% OFF</option>
+                                                                                    <option>25% OFF</option>
+                                                                                    <option>10% OFF</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>-->
 
                                     <!--                                    <div class="col-12 col-md-4 col-xl-3">
                                                                             <div class="form-group">
@@ -781,6 +787,15 @@
         <script src="js/jquery-ui.min.js"></script>
         <!-- Active js -->
         <script src="js/active.js"></script>
-
+        <script>
+            function showInf(){
+                var x = document.getElementById('inf');
+                if(x.style.display === 'none'){
+                    x.style.display = 'block';
+                }else{
+                    x.style.display = 'none';
+                }
+            }
+        </script>
     </body>
 </html>

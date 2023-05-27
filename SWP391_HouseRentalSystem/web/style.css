@@ -55,7 +55,9 @@
 
 body {
   font-family: "Open Sans", sans-serif; }
-
+#user:hover{
+    
+}
 h1,
 h2,
 h3,
@@ -1791,7 +1793,3 @@ img {
   color: #7d7d7d; }
 
 /*# sourceMappingURL=style.css.map */
-
-
-/* source blogpost */
-
