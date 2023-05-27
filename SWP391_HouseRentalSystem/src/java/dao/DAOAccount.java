@@ -4,7 +4,9 @@
  */
 package dao;
 
+import context.DBContext;
 import entity.Account;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -56,7 +58,6 @@ public class DAOAccount extends DBConnect {
 //        }
 //        return n;
 //    }
-
 //    public int updateAccount(Account acc) {
 //        int n = 0;
 //        String sql = "UPDATE [dbo].[Account]\n"
@@ -92,7 +93,6 @@ public class DAOAccount extends DBConnect {
 //        }
 //        return n;
 //    }
-
 //    public Vector<Account> getAll() {
 //        Vector<Account> vector = new Vector<Account>();
 //        String sql = "select * from Account";
@@ -120,7 +120,6 @@ public class DAOAccount extends DBConnect {
 //        }
 //        return vector;
 //    }
-
 //    public Vector<Account> getAll(String sql) {
 //        Vector<Account> vector = new Vector<Account>();
 //        // String sql = "select * from Account";
@@ -148,7 +147,6 @@ public class DAOAccount extends DBConnect {
 //        }
 //        return vector;
 //    }
-
     public int removeAccount(int email) {
         int n = 0;
         String sql = "delete from Account where Email=" + email;
@@ -189,6 +187,35 @@ public class DAOAccount extends DBConnect {
             }
         } catch (Exception e) {
             Logger.getLogger(DAOAccount.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return null;
+    }
+
+    public Account getAccount(String email, String password) {
+        try {
+            String stmSql = "select * from Account where Email = ? and Password = ?";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(stmSql);
+            ps.setString(1, email);
+            ps.setString(2, password);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Account a = new Account(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getBoolean(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getInt(8),
+                        rs.getInt(9),
+                        rs.getInt(10),
+                        rs.getInt(11),
+                        rs.getString(12));
+                return a;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
         return null;
     }

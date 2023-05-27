@@ -25,4 +25,21 @@ public class DAOChange {
             System.out.println(e.getMessage());
         }
     }
+    public void changeInformation(String fullName, String address, String phone, Boolean gender, String picture, String email){
+        try {
+                String stmSql = "update Account set Fullname = ? , Address = ? , Phone_Number = ? , Gender = ? , Profile_Picture = ? "
+                        + " where Email = ?";
+                Connection conn = new DBContext().getConnection();
+                PreparedStatement ps = conn.prepareStatement(stmSql);
+                ps.setString(1, fullName);
+                ps.setString(2, address);
+                ps.setString(3, phone);
+                ps.setBoolean(4, gender);
+                ps.setString(5, picture);
+                ps.setString(6, email);
+                ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }

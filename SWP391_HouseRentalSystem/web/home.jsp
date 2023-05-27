@@ -24,7 +24,8 @@
 
         <!-- Style CSS -->
         <link rel="stylesheet" href="style.css">
-
+        <!-- change CSS -->
+        <link rel="stylesheet" href="css/change.css"/>
     </head>
 
     <body>
@@ -94,10 +95,10 @@
                                         <li><a href="logout">Sign Out</a></li>
                                         </c:if>
                                 </ul>
-                                <div id="inf" style="display: none;position: absolute;background-color: black; 
-                                     width: 13em;color: white;right: 13em;top: 4em;padding: 1em">
-                                    <ul>
-                                        <li><a href="#">Change Information</a></li>
+                                <div id="inf" style="display: none;position: absolute;background-color: black; font-size: 15px;
+                                     width: 15em;color: white;right: 13em;top: 4em;padding: 0.5em">
+                                    <ul style="margin: 0 auto">
+                                        <li><a href="changeinformation">Change Information</a></li>
                                         <li><a href="changepassword">Change Password</a</li>
                                     </ul>
                                 </div>
