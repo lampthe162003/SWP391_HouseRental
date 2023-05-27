@@ -42,7 +42,7 @@
                     <nav class="classy-navbar justify-content-between" id="southNav">
 
                         <!-- Logo -->
-                        <a class="nav-brand" href="index.html"><img src="img/core-img/logo.png" alt=""></a>
+                        <a class="nav-brand" href="home.jsp"><img src="img/core-img/logo.png" alt=""></a>
 
                         <!-- Navbar Toggler -->
                         <div class="classy-navbar-toggler">
@@ -63,28 +63,28 @@
                                     <li><a href="home">Home</a></li>
                                     <li><a href="#">Pages</a>
                                         <ul class="dropdown">
-                                            <li><a href="index.html">Home</a></li>
-                                            <li><a href="about-us.html">About Us</a></li>
+                                            <li><a href="home.jsp">Home</a></li>
+                                            <li><a href="about-us.jsp">About Us</a></li>
                                             <li><a href="#">Listings</a>
                                                 <ul class="dropdown">
-                                                    <li><a href="listings.html">Listings</a></li>
-                                                    <li><a href="single-listings.html">Single Listings</a></li>
+                                                    <li><a href="listings.jsp">Listings</a></li>
+                                                    <li><a href="single-listings.jsp">Single Listings</a></li>
                                                 </ul>
                                             </li>
                                             <li><a href="#">Blog</a>
                                                 <ul class="dropdown">
-                                                    <li><a href="blog.html">Blog</a></li>
-                                                    <li><a href="single-blog.html">Single Blog</a></li>
+                                                    <li><a href="blog.jsp">Blog</a></li>
+                                                    <li><a href="single-blog.jsp">Single Blog</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                            <li><a href="elements.html">Elements</a></li>
+                                            <li><a href="contact.jsp">Contact</a></li>
+                                            <li><a href="elements.jsp">Elements</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="about-us.html">About Us</a></li>
-                                    <li><a href="listings.html">Properties</a></li>
-                                    <li><a href="blog.html">Blog</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
+                                    <li><a href="about-us.jsp">About Us</a></li>
+                                    <li><a href="listings.jsp">Properties</a></li>
+                                    <li><a href="blog.jsp">Blog</a></li>
+                                    <li><a href="contact.jsp">Contact</a></li>
                                         <c:if test="${sessionScope.acc == null}">
                                         <li><a href="login">Sign In</a></li>
                                         <li><a href="register">Sign Up</a></li>

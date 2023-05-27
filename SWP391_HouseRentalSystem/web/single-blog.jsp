@@ -1,3 +1,10 @@
+<%-- 
+    Document   : single-blog
+    Created on : May 27, 2023, 2:34:39 PM
+    Author     : Thang
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +16,7 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title  -->
-    <title>South - Real Estate Agency Template | Blog</title>
+    <title>South - Real Estate Agency Template | Single Blog</title>
 
     <!-- Favicon  -->
     <link rel="icon" href="img/core-img/favicon.ico">
@@ -52,7 +59,7 @@
                 <nav class="classy-navbar justify-content-between" id="southNav">
 
                     <!-- Logo -->
-                    <a class="nav-brand" href="index.html"><img src="img/core-img/logo.png" alt=""></a>
+                    <a class="nav-brand" href="home.jsp"><img src="img/core-img/logo.png" alt=""></a>
 
                     <!-- Navbar Toggler -->
                     <div class="classy-navbar-toggler">
@@ -70,30 +77,30 @@
                         <!-- Nav Start -->
                         <div class="classynav">
                             <ul>
-                                <li><a href="index.html">Home</a></li>
+                                <li><a href="home.jsp">Home</a></li>
                                 <li><a href="#">Pages</a>
                                     <ul class="dropdown">
-                                        <li><a href="index.html">Home</a></li>
-                                        <li><a href="about-us.html">About Us</a></li>
+                                        <li><a href="home.jsp">Home</a></li>
+                                        <li><a href="about-us.jsp">About Us</a></li>
                                         <li><a href="#">Listings</a>
                                             <ul class="dropdown">
-                                                <li><a href="listings.html">Listings</a></li>
-                                                <li><a href="single-listings.html">Single Listings</a></li>
+                                                <li><a href="listings.jsp">Listings</a></li>
+                                                <li><a href="single-listings.jsp">Single Listings</a></li>
                                             </ul>
                                         </li>
                                         <li><a href="#">Blog</a>
                                             <ul class="dropdown">
-                                                <li><a href="blog.html">Blog</a></li>
-                                                <li><a href="single-blog.html">Single Blog</a></li>
+                                                <li><a href="blog.jsp">Blog</a></li>
+                                                <li><a href="single-blog.jsp">Single Blog</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="contact.html">Contact</a></li>
-                                        <li><a href="elements.html">Elements</a></li>
+                                        <li><a href="contact.jsp">Contact</a></li>
+                                        <li><a href="elements.jsp">Elements</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="about-us.html">About Us</a></li>
-                                <li><a href="listings.html">Properties</a></li>
-                                <li><a href="blog.html">Blog</a></li>
+                                <li><a href="about-us.jsp">About Us</a></li>
+                                <li><a href="listings.jsp">Properties</a></li>
+                                <li><a href="blog.jsp">Blog</a></li>
                                 <li><a href="#">Mega Menu</a>
                                     <div class="megamenu">
                                         <ul class="single-mega cn-col-4">
@@ -130,7 +137,7 @@
                                         </ul>
                                     </div>
                                 </li>
-                                <li><a href="contact.html">Contact</a></li>
+                                <li><a href="contact.jsp">Contact</a></li>
                             </ul>
 
                             <!-- Search Form -->
@@ -158,7 +165,7 @@
             <div class="row h-100 align-items-center">
                 <div class="col-12">
                     <div class="breadcumb-content">
-                        <h3 class="breadcumb-title">Blog</h3>
+                        <h3 class="breadcumb-title">Blog Details</h3>
                     </div>
                 </div>
             </div>
@@ -167,61 +174,12 @@
     <!-- ##### Breadcumb Area End ##### -->
 
     <!-- ##### Blog Area Start ##### -->
-    <section class="south-blog-area section-padding-100">
+    <section class="blog-area section-padding-100">
         <div class="container">
             <div class="row">
                 <div class="col-12 col-lg-8">
-                   
-                    <!-- Single Blog Area -->
-                    <div class="single-blog-area mb-50">
-                        <!-- Post Thumbnail -->
-                        <div class="blog-post-thumbnail">
-                            <img src="img/blog-img/blog1.jpg" alt="">
-                        </div>
-                        <!-- Post Content -->
-                        <div class="post-content">
-                            <!-- Date -->
-                            <div class="post-date">
-                                <a href="#">March 09, 2018</a>
-                            </div>
-                            <!-- Headline -->
-                            <a href="#" class="headline">How to get the best deal for your house</a>
-                            <!-- Post Meta -->
-                            <div class="post-meta">
-                                <p>By <a href="#">Admin</a> | in <a href="#">Uncategorized</a> | <a href="#">2 Comments</a></p>
-                            </div>
-                            <p>Etiam nec odio vestibulum est mattis effic iturut magna. Pellentesque sit amet tellus blandit. Etiam nec odiomattis effic iturut magna. Pellentesque sit am et tellus blandit. Etiam nec odio vestibul. Etiam nec odio vestibulum est mat tis effic iturut magna. Curabitur rhoncus auctor eleifend.</p>
-                            <!-- Read More btn -->
-                            <a href="#" class="btn south-btn">Read More</a>
-                        </div>
-                    </div>
-                   
-                    <!-- Single Blog Area -->
-                    <div class="single-blog-area mb-50">
-                        <!-- Post Thumbnail -->
-                        <div class="blog-post-thumbnail">
-                            <img src="img/blog-img/blog2.jpg" alt="">
-                        </div>
-                        <!-- Post Content -->
-                        <div class="post-content">
-                            <!-- Date -->
-                            <div class="post-date">
-                                <a href="#">March 09, 2018</a>
-                            </div>
-                            <!-- Headline -->
-                            <a href="#" class="headline">How to get the best deal for your house</a>
-                            <!-- Post Meta -->
-                            <div class="post-meta">
-                                <p>By <a href="#">Admin</a> | in <a href="#">Uncategorized</a> | <a href="#">2 Comments</a></p>
-                            </div>
-                            <p>Etiam nec odio vestibulum est mattis effic iturut magna. Pellentesque sit amet tellus blandit. Etiam nec odiomattis effic iturut magna. Pellentesque sit am et tellus blandit. Etiam nec odio vestibul. Etiam nec odio vestibulum est mat tis effic iturut magna. Curabitur rhoncus auctor eleifend.</p>
-                            <!-- Read More btn -->
-                            <a href="#" class="btn south-btn">Read More</a>
-                        </div>
-                    </div>
-                   
-                    <!-- Single Blog Area -->
-                    <div class="single-blog-area mb-50">
+
+                    <div class="single-blog-area">
                         <!-- Post Thumbnail -->
                         <div class="blog-post-thumbnail">
                             <img src="img/blog-img/blog3.jpg" alt="">
@@ -238,9 +196,91 @@
                             <div class="post-meta">
                                 <p>By <a href="#">Admin</a> | in <a href="#">Uncategorized</a> | <a href="#">2 Comments</a></p>
                             </div>
-                            <p>Etiam nec odio vestibulum est mattis effic iturut magna. Pellentesque sit amet tellus blandit. Etiam nec odiomattis effic iturut magna. Pellentesque sit am et tellus blandit. Etiam nec odio vestibul. Etiam nec odio vestibulum est mat tis effic iturut magna. Curabitur rhoncus auctor eleifend.</p>
-                            <!-- Read More btn -->
-                            <a href="#" class="btn south-btn">Read More</a>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione quia dolore debitis tenetur laborum neque deleniti quis atque autem, qui blanditiis, ad aspernatur? Consequatur nemo, eveniet blanditiis asperiores ex magni sit libero sint fugiat quibusdam ab eius aperiam, iure facilis neque dolore earum architecto tempore et, quae? Omnis ex suscipit debitis, obcaecati delectus est ab voluptate distinctio voluptas. Deserunt saepe sunt ullam, animi sed vel error consectetur incidunt. Ipsa facere eveniet natus quos ratione, minus quod cum ex, laboriosam eius impedit cupiditate? Dolore, voluptates reiciendis quis incidunt ducimus cumque placeat, similique nostrum quod enim quidem culpa. Facere veniam cum accusantium cumque, explicabo nesciunt repellat unde, quibusdam adipisci error quasi natus, pariatur perspiciatis odit labore eos incidunt? Quidem doloremque atque nisi ea optio odio aspernatur est eius!</p>
+                            <img class="mb-50" src="img/bg-img/hero3.jpg" alt="">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia minus in recusandae cumque, laboriosam mollitia inventore nisi autem maiores nostrum ipsa labore beatae amet, dolore ex error fugit sunt aspernatur quidem. Sed laboriosam nihil consectetur facilis aliquid labore necessitatibus nemo dolore? Perspiciatis corrupti consectetur, doloribus aliquid voluptatibus ab atque inventore, est voluptates. Eum veniam hic velit, quia voluptates? Numquam aliquam accusantium hic iste, sequi nisi maiores minus iure eos est unde eum dolore amet suscipit?</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus accusamus accusantium nisi quas tempore quod placeat soluta, quam, ex, pariatur doloremque, quasi ut vitae aspernatur quisquam dolores consequatur deleniti sed perferendis consequuntur. Aut quod, dolorum molestiae veritatis molestias, nemo sit, voluptatibus, quaerat cupiditate magni dignissimos minus repellendus labore.</p>
+                        </div>
+                    </div>
+
+                    <div class="comments-area">
+                        <h5>4 Comments</h5>
+                        <ol>
+                            <!-- Single Comment Area -->
+                            <li class="single_comment_area">
+                                <div class="comment-wrapper d-flex">
+                                    <!-- Comment Meta -->
+                                    <div class="comment-author">
+                                        <img src="img/blog-img/c-1.jpg" alt="">
+                                    </div>
+                                    <!-- Comment Content -->
+                                    <div class="comment-content">
+                                        <div class="comment-meta">
+                                            <a href="#" class="comment-author-name">Maria Williams</a> |
+                                            <a href="#" class="comment-date">Jan 29, 2018</a> |
+                                            <a href="#" class="comment-reply">Reply</a>
+                                        </div>
+                                        <p>Consectetur adipiscing elit. Praesent vel tortor facilisis, volutpat nulla placerat, tincidunt mi. Nullam vel orci dui. Su spendisse sit amet laoreet neque. Fusce sagittis suscipit sem a consequat.</p>
+                                    </div>
+                                </div>
+                                <ol class="children">
+                                    <li class="single_comment_area">
+                                        <div class="comment-wrapper d-flex">
+                                            <!-- Comment Meta -->
+                                            <div class="comment-author">
+                                                <img src="img/blog-img/c-2.jpg" alt="">
+                                            </div>
+                                            <!-- Comment Content -->
+                                            <div class="comment-content">
+                                                <div class="comment-meta">
+                                                    <a href="#" class="comment-author-name">Maria Williams</a> |
+                                                    <a href="#" class="comment-date">Jan 29, 2018</a> |
+                                                    <a href="#" class="comment-reply">Reply</a>
+                                                </div>
+                                                <p>Consectetur adipiscing elit. Praesent vel tortor facilisis, volutpat nulla placerat, tincidunt mi. Nullam vel orci dui. Su spendisse sit amet laoreet neque. Fusce sagittis suscipit sem a consequat.</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ol>
+                            </li>
+                            <li class="single_comment_area">
+                                <div class="comment-wrapper d-flex">
+                                    <!-- Comment Meta -->
+                                    <div class="comment-author">
+                                        <img src="img/blog-img/c-3.jpg" alt="">
+                                    </div>
+                                    <!-- Comment Content -->
+                                    <div class="comment-content">
+                                        <div class="comment-meta">
+                                            <a href="#" class="comment-author-name">Maria Williams</a> |
+                                            <a href="#" class="comment-date">Jan 29, 2018</a> |
+                                            <a href="#" class="comment-reply">Reply</a>
+                                        </div>
+                                        <p>Consectetur adipiscing elit. Praesent vel tortor facilisis, volutpat nulla placerat, tincidunt mi. Nullam vel orci dui. Su spendisse sit amet laoreet neque. Fusce sagittis suscipit sem a consequat.</p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+
+                    <!-- Leave A Comment -->
+                    <div class="leave-comment-area mt-70 clearfix">
+                        <div class="comment-form">
+                            <h5>Leave a reply</h5>
+
+                            <!-- Comment Form -->
+                            <form action="#" method="post">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="contact-name" placeholder="Name">
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" id="contact-email" placeholder="Email">
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-control" name="message" id="message" cols="30" rows="10" placeholder="Message"></textarea>
+                                </div>
+                                <button type="submit" class="btn south-btn">Submit Reply</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -363,21 +403,6 @@
                     </div>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col-12">
-                    <!-- Pagination -->
-                    <div class="south-pagination mt-100 d-flex">
-                        <nav aria-label="Page navigation">
-                            <ul class="pagination">
-                                <li class="page-item"><a class="page-link active" href="#">01</a></li>
-                                <li class="page-item"><a class="page-link" href="#">02</a></li>
-                                <li class="page-item"><a class="page-link" href="#">03</a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
     <!-- ##### Blog Area End ##### -->
@@ -486,7 +511,7 @@
 
         <!-- Copywrite Text -->
         <div class="copywrite-text d-flex align-items-center justify-content-center">
-           <p> <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
         </div>
