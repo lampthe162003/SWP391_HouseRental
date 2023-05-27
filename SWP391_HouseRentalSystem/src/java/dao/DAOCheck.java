@@ -67,7 +67,7 @@ public class DAOCheck {
     }
     public boolean checkExistPassword(String email, String pass){
         try {
-            String stmSql = "selecct * from Account where Email = ? and Password = ?";
+            String stmSql = "select * from Account where Email = ? and Password = ?";
             Connection conn = new DBContext().getConnection();
             PreparedStatement ps = conn.prepareStatement(stmSql);
             ps.setString(1, email);

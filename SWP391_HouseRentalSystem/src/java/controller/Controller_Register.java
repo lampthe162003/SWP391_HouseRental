@@ -98,7 +98,10 @@ public class Controller_Register extends HttpServlet {
             phone = request.getParameter("phonenumber");
             address = request.getParameter("adress");
             picture = request.getParameter("file");
-            roleId = Integer.parseInt(request.getParameter("role"));
+            if (request.getParameter("role") != null) {
+                roleId = Integer.parseInt(request.getParameter("role"));
+                request.setAttribute("roleId", roleId);
+            }
             idQ = Integer.parseInt(request.getParameter("question"));
             DAOQuestion dQ = new DAOQuestion();
             DAOAnswer dA = new DAOAnswer();
@@ -112,7 +115,6 @@ public class Controller_Register extends HttpServlet {
             request.setAttribute("repassword", repassword);
             request.setAttribute("fullname", fullname);
             request.setAttribute("phone", phone);
-            request.setAttribute("roleId", roleId);
             request.setAttribute("address", address);
             request.setAttribute("gender", gender);
             request.setAttribute("picture", picture);

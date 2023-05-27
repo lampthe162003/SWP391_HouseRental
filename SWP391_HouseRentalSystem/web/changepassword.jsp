@@ -1,17 +1,29 @@
-<%-- 
-    Document   : changepassword
-    Created on : May 26, 2023, 4:09:37 PM
-    Author     : ADMIN
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Change Password</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     </head>
     <body>
-        <h1>Code in here!</h1>
+
+        <div class="container">
+            <h2>Change Password</h2>
+            <form method="post" action="changepassword">
+                <div class="form-group">
+                    <label for="currentPassword">Current Password</label>
+                    <input type="password" name="oldPass" class="form-control" id="currentPassword" placeholder="Enter current password">
+                </div>
+                <div class="form-group">
+                    <label for="newPassword">New Password</label>
+                    <input type="password" name="newPass" class="form-control" id="newPassword" placeholder="Enter new password">
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" name="confirmPass" class="form-control" id="confirmPassword" placeholder="Confirm new password">
+                </div>
+                <button type="submit" class="btn btn-primary">Change Password</button>
+            </form>
+        </div>
+
     </body>
 </html>

@@ -60,7 +60,7 @@ public class Controller_Change_Password extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.sendRedirect("changepassword.jsp");
+        request.getRequestDispatcher("changepassword.jsp").include(request, response);
     }
 
     /**

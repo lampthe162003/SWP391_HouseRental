@@ -18,8 +18,8 @@ public class DAOChange {
                 String stmSql = "update Account set Password = ? where Email = ?";
                 Connection conn = new DBContext().getConnection();
                 PreparedStatement ps = conn.prepareStatement(stmSql);
-                ps.setString(1, email);
-                ps.setString(2, password);
+                ps.setString(2, email);
+                ps.setString(1, password);
                 ps.executeUpdate();
         } catch (Exception e) {
             System.out.println(e.getMessage());

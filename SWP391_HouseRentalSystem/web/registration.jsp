@@ -50,10 +50,7 @@
                                                 type="text" name="fullname" value="${fullname}" id="fullname" placeholder="Full Name" required=""/>
                                             <p style="color: red">${alertF}</p>
                                 </div>
-                                <div class="form-group" style="display: flex ; justify-content: left">
-                                    <input type="radio" name="gender" value="1" ${gender.equals("1")?"checked":""} required="">Male
-                                    <input type="radio" name="gender" value="0" ${gender.equals("0")?"checked":""} required="">Female
-                                </div>
+                                
                                 <div class="form-group">
                                     <label for="contact"><i class="zmdi zmdi-lock-outline"></i></label>
                                     <input type="number" name="phonenumber"
@@ -63,6 +60,10 @@
                                     <label for="adress"><i
                                             class="zmdi zmdi-account material-icons-name"></i></label> 
                                             <input type="text" name="adress" placeholder="Adress" value="${address}" required=""/>
+                                </div>
+                                <div class="form-group" style="display: flex ; justify-content: left">
+                                    <input style="width: 4.5em" type="radio" name="gender" value="1" ${gender.equals("1")?"checked":""} required="">Male
+                                    <input style="width: 4.5em" type="radio" name="gender" value="0" ${gender.equals("0")?"checked":""} required="">Female
                                 </div>
                                 <div class="form-group" style="display: flex ; justify-content: left">
                                     <c:forEach items="${lsR}" var="r">
@@ -89,7 +90,7 @@
                                         </c:forEach>
                                     </select>
                                 </div>
-                                <div>
+                                <div style="font-size: 20px">
                                     Profile picture: <input type="file" name="file" value="${picture}" size="60" required="">
                                 </div>
                                 <div class="form-group form-button">
