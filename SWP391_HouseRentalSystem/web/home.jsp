@@ -89,6 +89,7 @@
                                         <c:if test="${sessionScope.acc == null}">
                                         <li><a href="login.jsp">Sign In</a></li>
                                         <li><a href="registration.jsp">Sign Up</a></li>
+                                        <!--huy-->
                                         </c:if> 
                                         <c:if test="${sessionScope.acc != null}">
                                         <li><a onmouseover="showInf()" id="user" href="#">Hello ${sessionScope.acc.fullname}</a></li>
