@@ -17,7 +17,7 @@
         <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
         <!-- Title  -->
-        <title>South - Real Estate Agency Template | Home</title>
+        <title>RentHouse System</title>
 
         <!-- Favicon  -->
         <link rel="icon" href="img/core-img/favicon.ico">
@@ -87,8 +87,8 @@
                                     <li><a href="blog.jsp">Blog</a></li>
                                     <li><a href="contact.jsp">Contact</a></li>
                                         <c:if test="${sessionScope.acc == null}">
-                                        <li><a href="login">Sign In</a></li>
-                                        <li><a href="register">Sign Up</a></li>
+                                        <li><a href="login.jsp">Sign In</a></li>
+                                        <li><a href="registration.jsp">Sign Up</a></li>
                                         </c:if> 
                                         <c:if test="${sessionScope.acc != null}">
                                         <li><a onmouseover="showInf()" id="user" href="#">Hello ${sessionScope.acc.fullname}</a></li>
