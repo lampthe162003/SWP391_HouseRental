@@ -328,7 +328,7 @@
                         <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="100ms">
                             <!-- Property Thumbnail -->
                             <div class="property-thumb">
-                                <img src="img/bg-img/feature1.jpg" alt="">
+                                <a href="#"><img  src="img/bg-img/feature1.jpg" alt=""></a>
 
                                 <div class="tag">
                                     <span>For Sale</span>
@@ -650,7 +650,7 @@
                 </div>
                 <p class="wow fadeInUp" data-wow-delay="500ms">Etiam nec odio vestibulum est mattis effic iturut magna. Pellentesque sit amet tellus blandit. Etiam nec odiomattis effic iturut magna. Pellentesque sit am et tellus blandit. Etiam nec odio vestibul. Etiam nec odio vestibulum est mat tis effic iturut magna. Curabitur rhoncus auctor eleifend. Fusce venenatis diam urna, eu pharetra arcu varius ac. Etiam cursus turpis lectus, id iaculis risus tempor id. Phasellus fringilla nisl sed sem scelerisque, eget aliquam magna vehicula.</p>
                 <div class="address wow fadeInUp" data-wow-delay="750ms">
-                    <h6><img src="img/icons/phone-call.png" alt=""> +45 677 8993000 223</h6>
+                    <h6><img src="img/icons/phone-call.png" alt=""> 0123456778</h6>
                     <h6><img src="img/icons/envelope.png" alt=""> office@template.com</h6>
                 </div>
                 <div class="signature mt-50 wow fadeInUp" data-wow-delay="1000ms">
@@ -721,17 +721,17 @@
                                 </div>
                                 <!-- Nav -->
                                 <ul class="useful-links-nav d-flex align-items-center">
-                                    <li><a href="#">Home</a></li>
-                                    <li><a href="#">About us</a></li>
-                                    <li><a href="#">About us</a></li>
+                                    <li><a href="home.jsp">Home</a></li>
+                                    <li><a href="about-us.jsp">About us</a></li>
+                                    <li><a href="about-us.jsp">About us</a></li>
                                     <li><a href="#">Services</a></li>
                                     <li><a href="#">Properties</a></li>
-                                    <li><a href="#">Listings</a></li>
+                                    <li><a href="listings.jsp">Listings</a></li>
                                     <li><a href="#">Testimonials</a></li>
                                     <li><a href="#">Properties</a></li>
-                                    <li><a href="#">Blog</a></li>
+                                    <li><a href="blog.jsp">Blog</a></li>
                                     <li><a href="#">Testimonials</a></li>
-                                    <li><a href="#">Contact</a></li>
+                                    <li><a href="contact.jsp">Contact</a></li>
                                     <li><a href="#">Elements</a></li>
                                     <li><a href="#">FAQ</a></li>
                                 </ul>
@@ -770,7 +770,7 @@
             <!-- Copywrite Text -->
             <div class="copywrite-text d-flex align-items-center justify-content-center">
                 <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">SE1719</a>
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
             </div>
         </footer>

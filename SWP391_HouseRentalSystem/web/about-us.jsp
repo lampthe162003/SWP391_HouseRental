@@ -36,14 +36,14 @@
             <div class="top-header-area">
                 <div class="h-100 d-md-flex justify-content-between align-items-center">
                     <div class="email-address">
-                        <a href="mailto:contact@southtemplate.com">contact@southtemplate.com</a>
+                        <a href="mailto:thuenha@gmail.com">thuenha@gmail.com</a>
                     </div>
                     <div class="phone-number d-flex">
                         <div class="icon">
                             <img src="img/icons/phone-call.png" alt="">
                         </div>
                         <div class="number">
-                            <a href="tel:+45 677 8993000 223">+45 677 8993000 223</a>
+                            <a href="tel:+0988134951">+0988134951</a>
                         </div>
                     </div>
                 </div>
@@ -730,17 +730,17 @@
                                 </div>
                                 <!-- Nav -->
                                 <ul class="useful-links-nav d-flex align-items-center">
-                                    <li><a href="#">Home</a></li>
-                                    <li><a href="#">About us</a></li>
-                                    <li><a href="#">About us</a></li>
+                                    <li><a href="home.jsp">Home</a></li>
+                                    <li><a href="about-us.jsp">About us</a></li>
+                                    <li><a href="about-us.jsp">About us</a></li>
                                     <li><a href="#">Services</a></li>
                                     <li><a href="#">Properties</a></li>
-                                    <li><a href="#">Listings</a></li>
+                                    <li><a href="listings.jsp">Listings</a></li>
                                     <li><a href="#">Testimonials</a></li>
                                     <li><a href="#">Properties</a></li>
-                                    <li><a href="#">Blog</a></li>
+                                    <li><a href="blog.jsp">Blog</a></li>
                                     <li><a href="#">Testimonials</a></li>
-                                    <li><a href="#">Contact</a></li>
+                                    <li><a href="contact.jsp">Contact</a></li>
                                     <li><a href="#">Elements</a></li>
                                     <li><a href="#">FAQ</a></li>
                                 </ul>
