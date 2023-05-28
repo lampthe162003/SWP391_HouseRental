@@ -104,7 +104,7 @@
                                     <div class="megamenu">
                                         <ul class="single-mega cn-col-4">
                                             <li class="title">Headline 1</li>
-                                            <li><a href="#">Mega Menu Item 1</a></li>
+                                            <li><a href="#">Mega Menu Item1</a></li>
                                             <li><a href="#">Mega Menu Item 2</a></li>
                                             <li><a href="#">Mega Menu Item 3</a></li>
                                             <li><a href="#">Mega Menu Item 4</a></li>
