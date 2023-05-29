@@ -24,12 +24,14 @@ public class DAOQuestion {
             Connection conn = new DBContext().getConnection();
             PreparedStatement ps = conn.prepareStatement(stmSql);
             ResultSet rs = ps.executeQuery();
+            System.out.println("Sucess connect!");
             while(rs.next()){
                 Question q = new Question(rs.getInt(1), rs.getString(2));
                 lsQ.add(q);
             }
             return lsQ;
         } catch (Exception e) {
+            System.out.println("Have error!");
         }
         return null;
     }

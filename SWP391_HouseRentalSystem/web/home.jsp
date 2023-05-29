@@ -105,7 +105,7 @@
                                      width: 15em;color: white;right: 13em;top: 4em;padding: 0.5em">
                                     <ul style="margin: 0 auto">
                                         <li><a href="changeinformation">Change Information</a></li>
-                                        <li><a href="changepassword">Change Password</a</li>
+                                        <li><a href="changepassword">Change Password</a></li>
                                     </ul>
                                 </div>
 
