@@ -29,19 +29,19 @@ public class DBContext {
 //    private final String userID = "sa";
 //    private final String password = "123";
     
-//    private final String serverName = "Hayashi";
-//    private final String dbName = "SWP391_HouseRentalSystem";
-//    private final String portNumber = "1433";
-//    private final String instance = "";
-//    private final String userID = "HayashiHayate";
-//    private final String password = "TodakaHayasumi1";
-
-    private final String serverName = "localhost";
+    private final String serverName = "Hayashi";
     private final String dbName = "SWP391_HouseRentalSystem";
     private final String portNumber = "1433";
     private final String instance = "";
-    private final String userID = "sa";
-    private final String password = "abc123";
+    private final String userID = "HayashiHayate";
+    private final String password = "TodakaHayasumi1";
+
+//    private final String serverName = "localhost";
+//    private final String dbName = "SWP391_HouseRentalSystem";
+//    private final String portNumber = "1433";
+//    private final String instance = "";
+//    private final String userID = "sa";
+//    private final String password = "abc123";
 }
 
 class Using {
