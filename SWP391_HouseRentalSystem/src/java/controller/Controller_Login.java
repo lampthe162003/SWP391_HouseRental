@@ -43,7 +43,7 @@ public class Controller_Login extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.getRequestDispatcher("Login.jsp").include(request, response);
+        request.getRequestDispatcher("login.jsp").include(request, response);
     }
 
     /**
@@ -71,8 +71,4 @@ public class Controller_Login extends HttpServlet {
         }
     }
 }
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
+
