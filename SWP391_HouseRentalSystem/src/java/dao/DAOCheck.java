@@ -5,12 +5,9 @@
 package dao;
 
 import context.DBContext;
-import entity.Question;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -72,6 +69,23 @@ public class DAOCheck {
             PreparedStatement ps = conn.prepareStatement(stmSql);
             ps.setString(1, email);
             ps.setString(2, pass);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                return true;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
+    public boolean checkSecure(String email, int idQ, int idA){
+        try {
+            String stmSql = "select * from Account where Email = ? and Secure_Question_ID = ? and Secure_Answer_ID = ?";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(stmSql);
+            ps.setString(1, email);
+            ps.setInt(2, idQ);
+            ps.setInt(3, idA);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 return true;
