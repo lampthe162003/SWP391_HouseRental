@@ -7,6 +7,7 @@
             <minimum-ant-version>1.6.5</minimum-ant-version>
             <web-module-libraries>
                 <library dirs="200">
+<<<<<<< HEAD
                     <file>${file.reference.jakarta.servlet.jsp.jstl-2.0.0.jar-3}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
@@ -16,6 +17,17 @@
                 </library>
                 <library dirs="200">
                     <file>${file.reference.sqljdbc4.jar-1}</file>
+=======
+                    <file>${file.reference.jakarta.servlet.jsp.jstl-2.0.0.jar}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
+                <library dirs="200">
+                    <file>${file.reference.jakarta.servlet.jsp.jstl-api-2.0.0.jar}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
+                <library dirs="200">
+                    <file>${file.reference.sqljdbc42.jar}</file>
+>>>>>>> 0c4f4ab9d658750efe390793d0a885beb30ce439
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
             </web-module-libraries>

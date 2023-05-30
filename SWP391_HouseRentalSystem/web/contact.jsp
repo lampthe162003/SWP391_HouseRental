@@ -104,7 +104,7 @@
                                     <div class="megamenu">
                                         <ul class="single-mega cn-col-4">
                                             <li class="title">Headline 1</li>
-                                            <li><a href="#">Mega Menu Item 1</a></li>
+                                            <li><a href="#">Mega Menu Item1</a></li>
                                             <li><a href="#">Mega Menu Item 2</a></li>
                                             <li><a href="#">Mega Menu Item 3</a></li>
                                             <li><a href="#">Mega Menu Item 4</a></li>
@@ -293,17 +293,17 @@
                             </div>
                             <!-- Nav -->
                             <ul class="useful-links-nav d-flex align-items-center">
-                                <li><a href="#">Home</a></li>
-                                <li><a href="#">About us</a></li>
-                                <li><a href="#">About us</a></li>
+                                <li><a href="home.jsp">Home</a></li>
+                                <li><a href="about-us.jsp">About us</a></li>
+                                <li><a href="about-us.jsp">About us</a></li>
                                 <li><a href="#">Services</a></li>
                                 <li><a href="#">Properties</a></li>
-                                <li><a href="#">Listings</a></li>
+                                <li><a href="listings.jsp">Listings</a></li>
                                 <li><a href="#">Testimonials</a></li>
                                 <li><a href="#">Properties</a></li>
-                                <li><a href="#">Blog</a></li>
+                                <li><a href="blog.jsp">Blog</a></li>
                                 <li><a href="#">Testimonials</a></li>
-                                <li><a href="#">Contact</a></li>
+                                <li><a href="contact.jsp">Contact</a></li>
                                 <li><a href="#">Elements</a></li>
                                 <li><a href="#">FAQ</a></li>
                             </ul>

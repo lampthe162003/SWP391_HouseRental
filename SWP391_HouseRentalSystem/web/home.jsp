@@ -6,6 +6,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.sql.ResultSet"%>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -17,7 +18,7 @@
         <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
         <!-- Title  -->
-        <title>South - Real Estate Agency Template | Home</title>
+        <title>RentHouse System</title>
 
         <!-- Favicon  -->
         <link rel="icon" href="img/core-img/favicon.ico">
@@ -29,6 +30,10 @@
     </head>
 
     <body>
+        <% 
+            ResultSet rsCate = (ResultSet) request.getAttribute("rsCate");
+            ResultSet rsCity = (ResultSet) request.getAttribute("rsCity");
+        %>
         <!-- Preloader -->
         <div id="preloader">
             <div class="south-load"></div>
@@ -87,10 +92,11 @@
                                     <li><a href="blog.jsp">Blog</a></li>
                                     <li><a href="contact.jsp">Contact</a></li>
                                         <c:if test="${sessionScope.acc == null}">
-                                        <li><a href="login">Sign In</a></li>
-                                        <li><a href="register">Sign Up</a></li>
-                                        </c:if> 
-                                        <c:if test="${sessionScope.acc != null}">
+                                        <li><a href="login.jsp">Sign In</a></li>
+                                        <li><a href="registration.jsp">Sign Up</a></li>
+                                        <!--huy-->
+                                    </c:if> 
+                                    <c:if test="${sessionScope.acc != null}">
                                         <li><a onmouseover="showInf()" id="user" href="#">Hello ${sessionScope.acc.fullname}</a></li>
                                         <li><a href="logout">Sign Out</a></li>
                                         </c:if>
@@ -188,11 +194,9 @@
                                         <div class="form-group">
                                             <select class="form-control" id="catagories">
                                                 <option>All Catagories</option>
-                                                <option>Apartment</option>
-                                                <option>Bar</option>
-                                                <option>Farm</option>
-                                                <option>House</option>
-                                                <option>Store</option>
+                                                <%while(rsCate.next()){%>
+                                                <option><%=rsCate.getString(2)%></option>
+                                                <%}%>
                                             </select>
                                         </div>
                                     </div>
@@ -200,48 +204,12 @@
                                         <div class="form-group">
                                             <select class="form-control" id="cities">
                                                 <option>All Cities</option>
-                                                <option>Riga</option>
-                                                <option>Melbourne</option>
-                                                <option>Vienna</option>
-                                                <option>Vancouver</option>
-                                                <option>Toronto</option>
-                                                <option>Calgary</option>
-                                                <option>Adelaide</option>
-                                                <option>Perth</option>
-                                                <option>Auckland</option>
-                                                <option>Helsinki</option>
+                                                <%while(rsCity.next()){%>
+                                                <option><%=rsCity.getString(2)%></option>
+                                                <%}%>
                                             </select>
                                         </div>
                                     </div>
-
-
-
-                                    <!--                                    <div class="col-12 col-md-4 col-lg-3">
-                                                                            <div class="form-group">
-                                                                                <select class="form-control" id="offers">
-                                                                                    <option>All Offers</option>
-                                                                                    <option>100% OFF</option>
-                                                                                    <option>75% OFF</option>
-                                                                                    <option>50% OFF</option>
-                                                                                    <option>25% OFF</option>
-                                                                                    <option>10% OFF</option>
-                                                                                </select>
-                                                                            </div>
-                                                                        </div>-->
-
-                                    <!--                                    <div class="col-12 col-md-4 col-xl-3">
-                                                                            <div class="form-group">
-                                                                                <select class="form-control" id="listings">
-                                                                                    <option>All Listings</option>
-                                                                                    <option>Listings 1</option>
-                                                                                    <option>Listings 2</option>
-                                                                                    <option>Listings 3</option>
-                                                                                    <option>Listings 4</option>
-                                                                                    <option>Listings 5</option>
-                                                                                </select>
-                                                                            </div>
-                                                                        </div>-->
-                                    <!-- hehehe -->
                                     <div class="col-12 col-md-3 col-lg-3">
                                         <div class="form-group">
                                             <select class="form-control" id="bedrooms">
@@ -328,35 +296,35 @@
                         <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="100ms">
                             <!-- Property Thumbnail -->
                             <div class="property-thumb">
-                                <img src="img/bg-img/feature1.jpg" alt="">
+                                <a href="#"><img  src="img/bg-img/5.jpg" alt=""></a>
 
                                 <div class="tag">
-                                    <span>For Sale</span>
+                                    <!--<span>For Sale</span>-->
                                 </div>
                                 <div class="list-price">
-                                    <p>$945 679</p>
+                                    <p>4.5 triệu/tháng</p>
                                 </div>
                             </div>
                             <!-- Property Content -->
                             <div class="property-content">
-                                <h5>Villa in Los Angeles</h5>
-                                <p class="location"><img src="img/icons/location.png" alt="">Upper Road 3411, no.34 CA</p>
-                                <p>Integer nec bibendum lacus. Suspendisse dictum enim sit amet libero malesuada.</p>
+                                <h5>CCMN VNAHOMES - 29 Ngõ Hàng Cháo</h5>
+                                <p class="location"><img src="img/icons/location.png" alt="">LIbré Homestay Phố Hàng Cháo, Phường Cát Linh, Quận Đống Đa, Hà Nội</p>
+                                <p>- Nằm ở vị trí trung tâm giao giữa các tuyến phố lớn như Nguyễn Thái Học, Cát Linh, Tôn Đức Thắng .</p>
                                 <div class="property-meta-data d-flex align-items-end justify-content-between">
                                     <div class="new-tag">
                                         <img src="img/icons/new.png" alt="">
                                     </div>
                                     <div class="bathroom">
                                         <img src="img/icons/bathtub.png" alt="">
-                                        <span>2</span>
+                                        <span>1</span>
                                     </div>
                                     <div class="garage">
                                         <img src="img/icons/garage.png" alt="">
-                                        <span>2</span>
+                                        <span>1</span>
                                     </div>
                                     <div class="space">
                                         <img src="img/icons/space.png" alt="">
-                                        <span>120 sq ft</span>
+                                        <span>25m2</span>
                                     </div>
                                 </div>
                             </div>
@@ -368,35 +336,35 @@
                         <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="200ms">
                             <!-- Property Thumbnail -->
                             <div class="property-thumb">
-                                <img src="img/bg-img/feature2.jpg" alt="">
+                                <img src="img/bg-img/2.jpg" alt="">
 
                                 <div class="tag">
-                                    <span>For Sale</span>
+                                    <!--<span></span>-->
                                 </div>
                                 <div class="list-price">
-                                    <p>$945 679</p>
+                                    <p>3.95 triệu/tháng</p>
                                 </div>
                             </div>
                             <!-- Property Content -->
                             <div class="property-content">
-                                <h5>Town House in Los Angeles</h5>
-                                <p class="location"><img src="img/icons/location.png" alt="">Upper Road 3411, no.34 CA</p>
-                                <p>Integer nec bibendum lacus. Suspendisse dictum enim sit amet libero malesuada.</p>
+                                <h5>Chung cư mini Ting Tong</h5>
+                                <p class="location"><img src="img/icons/location.png" alt="">Ngõ 68 Triều Khúc, Thanh Xuân</p>
+                                <p>Dạng phòng Studio: Tủ lạnh, tủ, điều hoà, nóng lạnh, tranh, chăn ga gối đệm, gác xép, tủ bếp trên dưới bằng nhôm, pallet, tòa nhà có thang máy + máy giặt chung</p>
                                 <div class="property-meta-data d-flex align-items-end justify-content-between">
                                     <div class="new-tag">
                                         <img src="img/icons/new.png" alt="">
                                     </div>
                                     <div class="bathroom">
                                         <img src="img/icons/bathtub.png" alt="">
-                                        <span>2</span>
+                                        <span>1</span>
                                     </div>
                                     <div class="garage">
                                         <img src="img/icons/garage.png" alt="">
-                                        <span>2</span>
+                                        <span>1</span>
                                     </div>
                                     <div class="space">
                                         <img src="img/icons/space.png" alt="">
-                                        <span>120 sq ft</span>
+                                        <span>25m2</span>
                                     </div>
                                 </div>
                             </div>
@@ -408,27 +376,27 @@
                         <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="300ms">
                             <!-- Property Thumbnail -->
                             <div class="property-thumb">
-                                <img src="img/bg-img/feature3.jpg" alt="">
+                                <img src="img/bg-img/3..jpg" alt="">
 
                                 <div class="tag">
-                                    <span>For Sale</span>
+                                    <!--<span>For Sale</span>-->
                                 </div>
                                 <div class="list-price">
-                                    <p>$945 679</p>
+                                    <p>6.2 triệu/tháng</p>
                                 </div>
                             </div>
                             <!-- Property Content -->
                             <div class="property-content">
-                                <h5>Town House in Los Angeles</h5>
-                                <p class="location"><img src="img/icons/location.png" alt="">Upper Road 3411, no.34 CA</p>
-                                <p>Integer nec bibendum lacus. Suspendisse dictum enim sit amet libero malesuada.</p>
+                                <h5>Căn hộ Apartment Kim Mã</h5>
+                                <p class="location"><img src="img/icons/location.png" alt="">Nhà số 10, ngách 575/10, ngõ 575 Kim Mã, Ba Đình.</p>
+                                <p>Toà nhà được trang bị thang máy, hệ thống giặt sấy đầy đủ, wifi trang bị đến từng phòng,có hệ thống phòng cháy chữa cháy tự động, thang thoát hiểm...</p>
                                 <div class="property-meta-data d-flex align-items-end justify-content-between">
                                     <div class="new-tag">
                                         <img src="img/icons/new.png" alt="">
                                     </div>
                                     <div class="bathroom">
                                         <img src="img/icons/bathtub.png" alt="">
-                                        <span>2</span>
+                                        <span>1</span>
                                     </div>
                                     <div class="garage">
                                         <img src="img/icons/garage.png" alt="">
@@ -436,47 +404,47 @@
                                     </div>
                                     <div class="space">
                                         <img src="img/icons/space.png" alt="">
-                                        <span>120 sq ft</span>
+                                        <span>30m2</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
+<!--h-->
                     <!-- Single Featured Property -->
                     <div class="col-12 col-md-6 col-xl-4">
                         <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="400ms">
                             <!-- Property Thumbnail -->
                             <div class="property-thumb">
-                                <img src="img/bg-img/feature4.jpg" alt="">
+                                <img src="img/bg-img/6.jpg" alt="">
 
-                                <div class="tag">
+<!--                                <div class="tag">
                                     <span>For Sale</span>
-                                </div>
+                                </div>-->
                                 <div class="list-price">
-                                    <p>$945 679</p>
+                                    <p>8 triệu/tháng</p>
                                 </div>
                             </div>
                             <!-- Property Content -->
                             <div class="property-content">
-                                <h5>Villa in Los Angeles</h5>
-                                <p class="location"><img src="img/icons/location.png" alt="">Upper Road 3411, no.34 CA</p>
-                                <p>Integer nec bibendum lacus. Suspendisse dictum enim sit amet libero malesuada.</p>
+                                <h5>Studio đầy đủ tiện nghi mặt phố Nhật</h5>
+                                <p class="location"><img src="img/icons/location.png" alt="">phố Nhật, Linh Lang, Cống Vị, Ba Đình</p>
+                                <p>Studio full đồ, mới tinh, đầy đủ tiện nghi tivi 55in + tủ lạnh + điều hòa + bếp + giường + tủ + nhà vệ sinh.</p>
                                 <div class="property-meta-data d-flex align-items-end justify-content-between">
                                     <div class="new-tag">
                                         <img src="img/icons/new.png" alt="">
                                     </div>
                                     <div class="bathroom">
                                         <img src="img/icons/bathtub.png" alt="">
-                                        <span>2</span>
+                                        <span>1</span>
                                     </div>
                                     <div class="garage">
                                         <img src="img/icons/garage.png" alt="">
-                                        <span>2</span>
+                                        <span>3</span>
                                     </div>
                                     <div class="space">
                                         <img src="img/icons/space.png" alt="">
-                                        <span>120 sq ft</span>
+                                        <span>38 m²</span>
                                     </div>
                                 </div>
                             </div>
@@ -488,35 +456,35 @@
                         <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="500ms">
                             <!-- Property Thumbnail -->
                             <div class="property-thumb">
-                                <img src="img/bg-img/feature5.jpg" alt="">
+                                <img src="img/bg-img/7.jpg" alt="">
 
                                 <div class="tag">
-                                    <span>For Sale</span>
+<!--                                    <span>For Sale</span>-->
                                 </div>
                                 <div class="list-price">
-                                    <p>$945 679</p>
+                                    <p>4.75 triệu/tháng</p>
                                 </div>
                             </div>
                             <!-- Property Content -->
                             <div class="property-content">
-                                <h5>Town House in Los Angeles</h5>
-                                <p class="location"><img src="img/icons/location.png" alt="">Upper Road 3411, no.34 CA</p>
-                                <p>Integer nec bibendum lacus. Suspendisse dictum enim sit amet libero malesuada.</p>
+                                <h5>CCMN khu trung tâm Nam Từ Liêm.</h5>
+                                <p class="location"><img src="img/icons/location.png" alt="">116 Miếu Đầm, Nam Từ Liêm</p>
+                                <p>Nội thất: Điều hòa, nóng lạnh, giường, tủ quần áo, đệm, bàn làm việc, tủ bếp trên dưới, hút mùi, bếp từ, tủ lạnh,..</p>
                                 <div class="property-meta-data d-flex align-items-end justify-content-between">
                                     <div class="new-tag">
                                         <img src="img/icons/new.png" alt="">
                                     </div>
                                     <div class="bathroom">
                                         <img src="img/icons/bathtub.png" alt="">
-                                        <span>2</span>
+                                        <span>1</span>
                                     </div>
                                     <div class="garage">
                                         <img src="img/icons/garage.png" alt="">
-                                        <span>2</span>
+                                        <span>1</span>
                                     </div>
                                     <div class="space">
                                         <img src="img/icons/space.png" alt="">
-                                        <span>120 sq ft</span>
+                                        <span>25 m²</span>
                                     </div>
                                 </div>
                             </div>
@@ -528,35 +496,35 @@
                         <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="600ms">
                             <!-- Property Thumbnail -->
                             <div class="property-thumb">
-                                <img src="img/bg-img/feature6.jpg" alt="">
+                                <img src="img/bg-img/8.jpg" alt="">
 
-                                <div class="tag">
+<!--                                <div class="tag">
                                     <span>For Sale</span>
-                                </div>
+                                </div>-->
                                 <div class="list-price">
-                                    <p>$945 679</p>
+                                    <p>4.4 triệu/tháng</p>
                                 </div>
                             </div>
                             <!-- Property Content -->
                             <div class="property-content">
-                                <h5>Town House in Los Angeles</h5>
-                                <p class="location"><img src="img/icons/location.png" alt="">Upper Road 3411, no.34 CA</p>
-                                <p>Integer nec bibendum lacus. Suspendisse dictum enim sit amet libero malesuada.</p>
+                                <h5>Chung cư mini Thao </h5>
+                                <p class="location"><img src="img/icons/location.png" alt="">Đỗ Đức Dục, Nam Từ Liêm</p>
+                                <p>Phòng có ban công sáng thoáng, có cửa sổ thoáng mát, có giường tủ, sofa, bàn ghế, thảm,...</p>
                                 <div class="property-meta-data d-flex align-items-end justify-content-between">
                                     <div class="new-tag">
                                         <img src="img/icons/new.png" alt="">
                                     </div>
                                     <div class="bathroom">
                                         <img src="img/icons/bathtub.png" alt="">
-                                        <span>2</span>
+                                        <span>1</span>
                                     </div>
                                     <div class="garage">
                                         <img src="img/icons/garage.png" alt="">
-                                        <span>2</span>
+                                        <span>1</span>
                                     </div>
                                     <div class="space">
                                         <img src="img/icons/space.png" alt="">
-                                        <span>120 sq ft</span>
+                                        <span>35 m²</span>
                                     </div>
                                 </div>
                             </div>
@@ -650,7 +618,7 @@
                 </div>
                 <p class="wow fadeInUp" data-wow-delay="500ms">Etiam nec odio vestibulum est mattis effic iturut magna. Pellentesque sit amet tellus blandit. Etiam nec odiomattis effic iturut magna. Pellentesque sit am et tellus blandit. Etiam nec odio vestibul. Etiam nec odio vestibulum est mat tis effic iturut magna. Curabitur rhoncus auctor eleifend. Fusce venenatis diam urna, eu pharetra arcu varius ac. Etiam cursus turpis lectus, id iaculis risus tempor id. Phasellus fringilla nisl sed sem scelerisque, eget aliquam magna vehicula.</p>
                 <div class="address wow fadeInUp" data-wow-delay="750ms">
-                    <h6><img src="img/icons/phone-call.png" alt=""> +45 677 8993000 223</h6>
+                    <h6><img src="img/icons/phone-call.png" alt=""> 0123456778</h6>
                     <h6><img src="img/icons/envelope.png" alt=""> office@template.com</h6>
                 </div>
                 <div class="signature mt-50 wow fadeInUp" data-wow-delay="1000ms">
@@ -721,17 +689,17 @@
                                 </div>
                                 <!-- Nav -->
                                 <ul class="useful-links-nav d-flex align-items-center">
-                                    <li><a href="#">Home</a></li>
-                                    <li><a href="#">About us</a></li>
-                                    <li><a href="#">About us</a></li>
+                                    <li><a href="home.jsp">Home</a></li>
+                                    <li><a href="about-us.jsp">About us</a></li>
+                                    <li><a href="about-us.jsp">About us</a></li>
                                     <li><a href="#">Services</a></li>
                                     <li><a href="#">Properties</a></li>
-                                    <li><a href="#">Listings</a></li>
+                                    <li><a href="listings.jsp">Listings</a></li>
                                     <li><a href="#">Testimonials</a></li>
                                     <li><a href="#">Properties</a></li>
-                                    <li><a href="#">Blog</a></li>
+                                    <li><a href="blog.jsp">Blog</a></li>
                                     <li><a href="#">Testimonials</a></li>
-                                    <li><a href="#">Contact</a></li>
+                                    <li><a href="contact.jsp">Contact</a></li>
                                     <li><a href="#">Elements</a></li>
                                     <li><a href="#">FAQ</a></li>
                                 </ul>
@@ -770,7 +738,7 @@
             <!-- Copywrite Text -->
             <div class="copywrite-text d-flex align-items-center justify-content-center">
                 <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">SE1719</a>
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
             </div>
         </footer>
@@ -789,14 +757,14 @@
         <!-- Active js -->
         <script src="js/active.js"></script>
         <script>
-            function showInf(){
-                var x = document.getElementById('inf');
-                if(x.style.display === 'none'){
-                    x.style.display = 'block';
-                }else{
-                    x.style.display = 'none';
-                }
-            }
+                        function showInf() {
+                            var x = document.getElementById('inf');
+                            if (x.style.display === 'none') {
+                                x.style.display = 'block';
+                            } else {
+                                x.style.display = 'none';
+                            }
+                        }
         </script>
     </body>
 </html>
