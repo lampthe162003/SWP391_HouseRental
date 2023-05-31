@@ -28,7 +28,7 @@ public class DBContext {
     private final String portNumber = "1433";
     private final String instance = "";
     private final String userID = "sa";
-    private final String password = "1231";
+    private final String password = "123";
 //    private final String serverName = "DESKTOP-B08T7A9\\TRANHUNG";
 //    private final String dbName = "SWP391_HouseRentalSystem";
 //    private final String portNumber = "1433";
