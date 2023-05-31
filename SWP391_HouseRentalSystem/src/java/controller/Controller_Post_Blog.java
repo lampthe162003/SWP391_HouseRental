@@ -5,18 +5,22 @@
 
 package controller;
 
+import dao.DAOBlog;
+import entity.Account;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import java.sql.Date;
 
 /**
  *
  * @author ADMIN
  */
-public class Controller_Create_Blog extends HttpServlet {
+public class Controller_Post_Blog extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -33,10 +37,10 @@ public class Controller_Create_Blog extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Controller_Create_Blog</title>");  
+            out.println("<title>Servlet Controller_Post_Blog</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Controller_Create_Blog at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet Controller_Post_Blog at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -53,8 +57,7 @@ public class Controller_Create_Blog extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-            String Poster_ID = request.getParameter("Poster_ID");
-            
+        processRequest(request, response);
     } 
 
     /** 
@@ -67,7 +70,16 @@ public class Controller_Create_Blog extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        HttpSession session = request.getSession();
+        Account a = (Account)session.getAttribute("acc");
+        String title, image, content;
+        int posterId = a.getId();
+        title = request.getParameter("title");
+        image = request.getParameter("imageblog");
+        content = request.getParameter("content");
+        DAOBlog blog = new DAOBlog();
+        blog.postBlog(posterId, title, content, image);
+        System.out.println("Success Post Blog!");
     }
 
     /** 

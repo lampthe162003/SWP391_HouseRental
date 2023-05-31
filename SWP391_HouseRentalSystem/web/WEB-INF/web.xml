@@ -27,6 +27,14 @@
         <servlet-name>Controller_Change_Information</servlet-name>
         <servlet-class>controller.Controller_Change_Information</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Controller_Forgot_Password</servlet-name>
+        <servlet-class>controller.Controller_Forgot_Password</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controller_Post_Blog</servlet-name>
+        <servlet-class>controller.Controller_Post_Blog</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Controller_Login</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -50,6 +58,14 @@
     <servlet-mapping>
         <servlet-name>Controller_Change_Information</servlet-name>
         <url-pattern>/changeinformation</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller_Forgot_Password</servlet-name>
+        <url-pattern>/forgotpassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller_Post_Blog</servlet-name>
+        <url-pattern>/postblog</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -45,7 +45,7 @@
                                         placeholder="Password" />
                                 </div>
                                 <div class="form-group">
-                                    <a href="#" style="text-decoration: none"> Forgot Password ?</a>
+                                    <a href="forgotpassword" style="text-decoration: none"> Forgot Password?</a>
                                 </div>
                                 <div class="form-group form-button">
                                     <input type="submit" name="signin" id="signin"

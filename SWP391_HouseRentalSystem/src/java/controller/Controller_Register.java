@@ -87,6 +87,8 @@ public class Controller_Register extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String submit = request.getParameter("signup");
+        DAOQuestion dQ = new DAOQuestion();
+        List<Question> lsQ = dQ.getListQuestion();
         if (submit == null) {
             String email, password, repassword, fullname, phone, address, picture, gender;
             int idQ, answerId, roleId;
@@ -103,11 +105,9 @@ public class Controller_Register extends HttpServlet {
                 request.setAttribute("roleId", roleId);
             }
             idQ = Integer.parseInt(request.getParameter("question"));
-            DAOQuestion dQ = new DAOQuestion();
             DAOAnswer dA = new DAOAnswer();
             DAORole dR = new DAORole();
             List<Role> lsR = dR.getListRole();
-            List<Question> lsQ = dQ.getListQuestion();
             List<Answer> lsA = dA.getListAnswer(idQ);
             request.setAttribute("lsR", lsR);
             request.setAttribute("email", email);
@@ -126,6 +126,9 @@ public class Controller_Register extends HttpServlet {
             String email, password, repassword, fullname, phone, address, picture;
             int questionId, answerId, roleId;
             Boolean gender;
+            lsQ = dQ.getListQuestion();
+            request.setAttribute("lsQ", lsQ);
+            request.setAttribute("errorE", "Email invalid!");
             email = request.getParameter("email");
             password = request.getParameter("pass");
             repassword = request.getParameter("repass");
