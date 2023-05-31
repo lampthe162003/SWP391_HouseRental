@@ -24,15 +24,11 @@ public class DBContext {
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         return DriverManager.getConnection(url, userID, password);
     }
-<<<<<<< HEAD
-    private final String serverName = "LAPTOP-CSMRSSDS\\MAYAO";
     private final String dbName = "SWP391_HouseRentalSystem";
     private final String portNumber = "1433";
     private final String instance = "";
     private final String userID = "sa";
     private final String password = "abc123";
-
-=======
 //    private final String serverName = "DESKTOP-B08T7A9\\TRANHUNG";
 //    private final String dbName = "SWP391_HouseRentalSystem";
 //    private final String portNumber = "1433";
@@ -40,11 +36,10 @@ public class DBContext {
 //    private final String userID = "sa";
 //    private final String password = "123";
 
-    private final String serverName = "Hayashi";
-    private final String dbName = "SWP391_HouseRentalSystem";
-    private final String portNumber = "1433";
-    private final String instance = "";
-    private final String userID = "HayashiHayate";
-    private final String password = "TodakaHyasumi1";
->>>>>>> 0c4f4ab9d658750efe390793d0a885beb30ce439
+//    private final String serverName = "Hayashi";
+//    private final String dbName = "SWP391_HouseRentalSystem";
+//    private final String portNumber = "1433";
+//    private final String instance = "";
+//    private final String userID = "HayashiHayate";
+//    private final String password = "TodakaHyasumi1";
 }
