@@ -31,7 +31,15 @@
         <link rel='stylesheet'
               href='https://cdn.rawgit.com/bootstrap-wysiwyg/bootstrap3-wysiwyg/master/src/bootstrap3-wysihtml5.css'>
         <link rel="stylesheet" href="css/style1.css">
-
+        <style>
+            #id1{
+                padding: 5px 8px;
+                text-align: justify-all;
+                border-radius: 10px;
+                border: 1px solid gray;
+                font-size: 18px;
+            }
+        </style>
     </head>
 
     <body>
@@ -172,7 +180,7 @@
                             <!-- <div class="container">
                                 <div class="row">
                                   <div class="col-md-12"> -->
-                            <form method="post" role="form">
+                            <form method="post" action="postblog">
                                 <div class="form-group">
                                     <input type="text" class="form-control" name="title" placeholder="Title"/>
                                 </div>
@@ -182,14 +190,14 @@
 
                                         <span class="input-group-btn">
                                             <span class="btn btn-primary btn-file">
-                                                Browse <input type="file" name="bimgs" multiple>
+                                                Browse <input type="file" name="imageblog" multiple>
                                             </span>
                                         </span>
                                         <input type="text" class="form-control" readonly>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <textarea class="form-control bcontent" name="content"></textarea>
+                                    <textarea required="" placeholder="Content" id="id1" name="content" rows="12" cols="108"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <input type="submit" name="Submit" value="Publish" class="btn btn-primary form-control" />

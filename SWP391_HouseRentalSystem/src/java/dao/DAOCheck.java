@@ -5,12 +5,9 @@
 package dao;
 
 import context.DBContext;
-import entity.Question;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
