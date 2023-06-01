@@ -89,6 +89,6 @@ public class Controller_Post_Blog extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }// </editor-fold> edit 2
 //hehehe
 }
