@@ -84,7 +84,7 @@
                                     </li>
                                     <li><a href="about-us.jsp">About Us</a></li>
                                     <li><a href="listings.jsp">Properties</a></li>
-                                    <li><a href="blog.jsp">Blog</a></li>
+                                    <li><a href="listblog">Blog</a></li>
                                     <li><a href="contact.jsp">Contact</a></li>
                                         <c:if test="${sessionScope.acc == null}">
                                         <li><a href="login">Sign In</a></li>
