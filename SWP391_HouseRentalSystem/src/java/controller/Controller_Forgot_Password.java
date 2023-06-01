@@ -114,7 +114,7 @@ public class Controller_Forgot_Password extends HttpServlet {
                 if (!newPass.equals(confirmPass)) {
                     request.setAttribute("alertP", "The entered passwords do not match. Try again!");
                     request.getRequestDispatcher("forgotpassword.jsp").forward(request, response);
-                } else {
+                } else {//check conditons
                     if (check.checkSecure(email, idQ, idA)) {
                         change.changePassword(email, newPass);
                         response.sendRedirect("login");
