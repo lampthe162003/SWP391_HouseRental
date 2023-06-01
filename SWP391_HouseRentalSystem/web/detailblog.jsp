@@ -1,17 +1,15 @@
 <%-- 
-    Document   : postblog
-    Created on : May 27, 2023, 1:54:10 PM
+    Document   : single-blog
+    Created on : May 27, 2023, 2:34:39 PM
     Author     : Thang
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-
-
 <html lang="en">
 
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="UTF-8">
         <meta name="description" content="">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,25 +17,131 @@
         <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
         <!-- Title  -->
-        <title>South - Real Estate Agency Template | Home</title>
+        <title>South - Real Estate Agency Template | Single Blog</title>
 
         <!-- Favicon  -->
         <link rel="icon" href="img/core-img/favicon.ico">
 
         <!-- Style CSS -->
         <link rel="stylesheet" href="style.css">
-        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
-        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css'>
-        <link rel='stylesheet'
-              href='https://cdn.rawgit.com/bootstrap-wysiwyg/bootstrap3-wysiwyg/master/src/bootstrap3-wysihtml5.css'>
-        <link rel="stylesheet" href="css/style1.css">
         <style>
-            #id1{
-                padding: 5px 8px;
-                text-align: justify-all;
+            #banner{
+                width: 100%;
+                height: auto;
+                border: 1px solid black;
+                background-color: #Eaeaea;
+                padding: 2em;
+            }
+            .item1{
+                background-color: white;
+                margin: 0.5px auto;
+                width: 50%;
+                height: auto;
+                border: 1px solid black;
                 border-radius: 10px;
-                border: 1px solid gray;
-                font-size: 18px;
+            }
+            .item2{
+                width: 95%;
+                height: 90%;
+                border-radius: 10px;
+                margin: 5% auto;
+                margin-top: 0.5em;
+            }
+            .item2 img{
+                width: 100%;
+                height: 30em;
+                margin: 1em 0;
+            }
+            .inblog-img{
+                width: 25%;
+                height: 100%;
+            }
+            .inblog-img img{
+                width: 100%;
+                height: 10em;
+                border-radius: 10px;
+            }
+            .inblog-infor{
+                margin: 0 auto;
+                width: 70%;
+                height: 100%;
+            }
+            .inblog-infor .pra{
+                margin: auto 0;
+                width: 90%;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .inblog-infor h5{
+                color: #6699ff;
+            }
+            #createblog{
+                padding: 1em 2em;
+                border: 1px solid black;
+                border-radius: 10px;
+                color: white;
+                background-color: #6699ff;
+
+            }
+            #createblog:hover{
+                color: black;
+                background-color: white;
+            }
+            #cr{
+                width: 10%;
+                margin: 0 auto;
+                margin-bottom: 2.5em;
+            }
+            .active{
+                color:red;
+                cursor: default;
+            }
+            .numberP{
+                width: 10%;
+                height: 2em;
+                margin: 0.5em auto;
+            }
+            .cmt{
+                border: 1px solid black;
+            }
+            .cmtcontent{
+                display: flex;
+                width: 95%;
+                height: auto;
+                margin: 0 auto;
+            }
+            .cmtimg{
+                width: 8%;
+                height: 3em;
+            }
+            .cmtimg img{
+                width: 100%;
+                height: 3em;
+                border-radius: 50%;
+            }
+            .cmttext{
+                margin: 0 auto;
+                width: 90%;
+                height: auto;
+            }
+            .cmtname{
+                height: 2em;
+                width: 100%;
+            }
+            .cmtname p{
+                font-weight: 800;
+                color: black;
+            }
+
+            .cmtbl{
+                display: flex;
+            }
+            .cmtbl input{
+                width: 92%;
+                border-radius: 10px;
             }
         </style>
     </head>
@@ -181,67 +285,60 @@
                 <div class="row h-100 align-items-center">
                     <div class="col-12">
                         <div class="breadcumb-content">
-                            <h3 class="breadcumb-title">Blog List</h3>
+                            <h3 class="breadcumb-title">Detail Blog</h3>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- ##### Hero Area End ##### -->
+        <!-- ##### Breadcumb Area End ##### -->
 
-        <!-- ##### Advance Search Area Start ##### -->
-        <div class="south-search-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="advanced-search-form">
-                            <!-- Search Title -->
-                            
-                            <!-- <div class="container">
-                                <div class="row">
-                                  <div class="col-md-12"> -->
-                            <form method="post" action="postblog">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" name="title" placeholder="Title"/>
+        <!-- ##### Blog Area Start ##### -->
+        <div id="banner">
+            <div class="item1">
+                <div class="item2">
+                    <h1>${b.getTopic()}</h1>
+                    <img src="./assets/images/${b.getImage()}" alt="alt"/>
+                    <p>${b.getContent()}</p>
+                </div>
+                <div class="cmt">
+                    <form action="commentblog" method="post">
+                        <h1>Comment</h1>
+                        <input type="hidden" value="${b.getId()}" name="idBlog">
+                        <div class="cmtcontent">
+                            <div class="cmtimg">
+                                <img src="./assets/images/${sessionScope.acc.getProfile_Picture()}" alt="alt"/>
+                            </div>
+                            <div class="cmttext">
+                                <div class="cmtname"><p>${sessionScope.acc.getFullname()}</p></div>
+                                <div class="cmtbl">
+                                    <input type="text" name="ctxt">
+                                    <input style="width: 10%" type="submit" value="Send">
                                 </div>
-                                <div class="form-group">
-                                    <label> Image </label>
-                                    <div class="input-group">
-
-                                        <span class="input-group-btn">
-                                            <span class="btn btn-primary btn-file">
-                                                Browse <input type="file" name="imageblog" multiple>
-                                            </span>
-                                        </span>
-                                        <input type="text" class="form-control" readonly>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <textarea required="" placeholder="Content" id="id1" name="content" rows="12" cols="108"></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <input type="submit" name="Submit" value="Publish" class="btn btn-primary form-control" />
-                                </div>
-                            </form>
-                            <!-- </div>
-                          </div>
-                        </div> -->
+                            </div>
                         </div>
-                    </div>
+                    </form>
+                    <c:forEach items="${lsC}" var="c">
+                        <div class="cmtcontent">
+                            <div class="cmtimg">
+                                <img src="./assets/images/${c.getProfilePicture()}" alt="alt"/>
+                            </div>
+                            <div class="cmttext">
+                                <div class="cmtname"><p>${c.getFullName()}</p></div>
+                                <div class="cmtbl">
+                                    <p>${c.getContent()}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </c:forEach>
                 </div>
             </div>
+
         </div>
-
-
-
-
-
-
-
+        <!-- ##### Blog Area End ##### -->
 
         <!-- ##### Footer Area Start ##### -->
-        <footer class="footer-area section-padding-100-0 bg-img gradient-background-overlay"
-                style="background-image: url(img/bg-img/cta.jpg);">
+        <footer class="footer-area section-padding-100-0 bg-img gradient-background-overlay" style="background-image: url(img/bg-img/cta.jpg);">
             <!-- Main Footer Area -->
             <div class="main-footer-area">
                 <div class="container">
@@ -259,8 +356,7 @@
                                 <div class="footer-logo my-4">
                                     <img src="img/core-img/logo.png" alt="">
                                 </div>
-                                <p>Integer nec bibendum lacus. Suspen disse dictum enim sit amet libero males uada feugiat.
-                                    Praesent malesuada.</p>
+                                <p>Integer nec bibendum lacus. Suspen disse dictum enim sit amet libero males uada feugiat. Praesent malesuada.</p>
                             </div>
                         </div>
 
@@ -274,21 +370,16 @@
                                 <!-- Office Hours -->
                                 <div class="weekly-office-hours">
                                     <ul>
-                                        <li class="d-flex align-items-center justify-content-between"><span>Monday -
-                                                Friday</span> <span>09 AM - 19 PM</span></li>
-                                        <li class="d-flex align-items-center justify-content-between"><span>Saturday</span>
-                                            <span>09 AM - 14 PM</span>
-                                        </li>
-                                        <li class="d-flex align-items-center justify-content-between"><span>Sunday</span>
-                                            <span>Closed</span>
-                                        </li>
+                                        <li class="d-flex align-items-center justify-content-between"><span>Monday - Friday</span> <span>09 AM - 19 PM</span></li>
+                                        <li class="d-flex align-items-center justify-content-between"><span>Saturday</span> <span>09 AM - 14 PM</span></li>
+                                        <li class="d-flex align-items-center justify-content-between"><span>Sunday</span> <span>Closed</span></li>
                                     </ul>
                                 </div>
                                 <!-- Address -->
                                 <div class="address">
-                                    <h6><img src="img/icons/phone-call.png" alt=""> 0988134951</h6>
-                                    <h6><img src="img/icons/envelope.png" alt=""> thuenha@gmail.com</h6>
-                                    <h6><img src="img/icons/location.png" alt=""> ÐH FPT Hà Nôi</h6>
+                                    <h6><img src="img/icons/phone-call.png" alt=""> +45 677 8993000 223</h6>
+                                    <h6><img src="img/icons/envelope.png" alt=""> office@template.com</h6>
+                                    <h6><img src="img/icons/location.png" alt=""> Main Str. no 45-46, b3, 56832, Los Angeles, CA</h6>
                                 </div>
                             </div>
                         </div>
@@ -351,10 +442,7 @@
             <!-- Copywrite Text -->
             <div class="copywrite-text d-flex align-items-center justify-content-center">
                 <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    Copyright &copy;
-                    <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made
-                    with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com"
-                                                                                target="_blank">Colorlib</a>
+                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
             </div>
         </footer>
@@ -373,12 +461,6 @@
         <!-- Active js -->
         <script src="js/active.js"></script>
 
-        <!-- partial -->
-        <!-- <script src='https://code.jquery.com/jquery-1.11.3.min.js'></script> -->
-        <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
-        <script
-        src='https://cdn.rawgit.com/bootstrap-wysiwyg/bootstrap3-wysiwyg/master/dist/bootstrap3-wysihtml5.all.min.js'></script>
-        <script src="js/script.js"></script>
     </body>
 
 </html>
