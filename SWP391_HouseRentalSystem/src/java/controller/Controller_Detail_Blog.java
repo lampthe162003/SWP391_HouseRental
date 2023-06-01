@@ -48,7 +48,6 @@ public class Controller_Post_Blog extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-<<<<<<<< HEAD:SWP391_HouseRentalSystem/src/java/controller/Controller_Detail_Blog.java
             out.println("<title>Servlet Controller_Detail_Blog</title>");  
             out.println("</head>");
             out.println("<body>");
