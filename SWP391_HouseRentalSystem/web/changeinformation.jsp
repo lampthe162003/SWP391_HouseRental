@@ -151,6 +151,7 @@
                                 <div class="widget-title">
                                     <h6>Hours</h6>
                                 </div>
+                                <!-- xoa cai nay -->
                                 <!-- Office Hours -->
                                 <div class="weekly-office-hours">
                                     <ul>
@@ -163,7 +164,7 @@
                                 <div class="address">
                                     <h6><img src="img/icons/phone-call.png" alt=""> 0988134951</h6>
                                     <h6><img src="img/icons/envelope.png" alt=""> thuenha@gmail.com</h6>
-                                    <h6><img src="img/icons/location.png" alt=""> ÐH FPT Hà Nôi</h6>
+                                    <h6><img src="img/icons/location.png" alt=""> ï¿½H FPT Hï¿½ Nï¿½i</h6>
                                 </div>
                             </div>
                         </div>

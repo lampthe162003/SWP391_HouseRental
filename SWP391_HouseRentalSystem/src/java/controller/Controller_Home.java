@@ -63,6 +63,6 @@ public class Controller_Home extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }// </editor-fold> edit lan 2
 
 }
