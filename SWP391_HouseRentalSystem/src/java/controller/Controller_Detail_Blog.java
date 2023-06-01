@@ -57,7 +57,6 @@ public class Controller_Post_Blog extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet Controller_Post_Blog at " + request.getContextPath () + "</h1>");
->>>>>>>> 0b685f84d3fcf180c8c1322eaf3ddfeb23f26af6:SWP391_HouseRentalSystem/src/java/controller/Controller_Post_Blog.java
             out.println("</body>");
             out.println("</html>");
         }
