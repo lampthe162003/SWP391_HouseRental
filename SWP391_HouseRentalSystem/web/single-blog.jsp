@@ -355,12 +355,53 @@
                             </div>
                         </div>
 
+<<<<<<< HEAD
                         <!-- Single Footer Widget -->
                         <div class="col-12 col-sm-6 col-xl-3">
                             <div class="footer-widget-area mb-100">
                                 <!-- Widget Title -->
                                 <div class="widget-title">
                                     <h6>Featured Properties</h6>
+=======
+                    <!-- Single Footer Widget -->
+                    <div class="col-12 col-sm-6 col-xl-3">
+                        <div class="footer-widget-area mb-100">
+                            <!-- Widget Title -->
+                            <div class="widget-title">
+                                <h6>Useful Links</h6>
+                            </div>
+                            <!-- Nav -->
+                            <ul class="useful-links-nav d-flex align-items-center">
+                                <li><a href="home.jsp">Home</a></li>
+                                <li><a href="about-us.jsp">About us</a></li>
+                                <li><a href="about-us.jsp">About us</a></li>
+                                <li><a href="#">Services</a></li>
+                                <li><a href="#">Properties</a></li>
+                                <li><a href="listings.jsp">Listings</a></li>
+                                <li><a href="#">Testimonials</a></li>
+                                <li><a href="#">Properties</a></li>
+                                <li><a href="blog.jsp">Blog</a></li>
+                                <li><a href="#">Testimonials</a></li>
+                                <li><a href="contact.jsp">Contact</a></li>
+                                <li><a href="#">Elements</a></li>
+                                <li><a href="#">FAQ</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Single Footer Widget -->
+                    <div class="col-12 col-sm-6 col-xl-3">
+                        <div class="footer-widget-area mb-100">
+                            <!-- Widget Title -->
+                            <div class="widget-title">
+                                <h6>Featured Properties</h6>
+                            </div>
+                            <!-- Featured Properties Slides -->
+                            <div class="featured-properties-slides owl-carousel">
+                                <!-- Single Slide -->
+                                <div class="single-featured-properties-slide">
+                                    <a href="#"><img src="img/bg-img/fea-product.jpg" alt=""></a>
+>>>>>>> 0b685f84d3fcf180c8c1322eaf3ddfeb23f26af6
                                 </div>
                                 <!-- Featured Properties Slides -->
                                 <div class="featured-properties-slides owl-carousel">

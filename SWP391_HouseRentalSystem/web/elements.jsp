@@ -434,7 +434,7 @@
                             <p>Integer nec bibendum lacus. Suspen disse dictum enim sit amet libero males uada feugiat. Praesent malesuada.</p>
                         </div>
                     </div>
-
+                    <!-- hehehehehehehehe -->
                     <!-- Single Footer Widget -->
                     <div class="col-12 col-sm-6 col-xl-3">
                         <div class="footer-widget-area mb-100">
@@ -468,17 +468,17 @@
                             </div>
                             <!-- Nav -->
                             <ul class="useful-links-nav d-flex align-items-center">
-                                <li><a href="#">Home</a></li>
-                                <li><a href="#">About us</a></li>
-                                <li><a href="#">About us</a></li>
+                                <li><a href="home.jsp">Home</a></li>
+                                <li><a href="about-us.jsp">About us</a></li>
+                                <li><a href="about-us.jsp">About us</a></li>
                                 <li><a href="#">Services</a></li>
                                 <li><a href="#">Properties</a></li>
-                                <li><a href="#">Listings</a></li>
+                                <li><a href="listings.jsp">Listings</a></li>
                                 <li><a href="#">Testimonials</a></li>
                                 <li><a href="#">Properties</a></li>
-                                <li><a href="#">Blog</a></li>
+                                <li><a href="blog.jsp">Blog</a></li>
                                 <li><a href="#">Testimonials</a></li>
-                                <li><a href="#">Contact</a></li>
+                                <li><a href="contact.jsp">Contact</a></li>
                                 <li><a href="#">Elements</a></li>
                                 <li><a href="#">FAQ</a></li>
                             </ul>

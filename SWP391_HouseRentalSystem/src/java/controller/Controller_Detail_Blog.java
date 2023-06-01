@@ -7,7 +7,10 @@ package controller;
 
 import dao.DAOBlog;
 import entity.Account;
+<<<<<<<< HEAD:SWP391_HouseRentalSystem/src/java/controller/Controller_Detail_Blog.java
 import entity.Blog;
+========
+>>>>>>>> 0b685f84d3fcf180c8c1322eaf3ddfeb23f26af6:SWP391_HouseRentalSystem/src/java/controller/Controller_Post_Blog.java
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -15,12 +18,20 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+<<<<<<<< HEAD:SWP391_HouseRentalSystem/src/java/controller/Controller_Detail_Blog.java
+========
+import java.sql.Date;
+>>>>>>>> 0b685f84d3fcf180c8c1322eaf3ddfeb23f26af6:SWP391_HouseRentalSystem/src/java/controller/Controller_Post_Blog.java
 
 /**
  *
  * @author ADMIN
  */
+<<<<<<<< HEAD:SWP391_HouseRentalSystem/src/java/controller/Controller_Detail_Blog.java
 public class Controller_Detail_Blog extends HttpServlet {
+========
+public class Controller_Post_Blog extends HttpServlet {
+>>>>>>>> 0b685f84d3fcf180c8c1322eaf3ddfeb23f26af6:SWP391_HouseRentalSystem/src/java/controller/Controller_Post_Blog.java
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -37,10 +48,17 @@ public class Controller_Detail_Blog extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
+<<<<<<<< HEAD:SWP391_HouseRentalSystem/src/java/controller/Controller_Detail_Blog.java
             out.println("<title>Servlet Controller_Detail_Blog</title>");  
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet Controller_Detail_Blog at " + request.getContextPath () + "</h1>");
+========
+            out.println("<title>Servlet Controller_Post_Blog</title>");  
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet Controller_Post_Blog at " + request.getContextPath () + "</h1>");
+>>>>>>>> 0b685f84d3fcf180c8c1322eaf3ddfeb23f26af6:SWP391_HouseRentalSystem/src/java/controller/Controller_Post_Blog.java
             out.println("</body>");
             out.println("</html>");
         }
@@ -57,11 +75,15 @@ public class Controller_Detail_Blog extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
+<<<<<<<< HEAD:SWP391_HouseRentalSystem/src/java/controller/Controller_Detail_Blog.java
         int idBlog = Integer.parseInt(request.getParameter("id"));
         DAOBlog blog = new DAOBlog();
         Blog b = blog.getBlogFollowId(idBlog);
         request.setAttribute("b", b);
         request.getRequestDispatcher("detailblog.jsp").forward(request, response);
+========
+        processRequest(request, response);
+>>>>>>>> 0b685f84d3fcf180c8c1322eaf3ddfeb23f26af6:SWP391_HouseRentalSystem/src/java/controller/Controller_Post_Blog.java
     } 
 
     /** 
@@ -74,7 +96,16 @@ public class Controller_Detail_Blog extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        HttpSession session = request.getSession();
+        Account a = (Account)session.getAttribute("acc");
+        String title, image, content;
+        int posterId = a.getId();
+        title = request.getParameter("title");
+        image = request.getParameter("imageblog");
+        content = request.getParameter("content");
+        DAOBlog blog = new DAOBlog();
+        blog.postBlog(posterId, title, content, image);
+        System.out.println("Success Post Blog!");
     }
 
     /** 
@@ -84,6 +115,6 @@ public class Controller_Detail_Blog extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
-
+    }// </editor-fold> edit 2
+//hehehe
 }
