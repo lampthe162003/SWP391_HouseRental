@@ -78,5 +78,5 @@ public class Controller_Create_Blog extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
+//hehehe
 }
