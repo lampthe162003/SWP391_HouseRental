@@ -110,15 +110,14 @@ public class Controller_Forgot_Password extends HttpServlet {
         } else {
             Pattern e = Pattern.compile("^[a-zA-Z][a-zA-Z0-9]+@[a-zA-Z]+(\\.[a-zA-Z]+){1,2}$");
             idA = Integer.parseInt(request.getParameter("answer"));
-            if (check.checkEmail(email)&&e.matcher(email).find()) {
+            if (check.checkEmail(email) && e.matcher(email).find()) {
                 if (!newPass.equals(confirmPass)) {
                     request.setAttribute("alertP", "The entered passwords do not match. Try again!");
                     request.getRequestDispatcher("forgotpassword.jsp").forward(request, response);
-<<<<<<< HEAD
-                } else {
-=======
-                } else {//check conditons
->>>>>>> 0b685f84d3fcf180c8c1322eaf3ddfeb23f26af6
+
+                }
+                else {//check conditons
+
                     if (check.checkSecure(email, idQ, idA)) {
                         change.changePassword(email, newPass);
                         response.sendRedirect("login");
@@ -143,5 +142,5 @@ public class Controller_Forgot_Password extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }
+
