@@ -47,6 +47,10 @@
         <servlet-name>Controller_Comment_Blog</servlet-name>
         <servlet-class>controller.Controller_Comment_Blog</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Controller_Post_House</servlet-name>
+        <servlet-class>Controller_Post_House</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Controller_Login</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -90,6 +94,10 @@
     <servlet-mapping>
         <servlet-name>Controller_Comment_Blog</servlet-name>
         <url-pattern>/commentblog</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller_Post_House</servlet-name>
+        <url-pattern>/posthouse</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

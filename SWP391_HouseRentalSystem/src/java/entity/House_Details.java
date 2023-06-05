@@ -72,10 +72,4 @@ public class House_Details {
         this.House_Direction_ID = House_Direction_ID;
     }
 
-    @Override
-    public String toString() {
-        return "House_Details{" + "House_ID=" + House_ID + ", Number_Of_Bedrooms=" + Number_Of_Bedrooms + ", Number_Of_Bathrooms=" + Number_Of_Bathrooms + ", Area=" + Area + ", Pool=" + Pool + ", House_Direction_ID=" + House_Direction_ID + '}';
-    }
-    
-    
 }

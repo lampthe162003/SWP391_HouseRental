@@ -12,22 +12,25 @@ import java.sql.Date;
  */
 public class House {
     private int Id,House_Owener_ID,Category_ID,District_ID;
-    private String Price,Full_Adress,text;
+    private String Price,Full_Adress,Description;
     private float Rating;
     private Date Added_Date;
 
-    public House(int Id, int House_Owener_ID, int Category_ID, int District_ID, String Price, String Full_Adress, String text, float Rating, Date Added_Date) {
+    public House() {
+    }
+
+    public House(int Id, int House_Owener_ID, int Category_ID, int District_ID, String Price, String Full_Adress, String Description, float Rating, Date Added_Date) {
         this.Id = Id;
         this.House_Owener_ID = House_Owener_ID;
         this.Category_ID = Category_ID;
         this.District_ID = District_ID;
         this.Price = Price;
         this.Full_Adress = Full_Adress;
-        this.text = text;
+        this.Description = Description;
         this.Rating = Rating;
         this.Added_Date = Added_Date;
     }
-
+    
     public int getId() {
         return Id;
     }
@@ -76,12 +79,12 @@ public class House {
         this.Full_Adress = Full_Adress;
     }
 
-    public String getText() {
-        return text;
+    public String getDescription() {
+        return Description;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setDescription(String Description) {
+        this.Description = Description;
     }
 
     public float getRating() {
@@ -99,11 +102,4 @@ public class House {
     public void setAdded_Date(Date Added_Date) {
         this.Added_Date = Added_Date;
     }
-
-    @Override
-    public String toString() {
-        return "House{" + "Id=" + Id + ", House_Owener_ID=" + House_Owener_ID + ", Category_ID=" + Category_ID + ", District_ID=" + District_ID + ", Price=" + Price + ", Full_Adress=" + Full_Adress + ", text=" + text + ", Rating=" + Rating + ", Added_Date=" + Added_Date + '}';
-    }
-    
-    
 }
