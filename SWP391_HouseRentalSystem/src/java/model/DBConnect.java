@@ -36,8 +36,8 @@ public class DBConnect {
     }
 
     public DBConnect() {
-        this("jdbc:sqlserver://localhost:1433;databaseName=SWP391_HouseRentalSystem",
-                "sa", "123");
+        this("jdbc:sqlserver://Hayashi:1433;databaseName=SWP391_HouseRentalSystem",
+                "sa", "abc123");
     }
     //123
 
