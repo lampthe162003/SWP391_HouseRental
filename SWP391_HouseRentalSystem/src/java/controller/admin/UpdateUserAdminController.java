@@ -1,7 +1,8 @@
 package controller.admin;
 
-import dao.AccountDBContext;
-import dao.AccountInformationDBContext;
+
+import dao.DAOAccount;
+import entity.Account;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -9,9 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
-import model.Account;
-import model.AccountInformation;
-import model.AccountView;
+
 
 public class UpdateUserAdminController extends HttpServlet {
 
@@ -19,30 +18,29 @@ public class UpdateUserAdminController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Lấy các giá trị được gửi từ client
         HttpSession session = request.getSession();
-        String accountId = request.getParameter("account_id");
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        String fullname = request.getParameter("fullname");
-        String role = request.getParameter("role");
-        String email = request.getParameter("email");
-        String phone = request.getParameter("phone");
-        String address = request.getParameter("address");
-        String status = request.getParameter("status");
+        String accountId = request.getParameter("Id");
+        String password = request.getParameter("Password");
+        String fullname = request.getParameter("Fullname");
+        String role = request.getParameter("Role_ID");
+        String email = request.getParameter("Email");
+        String phone = request.getParameter("Phone_Number");
+        String gender = request.getParameter("Gender");
+        String address = request.getParameter("Address");
+        String status = request.getParameter("Status");
         Account account = new Account();
-        account.setAccount_id(Integer.parseInt(accountId));
-        account.setUsername(username);
+        account.setId(Integer.parseInt(accountId));
+        account.setEmail(email);
         account.setPassword(password);
-        account.setRole(Integer.parseInt(role));
+        account.setRole_ID(Integer.parseInt(role));
+        if (gender.equals("1")) {
+            account.setGender(true);
+        } else {
+            account.setGender(false);
+        }
         account.setStatus(Integer.parseInt(status));
-        AccountInformation accountInformation = new AccountInformation();
-        accountInformation.setAccount_id(Integer.parseInt(accountId));
-        accountInformation.setFullname(fullname);
-        accountInformation.setEmail(email);
-        accountInformation.setAddress(address);
-        accountInformation.setPhone(phone);
-        AccountInformationDBContext dbaccountinformation = new AccountInformationDBContext();
-        dbaccountinformation.updateAdminUserProfile(accountInformation);
-        AccountDBContext dbaccount = new AccountDBContext();
-        dbaccount.updateAccountStatus(account);
+        account.setAddress(address);
+        account.setPhone_Number(phone);
+        DAOAccount daoAccount = new DAOAccount();
+        
     }
 }
