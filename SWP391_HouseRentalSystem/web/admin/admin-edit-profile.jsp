@@ -67,15 +67,11 @@
                                 <div class="row gutters">
 
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                        <div class="form-group">
-                                            <label for="Street">Ngày sinh:</label>
-                                            <input type="date" class="form-control" name="dob" id="Street" value="${sessionScope.accountViewProfile.dob}">
-                                        </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div class="form-group">
                                             <label for="ciTy">Địa chỉ</label>
-                                            <input type="name" class="form-control" name="address" id="ciTy" value="${sessionScope.accountViewProfile.address}" maxlength="100">
+                                            <input type="text" class="form-control" name="address" value="${sessionScope.accountViewProfile.address}" maxlength="100">
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
