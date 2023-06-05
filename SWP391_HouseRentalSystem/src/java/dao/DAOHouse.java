@@ -47,6 +47,27 @@ public class DAOHouse {
             Logger.getLogger(DAOHouse.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    
+
+    public void update(House house) {
+        try {
+            Connection connection = new DBContext().getConnection();
+            String sql = "UPDATE House\n"
+                    + "SET Category_ID = ?,\n"
+                    + "	Price = ?,\n"
+                    + "	District_ID = ?,\n"
+                    + "	Full_Address = ?,\n"
+                    + "	[Description] = ?\n"
+                    + "WHERE [Id] = ?";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setInt(1, house.getCategory_ID());
+            stm.setString(2, house.getPrice());
+            stm.setInt(3, house.getDistrict_ID());
+            stm.setString(4, house.getFull_Adress());
+            stm.setString(5, house.getText());
+            stm.setInt(6, house.getId());
+            stm.executeUpdate();
+        } catch (Exception ex) {
+            Logger.getLogger(DAOHouse.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
