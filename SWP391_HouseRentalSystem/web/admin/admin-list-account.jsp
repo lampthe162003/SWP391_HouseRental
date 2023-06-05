@@ -19,7 +19,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Main CSS-->
-        <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+        <link rel="stylesheet" type="text/css" href="main.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
         <!-- or -->
         <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
@@ -47,31 +47,31 @@
                 </tr>
             </thead>
             <tbody>
-                <c:forEach var="accountview" items="${accountViews}">
-                    <c:if test="${accountview.role != 1}">
+                <c:forEach var="account" items="${accountList}">
+                    <c:if test="${account.getRole_ID() != 1}">
                         <tr>
-                            <td>${accountview.account_id}</td>
-                            <td>${accountview.username}</td>
-                            <td>${accountview.fullname}</td>
+                            <td>${account.getId()}</td>
+                            <td>${account.getEmail()}</td>
+                            <td>${account.getFullname()}</td>
                             <td>
-                                <c:if test="${accountview.role == 1}">Admin</c:if>
-                                <c:if test="${accountview.role == 2}">Manager</c:if>
-                                <c:if test="${accountview.role == 3}">Tenant</c:if>
+                                <c:if test="${account.getRole_ID() == 1}">Admin</c:if>
+                                <c:if test="${account.getRole_ID() == 2}">Manager</c:if>
+                                <c:if test="${account.getRole_ID() == 3}">Tenant</c:if>
                                 </td>
-                                <td>${accountview.email}</td>
-                            <td>${accountview.phone}</td>
-                            <td>${accountview.status == 1?"Hoạt động":"Không hoạt động"}</td>
+                                <td>${account.getEmail()}</td>
+                            <td>${account.getPhone_Number()}</td>
+                            <td>${account.getStatus() == 1?"Hoạt động":"Không hoạt động"}</td>
                             <td>
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editUserModal" 
-                                        data-account_id="${accountview.account_id}"
-                                        data-username="${accountview.username}"
-                                        data-password="${accountview.password}"
-                                        data-fullname="${accountview.fullname}"
-                                        data-role="${accountview.role}"
-                                        data-email="${accountview.email}"
-                                        data-phone="${accountview.phone}"
-                                        data-address="${accountview.address}"
-                                        data-status="${accountview.status}">
+                                        data-Id="${account.getId()}"
+                                        data-Email="${account.getEmail()}"
+                                        data-Password="${account.getPassword()}"
+                                        data-Fullname="${account.getFullname()}"
+                                        data-Role_ID="${account.getRole_ID()}"
+                                        data-Gender="${account.getGender()}"
+                                        data-Address="${account.getAddress()}"
+                                        data-Phone_Number="${account.getPhone_Number()}"
+                                        data-Status="${account.getStatus()}">
                                     Chỉnh sửa
                                 </button>
                             </td>
@@ -94,47 +94,4 @@
     <!-- Data table plugin-->
     <script type="text/javascript" src="assets/js/plugins/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="assets/js/plugins/dataTables.bootstrap.min.js"></script>
-    <script type="text/javascript">
-        $('#sampleTable').DataTable();
-        //Thời Gian
-        function time() {
-            var today = new Date();
-            var weekday = new Array(7);
-            weekday[0] = "Chủ Nhật";
-            weekday[1] = "Thứ Hai";
-            weekday[2] = "Thứ Ba";
-            weekday[3] = "Thứ Tư";
-            weekday[4] = "Thứ Năm";
-            weekday[5] = "Thứ Sáu";
-            weekday[6] = "Thứ Bảy";
-            var day = weekday[today.getDay()];
-            var dd = today.getDate();
-            var mm = today.getMonth() + 1;
-            var yyyy = today.getFullYear();
-            var h = today.getHours();
-            var m = today.getMinutes();
-            var s = today.getSeconds();
-            m = checkTime(m);
-            s = checkTime(s);
-            nowTime = h + " giờ " + m + " phút " + s + " giây";
-            if (dd < 10) {
-                dd = '0' + dd
-            }
-            if (mm < 10) {
-                mm = '0' + mm
-            }
-            today = day + ', ' + dd + '/' + mm + '/' + yyyy;
-            tmp = '<span class="date"> ' + today + ' - ' + nowTime +
-                    '</span>';
-            document.getElementById("clock").innerHTML = tmp;
-            clocktime = setTimeout("time()", "1000", "Javascript");
-
-            function checkTime(i) {
-                if (i < 10) {
-                    i = "0" + i;
-                }
-                return i;
-            }
-        }
-    </script>
 </html>
