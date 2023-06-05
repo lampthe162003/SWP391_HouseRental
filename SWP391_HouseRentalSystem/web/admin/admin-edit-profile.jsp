@@ -22,7 +22,7 @@
                                 <div class="account-settings">
                                     <div class="user-profile">
                                         <div class="user-avatar">
-                                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Maxwell Admin" width="280px">
+                                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Maxwell Admin" width="280">
                                         </div>
                                     </div>
                                 </div>
@@ -100,7 +100,6 @@
                     </div>
                 </div>
             </div>
-        </div>
     </form>
 </body>
 </html>
