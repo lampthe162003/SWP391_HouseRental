@@ -19,11 +19,8 @@ public class House {
     public House() {
     }
 
-<<<<<<< HEAD
+
     public House(int Id, int House_Owener_ID, int Category_ID, int District_ID, String Price, String Full_Adress, String Description, float Rating, Date Added_Date) {
-=======
-    public House(int Id, int House_Owener_ID, int Category_ID, int District_ID, String Price, String Full_Adress, String text, float Rating, Date Added_Date) {
->>>>>>> 6cb75e9ceabef5eb236126b60ecffd2bcb0ebb55
         this.Id = Id;
         this.House_Owener_ID = House_Owener_ID;
         this.Category_ID = Category_ID;
