@@ -2,11 +2,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="homeadmin">Trang quản trị</a>
+    <a class="navbar-brand" href="admin-home">Trang quản trị</a>
     <!-- Các chức năng của người quản trị -->
     <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-            <a class="nav-link" href="listaccount">Danh sách tài khoản</a>
+            <a class="nav-link" href="admin-list-account">Danh sách tài khoản</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="listhouse">Danh sách nhà</a>
