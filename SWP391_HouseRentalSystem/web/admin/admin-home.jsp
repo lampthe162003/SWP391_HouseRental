@@ -71,49 +71,6 @@
     <body>
         <!-- Header của trang -->
         <jsp:include page="header.jsp"></jsp:include>
-        <h2 style="text-align: center">Chào mừng đến với HomeSharing</h2>
-
-        <div class="container-fluid">
-            <h3>Danh sách nhà cho thuê</h3>
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>Tên nhà</th>
-                        <th>Số lượng đã thuê</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Nhà A</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Nhà B</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Nhà C</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Nhà D</td>
-                        <td></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
+        <h2 style="text-align: center">Chào mừng đến với House Rental System</h2>
     </body>
-    <script src="assets/js/jquery-3.2.1.min.js"></script>
-    <script src="assets/js/popper.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="assets/js/main.js"></script>
-    <!-- The javascript plugin to display page loading on top-->
-    <script src="assets/js/plugins/pace.min.js"></script>
-    <!-- Page specific javascripts-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
-    <!-- Data table plugin-->
-    <script type="text/javascript" src="assets/js/plugins/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="assets/js/plugins/dataTables.bootstrap.min.js"></script>
 </html>
