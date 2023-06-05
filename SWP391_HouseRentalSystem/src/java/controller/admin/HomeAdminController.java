@@ -36,6 +36,6 @@ public class HomeAdminController extends HttpServlet {
         DAOAccount dbaccount = new DAOAccount();
         ArrayList<Account> accountList = dbaccount.getAll();
         session.setAttribute("accountList", accountList);
-        request.getRequestDispatcher("./view/admin/admin-home.jsp").forward(request, response);
+        request.getRequestDispatcher("./admin/admin-home.jsp").forward(request, response);
     }
 }
