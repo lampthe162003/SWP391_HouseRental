@@ -16,6 +16,9 @@ public class House {
     private float Rating;
     private Date Added_Date;
 
+    public House() {
+    }
+
     public House(int Id, int House_Owener_ID, int Category_ID, int District_ID, String Price, String Full_Adress, String text, float Rating, Date Added_Date) {
         this.Id = Id;
         this.House_Owener_ID = House_Owener_ID;
