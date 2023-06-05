@@ -48,8 +48,13 @@
         <servlet-class>controller.Controller_Comment_Blog</servlet-class>
     </servlet>
     <servlet>
+<<<<<<< HEAD
+        <servlet-name>Controller_Post_House</servlet-name>
+        <servlet-class>Controller_Post_House</servlet-class>
+=======
         <servlet-name>HomeAdminController</servlet-name>
         <servlet-class>controller.admin.HomeAdminController</servlet-class>
+>>>>>>> 6cb75e9ceabef5eb236126b60ecffd2bcb0ebb55
     </servlet>
     <servlet-mapping>
         <servlet-name>Controller_Login</servlet-name>
@@ -96,8 +101,13 @@
         <url-pattern>/commentblog</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+<<<<<<< HEAD
+        <servlet-name>Controller_Post_House</servlet-name>
+        <url-pattern>/posthouse</url-pattern>
+=======
         <servlet-name>HomeAdminController</servlet-name>
         <url-pattern>/admin/home</url-pattern>
+>>>>>>> 6cb75e9ceabef5eb236126b60ecffd2bcb0ebb55
     </servlet-mapping>
     <session-config>
         <session-timeout>
