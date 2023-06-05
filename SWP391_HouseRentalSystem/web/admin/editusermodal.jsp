@@ -16,25 +16,25 @@
                 <!-- Form chỉnh sửa thông tin người dùng -->
                 <form>
                     <div class="form-group">
-                        <label for="account_id">ID:</label>
-                        <input type="text" class="form-control" id="account_id" name="account_id" readonly>
+                        <label for="Id">ID:</label>
+                        <input type="text" class="form-control" id="Id" name="Id" readonly>
                     </div>
                     <div class="form-group">
-                        <label for="username">Tên đăng nhập:</label>
-                        <input type="text" class="form-control" id="username" name="username">
+                        <label for="Email">Email:</label>
+                        <input type="email" class="form-control" id="Email" name="Email">
                     </div>
                     <div class="form-group">
-                        <label for="password">Mật khẩu:</label>
-                        <input type="password" class="form-control" id="password" name="password">
+                        <label for="Password">Mật khẩu:</label>
+                        <input type="password" class="form-control" id="Password" name="Password">
                     </div>
                     <div class="form-group">
-                        <label for="fullname">Họ và tên:</label>
-                        <input type="text" class="form-control" id="fullname" name="fullname">
+                        <label for="Fullname">Họ và tên:</label>
+                        <input type="text" class="form-control" id="Fullname" name="Fullname">
                     </div>
                     <div class="form-group">
-                        <label for="role">Vai trò:</label>
-                        <select class="form-control" id="role" name="role">
-                            <c:if test="${accountview.role == 1}">
+                        <label for="Role_ID">Vai trò:</label>
+                        <select class="form-control" id="Role_ID" name="Role_ID">
+                            <c:if test="${account.getRole_ID() == 1}">
                                 <option value="1">Admin</option>
                             </c:if>
                             <option value="2">Manager</option>
@@ -42,20 +42,23 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" class="form-control" id="email" name="email">
+                        <label for="Gender">Giới tính:</label>
+                        <select class="form-control" id="Gender" name="Gender">
+                            <option value="1">Nam</option>
+                            <option value="0">Nữ</option>
+                        </select>
                     </div>
                     <div class="form-group">
-                        <label for="phone">Số điện thoại:</label>
-                        <input type="tel" class="form-control" id="phone" name="phone">
+                        <label for="Phone_Number">Số điện thoại:</label>
+                        <input type="tel" class="form-control" id="Phone_Number" name="Phone_Number">
                     </div>
                     <div class="form-group">
-                        <label for="address">Địa chỉ:</label>
-                        <input type="text" class="form-control" id="address" name="address">
+                        <label for="Address">Địa chỉ:</label>
+                        <input type="text" class="form-control" id="Address" name="Address">
                     </div>
                     <div class="form-group">
-                        <label for="status">Trạng thái:</label>
-                        <select class="form-control" id="status" name="status">
+                        <label for="Status">Trạng thái:</label>
+                        <select class="form-control" id="Status" name="Status">
                             <option value="1">Hoạt động</option>
                             <option value="0">Không hoạt động</option>
                         </select>
@@ -73,71 +76,70 @@
 <script>
     $('#editUserModal').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget);
-        var accountId = button.data('account_id');
-        var username = button.data('username');
-        var password = button.data('password');
-        var fullname = button.data('fullname');
-        var role = button.data('role');
-        var email = button.data('email');
-        var phone = button.data('phone');
-        var address = button.data('address');
-        var status = button.data('status');
+        var Id = button.data('Id');
+        var Email = button.data('Email');
+        var Password = button.data('Password');
+        var Fullname = button.data('Fullname');
+        var Role_ID = button.data('Role_ID');
+        var Gender = button.data('Gender');
+        var Phone_Number = button.data('Phone_Number');
+        var Address = button.data('Address');
+        var Status = button.data('Status');
 
         var modal = $(this);
-        modal.find('#account_id').val(accountId);
-        modal.find('#username').val(username);
-        modal.find('#password').val(password);
-        modal.find('#fullname').val(fullname);
-        modal.find('#role').val(role);
-        modal.find('#email').val(email);
-        modal.find('#phone').val(phone);
-        modal.find('#address').val(address);
-        modal.find('#status').val(status);
+        modal.find('#Id').val(Id);
+        modal.find('#Email').val(Email);
+        modal.find('#Password').val(Password);
+        modal.find('#Fullname').val(Fullname);
+        modal.find('#Role_ID').val(Role_ID);
+        modal.find('#Gender').val(Gender);
+        modal.find('#Phone_Number').val(Phone_Number);
+        modal.find('#Address').val(Address);
+        modal.find('#Status').val(Status);
     });
 
 
     function saveUser() {
-        var accountId = $('#account_id').val();
-        var username = $('#username').val();
-        var password = $('#password').val();
-        var fullname = $('#fullname').val();
-        var role = $('#role').val();
-        var email = $('#email').val();
-        var phone = $('#phone').val();
-        var address = $('#address').val();
-        var status = $('#status').val();
+        var Id = $('#Id').val();
+        var Password = $('#Password').val();
+        var Fullname = $('#Fullname').val();
+        var Role_ID = $('#Role_ID').val();
+        var Email = $('#Email').val();
+        var Phone_Number = $('#Phone_Number').val();
+        var Address = $('#Address').val();
+        var Status = $('#Status').val();
         var currentUrl = window.location.href;
         // Make an Ajax request to the server to update the user's information
         $.ajax({
             type: "POST",
             url: "updateuser",
             data: {
-                account_id: accountId,
-                username: username,
-                password: password,
-                fullname: fullname,
-                role: role,
-                email: email,
-                phone: phone,
-                address: address,
-                status: status
+                Id: Id,
+                Email: Email,
+                Password: Password,
+                Fullname: Fullname,
+                Role_ID: Role_ID,
+                Gender: Gender,
+                Phone_Number: Phone_Number,
+                Address: Address,
+                Status: Status
             },
             success: function (response) {
-            // Update the accountViews session with the updated account information
+                // Update the accountViews session with the updated account information
                 $.ajax({
                     type: "POST",
-                    url: "homeadmin",
+                    url: "admin-home",
                     success: function (response) {
                         var accountViews = response;
                         if (accountViews) {
-            // Set the updated accountViews to sessionStorage
-                            sessionStorage.setItem('accountViews', JSON.stringify(accountViews));
-            // Reload the current page to display the updated account information
+                            // Set the updated accountViews to sessionStorage
+                            sessionStorage.setItem('accountList', JSON.stringify(accountList));
+                            // Reload the current page to display the updated account information
                             location.reload();
                         }
                     }
                 });
-            // Close the modal dialog
+                // Close the modal dialog
                 $('#editUserModal').modal('hide');
             },
             error: function (xhr, status, error) {
