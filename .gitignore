@@ -24,3 +24,6 @@ replay_pid*
 /SWP391_HouseRentalSystem/nbproject/private/
 /SWP391_HouseRentalSystem/build/
 /SWP391_HouseRentalSystem/dist/
+
+#DBContext 
+/SWP391_HouseRentalSystem/src/java/context/DBContext.java
