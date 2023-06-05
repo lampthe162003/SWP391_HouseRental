@@ -100,4 +100,16 @@ public class DAOHouse {
         
         return getHouse;
     }
+    
+    public void delete(House house) {
+        try {
+            Connection connection = new DBContext().getConnection();
+            String sql = "DELETE from House WHERE [Id] = ?";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setInt(1, house.getId());
+            stm.executeUpdate();
+        } catch (Exception ex) {
+            Logger.getLogger(DAOHouse.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
