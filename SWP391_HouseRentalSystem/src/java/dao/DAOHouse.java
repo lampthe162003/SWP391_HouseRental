@@ -5,11 +5,14 @@
 package dao;
 
 import context.DBContext;
-<<<<<<< HEAD
+import entity.House;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -39,20 +42,7 @@ public class DAOHouse {
             System.out.println(e.getMessage());
         }
     }
-    
-=======
-import entity.House;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-/**
- *
- * @author Hayashi
- */
-public class DAOHouse {
 
     public void insert(House house) {
         try {
@@ -75,7 +65,7 @@ public class DAOHouse {
             stm.setString(4, house.getPrice());
             stm.setInt(5, house.getDistrict_ID());
             stm.setString(6, house.getFull_Adress());
-            stm.setString(7, house.getText());
+            stm.setString(7, house.getDescription());
             stm.setFloat(8, house.getRating());
             stm.setDate(9, house.getAdded_Date());
             stm.executeUpdate();
@@ -100,7 +90,7 @@ public class DAOHouse {
             stm.setString(2, house.getPrice());
             stm.setInt(3, house.getDistrict_ID());
             stm.setString(4, house.getFull_Adress());
-            stm.setString(5, house.getText());
+            stm.setString(5, house.getDescription());
             stm.setInt(6, house.getId());
             stm.executeUpdate();
         } catch (Exception ex) {
@@ -126,7 +116,7 @@ public class DAOHouse {
                 getHouse.setPrice(rs.getString(4));
                 getHouse.setDistrict_ID(rs.getInt(5));
                 getHouse.setFull_Adress(rs.getString(6));
-                getHouse.setText(rs.getString(7));
+                getHouse.setDescription(rs.getString(7));
                 getHouse.setRating(rs.getFloat(8));
                 getHouse.setAdded_Date(rs.getDate(9));
             }
@@ -148,5 +138,5 @@ public class DAOHouse {
             Logger.getLogger(DAOHouse.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
->>>>>>> 6cb75e9ceabef5eb236126b60ecffd2bcb0ebb55
+
 }
