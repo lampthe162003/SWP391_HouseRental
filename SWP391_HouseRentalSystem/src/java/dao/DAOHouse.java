@@ -8,6 +8,7 @@ import context.DBContext;
 import entity.House;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -69,5 +70,34 @@ public class DAOHouse {
         } catch (Exception ex) {
             Logger.getLogger(DAOHouse.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public House get(House house) {
+        House getHouse = null;
+        try {
+            Connection connection = new DBContext().getConnection();
+            String sql = "SELECT * from House\n"
+                    + "where Id = ?";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                if (getHouse == null) {
+                    getHouse = new House();
+                }
+                getHouse.setId(rs.getInt(1));
+                getHouse.setHouse_Owener_ID(rs.getInt(2));
+                getHouse.setCategory_ID(rs.getInt(3));
+                getHouse.setPrice(rs.getString(4));
+                getHouse.setDistrict_ID(rs.getInt(5));
+                getHouse.setFull_Adress(rs.getString(6));
+                getHouse.setText(rs.getString(7));
+                getHouse.setRating(rs.getFloat(8));
+                getHouse.setAdded_Date(rs.getDate(9));
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(DAOHouse.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return getHouse;
     }
 }
