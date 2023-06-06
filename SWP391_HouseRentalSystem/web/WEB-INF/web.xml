@@ -63,6 +63,14 @@
         <servlet-name>Controller_Delete_Blog</servlet-name>
         <servlet-class>controller.Controller_Delete_Blog</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>HomeAdminController</servlet-name>
+        <servlet-class>controller.admin.HomeAdminController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListAccountController</servlet-name>
+        <servlet-class>controller.admin.ListAccountController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Controller_Login</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -112,6 +120,7 @@
         <url-pattern>/posthouse</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+<<<<<<< HEAD
         <servlet-name>Controller_Messenger</servlet-name>
         <url-pattern>/messenger</url-pattern>
     </servlet-mapping>
@@ -122,6 +131,14 @@
     <servlet-mapping>
         <servlet-name>Controller_Delete_Blog</servlet-name>
         <url-pattern>/deleteblog</url-pattern>
+=======
+        <servlet-name>HomeAdminController</servlet-name>
+        <url-pattern>/admin-home</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListAccountController</servlet-name>
+        <url-pattern>/admin-list-account</url-pattern>
+>>>>>>> 6e8217202002de0d0d3d41ca96e915a0c0a9a0ef
     </servlet-mapping>
     <session-config>
         <session-timeout>

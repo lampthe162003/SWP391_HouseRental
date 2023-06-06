@@ -19,7 +19,12 @@ public class House {
     public House() {
     }
 
+<<<<<<< HEAD
     public House(int Id, int House_Owener_ID, int Category_ID, int District_ID, String Price, String Full_Adress, String Description, String Title, float Rating, Date Added_Date) {
+=======
+
+    public House(int Id, int House_Owener_ID, int Category_ID, int District_ID, String Price, String Full_Adress, String Description, float Rating, Date Added_Date) {
+>>>>>>> 6e8217202002de0d0d3d41ca96e915a0c0a9a0ef
         this.Id = Id;
         this.House_Owener_ID = House_Owener_ID;
         this.Category_ID = Category_ID;
