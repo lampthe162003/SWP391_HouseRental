@@ -1,33 +1,23 @@
-package controller;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 
+package controller;
 
-import dao.DAOCategory;
-import dao.DAODirections;
-import dao.DAODistricts;
-import dao.DAOHouse;
-import entity.Account;
-import entity.Districts;
-import entity.House_Category;
-import entity.House_Directions;
+import dao.DAOBlog;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import java.util.List;
 
 /**
  *
  * @author ADMIN
  */
-public class Controller_Post_House extends HttpServlet {
+public class Controller_Delete_Blog extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -44,10 +34,10 @@ public class Controller_Post_House extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Controller_Post_House</title>");  
+            out.println("<title>Servlet Controller_Delete_Blog</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Controller_Post_House at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet Controller_Delete_Blog at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -64,16 +54,11 @@ public class Controller_Post_House extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        DAODistricts d = new DAODistricts();
-        DAOCategory c = new DAOCategory();
-        DAODirections dr = new DAODirections();
-        List<Districts> lsD = d.getListDistricts();
-        List<House_Category> lsC = c.getListCategory();
-        List<House_Directions> lsDR = dr.getListDirections();
-        request.setAttribute("lsD", lsD);
-        request.setAttribute("lsC", lsC);
-        request.setAttribute("lsDR", lsDR);
-        request.getRequestDispatcher("posthouse.jsp").forward(request, response);
+        DAOBlog blog = new DAOBlog();
+        int idB = Integer.parseInt(request.getParameter("id"));
+        blog.deleteCommentsBlog(idB);
+        blog.deleteBlog(idB);
+        response.sendRedirect("listblog");
     } 
 
     /** 
@@ -86,28 +71,7 @@ public class Controller_Post_House extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        Account a = (Account)session.getAttribute("acc");
-        int district = Integer.parseInt(request.getParameter("district"));
-        String address = request.getParameter("address");
-        int category = Integer.parseInt(request.getParameter("category"));
-        String title = request.getParameter("title");
-        String description = request.getParameter("description");
-        String price = request.getParameter("price");
-        int houseOwnerId = a.getId();
-        int nBedroom = Integer.parseInt(request.getParameter("bedroom"));
-        int nBathroom = Integer.parseInt(request.getParameter("bathroom"));
-        int area = Integer.parseInt(request.getParameter("area"));
-        int nPool = Integer.parseInt(request.getParameter("pool"));
-        int houseDirectionId = Integer.parseInt(request.getParameter("direction"));
-        String[] images = request.getParameterValues("image");
-        DAOHouse h = new DAOHouse();
-        h.insertHouse(houseOwnerId, category, price, district, address, description, title);
-        int houseId = h.getHouseId();
-        h.insertHouseDetail(houseId,nBedroom,nBathroom,area,nPool,houseDirectionId);
-        for (String img : images) {
-            h.insertImages(houseId, img);
-        }
+        processRequest(request, response);
     }
 
     /** 
