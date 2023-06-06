@@ -120,7 +120,6 @@
         <url-pattern>/posthouse</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-<<<<<<< HEAD
         <servlet-name>Controller_Messenger</servlet-name>
         <url-pattern>/messenger</url-pattern>
     </servlet-mapping>
@@ -131,14 +130,12 @@
     <servlet-mapping>
         <servlet-name>Controller_Delete_Blog</servlet-name>
         <url-pattern>/deleteblog</url-pattern>
-=======
         <servlet-name>HomeAdminController</servlet-name>
         <url-pattern>/admin-home</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ListAccountController</servlet-name>
         <url-pattern>/admin-list-account</url-pattern>
->>>>>>> 6e8217202002de0d0d3d41ca96e915a0c0a9a0ef
     </servlet-mapping>
     <session-config>
         <session-timeout>
