@@ -49,7 +49,19 @@
     </servlet>
     <servlet>
         <servlet-name>Controller_Post_House</servlet-name>
-        <servlet-class>Controller_Post_House</servlet-class>
+        <servlet-class>controller.Controller_Post_House</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controller_Messenger</servlet-name>
+        <servlet-class>controller.Controller_Messenger</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controller_Edit_Blog</servlet-name>
+        <servlet-class>controller.Controller_Edit_Blog</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controller_Delete_Blog</servlet-name>
+        <servlet-class>controller.Controller_Delete_Blog</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>HomeAdminController</servlet-name>
@@ -108,6 +120,16 @@
         <url-pattern>/posthouse</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>Controller_Messenger</servlet-name>
+        <url-pattern>/messenger</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller_Edit_Blog</servlet-name>
+        <url-pattern>/editblog</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller_Delete_Blog</servlet-name>
+        <url-pattern>/deleteblog</url-pattern>
         <servlet-name>HomeAdminController</servlet-name>
         <url-pattern>/admin-home</url-pattern>
     </servlet-mapping>
