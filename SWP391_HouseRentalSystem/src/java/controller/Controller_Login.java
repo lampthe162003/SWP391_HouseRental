@@ -7,7 +7,6 @@ package controller;
 import dao.DAOAccount;
 import entity.Account;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -29,7 +28,6 @@ public class Controller_Login extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -63,7 +61,8 @@ public class Controller_Login extends HttpServlet {
         DAOAccount dao = new DAOAccount();
         Account acc = dao.Login(email, password);
         if (acc == null) {
-            response.getWriter().println("Login k duoc");
+            request.setAttribute("mess", "Wrong user or password");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
         } else {
             HttpSession session = request.getSession();
             session.setAttribute("acc", acc);
@@ -71,8 +70,8 @@ public class Controller_Login extends HttpServlet {
         }
     }
 }
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
+/**
+ * Returns a short description of the servlet.
+ *
+ * @return a String containing servlet description
+ */

@@ -11,15 +11,19 @@ import java.sql.Date;
  * @author Thang
  */
 public class House {
-    private int Id,House_Owener_ID,Category_ID,District_ID;
-    private String Price,Full_Adress,Description;
+
+    private int Id, House_Owener_ID, Category_ID, District_ID;
+    private String Price, Full_Adress, Description, Title;
     private float Rating;
     private Date Added_Date;
+    private String District;
+    private String Image;
+    private int Area;
 
     public House() {
     }
 
-    public House(int Id, int House_Owener_ID, int Category_ID, int District_ID, String Price, String Full_Adress, String Description, float Rating, Date Added_Date) {
+    public House(int Id, int House_Owener_ID, int Category_ID, int District_ID, String Price, String Full_Adress, String Description, String Title, float Rating, Date Added_Date, String District, String Image, int Area) {
         this.Id = Id;
         this.House_Owener_ID = House_Owener_ID;
         this.Category_ID = Category_ID;
@@ -27,10 +31,14 @@ public class House {
         this.Price = Price;
         this.Full_Adress = Full_Adress;
         this.Description = Description;
+        this.Title = Title;
         this.Rating = Rating;
         this.Added_Date = Added_Date;
+        this.District = District;
+        this.Image = Image;
+        this.Area = Area;
     }
-    
+
     public int getId() {
         return Id;
     }
@@ -87,6 +95,14 @@ public class House {
         this.Description = Description;
     }
 
+    public String getTitle() {
+        return Title;
+    }
+
+    public void setTitle(String Title) {
+        this.Title = Title;
+    }
+
     public float getRating() {
         return Rating;
     }
@@ -102,4 +118,34 @@ public class House {
     public void setAdded_Date(Date Added_Date) {
         this.Added_Date = Added_Date;
     }
+
+    public String getDistrict() {
+        return District;
+    }
+
+    public void setDistrict(String District) {
+        this.District = District;
+    }
+
+    public String getImage() {
+        return Image;
+    }
+
+    public void setImage(String Image) {
+        this.Image = Image;
+    }
+
+    public int getArea() {
+        return Area;
+    }
+
+    public void setArea(int Area) {
+        this.Area = Area;
+    }
+
+    @Override
+    public String toString() {
+        return "House{" + "Id=" + Id + ", House_Owener_ID=" + House_Owener_ID + ", Category_ID=" + Category_ID + ", District_ID=" + District_ID + ", Price=" + Price + ", Full_Adress=" + Full_Adress + ", Description=" + Description + ", Title=" + Title + ", Rating=" + Rating + ", Added_Date=" + Added_Date + ", District=" + District + ", Image=" + Image + ", Area=" + Area + '}';
+    }
+
 }
