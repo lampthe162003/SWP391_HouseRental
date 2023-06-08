@@ -313,7 +313,7 @@
                                             </div>
                                             <div class="info-bx text-center">
 
-                                                <h5><a href="#">House</a></h5>
+                                                <h5><a href="#">Houses</a></h5>
                                                 <!-- <p class="update-time">Last Updated: 1 hours ago</p> -->
                                                 <ul class="cours-star">
                                                     <li class="active"><i class="fa fa-star"></i></li>
