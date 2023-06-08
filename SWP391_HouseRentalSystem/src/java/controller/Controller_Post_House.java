@@ -1,3 +1,5 @@
+package controller;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
@@ -101,6 +103,11 @@ public class Controller_Post_House extends HttpServlet {
         String[] images = request.getParameterValues("image");
         DAOHouse h = new DAOHouse();
         h.insertHouse(houseOwnerId, category, price, district, address, description, title);
+        int houseId = h.getHouseId();
+        h.insertHouseDetail(houseId,nBedroom,nBathroom,area,nPool,houseDirectionId);
+        for (String img : images) {
+            h.insertImages(houseId, img);
+        }
     }
 
     /** 

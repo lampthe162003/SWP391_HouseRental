@@ -49,7 +49,43 @@
     </servlet>
     <servlet>
         <servlet-name>Controller_Post_House</servlet-name>
-        <servlet-class>Controller_Post_House</servlet-class>
+        <servlet-class>controller.Controller_Post_House</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controller_Messenger</servlet-name>
+        <servlet-class>controller.Controller_Messenger</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controller_Edit_Blog</servlet-name>
+        <servlet-class>controller.Controller_Edit_Blog</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controller_Delete_Blog</servlet-name>
+        <servlet-class>controller.Controller_Delete_Blog</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>HomeAdminController</servlet-name>
+        <servlet-class>controller.admin.HomeAdminController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListAccountController</servlet-name>
+        <servlet-class>controller.admin.ListAccountController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controller_Post_House</servlet-name>
+        <servlet-class>controller.Controller_Post_House</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controller_Messenger</servlet-name>
+        <servlet-class>controller.Controller_Messenger</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controller_Edit_Blog</servlet-name>
+        <servlet-class>controller.Controller_Edit_Blog</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controller_Delete_Blog</servlet-name>
+        <servlet-class>controller.Controller_Delete_Blog</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Controller_SearchByCategoryID</servlet-name>

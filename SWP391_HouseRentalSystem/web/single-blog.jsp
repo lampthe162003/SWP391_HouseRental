@@ -52,6 +52,7 @@
                 border-radius: 10px;
                 margin: 0 auto;
                 margin-top: 0.5em;
+                position: relative;
             }
             .inblog-img{
                 width: 25%;
@@ -99,11 +100,55 @@
             .active{
                 color:red;
                 cursor: default;
+                padding: 0.5em;
+            }
+            .inactive{
+                color: black;
+                padding: 0.5em;
             }
             .numberP{
                 width: 10%;
                 height: 2em;
                 margin: 0.5em auto;
+            }
+            .optionP{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 4%;
+                height: 2em;
+                position: absolute;
+                right: 0;
+                border-radius: 50%;
+            }
+            .optionP:hover{
+                background-color: #cccccc;
+                color: black;
+                cursor: pointer;
+            }
+            .optionP ion-icon{
+                font-size: 20px;
+            }
+            .listOption{
+                background-color: #333333;
+                box-shadow: 0 0 5px black;
+                border-radius: 10px;
+                position: absolute;
+                right: 0;
+                top:2em;
+            }
+            .listOption a{
+                display: inline-flex;
+                text-decoration: none;
+                color: white;
+                padding: 1em 1em;
+                width: 100%;
+                line-height: 1em;
+            }
+            .listOption a:hover{
+                background-color: #cccccc;
+                border-radius: 10px;
+                color: black;
             }
         </style>
     </head>
@@ -116,24 +161,6 @@
 
         <!-- ##### Header Area Start ##### -->
         <header class="header-area">
-
-            <!-- Top Header Area -->
-            <div class="top-header-area">
-                <div class="h-100 d-md-flex justify-content-between align-items-center">
-                    <div class="email-address">
-                        <a href="mailto:contact@southtemplate.com">contact@southtemplate.com</a>
-                    </div>
-                    <div class="phone-number d-flex">
-                        <div class="icon">
-                            <img src="img/icons/phone-call.png" alt="">
-                        </div>
-                        <div class="number">
-                            <a href="tel:+45 677 8993000 223">+45 677 8993000 223</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <!-- Main Header Area -->
             <div class="main-header-area" id="stickyHeader">
                 <div class="classy-nav-container breakpoint-off">
@@ -149,7 +176,7 @@
                         </div>
 
                         <!-- Menu -->
-                        <div class="classy-menu">
+                        <div class="classy-menu" style="position: relative">
 
                             <!-- close btn -->
                             <div class="classycloseIcon">
@@ -159,7 +186,7 @@
                             <!-- Nav Start -->
                             <div class="classynav">
                                 <ul>
-                                    <li><a href="home.jsp">Home</a></li>
+                                    <li><a href="home">Home</a></li>
                                     <li><a href="#">Pages</a>
                                         <ul class="dropdown">
                                             <li><a href="home.jsp">Home</a></li>
@@ -182,45 +209,25 @@
                                     </li>
                                     <li><a href="about-us.jsp">About Us</a></li>
                                     <li><a href="listings.jsp">Properties</a></li>
+                                    <li><a href="posthouse">Post house</a></li>
                                     <li><a href="listblog">Blog</a></li>
-                                    <li><a href="#">Mega Menu</a>
-                                        <div class="megamenu">
-                                            <ul class="single-mega cn-col-4">
-                                                <li class="title">Headline 1</li>
-                                                <li><a href="#">Mega Menu Item 1</a></li>
-                                                <li><a href="#">Mega Menu Item 2</a></li>
-                                                <li><a href="#">Mega Menu Item 3</a></li>
-                                                <li><a href="#">Mega Menu Item 4</a></li>
-                                                <li><a href="#">Mega Menu Item 5</a></li>
-                                            </ul>
-                                            <ul class="single-mega cn-col-4">
-                                                <li class="title">Headline 2</li>
-                                                <li><a href="#">Mega Menu Item 1</a></li>
-                                                <li><a href="#">Mega Menu Item 2</a></li>
-                                                <li><a href="#">Mega Menu Item 3</a></li>
-                                                <li><a href="#">Mega Menu Item 4</a></li>
-                                                <li><a href="#">Mega Menu Item 5</a></li>
-                                            </ul>
-                                            <ul class="single-mega cn-col-4">
-                                                <li class="title">Headline 3</li>
-                                                <li><a href="#">Mega Menu Item 1</a></li>
-                                                <li><a href="#">Mega Menu Item 2</a></li>
-                                                <li><a href="#">Mega Menu Item 3</a></li>
-                                                <li><a href="#">Mega Menu Item 4</a></li>
-                                                <li><a href="#">Mega Menu Item 5</a></li>
-                                            </ul>
-                                            <ul class="single-mega cn-col-4">
-                                                <li class="title">Headline 4</li>
-                                                <li><a href="#">Mega Menu Item 1</a></li>
-                                                <li><a href="#">Mega Menu Item 2</a></li>
-                                                <li><a href="#">Mega Menu Item 3</a></li>
-                                                <li><a href="#">Mega Menu Item 4</a></li>
-                                                <li><a href="#">Mega Menu Item 5</a></li>
-                                            </ul>
-                                        </div>
-                                    </li>
                                     <li><a href="contact.jsp">Contact</a></li>
+                                        <c:if test="${sessionScope.acc == null}">
+                                        <li><a href="login">Sign In</a></li>
+                                        <li><a href="register">Sign Up</a></li>
+                                        </c:if> 
+                                        <c:if test="${sessionScope.acc != null}">
+                                        <li><a onmouseover="showInf()" id="user" href="#">Hello ${sessionScope.acc.fullname}</a></li>
+                                        <li><a href="logout">Sign Out</a></li>
+                                        </c:if>
                                 </ul>
+                                <div id="inf" style="display: none;position: absolute;background-color: black; font-size: 15px;
+                                     width: 15em;color: white;right: 13em;top: 4em;padding: 0.5em">
+                                    <ul style="margin: 0 auto">
+                                        <li><a href="changeinformation">Change Information</a></li>
+                                        <li><a href="changepassword">Change Password</a</li>
+                                    </ul>
+                                </div>
 
                                 <!-- Search Form -->
                                 <div class="south-search-form">
@@ -270,14 +277,23 @@
                             <a href="detailblog?id=${b.getId()}&idPoster=${b.getPosterId()}"><h5>${b.getTopic()}${endPage}</h5></a>
                             <div class="pra">${b.getContent()}</div>
                         </div>
+                        <c:if test="${idA == b.getPosterId()}">
+                            <div class="optionP" onclick="showList('${b.getId()}')"><ion-icon name="ellipsis-horizontal-outline"></ion-icon></div>
+                        </c:if>
+                        <div id="${b.getId()}" class="listOption" style="display: none;">
+                            <div><a href="editblog?id=${b.getId()}"><ion-icon name="pencil-outline"></ion-icon>Edit</a></div>
+                            <div><a href="deleteblog?id=${b.getId()}"><ion-icon name="trash-bin-outline"></ion-icon>Delete</a></div>
+                        </div>
                     </div>
                 </div>
             </c:forEach>
-            <div class="numberP">
-                <c:forEach begin="1" end="${endPage}" step="1" var="i">
-                    <a href="listblog?index=${i}" class = "${index eq i ? 'active' : ''}">${i}</a>
-                </c:forEach>
-            </div>
+            <c:if test="${countB != 0}"> 
+                <div class="numberP">
+                    <c:forEach begin="1" end="${endPage}" step="1" var="i">
+                        <a href="listblog?index=${i}" class = "${index eq i ? 'active' : 'inactive'}">${i}</a>
+                    </c:forEach>
+                </div>
+            </c:if>
 
         </div>
         <!-- ##### Blog Area End ##### -->
@@ -405,7 +421,18 @@
         <script src="js/jquery-ui.min.js"></script>
         <!-- Active js -->
         <script src="js/active.js"></script>
-
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+        <script>
+                        function showList(s) {
+                            var m = document.getElementById(s);
+                            if (m.style.display === "none") {
+                                m.style.display = "block";
+                            } else {
+                                m.style.display = "none";
+                            }
+                        }
+        </script>
     </body>
 
 </html>

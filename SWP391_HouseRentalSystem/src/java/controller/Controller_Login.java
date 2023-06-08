@@ -1,3 +1,4 @@
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
@@ -66,7 +67,12 @@ public class Controller_Login extends HttpServlet {
         } else {
             HttpSession session = request.getSession();
             session.setAttribute("acc", acc);
-            response.sendRedirect("home");
+//            response.sendRedirect("home");
+            if (acc.getRole_ID() == 1) {
+                response.sendRedirect("admin-home");
+            } else {
+                response.sendRedirect("home");
+            }
         }
     }
 }
@@ -74,4 +80,8 @@ public class Controller_Login extends HttpServlet {
  * Returns a short description of the servlet.
  *
  * @return a String containing servlet description
+<<<<<<< HEAD
  */
+=======
+ */
+>>>>>>> 90e3d30b067123f7946a4726c630f29c237f669e

@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  */
 public class DAOAccount extends DBContext {
 
-    public Account Login(String email, String password) {
+   public Account Login(String email, String password) {
         String sql = "SELECT * FROM Account WHERE Email = ? and Password = ?";
         try {
             Connection conn = new DBContext().getConnection();
@@ -73,6 +73,62 @@ public class DAOAccount extends DBContext {
             System.out.println(e.getMessage());
         }
         return null;
+    }
+
+    public ArrayList<Account> getAll() {
+        ArrayList<Account> list = null;
+        try {
+            Connection connection = new DBContext().getConnection();
+            connection.setAutoCommit(false);
+            String sql = "select * from Account";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                if (list == null) {
+                    list = new ArrayList();
+                }
+                Account account = new Account();
+                account.setId(rs.getInt(1));
+                account.setFullname(rs.getString(2));
+                account.setGender(rs.getBoolean(3));
+                account.setAddress(rs.getString(4));
+                account.setEmail(rs.getString(5));
+                account.setPassword(rs.getString(6));
+                account.setPhone_Number(rs.getString(7));
+                account.setRole_ID(rs.getInt(8));
+                account.setStatus(rs.getInt(9));
+                account.setSecure_Question_ID(rs.getInt(10));
+                account.setSecure_Answer_ID(rs.getInt(11));
+                account.setProfile_Picture(rs.getString(12));
+                list.add(account);
+            }
+            connection.commit();
+            rs.close();
+            stm.close();
+        } catch (Exception e) {
+            Logger.getLogger(DAOAccount.class.getName()).log(Level.SEVERE, null, e);
+        }
+
+        return list;
+    }
+
+    public void update(Account account) {
+        try {
+            conn.setAutoCommit(false);
+            String sql = "UPDATE Account\n"
+                    + "SET Fullname = ?,\n"
+                    + "[Password] = ?,\n"
+                    + "Role_ID = ?,\n"
+                    + "Email = ?,\n"
+                    + "Phone_Number = ?,\n"
+                    + "Gender = ?,\n"
+                    + "[Address] = ?,\n"
+                    + "[Status] = ?";
+            PreparedStatement stm = conn.prepareStatement(sql);
+            stm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(DAOAccount.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public static void main(String[] args) {
