@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  *
- * @author ADMIN
+ * @author ADMINn
  */
 public class DAOCategory {
     public List<House_Category> getListCategory(){
