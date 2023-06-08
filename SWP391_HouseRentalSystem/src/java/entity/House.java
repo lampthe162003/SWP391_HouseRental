@@ -13,6 +13,7 @@ import java.sql.Date;
 public class House {
     private int Id,House_Owener_ID,Category_ID,District_ID;
     private String Price,Full_Adress,Description,Title;
+    private String Price,Full_Adress,Description,Title;
     private float Rating;
     private Date Added_Date;
 
@@ -28,9 +29,11 @@ public class House {
         this.Full_Adress = Full_Adress;
         this.Description = Description;
         this.Title = Title;
+        this.Title = Title;
         this.Rating = Rating;
         this.Added_Date = Added_Date;
     }
+
 
     public int getId() {
         return Id;
@@ -96,6 +99,14 @@ public class House {
         this.Title = Title;
     }
 
+    public String getTitle() {
+        return Title;
+    }
+
+    public void setTitle(String Title) {
+        this.Title = Title;
+    }
+
     public float getRating() {
         return Rating;
     }
@@ -111,6 +122,8 @@ public class House {
     public void setAdded_Date(Date Added_Date) {
         this.Added_Date = Added_Date;
     }
+
+    
 
     
 }

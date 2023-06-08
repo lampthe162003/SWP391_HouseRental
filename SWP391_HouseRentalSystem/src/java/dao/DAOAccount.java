@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -218,6 +219,43 @@ public class DAOAccount extends DBConnect {
             System.out.println(e.getMessage());
         }
         return null;
+    }
+
+    public ArrayList<Account> getAll() {
+        ArrayList<Account> list = null;
+        try {
+            Connection connection = new DBContext().getConnection();
+            connection.setAutoCommit(false);
+            String sql = "select * from Account";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                if (list == null) {
+                    list = new ArrayList();
+                }
+                Account account = new Account();
+                account.setId(rs.getInt(1));
+                account.setFullname(rs.getString(2));
+                account.setGender(rs.getBoolean(3));
+                account.setAddress(rs.getString(4));
+                account.setEmail(rs.getString(5));
+                account.setPassword(rs.getString(6));
+                account.setPhone_Number(rs.getString(7));
+                account.setRole_ID(rs.getInt(8));
+                account.setStatus(rs.getInt(9));
+                account.setSecure_Question_ID(rs.getInt(10));
+                account.setSecure_Answer_ID(rs.getInt(11));
+                account.setProfile_Picture(rs.getString(12));
+                list.add(account);
+            }
+            connection.commit();
+            rs.close();
+            stm.close();
+        } catch (Exception e) {
+            Logger.getLogger(DAOAccount.class.getName()).log(Level.SEVERE, null, e);
+        }
+
+        return list;
     }
 
     public static void main(String[] args) {
