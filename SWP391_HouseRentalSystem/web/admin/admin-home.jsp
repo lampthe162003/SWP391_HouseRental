@@ -71,6 +71,6 @@
     <body>
         <!-- Header của trang -->
         <jsp:include page="header.jsp"></jsp:include>
-        <h2 style="text-align: center">Chào mừng đến với House Rental System</h2>
+        <h2 style="text-align: center">Chào mừng đến với trang chủ admin của House Rental System</h2>
     </body>
 </html>
