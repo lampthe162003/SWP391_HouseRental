@@ -75,14 +75,15 @@ public class DAOBlog {
         }
         return null;
     }
-    public Blog getBlogFollowId(int id){
+
+    public Blog getBlogFollowId(int id) {
         try {
             String stmSql = "select * from Blog_Posts where id = ?";
             Connection conn = new DBContext().getConnection();
             PreparedStatement ps = conn.prepareStatement(stmSql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 Blog b = new Blog(rs.getInt(1), rs.getInt(2), rs.getDate(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(7));
                 return b;
             }
@@ -90,5 +91,48 @@ public class DAOBlog {
             System.out.println(e.getMessage());
         }
         return null;
+    }
+
+    public void editBlog(int idB, int posterId, String topic, String content, String image){
+        try {
+            String stmSql = "update Blog_Posts set Poster_ID = ?, Post_Time = ?, Topic = ?, [Content] = ?,Image = ? where Id = ?";
+            Date now = new Date();
+            SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+            String date = f.format(now);
+            java.sql.Date date2 = java.sql.Date.valueOf(date);
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(stmSql);
+            ps.setInt(1, posterId);
+            ps.setDate(2, date2);
+            ps.setString(3, topic);
+            ps.setString(4, content);
+            ps.setString(5, image);
+            ps.setInt(6, idB);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public void deleteCommentsBlog(int id){
+        try {
+            String stmSql = "delete from Post_Comments where Post_ID = ?";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(stmSql);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public void deleteBlog(int id){
+        try {
+            String stmSql = "delete from Blog_Posts where Id = ?";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(stmSql);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

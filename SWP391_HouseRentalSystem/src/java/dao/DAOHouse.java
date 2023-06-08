@@ -7,6 +7,7 @@ package dao;
 import context.DBContext;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -15,7 +16,8 @@ import java.util.Date;
  * @author ADMIN
  */
 public class DAOHouse {
-    public void insertHouse(int houseOwnerId, int categoryId, String price, int districtId, String address, String description,String title){
+
+    public void insertHouse(int houseOwnerId, int categoryId, String price, int districtId, String address, String description, String title) {
         try {
             String stmSql = "insert into House(House_Owner_ID,Category_ID,Price,District_ID,Full_Address,Description,Rating,Added_Date,Title) values(?,?,?,?,?,?,?,?,?)";
             Date now = new Date();
@@ -38,5 +40,50 @@ public class DAOHouse {
             System.out.println(e.getMessage());
         }
     }
-    
+
+    public int getHouseId() {
+        try {
+            String stmSql = "select top(1) Id from House order by Id desc";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(stmSql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return 0;
+    }
+
+    public void insertHouseDetail(int houseId, int nBedroom, int nBathroom, int area, int nPool, int houseDirectionId) {
+        try {
+            String stmSql = "insert into House_Details(House_ID,Number_Of_Bedrooms,Number_Of_Bathrooms,Area,Pool,House_Direction_ID) values (?,?,?,?,?,?)";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(stmSql);
+            ps.setInt(1, houseId);
+            ps.setInt(2, nBedroom);
+            ps.setInt(3, nBathroom);
+            ps.setInt(4, area);
+            ps.setInt(5, nPool);
+            ps.setInt(6, houseDirectionId);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void insertImages(int houseId, String image) {
+        try {
+            String stmSql = "insert into House_Images(House_ID,Image) values (?,?)";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(stmSql);
+            ps.setInt(1, houseId);
+            ps.setString(2, image);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
 }
