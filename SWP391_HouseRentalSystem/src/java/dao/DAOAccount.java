@@ -165,9 +165,10 @@ public class DAOAccount extends DBConnect {
         return n;
     }
 
-    public Account Login(String email, String password) {
+   public Account Login(String email, String password) {
         String sql = "SELECT * FROM Account WHERE Email = ? and Password = ?";
         try {
+            Connection conn = new DBContext().getConnection();
             PreparedStatement pre = conn.prepareStatement(sql);
             pre.setString(1, email);
             pre.setString(2, password);

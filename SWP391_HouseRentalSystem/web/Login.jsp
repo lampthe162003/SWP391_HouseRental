@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -30,6 +31,7 @@
                         </div>
 
                         <div class="signin-form">
+                            <p class ="text-danger" style="color: red">${requestScope.mess}</p>
                             <h2 class="form-title">Sign up</h2>
                             <form method="post" action="login" class="register-form"
                                   id="login-form">

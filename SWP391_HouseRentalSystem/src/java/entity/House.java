@@ -13,7 +13,6 @@ import java.sql.Date;
 public class House {
     private int Id,House_Owener_ID,Category_ID,District_ID;
     private String Price,Full_Adress,Description,Title;
-    private String Price,Full_Adress,Description,Title;
     private float Rating;
     private Date Added_Date;
 
@@ -99,14 +98,7 @@ public class House {
         this.Title = Title;
     }
 
-    public String getTitle() {
-        return Title;
-    }
-
-    public void setTitle(String Title) {
-        this.Title = Title;
-    }
-
+    
     public float getRating() {
         return Rating;
     }
