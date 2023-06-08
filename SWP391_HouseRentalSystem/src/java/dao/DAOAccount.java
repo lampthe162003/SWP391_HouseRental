@@ -258,6 +258,25 @@ public class DAOAccount extends DBConnect {
         return list;
     }
 
+    public void update(Account account) {
+        try {
+            conn.setAutoCommit(false);
+            String sql = "UPDATE Account\n"
+                    + "SET Fullname = ?,\n"
+                    + "[Password] = ?,\n"
+                    + "Role_ID = ?,\n"
+                    + "Email = ?,\n"
+                    + "Phone_Number = ?,\n"
+                    + "Gender = ?,\n"
+                    + "[Address] = ?,\n"
+                    + "[Status] = ?";
+            PreparedStatement stm = conn.prepareStatement(sql);
+            stm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(DAOAccount.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     public static void main(String[] args) {
         DAOAccount dao = new DAOAccount();
         Account acc = dao.Login("TrungHieu@gmail.com", "123456");

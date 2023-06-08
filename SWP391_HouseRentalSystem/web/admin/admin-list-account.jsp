@@ -37,10 +37,9 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Tên đăng nhập</th>
+                    <th>Email</th>
                     <th>Họ và tên</th>
                     <th>Vai trò</th>
-                    <th>Email</th>
                     <th>Số điện thoại</th>
                     <th>Trạng thái</th>
                     <th>Thao tác</th>
@@ -58,8 +57,7 @@
                                 <c:if test="${account.getRole_ID() == 2}">Manager</c:if>
                                 <c:if test="${account.getRole_ID() == 3}">Tenant</c:if>
                                 </td>
-                                <td>${account.getEmail()}</td>
-                            <td>${account.getPhone_Number()}</td>
+                                <td>${account.getPhone_Number()}</td>
                             <td>${account.getStatus() == 1?"Hoạt động":"Không hoạt động"}</td>
                             <td>
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editUserModal" 
@@ -94,4 +92,47 @@
     <!-- Data table plugin-->
     <script type="text/javascript" src="assets/js/plugins/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="assets/js/plugins/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $('#sampleTable').DataTable();
+        //Thời Gian
+        function time() {
+            var today = new Date();
+            var weekday = new Array(7);
+            weekday[0] = "Chủ Nhật";
+            weekday[1] = "Thứ Hai";
+            weekday[2] = "Thứ Ba";
+            weekday[3] = "Thứ Tư";
+            weekday[4] = "Thứ Năm";
+            weekday[5] = "Thứ Sáu";
+            weekday[6] = "Thứ Bảy";
+            var day = weekday[today.getDay()];
+            var dd = today.getDate();
+            var mm = today.getMonth() + 1;
+            var yyyy = today.getFullYear();
+            var h = today.getHours();
+            var m = today.getMinutes();
+            var s = today.getSeconds();
+            m = checkTime(m);
+            s = checkTime(s);
+            nowTime = h + " giờ " + m + " phút " + s + " giây";
+            if (dd < 10) {
+                dd = '0' + dd
+            }
+            if (mm < 10) {
+                mm = '0' + mm
+            }
+            today = day + ', ' + dd + '/' + mm + '/' + yyyy;
+            tmp = '<span class="date"> ' + today + ' - ' + nowTime +
+                    '</span>';
+            document.getElementById("clock").innerHTML = tmp;
+            clocktime = setTimeout("time()", "1000", "Javascript");
+
+            function checkTime(i) {
+                if (i < 10) {
+                    i = "0" + i;
+                }
+                return i;
+            }
+        }
+    </script>
 </html>

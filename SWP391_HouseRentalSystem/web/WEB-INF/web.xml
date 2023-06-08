@@ -130,6 +130,8 @@
     <servlet-mapping>
         <servlet-name>Controller_Delete_Blog</servlet-name>
         <url-pattern>/deleteblog</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>HomeAdminController</servlet-name>
         <url-pattern>/admin-home</url-pattern>
     </servlet-mapping>

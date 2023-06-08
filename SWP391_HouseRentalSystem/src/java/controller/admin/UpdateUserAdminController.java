@@ -41,6 +41,6 @@ public class UpdateUserAdminController extends HttpServlet {
         account.setAddress(address);
         account.setPhone_Number(phone);
         DAOAccount daoAccount = new DAOAccount();
-        
+        daoAccount.update(account);
     }
 }
