@@ -21,7 +21,7 @@ import model.DBConnect;
  *
  * @author win
  */
-public class DAOAccount extends DBConnect {
+public class DAOAccount{
 
 //    public int addAccount(Account acc) {
 //        int n = 0;
@@ -148,22 +148,7 @@ public class DAOAccount extends DBConnect {
 //        }
 //        return vector;
 //    }
-    public int removeAccount(int email) {
-        int n = 0;
-        String sql = "delete from Account where Email=" + email;
-        try {
-            Statement state = conn.createStatement();
-            ResultSet rs1 = this.getData("select * from Account where Email=" + email);
-            if (rs1.next()) {
-                n = -1;
-            } else {
-                n = state.executeUpdate(sql);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(DAOAccount.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return n;
-    }
+    
 
    public Account Login(String email, String password) {
         String sql = "SELECT * FROM Account WHERE Email = ? and Password = ?";

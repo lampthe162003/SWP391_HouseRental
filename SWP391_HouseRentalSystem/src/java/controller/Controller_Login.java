@@ -67,7 +67,12 @@ public class Controller_Login extends HttpServlet {
         } else {
             HttpSession session = request.getSession();
             session.setAttribute("acc", acc);
-            response.sendRedirect("home");
+//            response.sendRedirect("home");
+            if (acc.getRole_ID() == 1) {
+                response.sendRedirect("admin-home");
+            } else {
+                response.sendRedirect("home");
+            }
         }
     }
 }
