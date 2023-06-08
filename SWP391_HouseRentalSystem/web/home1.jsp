@@ -330,7 +330,7 @@
                                                 </ul>
                                                 <ul style="list-style: none; display: flex; justify-content: space-between;">
                                                     <li><i class="fas fa-dollar"></i>${o.getPrice()}</li>
-                                                    <li>${o.getArea()} m²</li>
+                                                    <li>${o.getArea()} m² </li>
                                                 </ul>
                                             </div>
                                         </div>
