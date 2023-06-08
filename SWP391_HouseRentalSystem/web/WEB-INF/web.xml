@@ -71,6 +71,22 @@
         <servlet-name>ListAccountController</servlet-name>
         <servlet-class>controller.admin.ListAccountController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Controller_Post_House</servlet-name>
+        <servlet-class>controller.Controller_Post_House</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controller_Messenger</servlet-name>
+        <servlet-class>controller.Controller_Messenger</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controller_Edit_Blog</servlet-name>
+        <servlet-class>controller.Controller_Edit_Blog</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controller_Delete_Blog</servlet-name>
+        <servlet-class>controller.Controller_Delete_Blog</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Controller_Login</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -138,6 +154,18 @@
     <servlet-mapping>
         <servlet-name>ListAccountController</servlet-name>
         <url-pattern>/admin-list-account</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller_Messenger</servlet-name>
+        <url-pattern>/messenger</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller_Delete_Blog</servlet-name>
+        <url-pattern>/deleteblog</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller_Edit_Blog</servlet-name>
+        <url-pattern>/editblog</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

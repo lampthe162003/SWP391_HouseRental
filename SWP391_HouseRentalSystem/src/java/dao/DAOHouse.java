@@ -9,6 +9,7 @@ import entity.House;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
@@ -19,6 +20,8 @@ import java.util.logging.Logger;
  * @author ADMIN
  */
 public class DAOHouse {
+
+  
 
     public void insertHouse(int houseOwnerId, int categoryId, String price, int districtId, String address, String description, String title) {
         try {
@@ -183,4 +186,7 @@ public class DAOHouse {
 //        }
 //    }
     }
+
+    
+
 }
