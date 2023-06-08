@@ -112,7 +112,7 @@
         // Make an Ajax request to the server to update the user's information
         $.ajax({
             type: "POST",
-            url: "updateuser",
+            url: "admin-update-user",
             data: {
                 Id: Id,
                 Email: Email,

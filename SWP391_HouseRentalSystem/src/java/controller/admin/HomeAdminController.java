@@ -28,7 +28,10 @@ public class HomeAdminController extends HttpServlet {
     }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        HttpSession session = request.getSession();
+        DAOAccount dbaccount = new DAOAccount();
+        ArrayList<Account> accountList = dbaccount.getAll();
+        session.setAttribute("accountList", accountList);
         request.getRequestDispatcher("./admin/admin-home.jsp").forward(request, response);
     }
 }
