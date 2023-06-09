@@ -80,4 +80,8 @@ public class Controller_Login extends HttpServlet {
  * Returns a short description of the servlet.
  *
  * @return a String containing servlet description
+<<<<<<< HEAD
  */
+=======
+ */
+>>>>>>> 90e3d30b067123f7946a4726c630f29c237f669e

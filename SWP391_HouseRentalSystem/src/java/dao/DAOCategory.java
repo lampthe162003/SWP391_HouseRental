@@ -34,4 +34,11 @@ public class DAOCategory {
         }
         return null;
     }
+    public static void main(String[] args) {
+        DAOCategory dao = new DAOCategory();
+        List<House_Category> list = dao.getListCategory();
+        for (House_Category house_Category : list) {
+            System.out.println(house_Category);
+        }
+    }
 }
