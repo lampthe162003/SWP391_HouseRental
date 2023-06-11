@@ -35,7 +35,6 @@
                     <input type="file" name="picture" required="">
                 </div>
                 <button type="submit" class="btn btn-primary">Change Information</button>
-                <!-- update -->
             </form>
         </div>
 
