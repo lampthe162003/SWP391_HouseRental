@@ -9,11 +9,11 @@
             <a class="nav-link" href="admin-list-account">Danh sách tài khoản</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="listhouse">Danh sách nhà</a>
+            <a class="nav-link" href="admin-list-house">Danh sách nhà</a>
         </li>
-        <li class="nav-item">
+<!--        <li class="nav-item">
             <a class="nav-link" href="adminviewpost">Post</a>
-        </li>
+        </li>-->
 
     </ul>
     <!-- Thông tin người dùng -->
@@ -23,7 +23,7 @@
                 Admin
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="right: 0;left: auto">
-                <a class="dropdown-item" href="adminviewprofile">Chỉnh sửa thông tin</a>
+                <a class="dropdown-item" href="changeinformation">Chỉnh sửa thông tin</a>
                 <a class="dropdown-item" href="changepassword">Đổi mật khẩu</a>
 
                 <div class="dropdown-divider"></div>
