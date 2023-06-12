@@ -47,24 +47,22 @@
                             <th>Địa chỉ</th>
                             <th>Giá/tháng</th>
                             <th>Mô tả</th>
-                            <th>Tỉnh/Thành </th>
-                            <th>Ảnh</th>
+                            <th>Quận/Huyện </th>
                             <th>Chức năng</th>
                         </tr>
                     </thead>
                     <tbody>
                         <c:forEach items="${HouseData}" var="h">
                             <tr>
-                                <td>${h.house_id}</td>
-                                <td>${h.address}</td>
-                                <td>${h.price}</td>
-                                <td>${h.describe}</td>
-                                <td>${h.city}</td>
-                                <td><img src="${h.img}" alt="" width="100px;"></td>
+                                <td>${h.Id}</td>
+                                <td>${h.Full_Address}</td>
+                                <td>${h.Price}</td>
+                                <td>${h.Description}</td>
+                                <td>${h.District_ID}</td>
 
                                 <td>
                                     <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
-                                            data-toggle="modal" data-target="#ModalUP${h.house_id}"><i class="fas fa-edit"></i>
+                                            data-toggle="modal" data-target="#ModalUP${h.Id}"><i class="fas fa-edit"></i>
                                     </button>
                                 </td>
                             </tr>
@@ -73,7 +71,7 @@
                             MODAL
                             -->
 
-                        <div class="modal fade" id="ModalUP${h.house_id}" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static"
+                        <div class="modal fade" id="ModalUP${h.Id}" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static"
                              data-keyboard="false">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
@@ -87,40 +85,24 @@
                                         </div>
                                         <div class="row">
                                             <div>
-                                                <input  class="form-control" type="text" readonly name="house_id" value="${h.house_id}" hidden="">
+                                                <input  class="form-control" type="text" readonly name="house_id" value="${h.Id}" hidden="">
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label class="control-label">Địa chỉ</label>
-                                                <input class="form-control" type="text" name="address" required value="${h.address}">
+                                                <input class="form-control" type="text" name="address" required value="${h.Full_Address}">
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label class="control-label">Giá</label>
-                                                <input class="form-control" type="number" name="price" required value="${h.price}">
+                                                <input class="form-control" type="number" name="price" required value="${h.Price}">
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label class="control-label">Tỉnh/Thành</label>
-                                                <input class="form-control" type="text" name="city" value="${h.city}">
+                                                <input class="form-control" type="text" name="city" value="${h.District_ID}">
                                             </div>
 
                                             <div class="form-group col-md-6">
                                                 <label class="control-label">Mô tả</label>
-                                                <input class="form-control" type="text" name="describe" value="${h.describe}">
-                                            </div>
-
-                                            <!--anh san pham-->
-                                            <div class="form-group col-md-12">
-                                                <label class="control-label">Ảnh sản phẩm</label>
-                                                <div id="myfileupload">
-                                                    <input type="file" id="uploadfile" name="img" value="${h.img}" onchange="readURL(this);" />
-                                                </div>
-                                                <div id="thumbbox">
-                                                    <img height="450" width="400" alt="Thumb image" id="thumbimage" style="display: none" />
-                                                    <a class="removeimg" href="javascript:"></a>
-                                                </div>
-                                                <div id="boxchoice">
-                                                    <a href="javascript:" class="Choicefile"><i class="fas fa-cloud-upload-alt"></i> Chọn ảnh</a>
-                                                    <p style="clear:both"></p>
-                                                </div>
+                                                <input class="form-control" type="text" name="describe" value="${h.Description}">
                                             </div>
                                         </div>
                                         <BR>

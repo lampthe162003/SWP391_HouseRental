@@ -16,7 +16,6 @@ public class UpdateUserAdminController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Lấy các giá trị được gửi từ client
         HttpSession session = request.getSession();
         String accountId = request.getParameter("Id");
         String password = request.getParameter("Password");
@@ -31,6 +30,7 @@ public class UpdateUserAdminController extends HttpServlet {
         account.setId(Integer.parseInt(accountId));
         account.setEmail(email);
         account.setPassword(password);
+        account.setFullname(fullname);
         account.setRole_ID(Integer.parseInt(role));
         if (gender.equals("1")) {
             account.setGender(true);
