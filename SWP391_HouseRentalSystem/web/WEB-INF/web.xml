@@ -64,6 +64,51 @@
         <servlet-class>controller.Controller_Delete_Blog</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>HomeAdminController</servlet-name>
+        <servlet-class>controller.admin.HomeAdminController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListAccountController</servlet-name>
+        <servlet-class>controller.admin.ListAccountController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controller_Post_House</servlet-name>
+        <servlet-class>controller.Controller_Post_House</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controller_Messenger</servlet-name>
+        <servlet-class>controller.Controller_Messenger</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controller_Edit_Blog</servlet-name>
+        <servlet-class>controller.Controller_Edit_Blog</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controller_Delete_Blog</servlet-name>
+        <servlet-class>controller.Controller_Delete_Blog</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controller_SearchByCategoryID</servlet-name>
+        <servlet-class>controller.Controller_SearchByCategoryID</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controller_SearchByDistrict</servlet-name>
+        <servlet-class>controller.Controller_SearchByDistrict</servlet-class>
+        <servlet-class>controller.Controller_Post_House</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controller_Messenger</servlet-name>
+        <servlet-class>controller.Controller_Messenger</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controller_Edit_Blog</servlet-name>
+        <servlet-class>controller.Controller_Edit_Blog</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controller_Delete_Blog</servlet-name>
+        <servlet-class>controller.Controller_Delete_Blog</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>Controller_Detail_House</servlet-name>
         <servlet-class>controller.Controller_Detail_House</servlet-class>
     </servlet>
@@ -78,18 +123,6 @@
     <servlet-mapping>
         <servlet-name>Controller_Logout</servlet-name>
         <url-pattern>/logout</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Controller_Register</servlet-name>
-        <url-pattern>/register</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Controller_Change_Password</servlet-name>
-        <url-pattern>/changepassword</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Controller_Change_Information</servlet-name>
-        <url-pattern>/changeinformation</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Controller_Forgot_Password</servlet-name>
@@ -130,6 +163,26 @@
     <servlet-mapping>
         <servlet-name>Controller_Detail_House</servlet-name>
         <url-pattern>/detailhouse</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller_Register</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller_Change_Password</servlet-name>
+        <url-pattern>/changepassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller_Change_Information</servlet-name>
+        <url-pattern>/changeinformation</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller_SearchByCategoryID</servlet-name>
+        <url-pattern>/searchbycategoryid</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller_SearchByDistrict</servlet-name>
+        <url-pattern>/searchbydistrict</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

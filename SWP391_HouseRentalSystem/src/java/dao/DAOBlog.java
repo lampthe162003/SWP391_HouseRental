@@ -40,6 +40,7 @@ public class DAOBlog {
             System.out.println(e.getMessage());
         }
     }
+    //
 
     public int countBlog() {
         try {

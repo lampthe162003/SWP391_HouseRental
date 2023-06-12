@@ -10,7 +10,7 @@ import java.sql.PreparedStatement;
 
 /**
  *
- * @author ADMIN
+ * @author ADMINn
  */
 public class DAOChange {
     public void changePassword(String email, String password){
