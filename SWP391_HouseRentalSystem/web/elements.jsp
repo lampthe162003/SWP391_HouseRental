@@ -529,7 +529,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/popper.min.js"></script>
     <!-- Bootstrap js -->
     <script src="js/bootstrap.min.js"></script>
-    <!-- Plugins js -->
+    
     <script src="js/plugins.js"></script>
     <script src="js/classy-nav.min.js"></script>
     <script src="js/jquery-ui.min.js"></script>

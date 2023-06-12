@@ -6,13 +6,20 @@
 package controller;
 
 import dao.DAOAccount;
+import dao.DAOCategory;
+import dao.DAODistricts;
+import dao.DAOHouse;
 import entity.Account;
+import entity.Districts;
+import entity.House;
+import entity.House_Category;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  *
@@ -67,17 +74,31 @@ public class Controller_Login extends HttpServlet {
         } else {
             HttpSession session = request.getSession();
             session.setAttribute("acc", acc);
-//            response.sendRedirect("home");
             if (acc.getRole_ID() == 1) {
                 response.sendRedirect("admin-home");
             } else {
-                response.sendRedirect("home");
+                request.getSession().setAttribute("searchSession", 1);
+                DAOCategory daoc = new DAOCategory();
+                DAODistricts daod = new DAODistricts();
+                DAOHouse daoh = new DAOHouse();
+
+                int index = 1;
+
+                List<House> listh = daoh.getListHouse(index);
+                List<House_Category> listc = daoc.getListCategory();
+                List<Districts> litsd = daod.getListDistricts();
+
+                int count = daoh.totalHouse();
+                int size = 3;
+                int endPage = count / size;
+                if (count % size != 0) {
+                    endPage++;
+                }
+
+                request.setAttribute("endPage", endPage);
+                request.setAttribute("list_house", listh);
+                request.setAttribute("list_category", listc);
+                request.setAttribute("list_districts", litsd);
+                request.getRequestDispatcher("home1.jsp").forward(request, response);
             }
         }
-    }
-}
-/**
- * Returns a short description of the servlet.
- *
- * @return a String containing servlet description
- */

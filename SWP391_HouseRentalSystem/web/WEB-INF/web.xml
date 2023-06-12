@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <welcome-file-list>
         <welcome-file>home</welcome-file>
     </welcome-file-list>
@@ -52,10 +54,6 @@
         <servlet-class>controller.Controller_Post_House</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Controller_Messenger</servlet-name>
-        <servlet-class>controller.Controller_Messenger</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>Controller_Edit_Blog</servlet-name>
         <servlet-class>controller.Controller_Edit_Blog</servlet-class>
     </servlet>
@@ -96,18 +94,6 @@
         <url-pattern>/logout</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Controller_Register</servlet-name>
-        <url-pattern>/register</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Controller_Change_Password</servlet-name>
-        <url-pattern>/changepassword</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Controller_Change_Information</servlet-name>
-        <url-pattern>/changeinformation</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>Controller_Forgot_Password</servlet-name>
         <url-pattern>/forgotpassword</url-pattern>
     </servlet-mapping>
@@ -132,8 +118,8 @@
         <url-pattern>/posthouse</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>HomeAdminController</servlet-name>
-        <url-pattern>/admin-home</url-pattern>
+        <servlet-name>Controller_HomeP</servlet-name>
+        <url-pattern>/homep</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ListAccountController</servlet-name>
