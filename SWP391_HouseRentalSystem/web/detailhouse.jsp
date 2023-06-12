@@ -33,122 +33,83 @@
                 padding: 2em;
             }
             .item1{
+                display: flex;
                 background-color: white;
                 margin: 0.5px auto;
-                width: 50%;
-                height: 12em;
+                width: 80%;
+                height: auto;
                 border: 1px solid black;
                 border-radius: 10px;
-                transition: transform 0.3s ease-in-out;
             }
-            .item1:hover{
-                transform: scale(1.2);
-                transition: transform 0.3s ease-in-out;
-            }
-            .item2{
-                display: flex;
-                width: 95%;
-                height: 90%;
-                border-radius: 10px;
-                margin: 0 auto;
-                margin-top: 0.5em;
-                position: relative;
-            }
-            .inblog-img{
-                width: 25%;
-                height: 100%;
-            }
-            .inblog-img img{
-                width: 100%;
-                height: 10em;
-                border-radius: 10px;
-            }
-            .inblog-infor{
-                margin: 0 auto;
+            .leftdetailhouse{
+                border: 1px solid black;
                 width: 70%;
-                height: 100%;
+                height: auto;
             }
-            .inblog-infor .pra{
-                margin: auto 0;
-                width: 90%;
-                display: -webkit-box;
-                -webkit-box-orient: vertical;
-                -webkit-line-clamp: 2;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
-            .inblog-infor h5{
-                color: #6699ff;
-            }
-            #createblog{
-                padding: 1em 2em;
+            .leftdetailhouse .listimg{
+                width: 80%;
+                height: 20em;
                 border: 1px solid black;
+                margin: 0 auto;
+            }
+            .listimg img{
+                width: 100%;
+                height: 85%;
+                object-fit: cover;
+            }
+            .inforuser{
+                text-align: center;
+                width: 30%;
+                height: 50em;
+            }
+            .btn{
+                height: 3em;
+                display: flex;
+                justify-content: center;    
+            }
+            .btn input{
+                padding: 0;
+                text-align: center;
+                padding: 0 1em;
+                background-color: #1E90FF;
                 border-radius: 10px;
                 color: white;
-                background-color: #6699ff;
-
+                
             }
-            #createblog:hover{
-                color: black;
+            .cont{
+                width: 95%;
+                margin: 0 auto;
+                border: 1px solid black;
+            }
+            .aboutuser{
+                background: #FFA500;
+                height: 20em;
+            }
+            .imguser{
+                width: 30%;
+                height: 35%;
+                padding-top: 1em;
+                margin-left: 7.5em;
+            }
+            .imguser img{
+                border-radius: 50%;
+                height: 5em;
+                width: 5em;
+            }
+            .fillinfor{
+                padding-top: 0.5em;
+                border-radius: 10px;
+                width: 90%;
+                height: 2.5em;
+                margin: 0 auto;
+                margin-bottom: 1em;
                 background-color: white;
             }
-            #cr{
-                width: 10%;
-                margin: 0 auto;
-                margin-bottom: 2.5em;
-            }
-            .active{
-                color:red;
-                cursor: default;
-                padding: 0.5em;
-            }
-            .inactive{
-                color: black;
-                padding: 0.5em;
-            }
-            .numberP{
-                width: 10%;
-                height: 2em;
-                margin: 0.5em auto;
-            }
-            .optionP{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 4%;
-                height: 2em;
-                position: absolute;
-                right: 0;
-                border-radius: 50%;
-            }
-            .optionP:hover{
-                background-color: #cccccc;
-                color: black;
-                cursor: pointer;
-            }
-            .optionP ion-icon{
+            .fillinfor ion-icon{
                 font-size: 20px;
             }
-            .listOption{
-                background-color: #333333;
-                box-shadow: 0 0 5px black;
-                border-radius: 10px;
-                position: absolute;
-                right: 0;
-                top:2em;
-            }
-            .listOption a{
-                display: inline-flex;
-                text-decoration: none;
-                color: white;
-                padding: 1em 1em;
-                width: 100%;
-                line-height: 1em;
-            }
-            .listOption a:hover{
-                background-color: #cccccc;
-                border-radius: 10px;
-                color: black;
+            #heart ion-icon{
+                color: red;
             }
         </style>
     </head>
@@ -161,6 +122,24 @@
 
         <!-- ##### Header Area Start ##### -->
         <header class="header-area">
+
+            <!-- Top Header Area -->
+            <div class="top-header-area">
+                <div class="h-100 d-md-flex justify-content-between align-items-center">
+                    <div class="email-address">
+                        <a href="mailto:contact@southtemplate.com">contact@southtemplate.com</a>
+                    </div>
+                    <div class="phone-number d-flex">
+                        <div class="icon">
+                            <img src="img/icons/phone-call.png" alt="">
+                        </div>
+                        <div class="number">
+                            <a href="tel:+45 677 8993000 223">+45 677 8993000 223</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Main Header Area -->
             <div class="main-header-area" id="stickyHeader">
                 <div class="classy-nav-container breakpoint-off">
@@ -176,7 +155,7 @@
                         </div>
 
                         <!-- Menu -->
-                        <div class="classy-menu" style="position: relative">
+                        <div class="classy-menu">
 
                             <!-- close btn -->
                             <div class="classycloseIcon">
@@ -186,7 +165,7 @@
                             <!-- Nav Start -->
                             <div class="classynav">
                                 <ul>
-                                    <li><a href="home">Home</a></li>
+                                    <li><a href="home.jsp">Home</a></li>
                                     <li><a href="#">Pages</a>
                                         <ul class="dropdown">
                                             <li><a href="home.jsp">Home</a></li>
@@ -209,25 +188,45 @@
                                     </li>
                                     <li><a href="about-us.jsp">About Us</a></li>
                                     <li><a href="listings.jsp">Properties</a></li>
-                                    <li><a href="posthouse">Post house</a></li>
                                     <li><a href="listblog">Blog</a></li>
+                                    <li><a href="#">Mega Menu</a>
+                                        <div class="megamenu">
+                                            <ul class="single-mega cn-col-4">
+                                                <li class="title">Headline 1</li>
+                                                <li><a href="#">Mega Menu Item 1</a></li>
+                                                <li><a href="#">Mega Menu Item 2</a></li>
+                                                <li><a href="#">Mega Menu Item 3</a></li>
+                                                <li><a href="#">Mega Menu Item 4</a></li>
+                                                <li><a href="#">Mega Menu Item 5</a></li>
+                                            </ul>
+                                            <ul class="single-mega cn-col-4">
+                                                <li class="title">Headline 2</li>
+                                                <li><a href="#">Mega Menu Item 1</a></li>
+                                                <li><a href="#">Mega Menu Item 2</a></li>
+                                                <li><a href="#">Mega Menu Item 3</a></li>
+                                                <li><a href="#">Mega Menu Item 4</a></li>
+                                                <li><a href="#">Mega Menu Item 5</a></li>
+                                            </ul>
+                                            <ul class="single-mega cn-col-4">
+                                                <li class="title">Headline 3</li>
+                                                <li><a href="#">Mega Menu Item 1</a></li>
+                                                <li><a href="#">Mega Menu Item 2</a></li>
+                                                <li><a href="#">Mega Menu Item 3</a></li>
+                                                <li><a href="#">Mega Menu Item 4</a></li>
+                                                <li><a href="#">Mega Menu Item 5</a></li>
+                                            </ul>
+                                            <ul class="single-mega cn-col-4">
+                                                <li class="title">Headline 4</li>
+                                                <li><a href="#">Mega Menu Item 1</a></li>
+                                                <li><a href="#">Mega Menu Item 2</a></li>
+                                                <li><a href="#">Mega Menu Item 3</a></li>
+                                                <li><a href="#">Mega Menu Item 4</a></li>
+                                                <li><a href="#">Mega Menu Item 5</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
                                     <li><a href="contact.jsp">Contact</a></li>
-                                        <c:if test="${sessionScope.acc == null}">
-                                        <li><a href="login">Sign In</a></li>
-                                        <li><a href="register">Sign Up</a></li>
-                                        </c:if> 
-                                        <c:if test="${sessionScope.acc != null}">
-                                        <li><a onmouseover="showInf()" id="user" href="#">Hello ${sessionScope.acc.fullname}</a></li>
-                                        <li><a href="logout">Sign Out</a></li>
-                                        </c:if>
                                 </ul>
-                                <div id="inf" style="display: none;position: absolute;background-color: black; font-size: 15px;
-                                     width: 15em;color: white;right: 13em;top: 4em;padding: 0.5em">
-                                    <ul style="margin: 0 auto">
-                                        <li><a href="changeinformation">Change Information</a></li>
-                                        <li><a href="changepassword">Change Password</a</li>
-                                    </ul>
-                                </div>
 
                                 <!-- Search Form -->
                                 <div class="south-search-form">
@@ -254,7 +253,7 @@
                 <div class="row h-100 align-items-center">
                     <div class="col-12">
                         <div class="breadcumb-content">
-                            <h3 class="breadcumb-title">Blog List</h3>
+                            <h3 class="breadcumb-title">Detail House</h3>
                         </div>
                     </div>
                 </div>
@@ -264,36 +263,41 @@
 
         <!-- ##### Blog Area Start ##### -->
         <div id="banner">
-            <c:if test="${acc!=null}">
-                <div id="cr"><a id="createblog" href="postblog">Create Blog</a></div>
-            </c:if>
-            <c:forEach items="${lsB}" var="b">
-                <div class="item1">
-                    <div class="item2">
-                        <div class="inblog-img">
-                            <img src="./assets/images/${b.getImage()}" alt="${b.getImage()}"/>
+            <div class="item1">
+                <div class="leftdetailhouse">
+                    <div class="listimg">
+                        <img id="sliderimg" src="${firstImg}" alt="alt"/><br>
+                        <div class="btn">
+                            <input style="margin-right: 1em;cursor: pointer;" type="button" value="Prev" onclick="prevImage()">
+                            <input style="cursor: pointer;" type="button" value="Next" onclick="nextImage()">
                         </div>
-                        <div class="inblog-infor">
-                            <a href="detailblog?id=${b.getId()}&idPoster=${b.getPosterId()}"><h5>${b.getTopic()}${endPage}</h5></a>
-                            <div class="pra">${b.getContent()}</div>
-                        </div>
-                        <c:if test="${idA == b.getPosterId()}">
-                            <div class="optionP" onclick="showList('${b.getId()}')"><ion-icon name="ellipsis-horizontal-outline"></ion-icon></div>
-                        </c:if>
-                        <div id="${b.getId()}" class="listOption" style="display: none;">
-                            <div><a href="editblog?id=${b.getId()}"><ion-icon name="pencil-outline"></ion-icon>Edit</a></div>
-                            <div><a href="deleteblog?id=${b.getId()}"><ion-icon name="trash-bin-outline"></ion-icon>Delete</a></div>
+                    </div>
+                    <div class="detail" style="width: 100%;height: 50em;border:1px solid black">
+
+                    </div>
+                </div>
+                <div class="inforuser">
+                    <div class="cont">
+                        <div class="aboutuser">
+                            <div class="imguser">
+                                <img src="./assets/images/listing-03.jpg" alt="alt"/>
+                            </div>
+                            <div>
+                                <h6 style="font-weight: 800">Tran Manh Hung</h6>
+                            </div>
+                            <div class="fillinfor" style="background-color: #16c784;color:white">
+                                <h6 style="color: white;display: inline-flex"><ion-icon name="call"></ion-icon>0398029548</h6>
+                            </div>
+                            <div class="fillinfor">
+                                  <h6 style="color: black;display: inline-flex"><ion-icon name="chatbox-outline"></ion-icon>Message</h6>
+                            </div>
+                            <div class="fillinfor">
+                                <h6 style="color: black;display: inline-flex" id="heart"><ion-icon name="heart"></ion-icon>Favourite</h6> 
+                            </div>
                         </div>
                     </div>
                 </div>
-            </c:forEach>
-            <c:if test="${countB != 0}"> 
-                <div class="numberP">
-                    <c:forEach begin="1" end="${endPage}" step="1" var="i">
-                        <a href="listblog?index=${i}" class = "${index eq i ? 'active' : 'inactive'}">${i}</a>
-                    </c:forEach>
-                </div>
-            </c:if>
+            </div>
 
         </div>
         <!-- ##### Blog Area End ##### -->
@@ -424,13 +428,26 @@
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
         <script>
-                        function showList(s) {
-                            var m = document.getElementById(s);
-                            if (m.style.display === "none") {
-                                m.style.display = "block";
-                            } else {
-                                m.style.display = "none";
+                        var imagePaths = [];
+                        imagePaths = '${imgPath}'.split(',');
+                        var slider = document.getElementById('sliderimg');
+                        var currentIndex = 0;
+                        function changeImage() {
+                            slider.src = "./assets/images/" + imagePaths[currentIndex];
+                        }
+                        function nextImage() {
+                            currentIndex++;
+                            if (currentIndex >= imagePaths.length) {
+                                currentIndex = 0;
                             }
+                            changeImage();
+                        }
+                        function prevImage() {
+                            currentIndex--;
+                            if (currentIndex < 0) {
+                                currentIndex = imagePaths.length - 1;
+                            }
+                            changeImage();
                         }
         </script>
     </body>

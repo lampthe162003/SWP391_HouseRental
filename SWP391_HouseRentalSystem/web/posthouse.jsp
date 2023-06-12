@@ -269,7 +269,7 @@
                 <div class="row h-100 align-items-center">
                     <div class="col-12">
                         <div class="breadcumb-content">
-                            <h3 class="breadcumb-title">Blog List</h3>
+                            <h3 class="breadcumb-title">Post house</h3>
                         </div>
                     </div>
                 </div>
@@ -309,7 +309,7 @@
                     <p>Title</p>
                     <input type="text" name="title" style="width: 100%">
                     <p>Description content</p>
-                    <textarea name="description" rows="10" cols="143"></textarea>
+                    <textarea name="description" rows="10" cols="110"></textarea>
                     <p>House owners</p>
                     <input type="text" value="${sessionScope.acc.getFullname()}" readonly="">
                     <p>Phone number</p>
