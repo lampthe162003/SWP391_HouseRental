@@ -4,14 +4,14 @@
  */
 package controller.admin;
 
-import dao.HouseDBContext;
+import dao.DAOHouse;
+import entity.House;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
-import model.House;
 
 /**
  *
@@ -29,10 +29,10 @@ public class ListHouseAdminController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HouseDBContext h = new HouseDBContext();
-        List<House> house = h.getHouse();
+        DAOHouse h = new DAOHouse();
+        List<House> house = h.getAllHouse();
         request.setAttribute("HouseData", house);
-        request.getRequestDispatcher("./view/admin/admin-list-house.jsp").forward(request, response);
+        request.getRequestDispatcher("./admin/admin-list-house.jsp").forward(request, response);
     }
 
     @Override
