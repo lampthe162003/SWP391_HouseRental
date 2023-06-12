@@ -1,11 +1,13 @@
-    /*
+/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 package controller;
 
 import dao.DAOCategory;
+import dao.DAODistricts;
 import dao.DAOHouse;
+import entity.Districts;
 import entity.House;
 import entity.House_Category;
 import java.io.IOException;
@@ -19,7 +21,7 @@ import java.util.List;
  *
  * @author Trung Hieu
  */
-public class Controller_SearchByCategoryID extends HttpServlet {
+public class Controller_Search extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,6 +34,8 @@ public class Controller_SearchByCategoryID extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -47,26 +51,31 @@ public class Controller_SearchByCategoryID extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-
-//        DAOHouse dao = new DAOHouse();
+        request.getSession().setAttribute("searchSession", 2);
+        DAOHouse daoh = new DAOHouse();
         DAOCategory daoc = new DAOCategory();
+        DAODistricts daod = new DAODistricts();
 
-        int categoryId = Integer.parseInt(request.getParameter("category_id"));
-//        int index = Integer.parseInt(request.getParameter("index"));
+        int categoty_id = Integer.parseInt(request.getParameter("category_id"));
+        int district_id = Integer.parseInt(request.getParameter("district_id"));
+        int index = 0;
 
-//        List<House> listHouse = dao.searchByCategoryIDPaging(index, categoryId);
+        List<House> listh = daoh.searchHouse(categoty_id, district_id, index);
         List<House_Category> listc = daoc.getListCategory();
+        List<Districts> litsd = daod.getListDistricts();
 
-//        int count = dao.totalByCategoryId(categoryId);
-//        int size = 6;
-//        int endPage = count / size;
-//        if (count % size != 0) {
-//            endPage++;
-//        }
-//        request.setAttribute("endPage", endPage);
-//        request.setAttribute("list_house", listHouse);
+        int count = daoh.totalSearchHouse(categoty_id, district_id);
+        int size = 3;
+        int endPage = count / size;
+        if (count % size != 0) {
+            endPage++;
+        }
+        request.setAttribute("endPage", endPage);
+        request.setAttribute("categoty_id", categoty_id);
+        request.setAttribute("district_id", district_id);
+        request.setAttribute("list_house", listh);
         request.setAttribute("list_category", listc);
-        request.setAttribute("categoryId", categoryId);
+        request.setAttribute("list_districts", litsd);
         request.getRequestDispatcher("home1.jsp").forward(request, response);
     }
 
@@ -81,25 +90,28 @@ public class Controller_SearchByCategoryID extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        DAOHouse dao = new DAOHouse();
-        DAOCategory daoc = new DAOCategory();
+        processRequest(request, response);
 
-        int categoryId = Integer.parseInt(request.getParameter("category_id"));
+        request.getSession().setAttribute("searchSession", 2);
+        DAOHouse daoh = new DAOHouse();
+
+        int categoty_id = Integer.parseInt(request.getParameter("category_id"));
+        int district_id = Integer.parseInt(request.getParameter("district_id"));
+
         int index = Integer.parseInt(request.getParameter("index"));
 
-        List<House> listHouse = dao.searchByCategoryIDPaging(index, categoryId);
-        List<House_Category> listc = daoc.getListCategory();
+        List<House> listh = daoh.searchHouse(categoty_id, district_id, index);
 
-        int count = dao.totalByCategoryId(categoryId);
-        int size = 6;
+        int count = daoh.totalSearchHouse(categoty_id, district_id);
+        int size = 3;
         int endPage = count / size;
         if (count % size != 0) {
             endPage++;
         }
         request.setAttribute("endPage", endPage);
-        request.setAttribute("list_house", listHouse);
-        request.setAttribute("list_category", listc);
+        request.setAttribute("categoty_id", categoty_id);
+        request.setAttribute("district_id", district_id);
+        request.setAttribute("list_house", listh);
         request.getRequestDispatcher("home1.jsp").forward(request, response);
     }
 

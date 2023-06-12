@@ -85,8 +85,8 @@
                             <div class="topbar-right">
                                 <ul>
                                     <li><a href="login.html"><i class="fas fa-heart"></i> Favourite</a></li>
-                                    <li><a href="login.html"><i class="fas fa-sign-in-alt"></i> Login</a></li>
-                                    <li><a href="register.html"><i class="fas fa-user"></i> Register</a></li>
+                                    <li><a href="login"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+                                    <li><a href="register"><i class="fas fa-user"></i> Register</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -227,7 +227,7 @@
                         <div class="row">
                             <div class="col-md-12 text-center text-white">
                                 <h2>Looking for accommodation?</h2>
-                                <form class="cours-search" method="post" action="searchbycategoryid">
+                                <form class="cours-search" method="pots" action="search">
                                     <div>
                                         <div class="row">
                                             <div class="col-lg-3 col-md-3 col-12 p-1">
@@ -236,8 +236,8 @@
                                                             class="lni lni-grid-alt theme-color"></i></label>
 
                                                     <select name="category_id" id="category_id">
-                                                        <c:forEach items="${list_category}" var="o">
-                                                            <option value="${o.getID()}">${o.getCategory()}</option>                                               
+                                                        <c:forEach items="${list_category}" var="o">   
+                                                            <option value="${o.getID()}">${o.getCategory()}</option>
                                                         </c:forEach>
                                                     </select>
 
@@ -247,37 +247,37 @@
                                                 <div class="input-group-append">
                                                     <label for="location"><i
                                                             class="lni lni-map-marker theme-color"></i></label>
-                                                    <select name="category_id" id="category_id">
+                                                    <select name="district_id" id="district_id  ">
                                                         <c:forEach items="${list_districts}" var="o">
-                                                            <option value="${o.getId()}">${o.getDistrict()}</option>                                               
+                                                            <option value="${o.getId()}">${o.getDistrict()}</option>
                                                         </c:forEach>
                                                     </select>  
                                                 </div>
                                             </div>
-                                            <div class="col-lg-2 col-md-3 col-12 p-1">
-                                                <div class="input-group-append">
-                                                    <label for="category"><i
-                                                            class="lni lni-grid-alt theme-color"></i></label>
-
-                                                    <select name="category" id="category">
-                                                        <option  value="none" selected disabled>Prices</option>
-                                                        <option value="none">Vehicle</option>
-                                                        <option value="none">Electronics</option>
-                                                        <option value="none">Mobiles</option>
-                                                        <option value="none">Furniture</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-2 col-md-3 col-12 p-1">
-                                                <div class="input-group-append">
-                                                    <label for="location"><i
-                                                            class="lni lni-map-marker theme-color"></i></label>
-                                                    <select name="location" id="location">
-                                                        <option value="none" selected disabled>Area</option>
-                                                        <option value="none">New York</option>
-                                                    </select>
-                                                </div>
-                                            </div>
+                                            <!--                                            <div class="col-lg-2 col-md-3 col-12 p-1">
+                                                                                            <div class="input-group-append">
+                                                                                                <label for="category"><i
+                                                                                                        class="lni lni-grid-alt theme-color"></i></label>
+                                            
+                                                                                                <select name="category" id="category">
+                                                                                                    <option  value="none" selected disabled>Prices</option>
+                                                                                                    <option value="none">Vehicle</option>
+                                                                                                    <option value="none">Electronics</option>
+                                                                                                    <option value="none">Mobiles</option>
+                                                                                                    <option value="none">Furniture</option>
+                                                                                                </select>
+                                                                                            </div>
+                                                                                        </div>-->
+                                            <!--                                            <div class="col-lg-2 col-md-3 col-12 p-1">
+                                                                                            <div class="input-group-append">
+                                                                                                <label for="location"><i
+                                                                                                        class="lni lni-map-marker theme-color"></i></label>
+                                                                                                <select name="location" id="location">
+                                                                                                    <option value="none" selected disabled>Area</option>
+                                                                                                    <option value="none">New York</option>
+                                                                                                </select>
+                                                                                            </div>
+                                                                                        </div>-->
                                             <div class="col-lg-2 col-md-2 col-12 p-1">
                                                 <div class="input-group-append">
                                                     <button class="btn"><i class="lni lni-search-alt"></i> Search</button>
@@ -305,7 +305,7 @@
                         </div>
                         <div class="row">
                             <c:forEach items="${list_house}" var="o">
-                                <div class="col-lg-3 col-md-3 col-sm-2">
+                                <div class="col-lg-4 col-md-3 col-sm-2">
                                     <div class="item">
                                         <div class="cours-bx">
                                             <div class="action-box">
@@ -338,6 +338,22 @@
                                 </div>
                             </c:forEach>
                         </div> 
+                        <div class="col-12">
+                            <!--<nav>-->
+                            <ul class="pagination justify-content-center paging ">    
+                                <form class="row">
+                                    <c:forEach begin="1" end="${endPage}" var="i"> 
+                                        <c:if test="${sessionScope.searchSession == 1}">
+                                            <li class="page-item active" ><a class="page-link"href="homep?index=${i*3-3}">${i}</a></li>                                                            
+                                            </c:if>  
+                                            <c:if test="${sessionScope.searchSession == 2}">
+                                            <li class="page-item active" ><a class="page-link"href="search?index=${i*3-3}&category_id=1&district_id=1">${i}</a></li>                                                            
+                                            </c:if>  
+                                        </c:forEach>
+                                </form>
+                            </ul>
+                            <!--</nav>-->
+                        </div>
                         <!-- Popular Courses END -->
                         <div class="section-area section-sp2 bg-fix ovbl-dark join-bx text-center"
                              style="background-image:url(assets/images/background/bg1.jpg);">
