@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -90,7 +91,7 @@ public class DAOHouse {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-
+    }
 //    public void insert(House house) {
 //        try {
 //            Connection connection = new DBContext().getConnection();
@@ -145,34 +146,35 @@ public class DAOHouse {
 //        }
 //    }
 //
-//    public House get(House house) {
-//        House getHouse = null;
-//        try {
-//            Connection connection = new DBContext().getConnection();
-//            String sql = "SELECT * from House\n"
-//                    + "where Id = ?";
-//            PreparedStatement stm = connection.prepareStatement(sql);
-//            ResultSet rs = stm.executeQuery();
-//            while (rs.next()) {
-//                if (getHouse == null) {
-//                    getHouse = new House();
-//                }
-//                getHouse.setId(rs.getInt(1));
-//                getHouse.setHouse_Owener_ID(rs.getInt(2));
-//                getHouse.setCategory_ID(rs.getInt(3));
-//                getHouse.setPrice(rs.getString(4));
-//                getHouse.setDistrict_ID(rs.getInt(5));
-//                getHouse.setFull_Adress(rs.getString(6));
-//                getHouse.setDescription(rs.getString(7));
-//                getHouse.setRating(rs.getFloat(8));
-//                getHouse.setAdded_Date(rs.getDate(9));
-//            }
-//        } catch (Exception ex) {
-//            Logger.getLogger(DAOHouse.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        
-//        return getHouse;
-//    }
+    public ArrayList<House> getAllHouse() {
+        ArrayList<House> houseList = null;
+        try {
+            Connection connection = new DBContext().getConnection();
+            String sql = "SELECT * from House";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                if (houseList == null) {
+                    houseList = new ArrayList();
+                }
+                House getHouse = new House();
+                getHouse.setId(rs.getInt(1));
+                getHouse.setHouse_Owener_ID(rs.getInt(2));
+                getHouse.setCategory_ID(rs.getInt(3));
+                getHouse.setPrice(rs.getString(4));
+                getHouse.setDistrict_ID(rs.getInt(5));
+                getHouse.setFull_Adress(rs.getString(6));
+                getHouse.setDescription(rs.getString(7));
+                getHouse.setRating(rs.getFloat(8));
+                getHouse.setAdded_Date(rs.getDate(9));
+                houseList.add(getHouse);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(DAOHouse.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return houseList;
+    }
 //    
 //    public void delete(House house) {
 //        try {
@@ -185,7 +187,7 @@ public class DAOHouse {
 //            Logger.getLogger(DAOHouse.class.getName()).log(Level.SEVERE, null, ex);
 //        }
 //    }
-    }
+//    }
 
     
 
