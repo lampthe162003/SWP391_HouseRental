@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <welcome-file-list>
         <welcome-file>home</welcome-file>
     </welcome-file-list>
@@ -52,10 +54,6 @@
         <servlet-class>controller.Controller_Post_House</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Controller_Messenger</servlet-name>
-        <servlet-class>controller.Controller_Messenger</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>Controller_Edit_Blog</servlet-name>
         <servlet-class>controller.Controller_Edit_Blog</servlet-class>
     </servlet>
@@ -72,45 +70,16 @@
         <servlet-class>controller.admin.ListAccountController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Controller_Post_House</servlet-name>
-        <servlet-class>controller.Controller_Post_House</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>Controller_Messenger</servlet-name>
         <servlet-class>controller.Controller_Messenger</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Controller_Edit_Blog</servlet-name>
-        <servlet-class>controller.Controller_Edit_Blog</servlet-class>
+        <servlet-name>Controller_HomeP</servlet-name>
+        <servlet-class>controller.Controller_Home1</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Controller_Delete_Blog</servlet-name>
-        <servlet-class>controller.Controller_Delete_Blog</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>Controller_SearchByCategoryID</servlet-name>
-        <servlet-class>controller.Controller_SearchByCategoryID</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>Controller_SearchByDistrict</servlet-name>
-        <servlet-class>controller.Controller_SearchByDistrict</servlet-class>
-        <servlet-class>controller.Controller_Post_House</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>Controller_Messenger</servlet-name>
-        <servlet-class>controller.Controller_Messenger</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>Controller_Edit_Blog</servlet-name>
-        <servlet-class>controller.Controller_Edit_Blog</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>Controller_Delete_Blog</servlet-name>
-        <servlet-class>controller.Controller_Delete_Blog</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>Controller_Detail_House</servlet-name>
-        <servlet-class>controller.Controller_Detail_House</servlet-class>
+        <servlet-name>Controller_Search</servlet-name>
+        <servlet-class>controller.Controller_Search</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Controller_Login</servlet-name>
@@ -149,22 +118,6 @@
         <url-pattern>/posthouse</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Controller_Messenger</servlet-name>
-        <url-pattern>/messenger</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Controller_Edit_Blog</servlet-name>
-        <url-pattern>/editblog</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Controller_Delete_Blog</servlet-name>
-        <url-pattern>/deleteblog</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Controller_Detail_House</servlet-name>
-        <url-pattern>/detailhouse</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>Controller_Register</servlet-name>
         <url-pattern>/register</url-pattern>
     </servlet-mapping>
@@ -177,12 +130,12 @@
         <url-pattern>/changeinformation</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Controller_SearchByCategoryID</servlet-name>
-        <url-pattern>/searchbycategoryid</url-pattern>
+        <servlet-name>Controller_HomeP</servlet-name>
+        <url-pattern>/homep</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Controller_SearchByDistrict</servlet-name>
-        <url-pattern>/searchbydistrict</url-pattern>
+        <servlet-name>Controller_Search</servlet-name>
+        <url-pattern>/search</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
