@@ -92,7 +92,7 @@ public class Controller_Post_House extends HttpServlet {
         String address = request.getParameter("address");
         int category = Integer.parseInt(request.getParameter("category"));
         String title = request.getParameter("title");
-        String description = request.getParameter("description");
+        String description = request.getParameter("description").replaceAll("\r\n", "<br/>");
         String price = request.getParameter("price");
         int houseOwnerId = a.getId();
         int nBedroom = Integer.parseInt(request.getParameter("bedroom"));
@@ -117,6 +117,6 @@ public class Controller_Post_House extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 
 }

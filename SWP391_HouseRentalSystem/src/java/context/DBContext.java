@@ -21,22 +21,16 @@ public class DBContext {
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         return DriverManager.getConnection(url, userID, password);
     }
-    private final String serverName = "LAPTOP-CSMRSSDS\\MAYAO";
+//    private final String serverName = "DESKTOP-B08T7A9\\TRANHUNG";
+//    private final String dbName = "SWP391_HouseRentalSystem";
+//    private final String portNumber = "1433";
+//    private final String instance = "";
+//    private final String userID = "sa";
+//    private final String password = "123";
+    private final String serverName = "Hayashi";
     private final String dbName = "SWP391_HouseRentalSystem";
     private final String portNumber = "1433";
     private final String instance = "";
     private final String userID = "sa";
     private final String password = "abc123";
-}
-
-class Using {
-
-    public static void main(String[] args) {
-        try {
-            new DBContext().getConnection();
-            System.out.println("Ket noi thanh cong");
-        } catch (Exception e) {
-            System.out.println("Ket Noi that bai" + e.getMessage());
-        }
-    }
 }

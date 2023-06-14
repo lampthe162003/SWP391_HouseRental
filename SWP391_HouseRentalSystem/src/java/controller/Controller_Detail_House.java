@@ -4,10 +4,8 @@
  */
 package controller;
 
-import dao.DAODistricts;
 import dao.DAOHouse;
-import entity.Districts;
-import entity.House;
+import entity.House_Images;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -18,9 +16,9 @@ import java.util.List;
 
 /**
  *
- * @author Trung Hieu
+ * @author ADMIN
  */
-public class Controller_SearchByDistrict extends HttpServlet {
+public class Controller_Detail_House extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,7 +31,19 @@ public class Controller_SearchByDistrict extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        response.setContentType("text/html;charset=UTF-8");
+        try ( PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet Controller_Detail_House</title>");
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet Controller_Detail_House at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -48,28 +58,24 @@ public class Controller_SearchByDistrict extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
-
-        DAOHouse dao = new DAOHouse();
-        DAODistricts daod = new DAODistricts();
-
-        int districtsId = Integer.parseInt(request.getParameter("districts_id"));
-        int index = Integer.parseInt(request.getParameter("index"));
-
-        List<House> listHouse = dao.searchByDistrictIdPaging(index, districtsId);
-        List<Districts> listd = daod.getListDistricts();
-
-        int count = dao.totalByDistrictId(districtsId);
-        int size = 6;
-        int endPage = count / size;
-        if (count % size != 0) {
-            endPage++;
+        int houseId = Integer.parseInt(request.getParameter("id"));
+        DAOHouse h = new DAOHouse();
+        List<House_Images> lsHI = h.getListHouseImageByHouseId(houseId);
+        String firstImg = "./assets/images/";
+        String lsImg = "";
+        for (int i = 0; i < lsHI.size(); i++) {
+            if (i != lsHI.size() - 1) {
+                if(i==0){
+                    firstImg += lsHI.get(i).getImage();
+                }
+                lsImg += lsHI.get(i).getImage().concat(",");
+            } else {
+                lsImg += lsHI.get(i).getImage();
+            }
         }
-        request.setAttribute("endPage", endPage);
-        request.setAttribute("list_house", listHouse);
-        request.setAttribute("list_districts", listd);
-        request.setAttribute("districtsId", districtsId);
-        request.getRequestDispatcher("home1.jsp").forward(request, response);
+        request.setAttribute("firstImg", firstImg);
+        request.setAttribute("imgPath", lsImg);
+        request.getRequestDispatcher("detailhouse.jsp").forward(request, response);
     }
 
     /**
@@ -83,25 +89,7 @@ public class Controller_SearchByDistrict extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        DAOHouse dao = new DAOHouse();
-        DAODistricts daod = new DAODistricts();
-
-        int districtsId = Integer.parseInt(request.getParameter("districts_id"));
-        int index = Integer.parseInt(request.getParameter("index"));
-
-        List<House> listHouse = dao.searchByDistrictIdPaging(index, districtsId);
-        List<Districts> listd = daod.getListDistricts();
-
-        int count = dao.totalByDistrictId(districtsId);
-        int size = 6;
-        int endPage = count / size;
-        if (count % size != 0) {
-            endPage++;
-        }
-        request.setAttribute("endPage", endPage);
-        request.setAttribute("list_house", listHouse);
-        request.setAttribute("list_districts", listd);
-        request.getRequestDispatcher("home1.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**

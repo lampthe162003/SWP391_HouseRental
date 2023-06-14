@@ -9,6 +9,7 @@ import entity.Account;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -79,7 +80,6 @@ public class DAOAccount extends DBContext {
         ArrayList<Account> list = null;
         try {
             Connection connection = new DBContext().getConnection();
-            connection.setAutoCommit(false);
             String sql = "select * from Account";
             PreparedStatement stm = connection.prepareStatement(sql);
             ResultSet rs = stm.executeQuery();
@@ -102,9 +102,6 @@ public class DAOAccount extends DBContext {
                 account.setProfile_Picture(rs.getString(12));
                 list.add(account);
             }
-            connection.commit();
-            rs.close();
-            stm.close();
         } catch (Exception e) {
             Logger.getLogger(DAOAccount.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -114,7 +111,7 @@ public class DAOAccount extends DBContext {
 
     public void update(Account account) {
         try {
-            conn.setAutoCommit(false);
+            Connection connection = new DBContext().getConnection();
             String sql = "UPDATE Account\n"
                     + "SET Fullname = ?,\n"
                     + "[Password] = ?,\n"
@@ -124,10 +121,23 @@ public class DAOAccount extends DBContext {
                     + "Gender = ?,\n"
                     + "[Address] = ?,\n"
                     + "[Status] = ?";
-            PreparedStatement stm = conn.prepareStatement(sql);
+            PreparedStatement stm = connection.prepareStatement(sql);
             stm.executeUpdate();
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(DAOAccount.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void deleteAccount(int id) {
+        try {
+            Connection con = new DBContext().getConnection();
+            String sql = "DELETE from Account"
+                    + "where Id = ?";
+            PreparedStatement stm = con.prepareStatement(sql);
+            stm.setInt(1, id);
+            stm.executeUpdate();
+        } catch (Exception ex) {
+            System.out.println(ex);
         }
     }
 

@@ -11,6 +11,8 @@ public class House {
 
     private int Id, House_Owener_ID, Category_ID, District_ID;
     private String Price, Full_Adress, Description, Title;
+    private int Id,House_Owener_ID,Category_ID,District_ID;
+    private String Price,Full_Adress,Description,Title;
     private float Rating;
     private Date Added_Date;
     private String District;
@@ -21,6 +23,7 @@ public class House {
     }
 
     public House(int Id, int House_Owener_ID, int Category_ID, int District_ID, String Price, String Full_Adress, String Description, String Title, float Rating, Date Added_Date, String District, String Image, int Area) {
+    public House(int Id, int House_Owener_ID, int Category_ID, int District_ID, String Price, String Full_Adress, String Description, String Title, float Rating, Date Added_Date) {
         this.Id = Id;
         this.House_Owener_ID = House_Owener_ID;
         this.Category_ID = Category_ID;
@@ -29,12 +32,14 @@ public class House {
         this.Full_Adress = Full_Adress;
         this.Description = Description;
         this.Title = Title;
+        this.Title = Title;
         this.Rating = Rating;
         this.Added_Date = Added_Date;
         this.District = District;
         this.Image = Image;
         this.Area = Area;
     }
+
 
     public int getId() {
         return Id;
@@ -100,6 +105,14 @@ public class House {
         this.Title = Title;
     }
 
+    public String getTitle() {
+        return Title;
+    }
+
+    public void setTitle(String Title) {
+        this.Title = Title;
+    }
+
     public float getRating() {
         return Rating;
     }
@@ -115,6 +128,8 @@ public class House {
     public void setAdded_Date(Date Added_Date) {
         this.Added_Date = Added_Date;
     }
+
+    
 
     public String getDistrict() {
         return District;

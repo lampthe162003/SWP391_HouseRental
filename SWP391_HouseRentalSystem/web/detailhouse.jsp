@@ -1,17 +1,15 @@
 <%-- 
-    Document   : postblog
-    Created on : May 27, 2023, 1:54:10 PM
+    Document   : single-blog
+    Created on : May 27, 2023, 2:34:39 PM
     Author     : Thang
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-
-
 <html lang="en">
 
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="UTF-8">
         <meta name="description" content="">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,45 +17,100 @@
         <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
         <!-- Title  -->
-        <title>South - Real Estate Agency Template | Home</title>
+        <title>South - Real Estate Agency Template | Single Blog</title>
 
         <!-- Favicon  -->
         <link rel="icon" href="img/core-img/favicon.ico">
 
         <!-- Style CSS -->
         <link rel="stylesheet" href="style.css">
-        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
-        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css'>
-        <link rel='stylesheet'
-              href='https://cdn.rawgit.com/bootstrap-wysiwyg/bootstrap3-wysiwyg/master/src/bootstrap3-wysihtml5.css'>
-        <link rel="stylesheet" href="css/style1.css">
         <style>
-            #id1{
-                padding: 5px 8px;
-                text-align: justify-all;
-                border-radius: 10px;
-                border: 1px solid gray;
-                font-size: 18px;
+            #banner{
+                width: 100%;
+                height: auto;
+                border: 1px solid black;
+                background-color: #Eaeaea;
+                padding: 2em;
             }
-            .fot{
+            .item1{
                 display: flex;
-                justify-content: center;
-            }
-            .fot1{
-                padding: 0.8em 1.5em;
-                background-color: #429ef5;
-                color: white;
-                border: none;
-                border-radius: 10px;
-                margin-right: 0.5em;
-            }
-            .fot2{
-                padding: 1em 1.5em;
-                background-color: #429ef5;
-                color: white;
+                background-color: white;
+                margin: 0.5px auto;
+                width: 80%;
+                height: auto;
+                border: 1px solid black;
                 border-radius: 10px;
             }
-            
+            .leftdetailhouse{
+                border: 1px solid black;
+                width: 70%;
+                height: auto;
+            }
+            .leftdetailhouse .listimg{
+                width: 80%;
+                height: 20em;
+                border: 1px solid black;
+                margin: 0 auto;
+            }
+            .listimg img{
+                width: 100%;
+                height: 85%;
+                object-fit: cover;
+            }
+            .inforuser{
+                text-align: center;
+                width: 30%;
+                height: 50em;
+            }
+            .btn{
+                height: 3em;
+                display: flex;
+                justify-content: center;    
+            }
+            .btn input{
+                padding: 0;
+                text-align: center;
+                padding: 0 1em;
+                background-color: #1E90FF;
+                border-radius: 10px;
+                color: white;
+                
+            }
+            .cont{
+                width: 95%;
+                margin: 0 auto;
+                border: 1px solid black;
+            }
+            .aboutuser{
+                background: #FFA500;
+                height: 20em;
+            }
+            .imguser{
+                width: 30%;
+                height: 35%;
+                padding-top: 1em;
+                margin-left: 7.5em;
+            }
+            .imguser img{
+                border-radius: 50%;
+                height: 5em;
+                width: 5em;
+            }
+            .fillinfor{
+                padding-top: 0.5em;
+                border-radius: 10px;
+                width: 90%;
+                height: 2.5em;
+                margin: 0 auto;
+                margin-bottom: 1em;
+                background-color: white;
+            }
+            .fillinfor ion-icon{
+                font-size: 20px;
+            }
+            #heart ion-icon{
+                color: red;
+            }
         </style>
     </head>
 
@@ -69,6 +122,24 @@
 
         <!-- ##### Header Area Start ##### -->
         <header class="header-area">
+
+            <!-- Top Header Area -->
+            <div class="top-header-area">
+                <div class="h-100 d-md-flex justify-content-between align-items-center">
+                    <div class="email-address">
+                        <a href="mailto:contact@southtemplate.com">contact@southtemplate.com</a>
+                    </div>
+                    <div class="phone-number d-flex">
+                        <div class="icon">
+                            <img src="img/icons/phone-call.png" alt="">
+                        </div>
+                        <div class="number">
+                            <a href="tel:+45 677 8993000 223">+45 677 8993000 223</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Main Header Area -->
             <div class="main-header-area" id="stickyHeader">
                 <div class="classy-nav-container breakpoint-off">
@@ -84,7 +155,7 @@
                         </div>
 
                         <!-- Menu -->
-                        <div class="classy-menu" style="position: relative">
+                        <div class="classy-menu">
 
                             <!-- close btn -->
                             <div class="classycloseIcon">
@@ -94,7 +165,7 @@
                             <!-- Nav Start -->
                             <div class="classynav">
                                 <ul>
-                                    <li><a href="home">Home</a></li>
+                                    <li><a href="home.jsp">Home</a></li>
                                     <li><a href="#">Pages</a>
                                         <ul class="dropdown">
                                             <li><a href="home.jsp">Home</a></li>
@@ -117,25 +188,45 @@
                                     </li>
                                     <li><a href="about-us.jsp">About Us</a></li>
                                     <li><a href="listings.jsp">Properties</a></li>
-                                    <li><a href="posthouse">Post house</a></li>
                                     <li><a href="listblog">Blog</a></li>
+                                    <li><a href="#">Mega Menu</a>
+                                        <div class="megamenu">
+                                            <ul class="single-mega cn-col-4">
+                                                <li class="title">Headline 1</li>
+                                                <li><a href="#">Mega Menu Item 1</a></li>
+                                                <li><a href="#">Mega Menu Item 2</a></li>
+                                                <li><a href="#">Mega Menu Item 3</a></li>
+                                                <li><a href="#">Mega Menu Item 4</a></li>
+                                                <li><a href="#">Mega Menu Item 5</a></li>
+                                            </ul>
+                                            <ul class="single-mega cn-col-4">
+                                                <li class="title">Headline 2</li>
+                                                <li><a href="#">Mega Menu Item 1</a></li>
+                                                <li><a href="#">Mega Menu Item 2</a></li>
+                                                <li><a href="#">Mega Menu Item 3</a></li>
+                                                <li><a href="#">Mega Menu Item 4</a></li>
+                                                <li><a href="#">Mega Menu Item 5</a></li>
+                                            </ul>
+                                            <ul class="single-mega cn-col-4">
+                                                <li class="title">Headline 3</li>
+                                                <li><a href="#">Mega Menu Item 1</a></li>
+                                                <li><a href="#">Mega Menu Item 2</a></li>
+                                                <li><a href="#">Mega Menu Item 3</a></li>
+                                                <li><a href="#">Mega Menu Item 4</a></li>
+                                                <li><a href="#">Mega Menu Item 5</a></li>
+                                            </ul>
+                                            <ul class="single-mega cn-col-4">
+                                                <li class="title">Headline 4</li>
+                                                <li><a href="#">Mega Menu Item 1</a></li>
+                                                <li><a href="#">Mega Menu Item 2</a></li>
+                                                <li><a href="#">Mega Menu Item 3</a></li>
+                                                <li><a href="#">Mega Menu Item 4</a></li>
+                                                <li><a href="#">Mega Menu Item 5</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
                                     <li><a href="contact.jsp">Contact</a></li>
-                                        <c:if test="${sessionScope.acc == null}">
-                                        <li><a href="login">Sign In</a></li>
-                                        <li><a href="register">Sign Up</a></li>
-                                        </c:if> 
-                                        <c:if test="${sessionScope.acc != null}">
-                                        <li><a onmouseover="showInf()" id="user" href="#">Hello ${sessionScope.acc.fullname}</a></li>
-                                        <li><a href="logout">Sign Out</a></li>
-                                        </c:if>
                                 </ul>
-                                <div id="inf" style="display: none;position: absolute;background-color: black; font-size: 15px;
-                                     width: 15em;color: white;right: 13em;top: 4em;padding: 0.5em">
-                                    <ul style="margin: 0 auto">
-                                        <li><a href="changeinformation">Change Information</a></li>
-                                        <li><a href="changepassword">Change Password</a</li>
-                                    </ul>
-                                </div>
 
                                 <!-- Search Form -->
                                 <div class="south-search-form">
@@ -162,68 +253,57 @@
                 <div class="row h-100 align-items-center">
                     <div class="col-12">
                         <div class="breadcumb-content">
-                            <h3 class="breadcumb-title">Edit Blog</h3>
+                            <h3 class="breadcumb-title">Detail House</h3>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- ##### Hero Area End ##### -->
+        <!-- ##### Breadcumb Area End ##### -->
 
-        <!-- ##### Advance Search Area Start ##### -->
-        <div class="south-search-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="advanced-search-form">
-                            <!-- Search Title -->
-                            
-                            <!-- <div class="container">
-                                <div class="row">
-                                  <div class="col-md-12"> -->
-                            <form method="post" action="editblog">
-                                <input type="hidden" value="${idB}" name="idB">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" value="${title}" name="title"/>
-                                </div>
-                                <div class="form-group">
-                                    <label> Image </label>
-                                    <div class="input-group">
-                                        <span class="input-group-btn">
-                                            <span class="btn btn-primary btn-file">
-                                                Browse <input type="file" name="imageblog" multiple>
-                                            </span>
-                                        </span>
-                                        <input type="text" value="${image}" class="form-control" readonly>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <textarea required="" id="id1" name="content" rows="12" cols="108">${content}</textarea>
-                                </div>
-                                <div class="form-group fot">
-                                    <input class="fot1" type="submit" name="Submit" value="Publish"/>
-                                    <a class="fot2" href="listblog" style="text-decoration: none">Cancel</a>
-                                </div>
-                            </form>
-                            <!-- </div>
-                          </div>
-                        </div> -->
+        <!-- ##### Blog Area Start ##### -->
+        <div id="banner">
+            <div class="item1">
+                <div class="leftdetailhouse">
+                    <div class="listimg">
+                        <img id="sliderimg" src="${firstImg}" alt="alt"/><br>
+                        <div class="btn">
+                            <input style="margin-right: 1em;cursor: pointer;" type="button" value="Prev" onclick="prevImage()">
+                            <input style="cursor: pointer;" type="button" value="Next" onclick="nextImage()">
+                        </div>
+                    </div>
+                    <div class="detail" style="width: 100%;height: 50em;border:1px solid black">
+
+                    </div>
+                </div>
+                <div class="inforuser">
+                    <div class="cont">
+                        <div class="aboutuser">
+                            <div class="imguser">
+                                <img src="./assets/images/listing-03.jpg" alt="alt"/>
+                            </div>
+                            <div>
+                                <h6 style="font-weight: 800">Tran Manh Hung</h6>
+                            </div>
+                            <div class="fillinfor" style="background-color: #16c784;color:white">
+                                <h6 style="color: white;display: inline-flex"><ion-icon name="call"></ion-icon>0398029548</h6>
+                            </div>
+                            <div class="fillinfor">
+                                  <h6 style="color: black;display: inline-flex"><ion-icon name="chatbox-outline"></ion-icon>Message</h6>
+                            </div>
+                            <div class="fillinfor">
+                                <h6 style="color: black;display: inline-flex" id="heart"><ion-icon name="heart"></ion-icon>Favourite</h6> 
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
-
-
-
-
-
-
-
+        <!-- ##### Blog Area End ##### -->
 
         <!-- ##### Footer Area Start ##### -->
-        <footer class="footer-area section-padding-100-0 bg-img gradient-background-overlay"
-                style="background-image: url(img/bg-img/cta.jpg);">
+        <footer class="footer-area section-padding-100-0 bg-img gradient-background-overlay" style="background-image: url(img/bg-img/cta.jpg);">
             <!-- Main Footer Area -->
             <div class="main-footer-area">
                 <div class="container">
@@ -241,8 +321,7 @@
                                 <div class="footer-logo my-4">
                                     <img src="img/core-img/logo.png" alt="">
                                 </div>
-                                <p>Integer nec bibendum lacus. Suspen disse dictum enim sit amet libero males uada feugiat.
-                                    Praesent malesuada.</p>
+                                <p>Integer nec bibendum lacus. Suspen disse dictum enim sit amet libero males uada feugiat. Praesent malesuada.</p>
                             </div>
                         </div>
 
@@ -256,21 +335,16 @@
                                 <!-- Office Hours -->
                                 <div class="weekly-office-hours">
                                     <ul>
-                                        <li class="d-flex align-items-center justify-content-between"><span>Monday -
-                                                Friday</span> <span>09 AM - 19 PM</span></li>
-                                        <li class="d-flex align-items-center justify-content-between"><span>Saturday</span>
-                                            <span>09 AM - 14 PM</span>
-                                        </li>
-                                        <li class="d-flex align-items-center justify-content-between"><span>Sunday</span>
-                                            <span>Closed</span>
-                                        </li>
+                                        <li class="d-flex align-items-center justify-content-between"><span>Monday - Friday</span> <span>09 AM - 19 PM</span></li>
+                                        <li class="d-flex align-items-center justify-content-between"><span>Saturday</span> <span>09 AM - 14 PM</span></li>
+                                        <li class="d-flex align-items-center justify-content-between"><span>Sunday</span> <span>Closed</span></li>
                                     </ul>
                                 </div>
                                 <!-- Address -->
                                 <div class="address">
-                                    <h6><img src="img/icons/phone-call.png" alt=""> 0988134951</h6>
-                                    <h6><img src="img/icons/envelope.png" alt=""> thuenha@gmail.com</h6>
-                                    <h6><img src="img/icons/location.png" alt=""> ÐH FPT Hà Nôi</h6>
+                                    <h6><img src="img/icons/phone-call.png" alt=""> +45 677 8993000 223</h6>
+                                    <h6><img src="img/icons/envelope.png" alt=""> office@template.com</h6>
+                                    <h6><img src="img/icons/location.png" alt=""> Main Str. no 45-46, b3, 56832, Los Angeles, CA</h6>
                                 </div>
                             </div>
                         </div>
@@ -333,10 +407,7 @@
             <!-- Copywrite Text -->
             <div class="copywrite-text d-flex align-items-center justify-content-center">
                 <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    Copyright &copy;
-                    <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made
-                    with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com"
-                                                                                target="_blank">Colorlib</a>
+                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
             </div>
         </footer>
@@ -354,13 +425,31 @@
         <script src="js/jquery-ui.min.js"></script>
         <!-- Active js -->
         <script src="js/active.js"></script>
-
-        <!-- partial -->
-        <!-- <script src='https://code.jquery.com/jquery-1.11.3.min.js'></script> -->
-        <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
-        <script
-        src='https://cdn.rawgit.com/bootstrap-wysiwyg/bootstrap3-wysiwyg/master/dist/bootstrap3-wysihtml5.all.min.js'></script>
-        <script src="js/script.js"></script>
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+        <script>
+                        var imagePaths = [];
+                        imagePaths = '${imgPath}'.split(',');
+                        var slider = document.getElementById('sliderimg');
+                        var currentIndex = 0;
+                        function changeImage() {
+                            slider.src = "./assets/images/" + imagePaths[currentIndex];
+                        }
+                        function nextImage() {
+                            currentIndex++;
+                            if (currentIndex >= imagePaths.length) {
+                                currentIndex = 0;
+                            }
+                            changeImage();
+                        }
+                        function prevImage() {
+                            currentIndex--;
+                            if (currentIndex < 0) {
+                                currentIndex = imagePaths.length - 1;
+                            }
+                            changeImage();
+                        }
+        </script>
     </body>
 
 </html>

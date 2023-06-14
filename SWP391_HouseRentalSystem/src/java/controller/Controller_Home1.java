@@ -2,53 +2,45 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-
 package controller;
 
-import dao.DAOBlog;
-import entity.Account;
+import dao.DAOCategory;
+import dao.DAODistricts;
+import dao.DAOHouse;
+import entity.Districts;
+import entity.House;
+import entity.House_Category;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import java.sql.Date;
+import java.util.List;
 
 /**
  *
- * @author ADMIN
+ * @author Trung Hieu
  */
-public class Controller_Post_Blog extends HttpServlet {
-   
-    /** 
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
+public class Controller_Home1 extends HttpServlet {
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Controller_Post_Blog</title>");  
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Controller_Post_Blog at " + request.getContextPath () + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    } 
+            throws ServletException, IOException {
+
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
+    /**
      * Handles the HTTP <code>GET</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -56,12 +48,38 @@ public class Controller_Post_Blog extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-        request.getRequestDispatcher("postblog.jsp").include(request, response);
-    } 
+            throws ServletException, IOException {
+        processRequest(request, response);
+         request.getSession().setAttribute("searchSession", 1);
+        DAOCategory daoc = new DAOCategory();
+        DAODistricts daod = new DAODistricts();
+        DAOHouse daoh = new DAOHouse();
 
-    /** 
+        int index = Integer.parseInt(request.getParameter("index"));
+
+        List<House> listh = daoh.getListHouse(index);
+        List<House_Category> listc = daoc.getListCategory();
+        List<Districts> litsd = daod.getListDistricts();
+
+        int count = daoh.totalHouse();
+        int size = 3;
+        int endPage = count / size;
+        if (count % size != 0) {
+            endPage++;
+        }
+
+        request.setAttribute("endPage", endPage);
+        request.setAttribute("list_house", listh);
+        request.setAttribute("list_category", listc);
+        request.setAttribute("list_districts", litsd);
+
+        request.getRequestDispatcher("home1.jsp").forward(request, response);
+
+    }
+
+    /**
      * Handles the HTTP <code>POST</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -69,22 +87,13 @@ public class Controller_Post_Blog extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        Account a = (Account)session.getAttribute("acc");
-        String title, image, content;
-        int posterId = a.getId();
-        title = request.getParameter("title");
-        image = request.getParameter("imageblog");
-        content = request.getParameter("content").replaceAll("\r\n", "<br/>");
-        System.out.println(content);
-        DAOBlog blog = new DAOBlog();
-        blog.postBlog(posterId, title, content, image);
-        response.sendRedirect("listblog");
+            throws ServletException, IOException {
+        processRequest(request, response);
     }
 
-    /** 
+    /**
      * Returns a short description of the servlet.
+     *
      * @return a String containing servlet description
      */
     @Override
