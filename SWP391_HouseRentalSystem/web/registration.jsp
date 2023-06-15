@@ -15,7 +15,6 @@
     </head>
     <body>
         <div class="main">
-
             <!-- Sign up form -->
             <section class="signup">
                 <div class="container">
