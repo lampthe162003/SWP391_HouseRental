@@ -63,8 +63,7 @@
                                     <c:forEach items="${lsR}" var="r">
                                         <input type="radio" name="role" value="${r.getId()}" ${r.getId()== roleId ?"checked":""} required="">${r.getRole()}
                                     </c:forEach>
-                                </div>
-                                
+                                </div>                               
                                 <div class="form-group zmdi zmdi-account material-icons-name">Security question:
                                     <select required="" onchange="change()" style="width: 150px ; border-radius: 10px; padding-left: 10px " name="question">
                                         <c:forEach items="${lsQ}" var="q">
