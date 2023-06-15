@@ -11,8 +11,6 @@ public class House {
 
     private int Id, House_Owener_ID, Category_ID, District_ID;
     private String Price, Full_Adress, Description, Title;
-    private int Id,House_Owener_ID,Category_ID,District_ID;
-    private String Price,Full_Adress,Description,Title;
     private float Rating;
     private Date Added_Date;
     private String District;
@@ -23,7 +21,6 @@ public class House {
     }
 
     public House(int Id, int House_Owener_ID, int Category_ID, int District_ID, String Price, String Full_Adress, String Description, String Title, float Rating, Date Added_Date, String District, String Image, int Area) {
-    public House(int Id, int House_Owener_ID, int Category_ID, int District_ID, String Price, String Full_Adress, String Description, String Title, float Rating, Date Added_Date) {
         this.Id = Id;
         this.House_Owener_ID = House_Owener_ID;
         this.Category_ID = Category_ID;
@@ -95,14 +92,6 @@ public class House {
 
     public void setDescription(String Description) {
         this.Description = Description;
-    }
-
-    public String getTitle() {
-        return Title;
-    }
-
-    public void setTitle(String Title) {
-        this.Title = Title;
     }
 
     public String getTitle() {

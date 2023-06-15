@@ -3,12 +3,10 @@ package dao;
 
 import context.DBContext;
 import entity.House;
-<<<<<<< HEAD
 import entity.House_Category;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-=======
 import entity.House_Images;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
