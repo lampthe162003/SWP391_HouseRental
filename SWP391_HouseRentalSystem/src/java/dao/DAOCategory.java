@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  *
- * @author ADMIN
+ * @author ADMINn
  */
 public class DAOCategory {
     public List<House_Category> getListCategory(){
@@ -33,5 +33,12 @@ public class DAOCategory {
             System.out.println(e.getMessage());
         }
         return null;
+    }
+    public static void main(String[] args) {
+        DAOCategory dao = new DAOCategory();
+        List<House_Category> list = dao.getListCategory();
+        for (House_Category house_Category : list) {
+            System.out.println(house_Category);
+        }
     }
 }

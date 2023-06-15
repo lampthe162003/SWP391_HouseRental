@@ -15,6 +15,7 @@
                     <input value="${email}" type="text" name="email" class="form-control" id="currentPassword" placeholder="Enter email">
                     <p style="color: red">${errorE}</p>
                 </div>
+                <!-- checking pass -->
                 <div class="form-group">
                     <label for="newPassword">New Password</label>
                     <input value="${newPass}" type="password" name="newPass" class="form-control" id="newPassword" placeholder="Enter new password">

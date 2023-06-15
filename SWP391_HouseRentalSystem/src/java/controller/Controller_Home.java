@@ -4,12 +4,18 @@
  */
 package controller;
 
+import dao.DAOCategory;
+import dao.DAODistricts;
+import dao.DAOHouse;
+import entity.Districts;
+import entity.House;
+import entity.House_Category;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  *
@@ -38,8 +44,32 @@ public class Controller_Home extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        request.getRequestDispatcher("home.jsp").include(request, response);
+
+        request.getSession().setAttribute("searchSession", 1);
+        DAOCategory daoc = new DAOCategory();
+        DAODistricts daod = new DAODistricts();
+        DAOHouse daoh = new DAOHouse();
+
+        int index = 1;
+
+        List<House> listh = daoh.getListHouse(index);
+        List<House_Category> listc = daoc.getListCategory();
+        List<Districts> litsd = daod.getListDistricts();
+
+        int count = daoh.totalHouse();
+        int size = 3;
+        int endPage = count / size;
+        if (count % size != 0) {
+            endPage++;
+        }
+
+        request.setAttribute("endPage", endPage);
+        request.setAttribute("list_house", listh);
+        request.setAttribute("list_category", listc);
+        request.setAttribute("list_districts", litsd);
+
+        request.getRequestDispatcher("home1.jsp").forward(request, response);
+
     }
 
     /**
@@ -53,6 +83,7 @@ public class Controller_Home extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
     }
 
     /**

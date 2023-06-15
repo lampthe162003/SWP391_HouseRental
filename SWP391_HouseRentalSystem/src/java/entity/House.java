@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package entity;
 
 import java.sql.Date;
@@ -15,6 +12,9 @@ public class House {
     private String Price,Full_Adress,Description,Title;
     private float Rating;
     private Date Added_Date;
+    private String District;
+    private String Image;
+    private int Area;
 
     public House() {
     }
@@ -30,6 +30,9 @@ public class House {
         this.Title = Title;
         this.Rating = Rating;
         this.Added_Date = Added_Date;
+        this.District = District;
+        this.Image = Image;
+        this.Area = Area;
     }
 
     public int getId() {
@@ -113,4 +116,34 @@ public class House {
     }
 
     
+
+    public String getDistrict() {
+        return District;
+    }
+
+    public void setDistrict(String District) {
+        this.District = District;
+    }
+
+    public String getImage() {
+        return Image;
+    }
+
+    public void setImage(String Image) {
+        this.Image = Image;
+    }
+
+    public int getArea() {
+        return Area;
+    }
+
+    public void setArea(int Area) {
+        this.Area = Area;
+    }
+
+    @Override
+    public String toString() {
+        return "House{" + "Id=" + Id + ", House_Owener_ID=" + House_Owener_ID + ", Category_ID=" + Category_ID + ", District_ID=" + District_ID + ", Price=" + Price + ", Full_Adress=" + Full_Adress + ", Description=" + Description + ", Title=" + Title + ", Rating=" + Rating + ", Added_Date=" + Added_Date + ", District=" + District + ", Image=" + Image + ", Area=" + Area + '}';
+    }
+
 }

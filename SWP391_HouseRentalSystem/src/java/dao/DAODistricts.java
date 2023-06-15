@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package dao;
 
 import context.DBContext;
@@ -17,14 +14,15 @@ import java.util.List;
  * @author ADMIN
  */
 public class DAODistricts {
-    public List<Districts> getListDistricts(){
+
+    public List<Districts> getListDistricts() {
         try {
             String stmSql = "select * from Districts";
             List<Districts> lsD = new ArrayList<>();
             Connection conn = new DBContext().getConnection();
             PreparedStatement ps = conn.prepareStatement(stmSql);
-            ResultSet rs  = ps.executeQuery();
-            while(rs.next()){
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
                 Districts d = new Districts(rs.getInt(1), rs.getString(2));
                 lsD.add(d);
             }
@@ -33,5 +31,14 @@ public class DAODistricts {
             System.out.println(e.getMessage());
         }
         return null;
+    }
+
+    public static void main(String[] args) {
+        DAODistricts dao = new DAODistricts();
+        List<Districts> d = dao.getListDistricts();
+        for (Districts districts : d) {
+            System.out.println(districts);
+        }
+
     }
 }
