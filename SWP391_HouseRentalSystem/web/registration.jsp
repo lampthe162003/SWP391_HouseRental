@@ -44,8 +44,7 @@
                                             class="zmdi zmdi-account material-icons-name"></i></label> <input
                                                 type="text" name="fullname" value="${fullname}" id="fullname" placeholder="Full Name" required=""/>
                                             <p style="color: red">${alertF}</p>
-                                </div>
-                                
+                                </div>                               
                                 <div class="form-group">
                                     <label for="contact"><i class="zmdi zmdi-lock-outline"></i></label>
                                     <input type="number" name="phonenumber"
