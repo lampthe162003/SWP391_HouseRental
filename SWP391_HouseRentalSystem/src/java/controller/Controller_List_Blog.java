@@ -75,6 +75,7 @@ public class Controller_List_Blog extends HttpServlet {
                 endPage++;
             }
             List<Blog> lsB = blog.getListBlog(index * size - 2, index * size);
+            request.setAttribute("countB", countBlog);
             request.setAttribute("lsB", lsB);
             request.setAttribute("endPage", endPage);
             request.setAttribute("index", index);
@@ -95,6 +96,7 @@ public class Controller_List_Blog extends HttpServlet {
             request.setAttribute("endPage", endPage);
             request.setAttribute("index", index);
         }
+        request.setAttribute("idA", a.getId());
         request.getRequestDispatcher("single-blog.jsp").forward(request, response);
     }
 
