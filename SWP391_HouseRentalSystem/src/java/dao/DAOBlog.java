@@ -40,7 +40,6 @@ public class DAOBlog {
             System.out.println(e.getMessage());
         }
     }
-    //
 
     public int countBlog() {
         try {
@@ -56,10 +55,24 @@ public class DAOBlog {
         }
         return 0;
     }
+    public int countFavouriteBlog() {
+        try {
+            String stmSql = "select count(*) from Favourite_House";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(stmSql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            System.out.println("Have error in countBlog!");
+        }
+        return 0;
+    }
 
     public List<Blog> getListBlog(int first, int last) {
         try {
-            String stmSql = "select * from (select ROW_NUMBER() over (order by id asc) as r, * from Blog_Posts ) as x where r between ? and ?";
+            String stmSql = "select * from (select ROW_NUMBER() over (order by id asc) as r, * from Blog_Posts inner join ) as x where r between ? and ?";
             List<Blog> lsB = new ArrayList<>();
             Connection conn = new DBContext().getConnection();
             PreparedStatement ps = conn.prepareStatement(stmSql);
