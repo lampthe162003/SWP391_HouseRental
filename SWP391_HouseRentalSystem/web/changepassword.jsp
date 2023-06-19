@@ -13,6 +13,7 @@
                     <label for="currentPassword">Current Password</label>
                     <input type="password" name="oldPass" class="form-control" id="currentPassword" placeholder="Enter current password">
                 </div>
+                <!-- test password -->
                 <!-- check2  -->
                 <div class="form-group">
                     <label for="newPassword">New Password</label>

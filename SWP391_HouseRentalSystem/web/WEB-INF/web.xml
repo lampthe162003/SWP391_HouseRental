@@ -62,24 +62,16 @@
         <servlet-class>controller.Controller_Delete_Blog</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>HomeAdminController</servlet-name>
-        <servlet-class>controller.admin.HomeAdminController</servlet-class>
+        <servlet-name>Controller_Detail_House</servlet-name>
+        <servlet-class>controller.Controller_Detail_House</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ListAccountController</servlet-name>
-        <servlet-class>controller.admin.ListAccountController</servlet-class>
+        <servlet-name>Controller_Send_Messages</servlet-name>
+        <servlet-class>controller.Controller_Send_Messages</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>DeleteUserAdminController</servlet-name>
-        <servlet-class>controller.admin.DeleteUserAdminController</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>UpdateUserAdminController</servlet-name>
-        <servlet-class>controller.admin.UpdateUserAdminController</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ListHouseAdminController</servlet-name>
-        <servlet-class>controller.admin.ListHouseAdminController</servlet-class>
+        <servlet-name>Controller_Favourite_House</servlet-name>
+        <servlet-class>controller.Controller_Favourite_House</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Controller_Login</servlet-name>
@@ -118,36 +110,24 @@
         <url-pattern>/posthouse</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Controller_HomeP</servlet-name>
-        <url-pattern>/homep</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ListAccountController</servlet-name>
-        <url-pattern>/admin-list-account</url-pattern>
+        <servlet-name>Controller_Edit_Blog</servlet-name>
+        <url-pattern>/editblog</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Controller_Delete_Blog</servlet-name>
         <url-pattern>/deleteblog</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Controller_Messenger</servlet-name>
-        <url-pattern>/messenger</url-pattern>
+        <servlet-name>Controller_Detail_House</servlet-name>
+        <url-pattern>/detailhouse</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Controller_Edit_Blog</servlet-name>
-        <url-pattern>/editblog</url-pattern>
+        <servlet-name>Controller_Send_Messages</servlet-name>
+        <url-pattern>/messages</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>DeleteUserAdminController</servlet-name>
-        <url-pattern>/admin-delete-user</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>UpdateUserAdminController</servlet-name>
-        <url-pattern>/admin-update-user</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ListHouseAdminController</servlet-name>
-        <url-pattern>/admin-list-house</url-pattern>
+        <servlet-name>Controller_Favourite_House</servlet-name>
+        <url-pattern>/favouritehouse</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -2,11 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
+
 package controller;
 
 import dao.DAOHouse;
 import dao.DAOMessages;
-import dao.DAO_Favourite_House;
 import entity.Account;
 import entity.Districts;
 import entity.House;
@@ -29,38 +29,35 @@ import java.util.List;
  *
  * @author ADMIN
  */
-public class Controller_Detail_House extends HttpServlet {
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
+public class Controller_Send_Messages extends HttpServlet {
+   
+    /** 
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
+        try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Controller_Detail_House</title>");
+            out.println("<title>Servlet Controller_Send_Messages</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Controller_Detail_House at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet Controller_Send_Messages at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
-    }
+    } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
+    /** 
      * Handles the HTTP <code>GET</code> method.
-     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -68,13 +65,29 @@ public class Controller_Detail_House extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    throws ServletException, IOException {
+        processRequest(request, response);
+    } 
+
+    /** 
+     * Handles the HTTP <code>POST</code> method.
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException {
         HttpSession session = request.getSession();
-        Account acc = (Account) session.getAttribute("acc");
-        int houseId = Integer.parseInt(request.getParameter("id"));
-        DAOHouse h = new DAOHouse();
+        Account acc = (Account)session.getAttribute("acc");
+        String inbox = request.getParameter("inbox");
+        int houseId = Integer.parseInt(request.getParameter("houseId"));
+        int senderId = acc.getId();
+        int receiverId = Integer.parseInt(request.getParameter("receiverId"));
         DAOMessages m = new DAOMessages();
-        DAO_Favourite_House f = new DAO_Favourite_House();
+        m.insertMessages(senderId, receiverId, inbox);
+        DAOHouse h = new DAOHouse();
         List<House_Images> lsHI = h.getListHouseImageByHouseId(houseId);
         String firstImg = "./assets/images/";
         String lsImg = "";
@@ -99,11 +112,6 @@ public class Controller_Detail_House extends HttpServlet {
             List<Messages> lsM = m.getListMessages(acc.getId(), io.getId());
             request.setAttribute("lsM", lsM);
         }
-        if(f.checkExistFavouriteHouse(houseId, acc.getId())){
-            request.setAttribute("heart", "activeHeart");
-        }else{
-            request.setAttribute("heart", "noactiveHeart");
-        }
         request.setAttribute("fhouse", hs);
         request.setAttribute("fhousedetail", hd);
         request.setAttribute("fhousedirection", hdi);
@@ -113,27 +121,12 @@ public class Controller_Detail_House extends HttpServlet {
         request.setAttribute("firstImg", firstImg);
         request.setAttribute("imgPath", lsImg);
         request.setAttribute("houseId", houseId);
-
+        request.setAttribute("showM", "showM");
         request.getRequestDispatcher("detailhouse.jsp").forward(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    /**
+    /** 
      * Returns a short description of the servlet.
-     *
      * @return a String containing servlet description
      */
     @Override
