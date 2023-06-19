@@ -15,6 +15,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
         <!-- Title  -->
         <title>South - Real Estate Agency Template | Single Blog</title>
 
@@ -44,6 +45,7 @@
                 border: 1px solid black;
                 width: 70%;
                 height: auto;
+                padding-top: 1em;
             }
             .leftdetailhouse .listimg{
                 width: 80%;
@@ -54,24 +56,26 @@
                 width: 100%;
                 height: 85%;
                 object-fit: cover;
+                border-radius: 10px;
             }
             .inforuser{
                 text-align: center;
                 width: 30%;
                 height: 50em;
             }
-            .btn{
+            .btnc{
                 height: 3em;
                 display: flex;
                 justify-content: center;
             }
-            .btn input{
+            .btnc input{
                 padding: 0;
                 text-align: center;
                 padding: 0 1em;
                 background-color: #1E90FF;
                 border-radius: 10px;
                 color: white;
+
             }
             .cont{
                 width: 95%;
@@ -88,7 +92,7 @@
                 width: 40%;
                 height: 40%;
                 padding-top: 1.5em;
-                margin-left: 6em;
+                margin-left: 8.1em;
             }
             .imguser img{
                 border-radius: 50%;
@@ -117,7 +121,6 @@
                 padding: 0.5em 1em;
                 width: 100%;
                 height: auto;
-                border:1px solid black
             }
             .detail h2{
                 color: red;
@@ -178,9 +181,9 @@
                 border-top-left-radius: 10px;
                 border-top-right-radius: 10px;
             }
-/*            #ofmess{
-                display: none;
-            }*/
+            /*            #ofmess{
+                            display: none;
+                        }*/
             #hdmess ion-icon{
                 color: white;
                 font-size: 2em;
@@ -229,6 +232,47 @@
                 height: 100%;
                 border-radius: 10px;
             }
+            .lsnewpost{
+                width: 95%;
+                margin: 1em auto;
+                padding: 1em 0;
+                border: 1px solid black;
+                height: auto;
+                border-radius: 10px;
+            }
+            .imgnp{
+                width: 25%;
+                height: 100%;
+            }
+            .imgnp img{
+                width: 100%;
+                height: 100%;
+            }
+            .contnp{
+                margin-left: 0.5em;
+                width: 73%;
+                height: 100%;
+            }
+            .contnp ion-icon{
+                color: #ffd454;
+            }
+            .hcontpn{
+                width: 100%;
+
+            }
+            .contnp .hcontpn h6{
+                text-align: left;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                color: red;
+            }
+            .contnp h6{
+                color: #1fcc73;
+                text-align: left;
+            }
         </style>
     </head>
 
@@ -259,158 +303,16 @@
             </div> 
         </form>
         <!-- Preloader -->
-        <div id="preloader">
-            <div class="south-load"></div>
-        </div>
+        <jsp:include page="header.jsp"></jsp:include>
+            <!-- ##### Breadcumb Area End ##### -->
 
-        <!-- ##### Header Area Start ##### -->
-        <header class="header-area">
-
-            <!-- Top Header Area -->
-            <div class="top-header-area">
-                <div class="h-100 d-md-flex justify-content-between align-items-center">
-                    <div class="email-address">
-                        <a href="mailto:contact@southtemplate.com">contact@southtemplate.com</a>
-                    </div>
-                    <div class="phone-number d-flex">
-                        <div class="icon">
-                            <img src="img/icons/phone-call.png" alt="">
-                        </div>
-                        <div class="number">
-                            <a href="tel:+45 677 8993000 223">+45 677 8993000 223</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Main Header Area -->
-            <div class="main-header-area" id="stickyHeader">
-                <div class="classy-nav-container breakpoint-off">
-                    <!-- Classy Menu -->
-                    <nav class="classy-navbar justify-content-between" id="southNav">
-
-                        <!-- Logo -->
-                        <a class="nav-brand" href="home.jsp"><img src="img/core-img/logo.png" alt=""></a>
-
-                        <!-- Navbar Toggler -->
-                        <div class="classy-navbar-toggler">
-                            <span class="navbarToggler"><span></span><span></span><span></span></span>
-                        </div>
-
-                        <!-- Menu -->
-                        <div class="classy-menu">
-
-                            <!-- close btn -->
-                            <div class="classycloseIcon">
-                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
-                            </div>
-
-                            <!-- Nav Start -->
-                            <div class="classynav">
-                                <ul>
-                                    <li><a href="home.jsp">Home</a></li>
-                                    <li><a href="#">Pages</a>
-                                        <ul class="dropdown">
-                                            <li><a href="home.jsp">Home</a></li>
-                                            <li><a href="about-us.jsp">About Us</a></li>
-                                            <li><a href="#">Listings</a>
-                                                <ul class="dropdown">
-                                                    <li><a href="listings.jsp">Listings</a></li>
-                                                    <li><a href="single-listings.jsp">Single Listings</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#">Blog</a>
-                                                <ul class="dropdown">
-                                                    <li><a href="blog.jsp">Blog</a></li>
-                                                    <li><a href="single-blog.jsp">Single Blog</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="contact.jsp">Contact</a></li>
-                                            <li><a href="elements.jsp">Elements</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="about-us.jsp">About Us</a></li>
-                                    <li><a href="listings.jsp">Properties</a></li>
-                                    <li><a href="listblog">Blog</a></li>
-                                    <li><a href="#">Mega Menu</a>
-                                        <div class="megamenu">
-                                            <ul class="single-mega cn-col-4">
-                                                <li class="title">Headline 1</li>
-                                                <li><a href="#">Mega Menu Item 1</a></li>
-                                                <li><a href="#">Mega Menu Item 2</a></li>
-                                                <li><a href="#">Mega Menu Item 3</a></li>
-                                                <li><a href="#">Mega Menu Item 4</a></li>
-                                                <li><a href="#">Mega Menu Item 5</a></li>
-                                            </ul>
-                                            <ul class="single-mega cn-col-4">
-                                                <li class="title">Headline 2</li>
-                                                <li><a href="#">Mega Menu Item 1</a></li>
-                                                <li><a href="#">Mega Menu Item 2</a></li>
-                                                <li><a href="#">Mega Menu Item 3</a></li>
-                                                <li><a href="#">Mega Menu Item 4</a></li>
-                                                <li><a href="#">Mega Menu Item 5</a></li>
-                                            </ul>
-                                            <ul class="single-mega cn-col-4">
-                                                <li class="title">Headline 3</li>
-                                                <li><a href="#">Mega Menu Item 1</a></li>
-                                                <li><a href="#">Mega Menu Item 2</a></li>
-                                                <li><a href="#">Mega Menu Item 3</a></li>
-                                                <li><a href="#">Mega Menu Item 4</a></li>
-                                                <li><a href="#">Mega Menu Item 5</a></li>
-                                            </ul>
-                                            <ul class="single-mega cn-col-4">
-                                                <li class="title">Headline 4</li>
-                                                <li><a href="#">Mega Menu Item 1</a></li>
-                                                <li><a href="#">Mega Menu Item 2</a></li>
-                                                <li><a href="#">Mega Menu Item 3</a></li>
-                                                <li><a href="#">Mega Menu Item 4</a></li>
-                                                <li><a href="#">Mega Menu Item 5</a></li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li><a href="contact.jsp">Contact</a></li>
-                                </ul>
-
-                                <!-- Search Form -->
-                                <div class="south-search-form">
-                                    <form action="#" method="post">
-                                        <input type="search" name="search" id="search" placeholder="Search Anything ...">
-                                        <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-                                    </form>
-                                </div>
-
-                                <!-- Search Button -->
-                                <a href="#" class="searchbtn"><i class="fa" aria-hidden="true"></i></a>
-                            </div>
-                            <!-- Nav End -->
-                        </div>
-                    </nav>
-                </div>
-            </div>
-        </header>
-        <!-- ##### Header Area End ##### -->
-
-        <!-- ##### Breadcumb Area Start ##### -->
-        <section class="breadcumb-area bg-img" style="background-image: url(img/bg-img/hero1.jpg);">
-            <div class="container h-100">
-                <div class="row h-100 align-items-center">
-                    <div class="col-12">
-                        <div class="breadcumb-content">
-                            <h3 class="breadcumb-title">Detail House</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- ##### Breadcumb Area End ##### -->
-
-        <!-- ##### Blog Area Start ##### -->
-        <div id="banner">
-            <div class="item1">
-                <div class="leftdetailhouse">
-                    <div class="listimg">
-                        <img id="sliderimg" src="${firstImg}" alt="alt"/><br>
-                        <div class="btn">
+            <!-- ##### Blog Area Start ##### -->
+            <div id="banner">
+                <div class="item1">
+                    <div class="leftdetailhouse">
+                        <div class="listimg">
+                            <img id="sliderimg" src="${firstImg}" alt="alt"/><br>
+                        <div class="btnc">
                             <input style="margin-right: 1em;cursor: pointer;" type="button" value="Prev" onclick="prevImage()">
                             <input style="cursor: pointer;" type="button" value="Next" onclick="nextImage()">
                         </div>
@@ -520,170 +422,78 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-
-        </div>
-        <!-- ##### Blog Area End ##### -->
-
-        <!-- ##### Footer Area Start ##### -->
-        <footer class="footer-area section-padding-100-0 bg-img gradient-background-overlay" style="background-image: url(img/bg-img/cta.jpg);">
-            <!-- Main Footer Area -->
-            <div class="main-footer-area">
-                <div class="container">
-                    <div class="row">
-
-                        <!-- Single Footer Widget -->
-                        <div class="col-12 col-sm-6 col-xl-3">
-                            <div class="footer-widget-area mb-100">
-                                <!-- Widget Title -->
-                                <div class="widget-title">
-                                    <h6>About Us</h6>
+                    <div class="lsnewpost">
+                        <h4 style="margin-bottom: 14px;font-weight: 600">New post</h4>
+                        <c:forEach items="${lsH}" var="h">
+                            <div style="width: 100%;padding: 0 0.5em;padding-bottom: 0.5em;height: 5em;display: flex;border-bottom: 1px solid #dedede">
+                                <div class="imgnp">
+                                    <img src="./assets/images/${h.getImage()}" alt="alt"/>
                                 </div>
-
-                                <img src="img/bg-img/footer.jpg" alt="">
-                                <div class="footer-logo my-4">
-                                    <img src="img/core-img/logo.png" alt="">
-                                </div>
-                                <p>Integer nec bibendum lacus. Suspen disse dictum enim sit amet libero males uada feugiat. Praesent malesuada.</p>
-                            </div>
-                        </div>
-
-                        <!-- Single Footer Widget -->
-                        <div class="col-12 col-sm-6 col-xl-3">
-                            <div class="footer-widget-area mb-100">
-                                <!-- Widget Title -->
-                                <div class="widget-title">
-                                    <h6>Hours</h6>
-                                </div>
-                                <!-- Office Hours -->
-                                <div class="weekly-office-hours">
-                                    <ul>
-                                        <li class="d-flex align-items-center justify-content-between"><span>Monday - Friday</span> <span>09 AM - 19 PM</span></li>
-                                        <li class="d-flex align-items-center justify-content-between"><span>Saturday</span> <span>09 AM - 14 PM</span></li>
-                                        <li class="d-flex align-items-center justify-content-between"><span>Sunday</span> <span>Closed</span></li>
-                                    </ul>
-                                </div>
-                                <!-- Address -->
-                                <div class="address">
-                                    <h6><img src="img/icons/phone-call.png" alt=""> +45 677 8993000 223</h6>
-                                    <h6><img src="img/icons/envelope.png" alt=""> office@template.com</h6>
-                                    <h6><img src="img/icons/location.png" alt=""> Main Str. no 45-46, b3, 56832, Los Angeles, CA</h6>
+                                <div class="contnp">
+                                    <a href="detailhouse?id=${h.getId()}"><div class="hcontpn"><h6><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>${h.getTitle()}</h6></div></a>
+                                    <h6>${h.getPrice()}$/month</h6>
                                 </div>
                             </div>
-                        </div>
-
-                        <!-- Single Footer Widget -->
-                        <div class="col-12 col-sm-6 col-xl-3">
-                            <div class="footer-widget-area mb-100">
-                                <!-- Widget Title -->
-                                <div class="widget-title">
-                                    <h6>Useful Links</h6>
-                                </div>
-                                <!-- Nav -->
-                                <ul class="useful-links-nav d-flex align-items-center">
-                                    <li><a href="#">Home</a></li>
-                                    <li><a href="#">About us</a></li>
-                                    <li><a href="#">About us</a></li>
-                                    <li><a href="#">Services</a></li>
-                                    <li><a href="#">Properties</a></li>
-                                    <li><a href="#">Listings</a></li>
-                                    <li><a href="#">Testimonials</a></li>
-                                    <li><a href="#">Properties</a></li>
-                                    <li><a href="#">Blog</a></li>
-                                    <li><a href="#">Testimonials</a></li>
-                                    <li><a href="#">Contact</a></li>
-                                    <li><a href="#">Elements</a></li>
-                                    <li><a href="#">FAQ</a></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <!-- Single Footer Widget -->
-                        <div class="col-12 col-sm-6 col-xl-3">
-                            <div class="footer-widget-area mb-100">
-                                <!-- Widget Title -->
-                                <div class="widget-title">
-                                    <h6>Featured Properties</h6>
-                                </div>
-                                <!-- Featured Properties Slides -->
-                                <div class="featured-properties-slides owl-carousel">
-                                    <!-- Single Slide -->
-                                    <div class="single-featured-properties-slide">
-                                        <a href="#"><img src="img/bg-img/fea-product.jpg" alt=""></a>
-                                    </div>
-                                    <!-- Single Slide -->
-                                    <div class="single-featured-properties-slide">
-                                        <a href="#"><img src="img/bg-img/fea-product.jpg" alt=""></a>
-                                    </div>
-                                    <!-- Single Slide -->
-                                    <div class="single-featured-properties-slide">
-                                        <a href="#"><img src="img/bg-img/fea-product.jpg" alt=""></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                        </c:forEach>
                     </div>
                 </div>
             </div>
 
-            <!-- Copywrite Text -->
-            <div class="copywrite-text d-flex align-items-center justify-content-center">
-                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            </div>
-        </footer>
-        <!-- ##### Footer Area End ##### -->
+        </div>
+        <jsp:include page="footer.jsp"></jsp:include>  
+            <!-- ##### Blog Area End ##### -->
 
-        <!-- jQuery (Necessary for All JavaScript Plugins) -->
-        <script src="js/jquery/jquery-2.2.4.min.js"></script>
-        <!-- Popper js -->
-        <script src="js/popper.min.js"></script>
-        <!-- Bootstrap js -->
-        <script src="js/bootstrap.min.js"></script>
-        <!-- Plugins js -->
-        <script src="js/plugins.js"></script>
-        <script src="js/classy-nav.min.js"></script>
-        <script src="js/jquery-ui.min.js"></script>
-        <!-- Active js -->
-        <script src="js/active.js"></script>
-        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-        <script>
-                        var imagePaths = [];
-                        imagePaths = '${imgPath}'.split(',');
-                        var slider = document.getElementById('sliderimg');
-                        var currentIndex = 0;
-                        function changeImage() {
-                            slider.src = "./assets/images/" + imagePaths[currentIndex];
-                        }
-                        function nextImage() {
-                            currentIndex++;
-                            if (currentIndex >= imagePaths.length) {
-                                currentIndex = 0;
-                            }
-                            changeImage();
-                        }
-                        function prevImage() {
-                            currentIndex--;
-                            if (currentIndex < 0) {
-                                currentIndex = imagePaths.length - 1;
-                            }
-                            changeImage();
-                        }
-                        function disMess() {
-                            var m = document.getElementById('ofmess');
-                            if (m.style.display === 'none') {
-                                m.style.display = 'block';
-                            } else {
-                                m.style.display = 'none';
-                            }
-                        }
-                        function submitForm() {
-                            document.getElementById('sen').submit();
-                        }
+            <!-- ##### Footer Area Start ##### -->
+
+            <!-- ##### Footer Area End ##### -->
+
+            <!-- jQuery (Necessary for All JavaScript Plugins) -->
+            <script src="js/jquery/jquery-2.2.4.min.js"></script>
+            <!-- Popper js -->
+            <script src="js/popper.min.js"></script>
+            <!-- Bootstrap js -->
+            <script src="js/bootstrap.min.js"></script>
+            <!-- Plugins js -->
+            <script src="js/plugins.js"></script>
+            <script src="js/classy-nav.min.js"></script>
+            <script src="js/jquery-ui.min.js"></script>
+            <!-- Active js -->
+            <script src="js/active.js"></script>
+            <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+            <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+            <script>
+                                    var imagePaths = [];
+                                    imagePaths = '${imgPath}'.split(',');
+                                    var slider = document.getElementById('sliderimg');
+                                    var currentIndex = 0;
+                                    function changeImage() {
+                                        slider.src = "./assets/images/" + imagePaths[currentIndex];
+                                    }
+                                    function nextImage() {
+                                        currentIndex++;
+                                        if (currentIndex >= imagePaths.length) {
+                                            currentIndex = 0;
+                                        }
+                                        changeImage();
+                                    }
+                                    function prevImage() {
+                                        currentIndex--;
+                                        if (currentIndex < 0) {
+                                            currentIndex = imagePaths.length - 1;
+                                        }
+                                        changeImage();
+                                    }
+                                    function disMess() {
+                                        var m = document.getElementById('ofmess');
+                                        if (m.style.display === 'none') {
+                                            m.style.display = 'block';
+                                        } else {
+                                            m.style.display = 'none';
+                                        }
+                                    }
+                                    function submitForm() {
+                                        document.getElementById('sen').submit();
+                                    }
         </script>
     </body>
 
