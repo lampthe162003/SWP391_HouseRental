@@ -6,14 +6,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Sign Up Form by Colorlib</title>
+
         <!-- Font Icon -->
         <link rel="stylesheet"
               href="fonts/material-icon/css/material-design-iconic-font.min.css">
+
         <!-- Main css -->
         <link rel="stylesheet" href="css/style.css">
+      
     </head>
     <body>
+
         <div class="main">
+
             <!-- Sign up form -->
             <section class="signup">
                 <div class="container">
@@ -44,7 +49,8 @@
                                             class="zmdi zmdi-account material-icons-name"></i></label> <input
                                                 type="text" name="fullname" value="${fullname}" id="fullname" placeholder="Full Name" required=""/>
                                             <p style="color: red">${alertF}</p>
-                                </div>                               
+                                </div>
+                                
                                 <div class="form-group">
                                     <label for="contact"><i class="zmdi zmdi-lock-outline"></i></label>
                                     <input type="number" name="phonenumber"
@@ -63,7 +69,8 @@
                                     <c:forEach items="${lsR}" var="r">
                                         <input type="radio" name="role" value="${r.getId()}" ${r.getId()== roleId ?"checked":""} required="">${r.getRole()}
                                     </c:forEach>
-                                </div>                               
+                                </div>
+                                
                                 <div class="form-group zmdi zmdi-account material-icons-name">Security question:
                                     <select required="" onchange="change()" style="width: 150px ; border-radius: 10px; padding-left: 10px " name="question">
                                         <c:forEach items="${lsQ}" var="q">
