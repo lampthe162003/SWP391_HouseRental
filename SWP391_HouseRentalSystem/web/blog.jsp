@@ -447,6 +447,7 @@
                             <ul class="useful-links-nav d-flex align-items-center">
                                 <li><a href="#">Home</a></li>
                                 <li><a href="#">About us</a></li>
+                                <li><a href="#">About us</a></li>
                                 <li><a href="#">Services</a></li>
                                 <li><a href="#">Properties</a></li>
                                 <li><a href="#">Listings</a></li>
@@ -511,6 +512,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/jquery-ui.min.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
+
 </body>
 
 </html>
