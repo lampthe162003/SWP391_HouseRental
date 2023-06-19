@@ -11,16 +11,9 @@ package entity;
 public class Account {
 
     private int Id;
-    private String Fullname;
-    private String Address;
-    private String Email;
-    private String Password;
-    private String Phone_Number;
+    private String Fullname, Address, Email, Password, Phone_Number;
     private boolean Gender;
-    private int Role_ID;
-    private int Status;
-    private int Secure_Question_ID;
-    private int Secure_Answer_ID;
+    private int Role_ID, Status, Secure_Question_ID, Secure_Answer_ID;
     private String Profile_Picture;
 
     public Account() {
