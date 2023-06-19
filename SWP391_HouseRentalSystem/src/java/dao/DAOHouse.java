@@ -206,4 +206,36 @@ public class DAOHouse {
         return null;
     }
     
+    public ArrayList<House> getAllHouse() {
+        ArrayList<House> houseList = null;
+        
+        try {
+            String sql = "select * from House";
+            Connection con = new DBContext().getConnection();
+            PreparedStatement stm = con.prepareStatement(sql);
+            ResultSet rs = stm.executeQuery();
+            
+            while (rs.next()) {
+                if (houseList == null) {
+                    houseList = new ArrayList<>();
+                }
+                House h = new House();
+                h.setId(rs.getInt(1));
+                h.setHouse_Owener_ID(rs.getInt(2));
+                h.setCategory_ID(rs.getInt(3));
+                h.setPrice(rs.getString(4));
+                h.setDistrict_ID(rs.getInt(5));
+                h.setFull_Adress(rs.getString(6));
+                h.setDescription(rs.getString(7));
+                h.setRating(rs.getFloat(8));
+                h.setAdded_Date(rs.getDate(9));
+                h.setTitle(rs.getString(10));
+                houseList.add(h);
+            }
+        } catch (Exception ex) {
+            
+        }
+        return houseList;
+    }
+    
 }
