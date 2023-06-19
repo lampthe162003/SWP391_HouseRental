@@ -1,3 +1,7 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package dao;
 
 import context.DBContext;
@@ -8,6 +12,7 @@ import entity.House_Details;
 import entity.House_Directions;
 import entity.House_Images;
 import entity.InforOwner;
+import entity.NewsPostHouse;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -205,37 +210,38 @@ public class DAOHouse {
         }
         return null;
     }
-    
-    public ArrayList<House> getAllHouse() {
-        ArrayList<House> houseList = null;
-        
+    public List<NewsPostHouse> getNewListPost(int id){
         try {
-            String sql = "select * from House";
-            Connection con = new DBContext().getConnection();
-            PreparedStatement stm = con.prepareStatement(sql);
-            ResultSet rs = stm.executeQuery();
-            
-            while (rs.next()) {
-                if (houseList == null) {
-                    houseList = new ArrayList<>();
-                }
-                House h = new House();
-                h.setId(rs.getInt(1));
-                h.setHouse_Owener_ID(rs.getInt(2));
-                h.setCategory_ID(rs.getInt(3));
-                h.setPrice(rs.getString(4));
-                h.setDistrict_ID(rs.getInt(5));
-                h.setFull_Adress(rs.getString(6));
-                h.setDescription(rs.getString(7));
-                h.setRating(rs.getFloat(8));
-                h.setAdded_Date(rs.getDate(9));
-                h.setTitle(rs.getString(10));
-                houseList.add(h);
+            String stmSql = "select top(5) Id,Title,Price from House where id != ? order by Id desc";
+            List<NewsPostHouse> lsH = new ArrayList<>();
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(stmSql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                NewsPostHouse h = new NewsPostHouse(rs.getInt(1), rs.getString(2), rs.getString(3), getFirstImageHouse(rs.getInt(1)));
+                System.out.println(rs.getString(2));
+                lsH.add(h);
             }
-        } catch (Exception ex) {
-            
+            return lsH;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
-        return houseList;
+        return null;
     }
-    
+    public String getFirstImageHouse(int id){
+        try {
+            String stmSql = "select top(1) hi.Image from House as h inner join House_Images as hi on h.Id = hi.House_ID where h.Id = ? order by hi.Id asc";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(stmSql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                return rs.getString(1);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return "";
+    }
 }
