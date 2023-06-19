@@ -117,6 +117,6 @@ public class Controller_Post_House extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }
+    }// </editor-fold>
 
 }
