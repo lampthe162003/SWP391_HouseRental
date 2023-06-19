@@ -274,7 +274,7 @@
                             <img src="./assets/images/${b.getImage()}" alt="${b.getImage()}"/>
                         </div>
                         <div class="inblog-infor">
-                            <a href="detailblog?id=${b.getId()}&idPoster=${b.getPosterId()}"><h5>${b.getTopic()}${endPage}</h5></a>
+                            <a href="detailblog?id=${b.getId()}&idPoster=${b.getPosterId()}"><h5>${b.getTopic()}</h5></a>
                             <div class="pra">${b.getContent()}</div>
                         </div>
                         <c:if test="${idA == b.getPosterId()}">
