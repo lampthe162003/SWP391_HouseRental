@@ -22,9 +22,9 @@
         <!-- Favicon  -->
         <link rel="icon" href="img/core-img/favicon.ico">
 
-        <!-- Style CSS -->
+        
         <link rel="stylesheet" href="style.css">
-        <!-- change CSS -->
+        
         <link rel="stylesheet" href="css/change.css"/>
     </head>
 
