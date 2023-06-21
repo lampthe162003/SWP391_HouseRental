@@ -26,7 +26,7 @@
         <meta property="og:image" content="" />
         <meta name="format-detection" content="telephone=no">
 
-        <!-- FAVICONS ICON ============================================= -->
+        
         <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon" />
         <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png" />
 
