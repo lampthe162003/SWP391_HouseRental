@@ -74,6 +74,7 @@
     <servlet>
         <servlet-name>Controller_Favourite_Blog</servlet-name>
         <servlet-class>controller.Controller_Favourite_Blog</servlet-class>
+<<<<<<< HEAD
     </servlet>
     <servlet>
         <servlet-name>Controller_Delete_Comment_Blog</servlet-name>
@@ -90,6 +91,8 @@
     <servlet>
         <servlet-name>Controller_House_Ratings</servlet-name>
         <servlet-class>controller.Controller_House_Ratings</servlet-class>
+=======
+>>>>>>> b9c42b5681f03e749d43e575737b39bb05630a71
     </servlet>
     <servlet-mapping>
         <servlet-name>Controller_Login</servlet-name>
@@ -163,6 +166,7 @@
         <servlet-name>Controller_Favourite_Blog</servlet-name>
         <url-pattern>/favouriteblog</url-pattern>
     </servlet-mapping>
+<<<<<<< HEAD
     <servlet-mapping>
         <servlet-name>Controller_Delete_Comment_Blog</servlet-name>
         <url-pattern>/deletecommentblog</url-pattern>
@@ -179,6 +183,8 @@
         <servlet-name>Controller_House_Ratings</servlet-name>
         <url-pattern>/houseratings</url-pattern>
     </servlet-mapping>
+=======
+>>>>>>> b9c42b5681f03e749d43e575737b39bb05630a71
     <session-config>
         <session-timeout>
             60
