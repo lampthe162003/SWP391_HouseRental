@@ -6,10 +6,9 @@
 package controller;
 
 import dao.DAOBlog;
-import dao.DAOComment;
+import dao.DAO_Favourite_Blogs;
 import entity.Account;
 import entity.Blog;
-import entity.Comment_Blog;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -17,14 +16,13 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import java.sql.Date;
 import java.util.List;
 
 /**
  *
  * @author ADMIN
  */
-public class Controller_Comment_Blog extends HttpServlet {
+public class Controller_Favourite_Blog extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -41,10 +39,10 @@ public class Controller_Comment_Blog extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Controller_Comment_Blog</title>");  
+            out.println("<title>Servlet Controller_Favourite_Blog</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Controller_Comment_Blog at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet Controller_Favourite_Blog at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -61,7 +59,21 @@ public class Controller_Comment_Blog extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        int blogId = Integer.parseInt(request.getParameter("blogId"));
+        int userId = Integer.parseInt(request.getParameter("userId"));
+        DAO_Favourite_Blogs fb = new DAO_Favourite_Blogs();
+        if(request.getParameter("index")!=null){
+            int index = Integer.parseInt(request.getParameter("index"));
+            fb.deleteFavouriteBlog(blogId, userId);
+            response.sendRedirect("listfavouriteblog?index="+index);
+            return;
+        }
+        if(fb.checkExistFavouriteBlog(blogId, userId)){
+            fb.insertFavouriteBlog(blogId, userId);
+        }else{
+            fb.deleteFavouriteBlog(blogId, userId);
+        }
+        response.sendRedirect("detailblog?id="+blogId);
     } 
 
     /** 
@@ -74,16 +86,7 @@ public class Controller_Comment_Blog extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        int postId,commenterId;
-        String content;
-        HttpSession session = request.getSession();
-        Account a = (Account) session.getAttribute("acc");
-        postId = Integer.parseInt(request.getParameter("idBlog"));
-        commenterId = a.getId();
-        content = request.getParameter("ctxt");
-        DAOComment cmt = new DAOComment();
-        cmt.addComment(postId, commenterId, content);
-        response.sendRedirect("detailblog?id="+postId);
+        processRequest(request, response);
     }
 
     /** 

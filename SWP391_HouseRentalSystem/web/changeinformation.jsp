@@ -30,7 +30,7 @@
                         <label><input required="" style="margin-right: 1em;transform: scale(1.2)" type="radio" name="gender" value="0" ${gender==0?"checked":""}>Female</label>
                     </p>
                 </div>
-                <div class="form-group1">
+                <div class="form-group">
                     <label>Profile picture: </label>
                     <input type="file" name="picture" required="">
                 </div>

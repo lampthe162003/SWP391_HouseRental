@@ -40,7 +40,6 @@ public class DAOBlog {
             System.out.println(e.getMessage());
         }
     }
-    //
 
     public int countBlog() {
         try {
@@ -56,15 +55,50 @@ public class DAOBlog {
         }
         return 0;
     }
+    public int countFavouriteBlog(int userId) {
+        try {
+            String stmSql = "select count(*) from Favourite_Blogs where UserID = ?";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(stmSql);
+            ps.setInt(1, userId);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            System.out.println("Have error in countBlog!");
+        }
+        return 0;
+    }
 
     public List<Blog> getListBlog(int first, int last) {
         try {
-            String stmSql = "select * from (select ROW_NUMBER() over (order by id asc) as r, * from Blog_Posts ) as x where r between ? and ?";
+            String stmSql = "select * from (select ROW_NUMBER() over (order by id asc) as r, * from Blog_Posts) as x where r between ? and ?";
             List<Blog> lsB = new ArrayList<>();
             Connection conn = new DBContext().getConnection();
             PreparedStatement ps = conn.prepareStatement(stmSql);
             ps.setInt(1, first);
             ps.setInt(2, last);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Blog b = new Blog(rs.getInt(2), rs.getInt(3), rs.getDate(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getString(8));
+                lsB.add(b);
+            }
+            return lsB;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+    public List<Blog> getListFavouriteBlog(int userId,int first, int last) {
+        try {
+            String stmSql = "select * from (select ROW_NUMBER() over (order by bp.Id asc) as r, bp.* from Blog_Posts as bp inner join Favourite_Blogs as fb on bp.Id=fb.BlogId where fb.UserID = ?) as x where r between ? and ?";
+            List<Blog> lsB = new ArrayList<>();
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(stmSql);
+            ps.setInt(1, userId);
+            ps.setInt(2, first);
+            ps.setInt(3, last);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Blog b = new Blog(rs.getInt(2), rs.getInt(3), rs.getDate(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getString(8));
@@ -131,6 +165,18 @@ public class DAOBlog {
             Connection conn = new DBContext().getConnection();
             PreparedStatement ps = conn.prepareStatement(stmSql);
             ps.setInt(1, id);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public void editCommentBlog(int id, String content){
+        try {
+            String stmSql = "update Post_Comments set Content = ? where id = ?";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(stmSql);
+            ps.setString(1, content);
+            ps.setInt(2, id);
             ps.executeUpdate();
         } catch (Exception e) {
             System.out.println(e.getMessage());

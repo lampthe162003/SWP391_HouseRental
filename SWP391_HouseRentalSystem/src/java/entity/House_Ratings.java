@@ -8,17 +8,17 @@ package entity;
  *
  * @author Trung Hieu
  */
-public class Houes_Ratings {
+public class House_Ratings {
 
     private int Id;
     private int House_Id;
     private int Vote_Id;
     private float Rating;
 
-    public Houes_Ratings() {
+    public House_Ratings() {
     }
 
-    public Houes_Ratings(int Id, int House_Id, int Vote_Id, float Rating) {
+    public House_Ratings(int Id, int House_Id, int Vote_Id, float Rating) {
         this.Id = Id;
         this.House_Id = House_Id;
         this.Vote_Id = Vote_Id;
