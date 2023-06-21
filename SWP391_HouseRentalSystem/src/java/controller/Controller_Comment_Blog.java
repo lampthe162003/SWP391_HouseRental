@@ -82,13 +82,8 @@ public class Controller_Comment_Blog extends HttpServlet {
         commenterId = a.getId();
         content = request.getParameter("ctxt");
         DAOComment cmt = new DAOComment();
-        DAOBlog blog = new DAOBlog();
         cmt.addComment(postId, commenterId, content);
-        List<Comment_Blog> lsC = cmt.getListComment(postId);
-        Blog b = blog.getBlogFollowId(postId);
-        request.setAttribute("b", b);
-        request.setAttribute("lsC", lsC);
-        request.getRequestDispatcher("detailblog.jsp").forward(request, response);
+        response.sendRedirect("detailblog?id="+postId);
     }
 
     /** 
