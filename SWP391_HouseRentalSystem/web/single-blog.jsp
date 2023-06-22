@@ -39,11 +39,13 @@
                 height: 12em;
                 border: 1px solid black;
                 border-radius: 10px;
-                transition: transform 0.3s ease-in-out;
+                transition: 0.3s;
+                transition-timing-function: linear;
             }
             .item1:hover{
+                margin-top: 1em;
+                margin-bottom: 1em;
                 transform: scale(1.2);
-                transition: transform 0.3s ease-in-out;
             }
             .item2{
                 display: flex;

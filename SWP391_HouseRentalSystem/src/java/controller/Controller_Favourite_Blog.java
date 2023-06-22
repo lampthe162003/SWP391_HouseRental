@@ -6,6 +6,7 @@
 package controller;
 
 import dao.DAOBlog;
+import dao.DAO_Favourite_Blogs;
 import entity.Account;
 import entity.Blog;
 import java.io.IOException;
@@ -58,44 +59,21 @@ public class Controller_Favourite_Blog extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        Account a = (Account) session.getAttribute("acc");
-        int index = 1;
-        if (request.getParameter("index") == null) {
-            DAOBlog blog = new DAOBlog();
-            int countBlog = blog.countFavouriteBlog();
-            int size = 3;
-            int endPage = countBlog / size;
-            if(endPage==0){
-                endPage = 1;
-            }
-            else if ((countBlog / size) != 0) {
-                endPage++;
-            }
-            List<Blog> lsB = blog.getListBlog(index * size - 2, index * size);
-            request.setAttribute("countB", countBlog);
-            request.setAttribute("lsB", lsB);
-            request.setAttribute("endPage", endPage);
-            request.setAttribute("index", index);
-        }else{
-            index = Integer.parseInt(request.getParameter("index"));
-            DAOBlog blog = new DAOBlog();
-            int countBlog = blog.countBlog();
-            int size = 3;
-            int endPage = countBlog / size;
-            if(endPage==0){
-                endPage = 1;
-            }
-            else if ((countBlog / size) != 0) {
-                endPage++;
-            }
-            List<Blog> lsB = blog.getListBlog(index * size - 2, index * size);
-            request.setAttribute("lsB", lsB);
-            request.setAttribute("endPage", endPage);
-            request.setAttribute("index", index);
+        int blogId = Integer.parseInt(request.getParameter("blogId"));
+        int userId = Integer.parseInt(request.getParameter("userId"));
+        DAO_Favourite_Blogs fb = new DAO_Favourite_Blogs();
+        if(request.getParameter("index")!=null){
+            int index = Integer.parseInt(request.getParameter("index"));
+            fb.deleteFavouriteBlog(blogId, userId);
+            response.sendRedirect("listfavouriteblog?index="+index);
+            return;
         }
-        request.setAttribute("idA", a.getId());
-        request.getRequestDispatcher("favouriteblog.jsp").forward(request, response);
+        if(fb.checkExistFavouriteBlog(blogId, userId)){
+            fb.insertFavouriteBlog(blogId, userId);
+        }else{
+            fb.deleteFavouriteBlog(blogId, userId);
+        }
+        response.sendRedirect("detailblog?id="+blogId);
     } 
 
     /** 

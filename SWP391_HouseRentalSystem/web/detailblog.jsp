@@ -33,6 +33,7 @@
                 padding: 2em;
             }
             .item1{
+                position: relative;
                 background-color: white;
                 margin: 0.5px auto;
                 width: 50%;
@@ -51,6 +52,11 @@
                 width: 100%;
                 height: 30em;
                 margin: 1em 0;
+            }
+            .item2 p{
+                color: black;
+                font-size: 18px;
+                margin-top: 1.5em;
             }
             .inblog-img{
                 width: 25%;
@@ -105,19 +111,26 @@
                 margin: 0.5em auto;
             }
             .cmt{
-                border: 1px solid black;
+                border-top: 1px solid black;
             }
             .cmtcontent{
                 display: flex;
                 width: 95%;
                 height: auto;
-                margin: 0 auto;
+                margin: 0.5em auto;
+            }
+            .lastcontent{
+                position: relative;
+            }
+            .firstcontent{
+                margin-bottom: 0.5em;
             }
             .cmtimg{
                 width: 8%;
                 height: 3em;
             }
             .cmtimg img{
+                margin-top: 0.5em;
                 width: 100%;
                 height: 3em;
                 border-radius: 50%;
@@ -128,12 +141,12 @@
                 height: auto;
             }
             .cmtname{
-                height: 2em;
+                padding-top: 0.2em;
+                height: 1.8em;
                 width: 100%;
             }
-            .cmtname p{
-                font-weight: 800;
-                color: black;
+            .cmtname h6{
+                margin-bottom: 0;
             }
 
             .cmtbl{
@@ -143,10 +156,86 @@
                 width: 92%;
                 border-radius: 10px;
             }
+            .cmtbl p{
+                color: black;
+            }
+            #favoblog{
+                position: absolute;
+                top: 0;
+                right: 0.5em;
+                z-index: 99;
+                cursor: pointer;
+            }
+            #favoblog ion-icon{
+                color:red;
+                font-size: 30px;
+                transition: 0.5s;
+                transition-timing-function: ease;
+            }
+            #favoblog ion-icon:hover{
+                transform: scale(1.2);
+            }
+            #nonfavoblog{
+                position: absolute;
+                top: 0;
+                right: 0.5em;
+                z-index: 99;
+                cursor: pointer;
+            }
+            #nonfavoblog ion-icon{
+                color: black;
+                font-size: 30px;
+                transition: 0.5s;
+                transition-timing-function: ease;
+            }
+            #nonfavoblog ion-icon:hover{
+                transform: scale(1.2);
+            }
+            .optionP{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 5%;
+                height: 2em;
+                position: absolute;
+                top: 0;
+                right: 0;
+                border-radius: 50%;
+            }
+            .optionP:hover{
+                background-color: #cccccc;
+                color: black;
+                cursor: pointer;
+            }
+            .optionP ion-icon{
+                font-size: 20px;
+            }
+            .listOption{
+                background-color: #333333;
+                box-shadow: 0 0 5px black;
+                border-radius: 10px;
+                position: absolute;
+                right: 0;
+                top:2em;
+            }
+            .listOption a{
+                display: inline-flex;
+                text-decoration: none;
+                color: white;
+                padding: 1em 1em;
+                width: 100%;
+                line-height: 1em;
+            }
+            .listOption a:hover{
+                background-color: #cccccc;
+                border-radius: 10px;
+                color: black;
+            }
         </style>
     </head>
 
     <body>
+
         <!-- Preloader -->
         <div id="preloader">
             <div class="south-load"></div>
@@ -296,41 +385,57 @@
         <!-- ##### Blog Area Start ##### -->
         <div id="banner">
             <div class="item1">
+                <div id="${na}">
+                    <a href="favouriteblog?blogId=${b.getId()}&userId=${sessionScope.acc.getId()}"><ion-icon name="heart"></ion-icon></a>
+                </div>
                 <div class="item2">
-                    <h1>${b.getTopic()}</h1>
-                    <img src="./assets/images/${b.getImage()}" alt="alt"/>
+                    <h2 style="margin: 1em 0">${b.getTopic()}</h2>
+                    <img  src="./assets/images/${b.getImage()}" alt="alt"/>
                     <p>${b.getContent()}</p>
                 </div>
                 <div class="cmt">
-                    <form action="commentblog" method="post">
-                        <h1>Comment</h1>
-                        <input type="hidden" value="${b.getId()}" name="idBlog">
-                        <div class="cmtcontent">
-                            <div class="cmtimg">
-                                <img src="./assets/images/${sessionScope.acc.getProfile_Picture()}" alt="alt"/>
-                            </div>
-                            <div class="cmttext">
-                                <div class="cmtname"><p>${sessionScope.acc.getFullname()}</p></div>
-                                <div class="cmtbl">
-                                    <input type="text" name="ctxt">
-                                    <input style="width: 10%" type="submit" value="Send">
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+                    <h2 style="margin-left: 0.5em;">Comment</h2>
                     <c:forEach items="${lsC}" var="c">
-                        <div class="cmtcontent">
+                        <div class="cmtcontent lastcontent">
                             <div class="cmtimg">
                                 <img src="./assets/images/${c.getProfilePicture()}" alt="alt"/>
                             </div>
                             <div class="cmttext">
-                                <div class="cmtname"><p>${c.getFullName()}</p></div>
+                                <div class="cmtname"><h6>${c.getFullName()}</h6></div>
                                 <div class="cmtbl">
-                                    <p>${c.getContent()}</p>
+                                    <form id="${c.getId()}f" method="get" action="editcommentblog">
+                                        <input name="idBlog" value="${b.getId()}" type="hidden"/>
+                                        <input name="id" value="${c.getId()}" type="hidden"/>
+                                        <input name="v" id="${c.getId()}a" style="border: none" type="text" value="${c.getContent()}" readonly=""/>
+                                    </form>
                                 </div>
+                            </div>
+                            <!-- Fix -->
+                            <c:if test="${c.getCommenterId() == sessionScope.acc.getId()}">
+                                <div class="optionP" onclick="showList('${c.getId()}')"><ion-icon name="ellipsis-horizontal-outline"></ion-icon></div>
+                                    </c:if>
+                            <div id="${c.getId()}" class="listOption" style="display: none;">
+                                <div><a onclick="eidtcom('${c.getId()}a', '${c.getId()}')" href="#"><ion-icon name="pencil-outline"></ion-icon>Edit</a></div>
+                                <div><a href="deletecommentblog?id=${c.getId()}&idBlog=${b.getId()}"><ion-icon name="trash-bin-outline"></ion-icon>Delete</a></div>
                             </div>
                         </div>
                     </c:forEach>
+                    <form action="commentblog" method="post">
+
+                        <input type="hidden" value="${b.getId()}" name="idBlog">
+                        <div class="cmtcontent firstcontent">
+                            <div class="cmtimg">
+                                <img src="./assets/images/${sessionScope.acc.getProfile_Picture()}" alt="alt"/>
+                            </div>
+                            <div class="cmttext">
+                                <div class="cmtname"><h6>${sessionScope.acc.getFullname()}</h6></div>
+                                <div class="cmtbl">
+                                    <input type="text" name="ctxt">
+                                    <input style="margin-left: 0.5em;;width: 10%;cursor: pointer;background-color: #6699ff;color: white" type="submit" value="Send">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
 
@@ -460,7 +565,25 @@
         <script src="js/jquery-ui.min.js"></script>
         <!-- Active js -->
         <script src="js/active.js"></script>
-
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+        <script>
+                        function showList(s) {
+                            var m = document.getElementById(s);
+                            if (m.style.display === "none") {
+                                m.style.display = "block";
+                            } else {
+                                m.style.display = "none";
+                            }
+                        }
+                        function eidtcom(x, s) {
+                            var input = document.getElementById(x);
+                            input.style.paddingLeft = '10px';
+                            input.removeAttribute("readonly");
+                            input.focus();
+                            showList(s);
+                        }
+        </script>
     </body>
 
 </html>

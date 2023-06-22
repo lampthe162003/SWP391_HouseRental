@@ -160,6 +160,22 @@
         <url-pattern>/favouriteblog</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>Controller_Delete_Comment_Blog</servlet-name>
+        <url-pattern>/deletecommentblog</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller_Edit_Comment_Blog</servlet-name>
+        <url-pattern>/editcommentblog</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller_List_Favourite_Blog</servlet-name>
+        <url-pattern>/listfavouriteblog</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller_House_Ratings</servlet-name>
+        <url-pattern>/houseratings</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>Controller_Admin_Home</servlet-name>
         <url-pattern>/admin-home</url-pattern>
     </servlet-mapping>

@@ -14,6 +14,7 @@ import entity.House_Category;
 import entity.House_Details;
 import entity.House_Directions;
 import entity.House_Images;
+import entity.House_Ratings;
 import entity.InforOwner;
 import entity.Messages;
 import entity.NewsPostHouse;
@@ -107,6 +108,7 @@ public class Controller_Detail_House extends HttpServlet {
             request.setAttribute("heart", "noactiveHeart");
         }
         List<NewsPostHouse> lsH = h.getNewListPost(houseId);
+        House_Ratings hr = h.getHouseRating(houseId, acc.getId());
         request.setAttribute("lsH", lsH);
         request.setAttribute("fhouse", hs);
         request.setAttribute("fhousedetail", hd);
@@ -117,6 +119,7 @@ public class Controller_Detail_House extends HttpServlet {
         request.setAttribute("firstImg", firstImg);
         request.setAttribute("imgPath", lsImg);
         request.setAttribute("houseId", houseId);
+        request.setAttribute("hr", hr);
         request.getRequestDispatcher("detailhouse.jsp").forward(request, response);
     }
 
