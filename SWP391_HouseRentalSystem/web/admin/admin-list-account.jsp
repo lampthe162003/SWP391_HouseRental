@@ -61,7 +61,7 @@
                             <td>${account.getStatus() == 1?"Hoạt động":"Không hoạt động"}</td>
                             <td>
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editUserModal" 
-                                        data-Id="${account.getId()}"
+                                        data-Id="${account.Id}"
                                         data-Email="${account.getEmail()}"
                                         data-Password="${account.getPassword()}"
                                         data-Fullname="${account.getFullname()}"
