@@ -69,7 +69,22 @@
                 -webkit-line-clamp: 2;
                 overflow: hidden;
                 text-overflow: ellipsis;
-         
+            }
+            .inblog-infor h5{
+                color: #6699ff;
+            }
+            #createblog{
+                padding: 1em 2em;
+                border: 1px solid black;
+                border-radius: 10px;
+                color: white;
+                background-color: #6699ff;
+
+            }
+            #createblog:hover{
+                color: black;
+                background-color: white;
+            }
             #cr{
                 width: 10%;
                 margin: 0 auto;
