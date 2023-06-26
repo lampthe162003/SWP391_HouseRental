@@ -34,7 +34,7 @@
             <div class="south-load"></div>
         </div>
 
-        
+        <!-- ##### Header Area Start ##### -->
         <header class="header-area">
             <!-- Main Header Area -->
             <div class="main-header-area" id="stickyHeader">
