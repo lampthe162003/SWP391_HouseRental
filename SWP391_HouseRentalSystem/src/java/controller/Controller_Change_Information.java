@@ -69,6 +69,7 @@ public class Controller_Change_Information extends HttpServlet {
         request.getRequestDispatcher("changeinformation.jsp").forward(request, response);
     }
 
+
     /**
      * Handles the HTTP <code>POST</code> method.
      *
