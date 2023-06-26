@@ -19,7 +19,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <style>
 /*            #banner{
-                width: 100%;
+                width: 100%; dom
                 height: auto;
                 border: 1px solid black;
                 background-color: #Eaeaea;

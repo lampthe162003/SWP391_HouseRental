@@ -17,7 +17,7 @@
                 <form>
                     <div class="form-group">
                         <label for="Id">ID:</label>
-                        <input type="text" class="form-control" id="Id" name="Id" readonly>
+                        <input type="text" class="form-control" id="Id" name="Id" value="" readonly>
                     </div>
                     <div class="form-group">
                         <label for="Email">Email:</label>
@@ -34,7 +34,7 @@
                     <div class="form-group">
                         <label for="Role_ID">Vai trò:</label>
                         <select class="form-control" id="Role_ID" name="Role_ID">
-                            <c:if test="${account.getRole_ID() == 1}">
+                            <c:if test="${account.Role_ID == 1}">
                                 <option value="1">Admin</option>
                             </c:if>
                             <option value="2">Manager</option>
@@ -76,15 +76,15 @@
 <script>
     $('#editUserModal').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget);
-        var Id = button.data('Id');
-        var Email = button.data('Email');
-        var Password = button.data('Password');
-        var Fullname = button.data('Fullname');
-        var Role_ID = button.data('Role_ID');
-        var Gender = button.data('Gender');
-        var Phone_Number = button.data('Phone_Number');
-        var Address = button.data('Address');
-        var Status = button.data('Status');
+        var Id = button.data("Id");
+        var Email = button.data("Email");
+        var Password = button.data("Password");
+        var Fullname = button.data("Fullname");
+        var Role_ID = button.data("Role_ID");
+        var Gender = button.data("Gender");
+        var Phone_Number = button.data("Phone_Number");
+        var Address = button.data("Address");
+        var Status = button.data("Status");
 
         var modal = $(this);
         modal.find('#Id').val(Id);
