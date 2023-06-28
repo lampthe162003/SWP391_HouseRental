@@ -15,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <!-- Title sds -->
+    
     <title>South - Real Estate Agency Template | Elements</title>
 
     <!-- Favicon  -->
