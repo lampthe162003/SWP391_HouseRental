@@ -15,16 +15,36 @@ public class Comment_Blog {
     private String profilePicture;
     private Date commentDate;
     private String content;
-
+    private int id, commenterId;
     public Comment_Blog() {
     }
 
-    public Comment_Blog(String fullName, String profilePicture, Date commentDate, String content) {
+    public Comment_Blog(String fullName, String profilePicture, Date commentDate, String content, int id, int commenterId) {
         this.fullName = fullName;
         this.profilePicture = profilePicture;
         this.commentDate = commentDate;
         this.content = content;
+        this.id = id;
+        this.commenterId = commenterId;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getCommenterId() {
+        return commenterId;
+    }
+
+    public void setCommenterId(int commenterId) {
+        this.commenterId = commenterId;
+    }
+
+    
 
     public String getFullName() {
         return fullName;
