@@ -5,6 +5,7 @@
 package entity;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -13,19 +14,29 @@ import java.sql.Date;
 public class Messages {
     private int Id, Sender_ID, Receiver_ID;
     private Date Sent_Date;
+    private String content;
     private boolean Status, Deleted_By_Sender, Deleted_By_Receiver;
 
     public Messages() {
     }
 
-    public Messages(int Id, int Sender_ID, int Receiver_ID, Date Sent_Date, boolean Status, boolean Deleted_By_Sender, boolean Deleted_By_Receiver) {
+    public Messages(int Id, int Sender_ID, int Receiver_ID, Date Sent_Date,String content, boolean Status, boolean Deleted_By_Sender, boolean Deleted_By_Receiver) {
         this.Id = Id;
         this.Sender_ID = Sender_ID;
         this.Receiver_ID = Receiver_ID;
         this.Sent_Date = Sent_Date;
+        this.content = content;
         this.Status = Status;
         this.Deleted_By_Sender = Deleted_By_Sender;
         this.Deleted_By_Receiver = Deleted_By_Receiver;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public int getId() {
@@ -52,8 +63,9 @@ public class Messages {
         this.Receiver_ID = Receiver_ID;
     }
 
-    public Date getSent_Date() {
-        return Sent_Date;
+    public String getSent_Date() {
+        SimpleDateFormat f1 = new SimpleDateFormat("dd-MM-yyyy");
+        return f1.format(Sent_Date);
     }
 
     public void setSent_Date(Date Sent_Date) {
