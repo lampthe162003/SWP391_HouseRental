@@ -6,167 +6,32 @@ package dao;
 
 import context.DBContext;
 import entity.Account;
+import entity.Answer;
+import entity.Messages;
+import entity.Messengers;
+import entity.Question;
+import entity.Role;
+import jakarta.servlet.http.HttpSession;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Vector;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import model.DBConnect;
 
 /**
  *
  * @author win
  */
-public class DAOAccount extends DBConnect {
-
-//    public int addAccount(Account acc) {
-//        int n = 0;
-//        String sql = "INSERT INTO [dbo].[Account]\n"
-//                + "           ([Fullname]\n"
-//                + "           ,[Gender]\n"
-//                + "           ,[Address]\n"
-//                + "           ,[Email]\n"
-//                + "           ,[Password]\n"
-//                + "           ,[Phone_Number]\n"
-//                + "           ,[Role_ID]\n"
-//                + "           ,[Status])\n"
-//                + "           ,[Secure_Question_ID])\n"
-//                + "           ,[Secure_Answer_ID])\n"
-//                + "           ,[Profile_Picture])\n"
-//                + "     VALUES(?,?,?,?,?,?,?,?,?,?,?)";
-//        try {
-//            PreparedStatement pre = conn.prepareStatement(sql);
-//            // set parameter ?
-//            pre.setString(1, acc.getFullname());
-//            pre.setBoolean(2, acc.isGender());
-//            pre.setString(3, acc.getAddress());
-//            pre.setString(4, acc.getEmail());
-//            pre.setString(5, acc.getPassword());
-//            pre.setString(6, acc.getPhone_Number());
-//            pre.setInt(7, acc.getRole_ID());
-//            pre.setInt(8, acc.getStatus());
-//            pre.setInt(9, acc.getSecure_Question_ID());
-//            pre.setInt(10, acc.getSecure_Answer_ID());
-//            pre.setString(11, acc.getProfile_Picture());
-//            // run
-//            n = pre.executeUpdate();
-//        } catch (SQLException ex) {
-//            Logger.getLogger(DAOAccount.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        return n;
-//    }
-//    public int updateAccount(Account acc) {
-//        int n = 0;
-//        String sql = "UPDATE [dbo].[Account]\n"
-//                + "   SET [Fullname] = ?\n"
-//                + "      ,[Gender] = ?\n"
-//                + "      ,[Address] = ?\n"
-//                + "      ,[Password] = ?\n"
-//                + "      ,[Phone_Number] = ?\n"
-//                + "      ,[Role_ID] = ?\n"
-//                + "      ,[Status] = ?\n"
-//                + "      ,[Secure_Question_ID] = ?\n"
-//                + "      ,[Secure_Answer_ID] = ?\n"
-//                + "      ,[Profile_Picture] = ?\n"
-//                + " WHERE [Email] = ?";
-//
-//        try {
-//            PreparedStatement pre = conn.prepareStatement(sql);
-//            pre.setString(1, acc.getFullname());
-//            pre.setBoolean(2, acc.isGender());
-//            pre.setString(3, acc.getAddress());
-//            pre.setString(4, acc.getEmail());
-//            pre.setString(5, acc.getPassword());
-//            pre.setString(6, acc.getPhone_Number());
-//            pre.setInt(7, acc.getRole_ID());
-//            pre.setInt(8, acc.getStatus());
-//            pre.setInt(9, acc.getSecure_Question_ID());
-//            pre.setInt(10, acc.getSecure_Answer_ID());
-//            pre.setString(11, acc.getProfile_Picture());
-//            // RUN
-//            n = pre.executeUpdate();
-//        } catch (SQLException ex) {
-//            Logger.getLogger(DAOAccount.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        return n;
-//    }
-//    public Vector<Account> getAll() {
-//        Vector<Account> vector = new Vector<Account>();
-//        String sql = "select * from Account";
-//        ResultSet rs = this.getData(sql);
-//        try {
-//            while (rs.next()) {
-//                String Fullname = rs.getString(1);
-//                Boolean Gender = rs.getBoolean(2);
-//                String Address = rs.getString(3);
-//                String Email = rs.getString(4);
-//                String Password = rs.getString(5);
-//                String Phone_Number = rs.getString(6);
-//                int Role_ID = rs.getInt(7);
-//                int Status = rs.getInt(8);
-//                int Secure_Question_ID = rs.getInt(9);
-//                int Secure_Answer_ID = rs.getInt(10);
-//                String Profile_Picture = rs.getString(11);
-//                // create object
-//                Account acc = new Account(Role_ID, Fullname, Address, Email, Password, Phone_Number, true, Role_ID,
-//                        Status, Secure_Question_ID, Secure_Answer_ID, Profile_Picture);
-//                vector.add(acc);
-//            }
-//        } catch (SQLException ex) {
-//            Logger.getLogger(DAOAccount.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        return vector;
-//    }
-//    public Vector<Account> getAll(String sql) {
-//        Vector<Account> vector = new Vector<Account>();
-//        // String sql = "select * from Account";
-//        ResultSet rs = this.getData(sql);
-//        try {
-//            while (rs.next()) {
-//                String Fullname = rs.getString(1);
-//                Boolean Gender = rs.getBoolean(2);
-//                String Address = rs.getString(3);
-//                String Email = rs.getString(4);
-//                String Password = rs.getString(5);
-//                String Phone_Number = rs.getString(6);
-//                int Role_ID = rs.getInt(7);
-//                int Status = rs.getInt(8);
-//                int Secure_Question_ID = rs.getInt(9);
-//                int Secure_Answer_ID = rs.getInt(10);
-//                String Profile_Picture = rs.getString(11);
-//                // create object
-//                Account acc = new Account(Role_ID, Fullname, Address, Email, Password, Phone_Number, true, Role_ID,
-//                        Status, Secure_Question_ID, Secure_Answer_ID, Profile_Picture);
-//                vector.add(acc);
-//            }
-//        } catch (SQLException ex) {
-//            Logger.getLogger(DAOAccount.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        return vector;
-//    }
-    public int removeAccount(int email) {
-        int n = 0;
-        String sql = "delete from Account where Email=" + email;
-        try {
-            Statement state = conn.createStatement();
-            ResultSet rs1 = this.getData("select * from Account where Email=" + email);
-            if (rs1.next()) {
-                n = -1;
-            } else {
-                n = state.executeUpdate(sql);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(DAOAccount.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return n;
-    }
+public class DAOAccount {
 
     public Account Login(String email, String password) {
         String sql = "SELECT * FROM Account WHERE Email = ? and Password = ?";
         try {
+            Connection conn = new DBContext().getConnection();
             PreparedStatement pre = conn.prepareStatement(sql);
             pre.setString(1, email);
             pre.setString(2, password);
@@ -220,11 +85,287 @@ public class DAOAccount extends DBConnect {
         return null;
     }
 
-    public static void main(String[] args) {
-        DAOAccount dao = new DAOAccount();
-        Account acc = dao.Login("TrungHieu@gmail.com", "123456");
-        System.out.println(acc);
+    public Account getAccountById(int id) {
+        try {
+            String stmSql = "select * from Account where Id = ?";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(stmSql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Account a = new Account(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getBoolean(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getInt(8),
+                        rs.getInt(9),
+                        rs.getInt(10),
+                        rs.getInt(11),
+                        rs.getString(12));
+                return a;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
     }
-    ////test
+
+    public void changeInformation(String fullName, String address, String phone, Boolean gender, String picture, String email) {
+        try {
+            String stmSql = "update Account set Fullname = ? , Address = ? , Phone_Number = ? , Gender = ? , Profile_Picture = ? "
+                    + " where Email = ?";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(stmSql);
+            ps.setString(1, fullName);
+            ps.setString(2, address);
+            ps.setString(3, phone);
+            ps.setBoolean(4, gender);
+            ps.setString(5, picture);
+            ps.setString(6, email);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void changePassword(String email, String password) {
+        try {
+            String stmSql = "update Account set Password = ? where Email = ?";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(stmSql);
+            ps.setString(2, email);
+            ps.setString(1, password);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public boolean checkExistPassword(String email, String pass) {
+        try {
+            String stmSql = "select * from Account where Email = ? and Password = ?";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(stmSql);
+            ps.setString(1, email);
+            ps.setString(2, pass);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return true;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
+
+    public List<Question> getListQuestion() {
+        try {
+            List<Question> lsQ = new ArrayList<>();
+            String stmSql = "select * from Secure_Questions";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(stmSql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Question q = new Question(rs.getInt(1), rs.getString(2));
+                lsQ.add(q);
+            }
+            return lsQ;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+
+    public List<Role> getListRole() {
+        try {
+            List<Role> lsR = new ArrayList<>();
+            String stmSql = "select * from Account_Role";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(stmSql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Role r = new Role(rs.getInt(1), rs.getString(2));
+                lsR.add(r);
+            }
+            return lsR;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+
+    public List<Answer> getListAnswer(int questionId) {
+        try {
+            List<Answer> lsA = new ArrayList<>();
+            String stmSql = "select * from Secure_Answers where Secure_Question_ID = ?";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(stmSql);
+            ps.setInt(1, questionId);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Answer q = new Answer(rs.getInt(1), rs.getInt(2), rs.getString(3));
+                lsA.add(q);
+            }
+            return lsA;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
+    public boolean checkEmail(String email) {
+        try {
+            String stmSql = "select * from Account where Email = ?";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(stmSql);
+            ps.setString(1, email);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return true;
+            }
+        } catch (Exception e) {
+            System.out.println("Have error!");
+        }
+        return false;
+    }
+
+    public boolean checkSecure(String email, int idQ, int idA) {
+        try {
+            String stmSql = "select * from Account where Email = ? and Secure_Question_ID = ? and Secure_Answer_ID = ?";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(stmSql);
+            ps.setString(1, email);
+            ps.setInt(2, idQ);
+            ps.setInt(3, idA);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return true;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
+
+    public void addAccount(String fullname, boolean gender, String address, String email, String password, String phone, int roleId, int questionId, int answerId, String picture) {
+        try {
+            String stmSql = "insert into Account([Fullname]\n"
+                    + "      ,[Gender]\n"
+                    + "      ,[Address]\n"
+                    + "      ,[Email]\n"
+                    + "      ,[Password]\n"
+                    + "      ,[Phone_Number]\n"
+                    + "      ,[Role_ID]\n"
+                    + "      ,[Status]\n"
+                    + "      ,[Secure_Question_ID]\n"
+                    + "      ,[Secure_Answer_ID]\n"
+                    + "      ,[Profile_Picture]) values (?,?,?,?,?,?,?,?,?,?,?)";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(stmSql);
+            ps.setString(1, fullname);
+            ps.setBoolean(2, gender);
+            ps.setString(3, address);
+            ps.setString(4, email);
+            ps.setString(5, password);
+            ps.setString(6, phone);
+            ps.setInt(7, roleId);
+            ps.setBoolean(8, false);
+            ps.setInt(9, questionId);
+            ps.setInt(10, answerId);
+            ps.setString(11, picture);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("Have error!");
+        }
+    }
+
+    public void insertMessages(int senderId, int receiverId, String inbox) {
+        try {
+            if (senderId == receiverId) {
+                return;
+            }
+            String stmSql = "insert into Messages(Sender_ID,Receiver_ID,Sent_Date,Content,Status,Deleted_By_Sender,Deleted_By_Receiver) values(?,?,?,?,?,?,?)";
+            Date now = new Date();
+            SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+            String date1 = f.format(now);
+            java.sql.Date date2 = java.sql.Date.valueOf(date1);
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(stmSql);
+            ps.setInt(1, senderId);
+            ps.setInt(2, receiverId);
+            ps.setDate(3, date2);
+            ps.setString(4, inbox);
+            ps.setBoolean(5, false);
+            ps.setBoolean(6, false);
+            ps.setBoolean(7, false);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public List<Messages> getListMessages(int senderId, int receiverId) {
+        try {
+            String stmSql = "select * from Messages where (Sender_ID = ? and Receiver_ID = ?) or (Sender_ID = ? and Receiver_ID = ?)";
+            List<Messages> lsM = new ArrayList<>();
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(stmSql);
+            ps.setInt(1, senderId);
+            ps.setInt(4, senderId);
+            ps.setInt(2, receiverId);
+            ps.setInt(3, receiverId);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Messages m = new Messages(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getDate(4), rs.getString(5), rs.getBoolean(6), rs.getBoolean(7), rs.getBoolean(8));
+                lsM.add(m);
+            }
+            System.out.println(lsM.size() + "!");
+            return lsM;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
+    public void deleteMessage(int id, int senderId, int account) {
+        try {
+            String stmSql = "update Messages";
+            if(senderId == account){
+                stmSql += " set Deleted_By_Sender = ? where Id = ?";
+            }else{
+                stmSql += " set Deleted_By_Receiver = ? where Id = ?";
+            }
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(stmSql);
+            ps.setInt(2, id);
+            ps.setBoolean(1, true);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    
+    public List<Messengers> getListMessengers(int Receiver_ID,String name) {
+        try {
+            List<Messengers> lsMgr = new ArrayList<>();
+            String stmSql = "select m.Sender_ID,a.Fullname,m.Sent_Date,m.Content,a.Profile_Picture from Messages as m inner join Account as a on m.Sender_ID = a.Id where m.Receiver_ID = ? and a.Fullname like ? and m.id in (select max(Id) from Messages where Receiver_ID = ? group by Sender_ID,Receiver_ID)";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(stmSql);
+            ps.setInt(1, Receiver_ID);
+            ps.setString(2, "%"+name+"%");
+            ps.setInt(3, Receiver_ID);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Messengers m = new Messengers(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getString(4), rs.getString(5));
+                lsMgr.add(m);
+            }
+            return lsMgr;
+        } catch (Exception e) {
+            System.out.println("Have error in getListMessengers!");
+        }
+        return null;
+    }
 
 }
