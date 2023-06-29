@@ -14,6 +14,8 @@ public class House {
     private int Id,House_Owener_ID,Category_ID,District_ID;
     private String Full_Adress,Description,Title;
     private float Price,Rating;
+    private String Price,Full_Adress,Description,Title;
+    private float Rating;
     private Date Added_Date;
 
     public House() {

@@ -71,6 +71,21 @@ public class DAOBlog {
         }
         return 0;
     }
+    public int countFavouriteBlog(int userId) {
+        try {
+            String stmSql = "select count(*) from Favourite_Blogs where UserID = ?";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(stmSql);
+            ps.setInt(1, userId);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            System.out.println("Have error in countBlog!");
+        }
+        return 0;
+    }
 
     public List<Blog> getListBlog(int first, int last) {
         try {

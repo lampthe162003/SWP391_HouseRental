@@ -76,6 +76,7 @@ public class Controller_List_Blog extends HttpServlet {
             }
             List<Blog> lsB = blog.getListBlog(index * size - 2, index * size);
             request.setAttribute("countB", countBlog);
+            request.setAttribute("countB", countBlog);
             request.setAttribute("lsB", lsB);
             request.setAttribute("endPage", endPage);
             request.setAttribute("index", index);
