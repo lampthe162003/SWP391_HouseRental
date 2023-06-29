@@ -6,7 +6,6 @@
 package controller;
 
 import dao.DAOBlog;
-import dao.DAOComment;
 import entity.Account;
 import entity.Blog;
 import entity.Comment_Blog;
@@ -60,11 +59,19 @@ public class Controller_Detail_Blog extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        Account a = (Account)session.getAttribute("acc");
         int idBlog = Integer.parseInt(request.getParameter("id"));
         DAOBlog blog = new DAOBlog();
-        DAOComment cmt = new DAOComment();
-        List<Comment_Blog> lsC = cmt.getListComment(idBlog);
+        List<Comment_Blog> lsC = blog .getListComment(idBlog);
         Blog b = blog.getBlogFollowId(idBlog);
+        if(blog.checkExistFavouriteBlog(idBlog, a.getId())){
+            //inactive
+            request.setAttribute("na", "nonfavoblog");
+        }else{
+            //active
+            request.setAttribute("na", "favoblog");
+        }
         request.setAttribute("b", b);
         request.setAttribute("lsC", lsC);
         request.getRequestDispatcher("detailblog.jsp").forward(request, response);
