@@ -1,138 +1,199 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%-- 
+    Document   : admin-list-account
+    Created on : Jun 22, 2023, 4:42:12 PM
+    Author     : Hayashi
+--%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Trang quản trị</title>
-        <!-- Đường dẫn tới các file CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <!-- Đường dẫn tới các file JavaScript -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <!-- Đường dẫn tới các file JavaScript -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- Main CSS-->
-        <link rel="stylesheet" type="text/css" href="main.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-        <!-- or -->
-        <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-        <!-- Font-icon css-->
-        <link rel="stylesheet" type="text/css"
-              href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
-
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
     </head>
     <body>
-        <%@ include file="header.jsp" %>
-        <table class="table table-hover table-bordered" id="sampleTable">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Email</th>
-                    <th>Họ và tên</th>
-                    <th>Vai trò</th>
-                    <th>Số điện thoại</th>
-                    <th>Trạng thái</th>
-                    <th>Thao tác</th>
-                </tr>
-            </thead>
-            <tbody>
-                <c:forEach var="account" items="${accountList}">
-                    <c:if test="${account.getRole_ID() != 1}">
-                        <tr>
-                            <td>${account.getId()}</td>
-                            <td>${account.getEmail()}</td>
-                            <td>${account.getFullname()}</td>
-                            <td>
-                                <c:if test="${account.getRole_ID() == 1}">Admin</c:if>
-                                <c:if test="${account.getRole_ID() == 2}">Manager</c:if>
-                                <c:if test="${account.getRole_ID() == 3}">Tenant</c:if>
-                                </td>
-                                <td>${account.getPhone_Number()}</td>
-                            <td>${account.getStatus() == 1?"Hoạt động":"Không hoạt động"}</td>
-                            <td>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editUserModal" 
-                                        data-Id="${account.Id}"
-                                        data-Email="${account.getEmail()}"
-                                        data-Password="${account.getPassword()}"
-                                        data-Fullname="${account.getFullname()}"
-                                        data-Role_ID="${account.getRole_ID()}"
-                                        data-Gender="${account.getGender()}"
-                                        data-Address="${account.getAddress()}"
-                                        data-Phone_Number="${account.getPhone_Number()}"
-                                        data-Status="${account.getStatus()}">
-                                    Chỉnh sửa
-                                </button>
+        <jsp:include page="header.jsp"></jsp:include>
+            <table class="table table-hover table-bordered" id="accountTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tên đăng nhập</th>
+                        <th>Họ và tên</th>
+                        <th>Vai trò</th>
+                        <th>Email</th>
+                        <th>Số điện thoại</th>
+                        <th>Trạng thái</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <c:forEach items="${accountList}" var="acc">
+                    <tr>
+                        <td>${acc.id}</td>
+                        <td>${acc.fullname}</td>
+                        <td>${acc.email}</td>
+                        <td>${acc.email}</td>
+                        <td>${acc.phoneNumber}</td>
+                        <td>
+                            <c:if test="${acc.roleID == 1}">Admin</c:if>
+                            <c:if test="${acc.roleID == 2}">Manager</c:if>
+                            <c:if test="${acc.roleID == 3}">Tenant</c:if>
                             </td>
-                        </tr>
-                    </c:if>
+                            <td>${acc.status == 1 ? "Active" : "Disabled"}</td>
+                        <td>
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#editUserModal"
+                                    data-id="${acc.id}"
+                                    data-email="${acc.email}"
+                                    data-password="${acc.password}"
+                                    data-fullname="${acc.fullname}"
+                                    data-gender="${acc.gender}"
+                                    data-roleID="${acc.roleID}"
+                                    data-phoneNumber="${acc.phoneNumber}"
+                                    data-status="${acc.status}">
+                                Change
+                            </button>    
+                        </td>
+                    </tr>
                 </c:forEach>
             </tbody>
-        </table>    
-        <%@ include file="editusermodal.jsp" %>
-    </body>
-    <script src="assets/js/jquery-3.2.1.min.js"></script>
-    <script src="assets/js/popper.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="assets/js/main.js"></script>
-    <!-- The javascript plugin to display page loading on top-->
-    <script src="assets/js/plugins/pace.min.js"></script>
-    <!-- Page specific javascripts-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
-    <!-- Data table plugin-->
-    <script type="text/javascript" src="assets/js/plugins/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="assets/js/plugins/dataTables.bootstrap.min.js"></script>
-    <script type="text/javascript">
-        $('#sampleTable').DataTable();
-        //Thời Gian
-        function time() {
-            var today = new Date();
-            var weekday = new Array(7);
-            weekday[0] = "Chủ Nhật";
-            weekday[1] = "Thứ Hai";
-            weekday[2] = "Thứ Ba";
-            weekday[3] = "Thứ Tư";
-            weekday[4] = "Thứ Năm";
-            weekday[5] = "Thứ Sáu";
-            weekday[6] = "Thứ Bảy";
-            var day = weekday[today.getDay()];
-            var dd = today.getDate();
-            var mm = today.getMonth() + 1;
-            var yyyy = today.getFullYear();
-            var h = today.getHours();
-            var m = today.getMinutes();
-            var s = today.getSeconds();
-            m = checkTime(m);
-            s = checkTime(s);
-            nowTime = h + " giờ " + m + " phút " + s + " giây";
-            if (dd < 10) {
-                dd = '0' + dd
-            }
-            if (mm < 10) {
-                mm = '0' + mm
-            }
-            today = day + ', ' + dd + '/' + mm + '/' + yyyy;
-            tmp = '<span class="date"> ' + today + ' - ' + nowTime +
-                    '</span>';
-            document.getElementById("clock").innerHTML = tmp;
-            clocktime = setTimeout("time()", "1000", "Javascript");
+        </table>
+        <div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="editUserModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editUserModalLabel">Edit User Profile</h5>
+                        <button class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
 
-            function checkTime(i) {
-                if (i < 10) {
-                    i = "0" + i;
-                }
-                return i;
-            }
-        }
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="id">ID:</label>
+                                <input type="text" class="form-control" id="id" name="id" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="fullname">Full Name:</label>
+                                <input type="text" class="form-control" id="fullname" name="fullname">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="text" class="form-control" id="email" name="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password:</label>
+                                <input type="password" class="form-control" id="password" name="password">
+                            </div>
+                            <div class="form-group">
+                                <label for="role">Role:</label>
+                                <select class="form-control" id="role" name="role">
+                                    <option value="1">Admin</option>
+                                    <option value="2">House Owner</option>
+                                    <option value="3">Tenant</option>
+                                </select>
+                            </div>
+                            <div class='form-group'>
+                                <label for='gender'>Gender:</label>
+                                <select class='form-control' id='gender' name='gender'>
+                                    <option value='1'>Male</option>
+                                    <option value='0'>Female</option>
+                                </select>
+                            </div>
+                            <div class='form-group'>
+                                <label for='phoneNumber'>Phone Number:</label>
+                                <input type='text' class='form-control' id='phoneNumber' name='phoneNumber'>
+                            </div>
+                            <div class='form-group'>
+                                <label for='status'>Status:</label>
+                                <select class='form-control' id='status' name='status'>
+                                    <option value='1'>Active</option>
+                                    <option value='0'>Disabled</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class='modal-footer'>
+                        <button class='btn btn-secondary' data-dismiss='modal'>Close</button>
+                        <button class='btn btn-primary' onclick='saveUser()'>Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+                            $('#editUserModal').on('show.bs.modal', function (event) {
+                                var button = $(event.relatedTarget);
+                                var id = button.data('id');
+                                var fullname = button.data('fullname');
+                                var email = button.data('email');
+                                var password = button.data('password');
+                                var roleId = button.data('roleID');
+                                var gender = button.data('gender');
+                                var phoneNumber = button.data('phoneNumber');
+                                var status = button.data('status');
+
+                                var modal = $(this);
+                                modal.find('#id').val(id);
+                                modal.find('#fullname').val(fullname);
+                                modal.find('#email').val(email);
+                                modal.find('#password').val(password);
+                                modal.find('#role').val(roleId);
+                                modal.find('#gender').val(gender);
+                                modal.find('#phoneNumber').val(phoneNumber);
+                                modal.find('status').val(status);
+                            });
+
+                            function saveUser() {
+                                var id = $('#id').val();
+                                var fullname = $('#fullname').val();
+                                var email = $('#email').val();
+                                var password = $('#password').val();
+                                var role = $('#role').val();
+                                var gender = $('gender').val();
+                                var phoneNumber = $('phoneNumber').val();
+                                var status = $('#status').val();
+                                var currentUrl = window.location.href;
+
+                                $.ajax({
+                                    type: "POST",
+                                    url: "admin-update-user",
+                                    data: {
+                                        id: id,
+                                        fullname: fullname,
+                                        email: email,
+                                        password: password,
+                                        roleID: role,
+                                        gender: gender,
+                                        phoneNumber: phoneNumber,
+                                        status: status
+                                    },
+                                    success: function (response) {
+                                        $.ajax({
+                                            type: "POST",
+                                            url: "admin-home",
+                                            success: function (response) {
+                                                var accountList = response;
+                                                if (accountList) {
+                                                    sessionStorage.setItem('accountList', JSON.stringify(accountList));
+                                                    location.reload();
+                                                }
+                                            }
+                                        });
+                                        $('#editUserModal').modal('hide');
+                                    },
+                                    error: function (xhr, status, error) {
+                                        console.error(xhr.responseText);
+                                    }
+                                });
+                            }
     </script>
 </html>
