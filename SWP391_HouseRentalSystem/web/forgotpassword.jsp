@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     </head>
     <body>
-
+<!-- headers -->
         <div class="container">
             <h2>Forgot Password</h2>
             <form method="post" action="forgotpassword" id="frm">
