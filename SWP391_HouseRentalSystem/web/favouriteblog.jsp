@@ -13,8 +13,7 @@
         <title>JSP Page</title>
         <link rel="icon" href="img/core-img/favicon.ico">
 
-        <!-- Style CSS -->
-        <!--        <link rel="stylesheet" href="style.css">-->
+       
         <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
         <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="assets/css/styleHome.css">
