@@ -17,7 +17,7 @@
  
         <title>South - Real Estate Agency Template | About Us</title>
 
-        <!-- Favico -->
+        <!-- Favio -->
         <link rel="icon" href="img/core-img/favicon.ico">
 
         <!-- Style CSS -->
