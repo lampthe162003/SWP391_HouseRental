@@ -6,6 +6,7 @@ package dao;
 
 import context.DBContext;
 import entity.Blog;
+import entity.Comment_Blog;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -46,6 +47,21 @@ public class DAOBlog {
             String stmSql = "select count(*) from Blog_Posts";
             Connection conn = new DBContext().getConnection();
             PreparedStatement ps = conn.prepareStatement(stmSql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            System.out.println("Have error in countBlog!");
+        }
+        return 0;
+    }
+    public int countFavouriteBlog(int userId) {
+        try {
+            String stmSql = "select count(*) from Favourite_Blogs where UserID = ?";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(stmSql);
+            ps.setInt(1, userId);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 return rs.getInt(1);
@@ -177,6 +193,93 @@ public class DAOBlog {
             PreparedStatement ps = conn.prepareStatement(stmSql);
             ps.setString(1, content);
             ps.setInt(2, id);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public void addComment(int postId, int commenterId, String content){
+        try {
+            String stmSql = "insert into Post_Comments(Post_ID,Commenter_ID,Comment_Date,Content) values (?,?,?,?)";
+            Date now = new Date();
+            SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+            String date = f.format(now);
+            java.sql.Date date2 = java.sql.Date.valueOf(date);
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(stmSql);
+            ps.setInt(1, postId);
+            ps.setInt(2, commenterId);
+            ps.setDate(3, date2);
+            ps.setString(4, content);
+            ps.executeQuery();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public void deleteCommentBlog(int id){
+        try {
+            String stmSql = "delete from Post_Comments where Id = ?";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(stmSql);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public List<Comment_Blog> getListComment(int postId){
+        try {
+            List<Comment_Blog> lsC = new ArrayList<>();
+            String stmSql = "select a.Fullname,a.Profile_Picture,pc.Comment_Date,pc.Content,pc.Id,pc.Commenter_ID from Account as a inner join Post_Comments as pc on a.Id = pc.Commenter_ID where pc.Post_ID = ?";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(stmSql);
+            ps.setInt(1, postId);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Comment_Blog cb = new Comment_Blog(rs.getString(1), rs.getString(2), rs.getDate(3), rs.getString(4),rs.getInt(5),rs.getInt(6));
+                lsC.add(cb);
+            }
+            return lsC;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+    public boolean checkExistFavouriteBlog(int blogId, int userId){
+        try {
+            String stmSql = "select * from Favourite_Blogs where BlogId = ? and UserID = ?";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(stmSql);
+            ps.setInt(1, blogId);
+            ps.setInt(2, userId);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                return false;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return true;
+    }
+    public void insertFavouriteBlog(int blogId, int userId){
+        try {
+            String stmSql = "insert into Favourite_Blogs(BlogId,UserID) values(?,?)";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(stmSql);
+            ps.setInt(1, blogId);
+            ps.setInt(2, userId);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public void deleteFavouriteBlog(int blogId, int userId){
+        try {
+            String stmSql = "delete from Favourite_Blogs where BlogId = ? and UserID = ?";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(stmSql);
+            ps.setInt(1, blogId);
+            ps.setInt(2, userId);
             ps.executeUpdate();
         } catch (Exception e) {
             System.out.println(e.getMessage());

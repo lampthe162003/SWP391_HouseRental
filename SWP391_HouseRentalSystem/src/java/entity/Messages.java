@@ -5,6 +5,7 @@
 package entity;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -62,8 +63,9 @@ public class Messages {
         this.Receiver_ID = Receiver_ID;
     }
 
-    public Date getSent_Date() {
-        return Sent_Date;
+    public String getSent_Date() {
+        SimpleDateFormat f1 = new SimpleDateFormat("dd-MM-yyyy");
+        return f1.format(Sent_Date);
     }
 
     public void setSent_Date(Date Sent_Date) {

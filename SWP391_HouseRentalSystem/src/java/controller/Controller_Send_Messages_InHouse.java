@@ -5,7 +5,18 @@
 package controller;
 
 import dao.DAOAccount;
+import dao.DAOHouse;
 import entity.Account;
+import entity.Districts;
+import entity.House;
+import entity.House_Category;
+import entity.House_Details;
+import entity.House_Directions;
+import entity.House_Images;
+import entity.House_Ratings;
+import entity.InforOwner;
+import entity.Messages;
+import entity.NewsPostHouse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -13,13 +24,13 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import java.util.regex.Pattern;
+import java.util.List;
 
 /**
  *
  * @author ADMIN
  */
-public class Controller_Change_Information extends HttpServlet {
+public class Controller_Send_Messages_InHouse extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +49,10 @@ public class Controller_Change_Information extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Controller_Change_Information</title>");
+            out.println("<title>Servlet Controller_Send_Messages</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Controller_Change_Information at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet Controller_Send_Messages at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,13 +70,7 @@ public class Controller_Change_Information extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        Account a = (Account) session.getAttribute("acc");
-        request.setAttribute("fullname", a.getFullname());
-        request.setAttribute("address", a.getAddress());
-        request.setAttribute("phone", a.getPhone_Number().trim());
-        request.setAttribute("gender", a.getGender());
-        request.getRequestDispatcher("changeinformation.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**
@@ -80,34 +85,54 @@ public class Controller_Change_Information extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        Account a = (Account) session.getAttribute("acc");
-        String fullName, address, phone, picture, email, password;
-        Boolean gender;
-        fullName = request.getParameter("fullname");
-        address = request.getParameter("address");
-        phone = request.getParameter("phone");
-        gender = request.getParameter("gender").equals("1");
-        picture = request.getParameter("picture");
-        email = a.getEmail();
-        password = a.getPassword();
-        Pattern f = Pattern.compile("^[a-zA-Z\\s]+$");
-        DAOAccount account = new DAOAccount();
-        if (f.matcher(fullName).find()) {
-            Pattern p = Pattern.compile("^[0-9]+$");
-            if (p.matcher(phone).find()) {
-                account.changeInformation(fullName, address, phone, gender, picture, email);
-                session.removeAttribute("acc");
-                Account acc = account.getAccount(email, password);
-                session.setAttribute("acc", acc);
-                response.sendRedirect("home");
+        Account acc = (Account) session.getAttribute("acc");
+        String inbox = request.getParameter("inbox");
+        int houseId = Integer.parseInt(request.getParameter("houseId"));
+        int senderId = acc.getId();
+        int receiverId = Integer.parseInt(request.getParameter("receiverId"));
+        DAOAccount a = new DAOAccount();
+        DAOHouse h = new DAOHouse();
+        a.insertMessages(senderId, receiverId, inbox);
+
+        List<House_Images> lsHI = h.getListHouseImageByHouseId(houseId);
+        String firstImg = "./assets/images/";
+        String lsImg = "";
+        for (int i = 0; i < lsHI.size(); i++) {
+            if (i != lsHI.size() - 1) {
+                if (i == 0) {
+                    firstImg += lsHI.get(i).getImage();
+                }
+                lsImg += lsHI.get(i).getImage().concat(",");
             } else {
-                request.setAttribute("alertP", "Invalid phone number!");
-                request.getRequestDispatcher("changeinformation.jsp").forward(request, response);
+                lsImg += lsHI.get(i).getImage();
             }
-        } else {
-            request.setAttribute("alertF", "Full name must start with letter!");
-            request.getRequestDispatcher("changeinformation.jsp").forward(request, response);
         }
+
+        House hs = h.getHouseById(houseId);
+        House_Details hd = h.getHouseDetailById(houseId);
+        House_Directions hdi = h.getHouseDirectionById(houseId);
+        Districts d = h.getDistrictById(houseId);
+        House_Category hc = h.getHouseCategoryById(houseId);
+        InforOwner io = h.getInforOfOwner(houseId);
+        if (acc.getId() != io.getId()) {
+            List<Messages> lsM = a.getListMessages(acc.getId(), io.getId());
+            request.setAttribute("lsM", lsM);
+        }
+        List<NewsPostHouse> lsH = h.getNewListPost(houseId);
+        House_Ratings hr = h.getHouseRating(houseId, acc.getId());
+        request.setAttribute("fhouse", hs);
+        request.setAttribute("fhousedetail", hd);
+        request.setAttribute("fhousedirection", hdi);
+        request.setAttribute("fdistrict", d);
+        request.setAttribute("fhousecategory", hc);
+        request.setAttribute("finforowner", io);
+        request.setAttribute("firstImg", firstImg);
+        request.setAttribute("imgPath", lsImg);
+        request.setAttribute("houseId", houseId);
+        request.setAttribute("showM", "showM");
+        request.setAttribute("hr", hr);
+        request.setAttribute("lsH", lsH);
+        request.getRequestDispatcher("detailhouse.jsp").forward(request, response);
     }
 
     /**

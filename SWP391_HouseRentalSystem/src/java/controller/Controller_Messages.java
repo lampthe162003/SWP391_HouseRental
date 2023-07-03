@@ -6,6 +6,8 @@ package controller;
 
 import dao.DAOAccount;
 import entity.Account;
+import entity.Messages;
+import entity.Messengers;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -13,13 +15,13 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import java.util.regex.Pattern;
+import java.util.List;
 
 /**
  *
  * @author ADMIN
  */
-public class Controller_Change_Information extends HttpServlet {
+public class Controller_Messages extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +40,10 @@ public class Controller_Change_Information extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Controller_Change_Information</title>");
+            out.println("<title>Servlet Controller_Messages</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Controller_Change_Information at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet Controller_Messages at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -61,11 +63,21 @@ public class Controller_Change_Information extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         Account a = (Account) session.getAttribute("acc");
-        request.setAttribute("fullname", a.getFullname());
-        request.setAttribute("address", a.getAddress());
-        request.setAttribute("phone", a.getPhone_Number().trim());
-        request.setAttribute("gender", a.getGender());
-        request.getRequestDispatcher("changeinformation.jsp").forward(request, response);
+        int sender_ID = a.getId();
+        DAOAccount account = new DAOAccount();
+        String name = request.getParameter("searchnamee");
+        List<Messengers> lsMgr = account.getListMessengers(sender_ID, name != null ? name : "");
+        if (request.getParameter("receiverid") != null) {
+            int receiver_ID = Integer.parseInt(request.getParameter("receiverid"));
+            List<Messages> lsMsg = account.getListMessages(sender_ID, receiver_ID);
+            Account receiver = account.getAccountById(receiver_ID);
+            request.setAttribute("lsMsg", lsMsg);
+            request.setAttribute("receiver", receiver);
+            request.setAttribute("activeMess", receiver_ID);
+        }
+        request.setAttribute("name", name);
+        request.setAttribute("lsMgr", lsMgr);
+        request.getRequestDispatcher("message.jsp").forward(request, response);
     }
 
     /**
@@ -81,33 +93,26 @@ public class Controller_Change_Information extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         Account a = (Account) session.getAttribute("acc");
-        String fullName, address, phone, picture, email, password;
-        Boolean gender;
-        fullName = request.getParameter("fullname");
-        address = request.getParameter("address");
-        phone = request.getParameter("phone");
-        gender = request.getParameter("gender").equals("1");
-        picture = request.getParameter("picture");
-        email = a.getEmail();
-        password = a.getPassword();
-        Pattern f = Pattern.compile("^[a-zA-Z\\s]+$");
         DAOAccount account = new DAOAccount();
-        if (f.matcher(fullName).find()) {
-            Pattern p = Pattern.compile("^[0-9]+$");
-            if (p.matcher(phone).find()) {
-                account.changeInformation(fullName, address, phone, gender, picture, email);
-                session.removeAttribute("acc");
-                Account acc = account.getAccount(email, password);
-                session.setAttribute("acc", acc);
-                response.sendRedirect("home");
-            } else {
-                request.setAttribute("alertP", "Invalid phone number!");
-                request.getRequestDispatcher("changeinformation.jsp").forward(request, response);
-            }
+        String name = request.getParameter("searchname") == null ? "" : request.getParameter("searchname");
+        if (name != null) {
+            List<Messengers> lsMgr = account.getListMessengers(a.getId(), name);
+            request.setAttribute("lsMgr", lsMgr);
         } else {
-            request.setAttribute("alertF", "Full name must start with letter!");
-            request.getRequestDispatcher("changeinformation.jsp").forward(request, response);
+            List<Messengers> lsMgr = account.getListMessengers(a.getId(), name);
+            int receiverID = Integer.parseInt(request.getParameter("receiverID"));
+            String contentMess = request.getParameter("messcontent");
+            account.insertMessages(a.getId(), receiverID, contentMess);
+            List<Messages> lsMsg = account.getListMessages(a.getId(), receiverID);
+            Account receiver = account.getAccountById(receiverID);
+            request.setAttribute("lsMgr", lsMgr);
+            request.setAttribute("lsMsg", lsMsg);
+            request.setAttribute("receiver", receiver);
+            request.setAttribute("activeMess", receiverID);
         }
+
+        request.setAttribute("name", name);
+        request.getRequestDispatcher("message.jsp").forward(request, response);
     }
 
     /**

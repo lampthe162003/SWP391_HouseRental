@@ -12,6 +12,8 @@ import java.sql.Date;
  */
 public class House {
     private int Id,House_Owener_ID,Category_ID,District_ID;
+    private String Full_Adress,Description,Title;
+    private float Price,Rating;
     private String Price,Full_Adress,Description,Title;
     private float Rating;
     private Date Added_Date;
@@ -19,7 +21,7 @@ public class House {
     public House() {
     }
 
-    public House(int Id, int House_Owener_ID, int Category_ID, int District_ID, String Price, String Full_Adress, String Description, String Title, float Rating, Date Added_Date) {
+    public House(int Id, int House_Owener_ID, int Category_ID, int District_ID, Float Price, String Full_Adress, String Description, String Title, float Rating, Date Added_Date) {
         this.Id = Id;
         this.House_Owener_ID = House_Owener_ID;
         this.Category_ID = Category_ID;
@@ -64,13 +66,14 @@ public class House {
         this.District_ID = District_ID;
     }
 
-    public String getPrice() {
+    public float getPrice() {
         return Price;
     }
 
-    public void setPrice(String Price) {
+    public void setPrice(float Price) {
         this.Price = Price;
     }
+
 
     public String getFull_Adress() {
         return Full_Adress;
