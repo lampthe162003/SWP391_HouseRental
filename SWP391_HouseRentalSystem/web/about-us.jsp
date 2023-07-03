@@ -32,7 +32,7 @@
         <!-- ##### Header Are# -->
         <header class="header-area">
 
-            <!-- Top Heads Area -->
+            <!-- Top Header Area -->
             <div class="top-header-area">
                 <div class="h-100 d-md-flex justify-content-between align-items-center">
                     <div class="email-address">
