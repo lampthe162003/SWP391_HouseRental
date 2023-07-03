@@ -24,7 +24,7 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <!-- Preloadesr -->
+        <!-- Psreloar -->
         <div id="preloader">
             <div class="south-load"></div>
         </div>
