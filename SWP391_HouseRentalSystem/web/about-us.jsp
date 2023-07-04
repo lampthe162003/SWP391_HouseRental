@@ -29,7 +29,7 @@
             <div class="south-load"></div>
         </div>
 
-        <!-- ##### HeadAre -->
+        <!-- ##### Head -->
         <header class="header-area">
 
             <!-- Top Header Aea -->
