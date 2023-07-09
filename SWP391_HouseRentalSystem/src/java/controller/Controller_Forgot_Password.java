@@ -4,10 +4,8 @@
  */
 package controller;
 
-import dao.DAOAnswer;
-import dao.DAOChange;
-import dao.DAOCheck;
-import dao.DAOQuestion;
+import dao.DAOAccount;
+import dao.DAOHouse;
 import entity.Answer;
 import entity.Question;
 import java.io.IOException;
@@ -64,8 +62,8 @@ public class Controller_Forgot_Password extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        DAOQuestion dQ = new DAOQuestion();
-        List<Question> lsQF = dQ.getListQuestion();
+        DAOAccount a = new DAOAccount();
+        List<Question> lsQF = a.getListQuestion();
         request.setAttribute("lsQF", lsQF);
         request.setAttribute("ha", "Hello");
         request.getRequestDispatcher("forgotpassword.jsp").forward(request, response);
@@ -89,16 +87,14 @@ public class Controller_Forgot_Password extends HttpServlet {
         newPass = request.getParameter("newPass");
         confirmPass = request.getParameter("confirmPass");
         idQ = Integer.parseInt(request.getParameter("question"));
-        DAOAnswer a = new DAOAnswer();
-        DAOQuestion q = new DAOQuestion();
-        DAOCheck check = new DAOCheck();
-        DAOChange change = new DAOChange();
+        DAOAccount a = new DAOAccount();
+        DAOAccount change = new DAOAccount();
         List<Question> lsQF = new ArrayList<>();
         List<Answer> lsA = new ArrayList<>();
-        lsQF = q.getListQuestion();
+        lsQF = a.getListQuestion();
         request.setAttribute("lsQF", lsQF);
         if (forgot == null) {
-            lsQF = q.getListQuestion();
+            lsQF = a.getListQuestion();
             lsA = a.getListAnswer(idQ);
             request.setAttribute("email", email);
             request.setAttribute("newPass", newPass);
@@ -110,12 +106,12 @@ public class Controller_Forgot_Password extends HttpServlet {
         } else {
             Pattern e = Pattern.compile("^[a-zA-Z][a-zA-Z0-9]+@[a-zA-Z]+(\\.[a-zA-Z]+){1,2}$");
             idA = Integer.parseInt(request.getParameter("answer"));
-            if (check.checkEmail(email)&&e.matcher(email).find()) {
+            if (a.checkEmail(email)&&e.matcher(email).find()) {
                 if (!newPass.equals(confirmPass)) {
                     request.setAttribute("alertP", "The entered passwords do not match. Try again!");
                     request.getRequestDispatcher("forgotpassword.jsp").forward(request, response);
                 } else {
-                    if (check.checkSecure(email, idQ, idA)) {
+                    if (a.checkSecure(email, idQ, idA)) {
                         change.changePassword(email, newPass);
                         response.sendRedirect("login");
                     } else {
