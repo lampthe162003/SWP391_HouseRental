@@ -49,7 +49,59 @@
     </servlet>
     <servlet>
         <servlet-name>Controller_Post_House</servlet-name>
-        <servlet-class>Controller_Post_House</servlet-class>
+        <servlet-class>controller.Controller_Post_House</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controller_Edit_Blog</servlet-name>
+        <servlet-class>controller.Controller_Edit_Blog</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controller_Delete_Blog</servlet-name>
+        <servlet-class>controller.Controller_Delete_Blog</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controller_Detail_House</servlet-name>
+        <servlet-class>controller.Controller_Detail_House</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controller_Send_Messages</servlet-name>
+        <servlet-class>controller.Controller_Send_Messages_InHouse</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controller_Favourite_House</servlet-name>
+        <servlet-class>controller.Controller_Favourite_House</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controller_Favourite_Blog</servlet-name>
+        <servlet-class>controller.Controller_Favourite_Blog</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controller_Delete_Comment_Blog</servlet-name>
+        <servlet-class>controller.Controller_Delete_Comment_Blog</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controller_Edit_Comment_Blog</servlet-name>
+        <servlet-class>controller.Controller_Edit_Comment_Blog</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controller_List_Favourite_Blog</servlet-name>
+        <servlet-class>controller.Controller_List_Favourite_Blog</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controller_House_Ratings</servlet-name>
+        <servlet-class>controller.Controller_House_Ratings</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controller_Messages</servlet-name>
+        <servlet-class>controller.Controller_Messages</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controller_Delete_Message</servlet-name>
+        <servlet-class>controller.Controller_Delete_Message</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controller_Manage_Blogs</servlet-name>
+        <servlet-class>controller.Controller_Manage_Blogs</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Controller_Login</servlet-name>
@@ -98,6 +150,58 @@
     <servlet-mapping>
         <servlet-name>Controller_Post_House</servlet-name>
         <url-pattern>/posthouse</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller_Edit_Blog</servlet-name>
+        <url-pattern>/editblog</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller_Delete_Blog</servlet-name>
+        <url-pattern>/deleteblog</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller_Detail_House</servlet-name>
+        <url-pattern>/detailhouse</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller_Send_Messages</servlet-name>
+        <url-pattern>/messages</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller_Favourite_House</servlet-name>
+        <url-pattern>/favouritehouse</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller_Favourite_Blog</servlet-name>
+        <url-pattern>/favouriteblog</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller_Delete_Comment_Blog</servlet-name>
+        <url-pattern>/deletecommentblog</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller_Edit_Comment_Blog</servlet-name>
+        <url-pattern>/editcommentblog</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller_List_Favourite_Blog</servlet-name>
+        <url-pattern>/listfavouriteblog</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller_House_Ratings</servlet-name>
+        <url-pattern>/houseratings</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller_Messages</servlet-name>
+        <url-pattern>/message</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller_Delete_Message</servlet-name>
+        <url-pattern>/deletemessage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller_Manage_Blogs</servlet-name>
+        <url-pattern>/manageblogs</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
