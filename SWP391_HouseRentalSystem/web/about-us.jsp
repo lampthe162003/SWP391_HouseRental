@@ -12,27 +12,27 @@
         <meta name="description" content="">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        
 
-        <!-- Title  -->
+ 
         <title>South - Real Estate Agency Template | About Us</title>
 
-        <!-- Favicon  -->
+        <!-- Favio -->
         <link rel="icon" href="img/core-img/favicon.ico">
 
         <!-- Style CSS -->
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <!-- Preloader -->
+        <!-- Preloadesr -->
         <div id="preloader">
             <div class="south-load"></div>
         </div>
 
-        <!-- ##### Header Area Start ##### -->
+        <!-- #####s...s HeaArdsdse -->
         <header class="header-area">
 
-            <!-- Top Header Area -->
+            <!-- Top Headsder Aea -->
             <div class="top-header-area">
                 <div class="h-100 d-md-flex justify-content-between align-items-center">
                     <div class="email-address">

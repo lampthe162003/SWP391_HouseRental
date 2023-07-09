@@ -5,6 +5,7 @@
 package controller;
 
 import dao.DAOAccount;
+import dao.DAOAccount;
 import entity.Answer;
 import entity.Question;
 import entity.Role;
@@ -101,6 +102,8 @@ public class Controller_Register extends HttpServlet {
             idQ = Integer.parseInt(request.getParameter("question"));
             List<Role> lsR = a.getListRole();
             List<Answer> lsA = a.getListAnswer(idQ);
+            List<Role> lsR = a.getListRole();
+            List<Answer> lsA = a.getListAnswer(idQ);
             request.setAttribute("lsR", lsR);
             request.setAttribute("email", email);
             request.setAttribute("password", password);
@@ -119,6 +122,7 @@ public class Controller_Register extends HttpServlet {
             int questionId, answerId, roleId;
             Boolean gender;
             lsQ = a.getListQuestion();
+            lsQ = a.getListQuestion();
             request.setAttribute("lsQ", lsQ);
             request.setAttribute("errorE", "Email invalid!");
             email = request.getParameter("email");
@@ -134,7 +138,9 @@ public class Controller_Register extends HttpServlet {
             answerId = Integer.parseInt(request.getParameter("answer"));
             Pattern e = Pattern.compile("^[a-zA-Z][a-zA-Z0-9]+@[a-zA-Z]+(\\.[a-zA-Z]+){1,2}$");
            
+           
             if (e.matcher(email).find()) {
+                if (a.checkEmail(email)) {
                 if (a.checkEmail(email)) {
                     request.setAttribute("alertE", "Email already exists!");
                     request.getRequestDispatcher("registration.jsp").forward(request, response);
@@ -149,6 +155,8 @@ public class Controller_Register extends HttpServlet {
                             a.sendVerificationEmail(email, "luonbentoi2002@gmail.com", "awpouilwtillclcf");
                             request.setAttribute("alertEmail", "You need email verification!");
                             request.getRequestDispatcher("registration.jsp").forward(request, response);
+                            a.addAccount(fullname, gender, address, email, password, phone, roleId, questionId, answerId, picture);
+                            response.sendRedirect("Login.jsp");
                         } else {
                             request.setAttribute("alertF", "Full name must start with letter!");
                             request.getRequestDispatcher("registration.jsp").forward(request, response);

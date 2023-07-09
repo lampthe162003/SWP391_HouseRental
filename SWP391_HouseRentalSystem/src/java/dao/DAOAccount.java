@@ -12,9 +12,23 @@ import entity.Messengers;
 import entity.Question;
 import entity.Role;
 import jakarta.servlet.http.HttpSession;
+import entity.Answer;
+import entity.Messages;
+import entity.Messengers;
+import entity.Question;
+import entity.Role;
+import jakarta.servlet.http.HttpSession;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Vector;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -101,6 +115,7 @@ public class DAOAccount {
     public Account Login(String email, String password) {
         String sql = "SELECT * FROM Account WHERE Email = ? and Password = ?";
         try {
+            Connection conn = new DBContext().getConnection();
             Connection conn = new DBContext().getConnection();
             PreparedStatement pre = conn.prepareStatement(sql);
             pre.setString(1, email);

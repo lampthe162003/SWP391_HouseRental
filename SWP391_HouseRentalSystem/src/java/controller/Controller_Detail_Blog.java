@@ -6,6 +6,8 @@
 package controller;
 
 import dao.DAOBlog;
+import dao.DAOComment;
+import dao.DAO_Favourite_Blogs;
 import entity.Account;
 import entity.Blog;
 import entity.Comment_Blog;

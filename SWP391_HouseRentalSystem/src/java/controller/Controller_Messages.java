@@ -70,11 +70,9 @@ public class Controller_Messages extends HttpServlet {
         if (request.getParameter("receiverid") != null) {
             int receiver_ID = Integer.parseInt(request.getParameter("receiverid"));
             List<Messages> lsMsg = account.getListMessages(sender_ID, receiver_ID);
-            int newMessageId = account.getNewMessgageId(a.getId(), receiver_ID);
             Account receiver = account.getAccountById(receiver_ID);
             request.setAttribute("lsMsg", lsMsg);
             request.setAttribute("receiver", receiver);
-//            request.setAttribute("newMsgId", newMessageId);
             request.setAttribute("activeMess", receiver_ID);
         }
         request.setAttribute("name", name);
@@ -96,22 +94,20 @@ public class Controller_Messages extends HttpServlet {
         HttpSession session = request.getSession();
         Account a = (Account) session.getAttribute("acc");
         DAOAccount account = new DAOAccount();
-        String name = request.getParameter("searchname");
+        String name = request.getParameter("searchname") == null ? "" : request.getParameter("searchname");
         if (name != null) {
             List<Messengers> lsMgr = account.getListMessengers(a.getId(), name);
             request.setAttribute("lsMgr", lsMgr);
         } else {
-            List<Messengers> lsMgr = account.getListMessengers(a.getId(), name==null?"":name);
+            List<Messengers> lsMgr = account.getListMessengers(a.getId(), name);
             int receiverID = Integer.parseInt(request.getParameter("receiverID"));
             String contentMess = request.getParameter("messcontent");
             account.insertMessages(a.getId(), receiverID, contentMess);
             List<Messages> lsMsg = account.getListMessages(a.getId(), receiverID);
-            int newMessageId = account.getNewMessgageId(a.getId(), receiverID);
             Account receiver = account.getAccountById(receiverID);
             request.setAttribute("lsMgr", lsMgr);
             request.setAttribute("lsMsg", lsMsg);
             request.setAttribute("receiver", receiver);
-            request.setAttribute("newMsgId", newMessageId);
             request.setAttribute("activeMess", receiverID);
         }
 

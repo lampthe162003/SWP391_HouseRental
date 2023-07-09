@@ -41,6 +41,10 @@
                 border-radius: 10px;
                 transition: 0.3s;
                 transition-timing-function: linear;
+                transition: 0.3s;
+                transition-timing-function: linear;
+                transition: 0.3s;
+                transition-timing-function: linear;
             }
             .item1:hover{
                 margin-top: 1em;
@@ -54,6 +58,8 @@
                 border-radius: 10px;
                 margin: 0 auto;
                 margin-top: 0.5em;
+                position: relative;
+                position: relative;
                 position: relative;
             }
             .inblog-img{
@@ -107,6 +113,16 @@
             .inactive{
                 color: black;
                 padding: 0.5em;
+                padding: 0.5em;
+            }
+            .inactive{
+                color: black;
+                padding: 0.5em;
+                padding: 0.5em;
+            }
+            .inactive{
+                color: black;
+                padding: 0.5em;
             }
             .numberP{
                 width: 10%;
@@ -155,15 +171,95 @@
             .numberP a{
                 text-decoration: none;
             }
+            .optionP{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 4%;
+                height: 2em;
+                position: absolute;
+                right: 0;
+                border-radius: 50%;
+            }
+            .optionP:hover{
+                background-color: #cccccc;
+                color: black;
+                cursor: pointer;
+            }
+            .optionP ion-icon{
+                font-size: 20px;
+            }
+            .listOption{
+                background-color: #333333;
+                box-shadow: 0 0 5px black;
+                border-radius: 10px;
+                position: absolute;
+                right: 0;
+                top:2em;
+            }
+            .listOption a{
+                display: inline-flex;
+                text-decoration: none;
+                color: white;
+                padding: 1em 1em;
+                width: 100%;
+                line-height: 1em;
+            }
+            .listOption a:hover{
+                background-color: #cccccc;
+                border-radius: 10px;
+                color: black;
+            }
+            .optionP{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 4%;
+                height: 2em;
+                position: absolute;
+                right: 0;
+                border-radius: 50%;
+            }
+            .optionP:hover{
+                background-color: #cccccc;
+                color: black;
+                cursor: pointer;
+            }
+            .optionP ion-icon{
+                font-size: 20px;
+            }
+            .listOption{
+                background-color: #333333;
+                box-shadow: 0 0 5px black;
+                border-radius: 10px;
+                position: absolute;
+                right: 0;
+                top:2em;
+            }
+            .listOption a{
+                display: inline-flex;
+                text-decoration: none;
+                color: white;
+                padding: 1em 1em;
+                width: 100%;
+                line-height: 1em;
+            }
+            .listOption a:hover{
+                background-color: #cccccc;
+                border-radius: 10px;
+                color: black;
+            }
         </style>
     </head>
 
     <body>
         <!-- Preloader -->
 <!--        <div id="preloader">
+<!--        <div id="preloader">
             <div class="south-load"></div>
         </div>
 
+         ##### Header Area Start ##### 
          ##### Header Area Start ##### 
         <header class="header-area">
              Main Header Area 
@@ -266,6 +362,8 @@
             </div>
         </section>-->
 <jsp:include page="header.jsp"></jsp:include>
+        </section>-->
+<jsp:include page="header.jsp"></jsp:include>
         <!-- ##### Breadcumb Area End ##### -->
 
         <!-- ##### Blog Area Start ##### -->
@@ -281,7 +379,15 @@
                         </div>
                         <div class="inblog-infor">
                             <a href="detailblog?id=${b.getId()}&idPoster=${b.getPosterId()}"><h5>${b.getTopic()}</h5></a>
+                            <a href="detailblog?id=${b.getId()}&idPoster=${b.getPosterId()}"><h5>${b.getTopic()}</h5></a>
                             <div class="pra">${b.getContent()}</div>
+                        </div>
+                        <c:if test="${idA == b.getPosterId()}">
+                            <div class="optionP" onclick="showList('${b.getId()}')"><ion-icon name="ellipsis-horizontal-outline"></ion-icon></div>
+                        </c:if>
+                        <div id="${b.getId()}" class="listOption" style="display: none;">
+                            <div><a href="editblog?id=${b.getId()}"><ion-icon name="pencil-outline"></ion-icon>Edit</a></div>
+                            <div><a href="deleteblog?id=${b.getId()}"><ion-icon name="trash-bin-outline"></ion-icon>Delete</a></div>
                         </div>
                         <c:if test="${idA == b.getPosterId()}">
                             <div class="optionP" onclick="showList('${b.getId()}')"><ion-icon name="ellipsis-horizontal-outline"></ion-icon></div>
@@ -300,11 +406,28 @@
                     </c:forEach>
                 </div>
             </c:if>
+            <c:if test="${countB != 0}"> 
+                <div class="numberP">
+                    <c:forEach begin="1" end="${endPage}" step="1" var="i">
+                        <a href="listblog?index=${i}" class = "${index eq i ? 'active' : 'inactive'}">${i}</a>
+                    </c:forEach>
+                </div>
+            </c:if>
+            <c:if test="${countB != 0}"> 
+                <div class="numberP">
+                    <c:forEach begin="1" end="${endPage}" step="1" var="i">
+                        <a href="listblog?index=${i}" class = "${index eq i ? 'active' : 'inactive'}">${i}</a>
+                    </c:forEach>
+                </div>
+            </c:if>
 
         </div>
         <!-- ##### Blog Area End ##### -->
 <jsp:include page="footer.jsp"></jsp:include> 
+<jsp:include page="footer.jsp"></jsp:include> 
         <!-- ##### Footer Area Start ##### -->
+<!--        <footer class="footer-area section-padding-100-0 bg-img gradient-background-overlay" style="background-image: url(img/bg-img/cta.jpg);">
+             Main Footer Area 
 <!--        <footer class="footer-area section-padding-100-0 bg-img gradient-background-overlay" style="background-image: url(img/bg-img/cta.jpg);">
              Main Footer Area 
             <div class="main-footer-area">

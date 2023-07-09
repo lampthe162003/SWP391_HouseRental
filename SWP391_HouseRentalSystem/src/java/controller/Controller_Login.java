@@ -78,6 +78,16 @@ public class Controller_Login extends HttpServlet {
                 request.getRequestDispatcher("login.jsp").forward(request, response);
             }
         }
+            HttpSession session = request.getSession();
+            session.setAttribute("acc", acc);
+            
+            if (acc.getRole_ID() != 1) {
+                response.sendRedirect("home");
+            }
+            else {
+                response.sendRedirect("admin-home");
+            }
+        }
     }
 }
 /**

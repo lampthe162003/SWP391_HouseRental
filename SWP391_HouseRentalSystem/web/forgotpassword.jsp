@@ -10,7 +10,7 @@
         <div class="container">
             <h2>Forgot Password</h2>
             <form method="post" action="forgotpassword" id="frm">
-                <div class="form-group">
+                <div class="form-group">   
                     <label for="currentPassword">Email</label>
                     <input value="${email}" type="text" name="email" class="form-control" id="currentPassword" placeholder="Enter email">
                     <p style="color: red">${errorE}</p>
