@@ -4,8 +4,7 @@
  */
 package controller;
 
-import dao.DAOChange;
-import dao.DAOCheck;
+import dao.DAOAccount;
 import entity.Account;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -80,15 +79,14 @@ public class Controller_Change_Password extends HttpServlet {
         String oldPassword = request.getParameter("oldPass");
         String newPassword = request.getParameter("newPass");
         String confirmPassword = request.getParameter("confirmPass");
-        DAOCheck check = new DAOCheck();
-        DAOChange change = new DAOChange();
+        DAOAccount account = new DAOAccount();
         if (oldPassword.trim().isEmpty() || newPassword.trim().isEmpty() || confirmPassword.trim().isEmpty()) {
             request.setAttribute("errorOld", "Can't be left blank!");
             request.getRequestDispatcher("changepassword.jsp").forward(request, response);
         } else {
-            if (check.checkExistPassword(email, oldPassword)) {
+            if (account.checkExistPassword(email, oldPassword)) {
                 if (newPassword.equals(confirmPassword)) {
-                    change.changePassword(email, newPassword);
+                    account.changePassword(email, newPassword);
                     response.sendRedirect("home");
                 } else {
                     request.setAttribute("errorNewPass", "New password and confirmation password do not match!");
