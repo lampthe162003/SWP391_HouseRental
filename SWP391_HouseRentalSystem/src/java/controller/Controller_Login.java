@@ -29,7 +29,6 @@ public class Controller_Login extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -42,8 +41,12 @@ public class Controller_Login extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        request.getRequestDispatcher("login.jsp").include(request, response);
+            String id = request.getParameter("id");
+            if(id!=null){
+                DAOAccount a = new DAOAccount();
+                a.openAccount(Integer.parseInt(id));
+            }
+            response.sendRedirect("login.jsp");
     }
 
     /**
@@ -63,16 +66,22 @@ public class Controller_Login extends HttpServlet {
         DAOAccount dao = new DAOAccount();
         Account acc = dao.Login(email, password);
         if (acc == null) {
-            response.getWriter().println("Login k duoc");
+            request.setAttribute("errorMess", "Incorrect account or password!");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
         } else {
-            HttpSession session = request.getSession();
-            session.setAttribute("acc", acc);
-            response.sendRedirect("home");
+            if (acc.getStatus() == 1) {
+                HttpSession session = request.getSession();
+                session.setAttribute("acc", acc);
+                response.sendRedirect("home");
+            } else {
+                request.setAttribute("errorMess", "You need to verify your account via email!");
+                request.getRequestDispatcher("login.jsp").forward(request, response);
+            }
         }
     }
 }
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
+/**
+ * Returns a short description of the servlet.
+ *
+ * @return a String containing servlet description
+ */
