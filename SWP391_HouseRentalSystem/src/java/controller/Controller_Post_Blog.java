@@ -76,7 +76,8 @@ public class Controller_Post_Blog extends HttpServlet {
         int posterId = a.getId();
         title = request.getParameter("title");
         image = request.getParameter("imageblog");
-        content = request.getParameter("content");
+        content = request.getParameter("content").replaceAll("\r\n", "<br/>");
+        System.out.println(content);
         DAOBlog blog = new DAOBlog();
         blog.postBlog(posterId, title, content, image);
         response.sendRedirect("listblog");
