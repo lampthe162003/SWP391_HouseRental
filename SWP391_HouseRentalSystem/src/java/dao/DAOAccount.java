@@ -12,6 +12,12 @@ import entity.Messengers;
 import entity.Question;
 import entity.Role;
 import jakarta.servlet.http.HttpSession;
+import entity.Answer;
+import entity.Messages;
+import entity.Messengers;
+import entity.Question;
+import entity.Role;
+import jakarta.servlet.http.HttpSession;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,18 +29,93 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Vector;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+import java.util.*;
+import javax.mail.*;
+import javax.mail.internet.*;
 /**
  *
  * @author win
  */
 public class DAOAccount {
-
+    public static String getCode(){
+        Random rdn = new Random();
+        int code = rdn.nextInt(999999);
+        return String.valueOf(code);
+    }
+    public void sendVerificationEmail(String to, final String user, final String pass) {
+        int id = getIdByAccount(to);
+        String sub = "Email verification.";
+        String msg = "<!DOCTYPE html>\n"
+                +"<html lang=\"en\">\n"
+                +"\n"
+                +"<head>\n"
+                +"\n"
+                +"<body>\n"
+                +"<h3 style=\"color: blue;\">You need to verify your email using the link below: </h3>\n"
+                +"<a href=\"http://localhost:8080/SWP391_HouseRentalSystem/login?id="+id+"\">"+"http://localhost:8080/SWP391_HouseRentalSystem/login?id="+id+"</a>"
+                +"</body>\n"
+                +"\n"
+                +"</html>";
+        Properties props = new Properties();
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.port", "587");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(user, pass); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+            }
+        });
+        try {
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(user));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+            message.setSubject(sub);
+            message.setContent(msg, "text/html");
+            
+            Transport.send(message);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void openAccount(int id){
+        try {
+            String stmSql = "Update Account set Status = 1 where Id = ?";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(stmSql);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public int getIdByAccount(String email){
+        try {
+            String stmSql = "select Id from Account where Email = ?";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(stmSql);
+            ps.setString(1, email);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return 0;
+    }
     public Account Login(String email, String password) {
         String sql = "SELECT * FROM Account WHERE Email = ? and Password = ?";
         try {
+            Connection conn = new DBContext().getConnection();
             Connection conn = new DBContext().getConnection();
             PreparedStatement pre = conn.prepareStatement(sql);
             pre.setString(1, email);
@@ -308,7 +389,7 @@ public class DAOAccount {
             System.out.println(e.getMessage());
         }
     }
-
+    
     public List<Messages> getListMessages(int senderId, int receiverId) {
         try {
             String stmSql = "select * from Messages where (Sender_ID = ? and Receiver_ID = ?) or (Sender_ID = ? and Receiver_ID = ?)";
@@ -331,7 +412,24 @@ public class DAOAccount {
         }
         return null;
     }
-
+    public int getNewMessgageId(int senderId, int receiverId){
+        try {
+            String stmSql = "select max(Id) as maxId from Messages where (Sender_ID = ? and Receiver_ID = ?) or (Sender_ID = ? and Receiver_ID = ?)";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(stmSql);
+            ps.setInt(1, senderId);
+            ps.setInt(4, senderId);
+            ps.setInt(2, receiverId);
+            ps.setInt(3, receiverId);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return 0;
+    }
     public void deleteMessage(int id, int senderId, int account) {
         try {
             String stmSql = "update Messages";

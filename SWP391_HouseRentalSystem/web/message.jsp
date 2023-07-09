@@ -125,24 +125,24 @@
                                     <form action="message" method="post">
                                         <div class="stylish-input-group">
                                             <input name="searchname" type="text" class="search-bar" value="${name}" placeholder="Search" >
-                                            <span class="input-group-addon">
-                                                <button type="submit"> <i class="fa fa-search" aria-hidden="true"></i> </button>
-                                            </span> 
-                                        </div>
-                                    </form>
-                                </div>
+                                        <span class="input-group-addon">
+                                            <button type="submit"> <i class="fa fa-search" aria-hidden="true"></i> </button>
+                                        </span> 
+                                    </div>
+                                </form>
                             </div>
-                            <div class="inbox_chat">
-                                <!--                                <div class="chat_list active_chat">
-                                                                    <div class="chat_people">
-                                                                        <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-                                                                        <div class="chat_ib">
-                                                                            <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                                                                            <p>Test, which is a new approach to have all solutions 
-                                                                                astrology under one roof.</p>
-                                                                        </div>
+                        </div>
+                        <div class="inbox_chat">
+                            <!--                                <div class="chat_list active_chat">
+                                                                <div class="chat_people">
+                                                                    <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                                                    <div class="chat_ib">
+                                                                        <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
+                                                                        <p>Test, which is a new approach to have all solutions 
+                                                                            astrology under one roof.</p>
                                                                     </div>
-                                                                </div>-->
+                                                                </div>
+                                                            </div>-->
                             <c:forEach items="${lsMgr}" var="c">
                                 <div class="chat_list ${c.getSender_ID()==activeMess?'active_chat':''}">
                                     <a href="message?receiverid=${c.getSender_ID()}&searchnamee=${name!=null?name:''}">
@@ -217,7 +217,7 @@
                                             <c:if test="${m.isDeleted_By_Sender()==false}">
                                                 <div class="outgoing_msg">
                                                     <div class="sent_msg">
-                                                        <p>${m.getContent()}</p>
+                                                        <p id="${m.getId()}a">${m.getContent()}</p>
                                                         <span class="time_date"> ${m.getSent_Date()}</span> 
                                                         <div class="optionR" onclick="showList('${m.getId()}')"><ion-icon name="ellipsis-horizontal-outline"></ion-icon></div>
                                                         <div id="${m.getId()}" class="listOptionR" style="display: none;">
@@ -234,7 +234,7 @@
                                                     <div class="incoming_msg_img"> <img src="assets/images/${receiver.getProfile_Picture()}" alt="sunil"> </div>
                                                     <div class="received_msg">
                                                         <div class="received_withd_msg">
-                                                            <p>${m.getContent()}</p>
+                                                            <p id="${m.getId()}a">${m.getContent()}</p>
                                                             <span class="time_date"> ${m.getSent_Date()}</span>
                                                             <div class="optionL" onclick="showList('${m.getId()}')"><ion-icon name="ellipsis-horizontal-outline"></ion-icon></div>
                                                             <div id="${m.getId()}" class="listOptionL" style="display: none;">
@@ -306,6 +306,10 @@
         </div>
         <jsp:include page="footer.jsp"></jsp:include>
         <script>
+            var lastParagraph = document.getElementById("${newMsgId}a");
+            if (lastParagraph) {
+                lastParagraph.scrollIntoView();
+            }
             function showList(s) {
                 var m = document.getElementById(s);
                 if (m.style.display === "none") {

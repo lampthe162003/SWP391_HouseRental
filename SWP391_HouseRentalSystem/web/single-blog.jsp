@@ -43,6 +43,8 @@
                 transition-timing-function: linear;
                 transition: 0.3s;
                 transition-timing-function: linear;
+                transition: 0.3s;
+                transition-timing-function: linear;
             }
             .item1:hover{
                 margin-top: 1em;
@@ -56,6 +58,7 @@
                 border-radius: 10px;
                 margin: 0 auto;
                 margin-top: 0.5em;
+                position: relative;
                 position: relative;
                 position: relative;
             }
@@ -115,11 +118,58 @@
             .inactive{
                 color: black;
                 padding: 0.5em;
+                padding: 0.5em;
+            }
+            .inactive{
+                color: black;
+                padding: 0.5em;
             }
             .numberP{
                 width: 10%;
                 height: 2em;
                 margin: 0.5em auto;
+            }
+            .optionP{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 4%;
+                height: 2em;
+                position: absolute;
+                right: 0;
+                border-radius: 50%;
+            }
+            .optionP:hover{
+                background-color: #cccccc;
+                color: black;
+                cursor: pointer;
+            }
+            .optionP ion-icon{
+                font-size: 20px;
+            }
+            .listOption{
+                background-color: #333333;
+                box-shadow: 0 0 5px black;
+                border-radius: 10px;
+                position: absolute;
+                right: 0;
+                top:2em;
+            }
+            .listOption a{
+                display: inline-flex;
+                text-decoration: none;
+                color: white;
+                padding: 1em 1em;
+                width: 100%;
+                line-height: 1em;
+            }
+            .listOption a:hover{
+                background-color: #cccccc;
+                border-radius: 10px;
+                color: black;
+            }
+            .numberP a{
+                text-decoration: none;
             }
             .optionP{
                 display: flex;
@@ -205,9 +255,11 @@
     <body>
         <!-- Preloader -->
 <!--        <div id="preloader">
+<!--        <div id="preloader">
             <div class="south-load"></div>
         </div>
 
+         ##### Header Area Start ##### 
          ##### Header Area Start ##### 
         <header class="header-area">
              Main Header Area 
@@ -235,7 +287,6 @@
                              Nav Start 
                             <div class="classynav">
                                 <ul>
-                                    <li><a href="home">Home</a></li>
                                     <li><a href="home">Home</a></li>
                                     <li><a href="#">Pages</a>
                                         <ul class="dropdown">
@@ -270,22 +321,7 @@
                                         <li><a onmouseover="showInf()" id="user" href="#">Hello ${sessionScope.acc.fullname}</a></li>
                                         <li><a href="logout">Sign Out</a></li>
                                         </c:if>
-                                        <c:if test="${sessionScope.acc == null}">
-                                        <li><a href="login">Sign In</a></li>
-                                        <li><a href="register">Sign Up</a></li>
-                                        </c:if> 
-                                        <c:if test="${sessionScope.acc != null}">
-                                        <li><a onmouseover="showInf()" id="user" href="#">Hello ${sessionScope.acc.fullname}</a></li>
-                                        <li><a href="logout">Sign Out</a></li>
-                                        </c:if>
                                 </ul>
-                                <div id="inf" style="display: none;position: absolute;background-color: black; font-size: 15px;
-                                     width: 15em;color: white;right: 13em;top: 4em;padding: 0.5em">
-                                    <ul style="margin: 0 auto">
-                                        <li><a href="changeinformation">Change Information</a></li>
-                                        <li><a href="changepassword">Change Password</a</li>
-                                    </ul>
-                                </div>
                                 <div id="inf" style="display: none;position: absolute;background-color: black; font-size: 15px;
                                      width: 15em;color: white;right: 13em;top: 4em;padding: 0.5em">
                                     <ul style="margin: 0 auto">
@@ -326,6 +362,8 @@
             </div>
         </section>-->
 <jsp:include page="header.jsp"></jsp:include>
+        </section>-->
+<jsp:include page="header.jsp"></jsp:include>
         <!-- ##### Breadcumb Area End ##### -->
 
         <!-- ##### Blog Area Start ##### -->
@@ -341,7 +379,15 @@
                         </div>
                         <div class="inblog-infor">
                             <a href="detailblog?id=${b.getId()}&idPoster=${b.getPosterId()}"><h5>${b.getTopic()}</h5></a>
+                            <a href="detailblog?id=${b.getId()}&idPoster=${b.getPosterId()}"><h5>${b.getTopic()}</h5></a>
                             <div class="pra">${b.getContent()}</div>
+                        </div>
+                        <c:if test="${idA == b.getPosterId()}">
+                            <div class="optionP" onclick="showList('${b.getId()}')"><ion-icon name="ellipsis-horizontal-outline"></ion-icon></div>
+                        </c:if>
+                        <div id="${b.getId()}" class="listOption" style="display: none;">
+                            <div><a href="editblog?id=${b.getId()}"><ion-icon name="pencil-outline"></ion-icon>Edit</a></div>
+                            <div><a href="deleteblog?id=${b.getId()}"><ion-icon name="trash-bin-outline"></ion-icon>Delete</a></div>
                         </div>
                         <c:if test="${idA == b.getPosterId()}">
                             <div class="optionP" onclick="showList('${b.getId()}')"><ion-icon name="ellipsis-horizontal-outline"></ion-icon></div>
@@ -367,11 +413,21 @@
                     </c:forEach>
                 </div>
             </c:if>
+            <c:if test="${countB != 0}"> 
+                <div class="numberP">
+                    <c:forEach begin="1" end="${endPage}" step="1" var="i">
+                        <a href="listblog?index=${i}" class = "${index eq i ? 'active' : 'inactive'}">${i}</a>
+                    </c:forEach>
+                </div>
+            </c:if>
 
         </div>
         <!-- ##### Blog Area End ##### -->
 <jsp:include page="footer.jsp"></jsp:include> 
+<jsp:include page="footer.jsp"></jsp:include> 
         <!-- ##### Footer Area Start ##### -->
+<!--        <footer class="footer-area section-padding-100-0 bg-img gradient-background-overlay" style="background-image: url(img/bg-img/cta.jpg);">
+             Main Footer Area 
 <!--        <footer class="footer-area section-padding-100-0 bg-img gradient-background-overlay" style="background-image: url(img/bg-img/cta.jpg);">
              Main Footer Area 
             <div class="main-footer-area">
@@ -494,18 +550,6 @@
         <script src="js/jquery-ui.min.js"></script>
         <!-- Active js -->
         <script src="js/active.js"></script>
-        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-        <script>
-                        function showList(s) {
-                            var m = document.getElementById(s);
-                            if (m.style.display === "none") {
-                                m.style.display = "block";
-                            } else {
-                                m.style.display = "none";
-                            }
-                        }
-        </script>
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
         <script>

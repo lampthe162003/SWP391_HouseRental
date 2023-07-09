@@ -72,10 +72,10 @@ public class Controller_List_Blog extends HttpServlet {
                 endPage = 1;
             }
             else if ((countBlog % size) != 0) {
+            else if ((countBlog % size) != 0) {
                 endPage++;
             }
             List<Blog> lsB = blog.getListBlog(index * size - 2, index * size);
-            request.setAttribute("countB", countBlog);
             request.setAttribute("countB", countBlog);
             request.setAttribute("lsB", lsB);
             request.setAttribute("endPage", endPage);
@@ -90,12 +90,16 @@ public class Controller_List_Blog extends HttpServlet {
                 endPage = 1;
             }
             else if ((countBlog % size) != 0) {
+            else if ((countBlog % size) != 0) {
                 endPage++;
             }
             List<Blog> lsB = blog.getListBlog(index * size - 2, index * size);
             request.setAttribute("lsB", lsB);
             request.setAttribute("endPage", endPage);
             request.setAttribute("index", index);
+        }
+        if(a!=null){
+            request.setAttribute("idA", a.getId());
         }
         if(a!=null){
             request.setAttribute("idA", a.getId());

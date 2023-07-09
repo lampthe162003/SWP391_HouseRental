@@ -58,8 +58,12 @@ public class Controller_Edit_Blog extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         DAOBlog b = new DAOBlog();
+        String nav = request.getParameter("nav");
         int idB = Integer.parseInt(request.getParameter("id"));
         Blog blog = b.getBlogFollowId(idB);
+        if(nav!=null){
+             request.setAttribute("nav", nav);
+        }
         request.setAttribute("idB", idB);
         request.setAttribute("title", blog.getTopic());
         request.setAttribute("content", blog.getContent());
@@ -79,15 +83,16 @@ public class Controller_Edit_Blog extends HttpServlet {
     throws ServletException, IOException {
         HttpSession session = request.getSession();
         Account a = (Account)session.getAttribute("acc");
-        String title, image, content;
+        DAOBlog blog = new DAOBlog();
+        String title, image, content,nav;
         int idB = Integer.parseInt(request.getParameter("idB"));
         int posterId = a.getId();
+        nav = request.getParameter("nav");
         title = request.getParameter("title");
-        image = request.getParameter("imageblog");
+        image = request.getParameter("imageblog").trim().isEmpty()?blog.getBlogFollowId(idB).getImage():request.getParameter("imageblog");
         content = request.getParameter("content");
-        DAOBlog blog = new DAOBlog();
         blog.editBlog(idB, posterId, title, content, image);
-        response.sendRedirect("listblog");
+        response.sendRedirect(nav==null?"listblog":"manageblogs");
     }
 
     /** 
