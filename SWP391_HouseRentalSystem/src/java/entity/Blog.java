@@ -5,6 +5,7 @@
 package entity;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -48,8 +49,9 @@ public class Blog {
         this.PosterId = PosterId;
     }
 
-    public Date getPostTime() {
-        return PostTime;
+    public String getPostTime() {
+        SimpleDateFormat f = new SimpleDateFormat("dd-MM-yyyy");
+        return f.format(PostTime);
     }
 
     public void setPostTime(Date PostTime) {
