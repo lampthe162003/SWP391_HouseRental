@@ -67,7 +67,10 @@
                                 </div>
                                 <div class="form-group" style="display: flex ; justify-content: left">
                                     <c:forEach items="${lsR}" var="r">
-                                        <input type="radio" name="role" value="${r.getId()}" ${r.getId()== roleId ?"checked":""} required="">${r.getRole()}
+                                        <c:if test="${r.getRole() != 'Admin'}">
+                                            <input style="width: 4.5em" type="radio" name="role" value="${r.getId()}" ${r.getId()== roleId ?"checked":""} required="">${r.getRole()}
+                                        </c:if>
+                                        
                                     </c:forEach>
                                 </div>
                                 
@@ -93,6 +96,7 @@
                                 <div style="font-size: 20px">
                                     Profile picture: <input type="file" name="file" value="${picture}" size="60" required="">
                                 </div>
+                                <p style="color: red">${alertEmail}</p>
                                 <div class="form-group form-button">
                                     <input type="submit" name="signup"
                                            class="form-submit" value="Register" />

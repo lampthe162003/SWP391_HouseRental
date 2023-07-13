@@ -4,10 +4,8 @@
  */
 package controller;
 
-import dao.DAOAnswer;
-import dao.DAOCheck;
-import dao.DAOQuestion;
-import dao.DAORole;
+import dao.DAOAccount;
+import dao.DAOAccount;
 import entity.Answer;
 import entity.Question;
 import entity.Role;
@@ -25,8 +23,6 @@ import java.util.regex.Pattern;
  * @author ADMIN
  */
 public class Controller_Register extends HttpServlet {
-
-    public static int i = 0;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -66,10 +62,9 @@ public class Controller_Register extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        DAOQuestion dQ = new DAOQuestion();
-        DAORole dR = new DAORole();
-        List<Question> lsQ = dQ.getListQuestion();
-        List<Role> lsR = dR.getListRole();
+        DAOAccount h = new DAOAccount();
+        List<Question> lsQ = h.getListQuestion();
+        List<Role> lsR = h.getListRole();
         request.setAttribute("lsR", lsR);
         request.setAttribute("lsQ", lsQ);
         request.getRequestDispatcher("registration.jsp").forward(request, response);
@@ -87,8 +82,8 @@ public class Controller_Register extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String submit = request.getParameter("signup");
-        DAOQuestion dQ = new DAOQuestion();
-        List<Question> lsQ = dQ.getListQuestion();
+        DAOAccount a = new DAOAccount();
+        List<Question> lsQ = a.getListQuestion();
         if (submit == null) {
             String email, password, repassword, fullname, phone, address, picture, gender;
             int idQ, answerId, roleId;
@@ -105,10 +100,10 @@ public class Controller_Register extends HttpServlet {
                 request.setAttribute("roleId", roleId);
             }
             idQ = Integer.parseInt(request.getParameter("question"));
-            DAOAnswer dA = new DAOAnswer();
-            DAORole dR = new DAORole();
-            List<Role> lsR = dR.getListRole();
-            List<Answer> lsA = dA.getListAnswer(idQ);
+            List<Role> lsR = a.getListRole();
+            List<Answer> lsA = a.getListAnswer(idQ);
+            List<Role> lsR = a.getListRole();
+            List<Answer> lsA = a.getListAnswer(idQ);
             request.setAttribute("lsR", lsR);
             request.setAttribute("email", email);
             request.setAttribute("password", password);
@@ -126,7 +121,8 @@ public class Controller_Register extends HttpServlet {
             String email, password, repassword, fullname, phone, address, picture;
             int questionId, answerId, roleId;
             Boolean gender;
-            lsQ = dQ.getListQuestion();
+            lsQ = a.getListQuestion();
+            lsQ = a.getListQuestion();
             request.setAttribute("lsQ", lsQ);
             request.setAttribute("errorE", "Email invalid!");
             email = request.getParameter("email");
@@ -141,9 +137,11 @@ public class Controller_Register extends HttpServlet {
             questionId = Integer.parseInt(request.getParameter("question"));
             answerId = Integer.parseInt(request.getParameter("answer"));
             Pattern e = Pattern.compile("^[a-zA-Z][a-zA-Z0-9]+@[a-zA-Z]+(\\.[a-zA-Z]+){1,2}$");
-            DAOCheck check = new DAOCheck();
+           
+           
             if (e.matcher(email).find()) {
-                if (check.checkEmail(email)) {
+                if (a.checkEmail(email)) {
+                if (a.checkEmail(email)) {
                     request.setAttribute("alertE", "Email already exists!");
                     request.getRequestDispatcher("registration.jsp").forward(request, response);
                 } else {
@@ -153,7 +151,11 @@ public class Controller_Register extends HttpServlet {
                     } else {
                         Pattern f = Pattern.compile("^[a-zA-Z\\s]+$");
                         if (f.matcher(fullname).find()) {
-                            check.addAccount(fullname, gender, address, email, password, phone, roleId, questionId, answerId, picture);
+                            a.addAccount(fullname, gender, address, email, password, phone, roleId, questionId, answerId, picture);
+                            a.sendVerificationEmail(email, "luonbentoi2002@gmail.com", "awpouilwtillclcf");
+                            request.setAttribute("alertEmail", "You need email verification!");
+                            request.getRequestDispatcher("registration.jsp").forward(request, response);
+                            a.addAccount(fullname, gender, address, email, password, phone, roleId, questionId, answerId, picture);
                             response.sendRedirect("Login.jsp");
                         } else {
                             request.setAttribute("alertF", "Full name must start with letter!");

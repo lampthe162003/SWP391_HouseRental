@@ -6,7 +6,6 @@
 package controller;
 
 import dao.DAOBlog;
-import dao.DAO_Favourite_Blogs;
 import entity.Account;
 import entity.Blog;
 import java.io.IOException;
@@ -61,17 +60,17 @@ public class Controller_Favourite_Blog extends HttpServlet {
     throws ServletException, IOException {
         int blogId = Integer.parseInt(request.getParameter("blogId"));
         int userId = Integer.parseInt(request.getParameter("userId"));
-        DAO_Favourite_Blogs fb = new DAO_Favourite_Blogs();
+        DAOBlog blog = new DAOBlog();
         if(request.getParameter("index")!=null){
             int index = Integer.parseInt(request.getParameter("index"));
-            fb.deleteFavouriteBlog(blogId, userId);
+            blog.deleteFavouriteBlog(blogId, userId);
             response.sendRedirect("listfavouriteblog?index="+index);
             return;
         }
-        if(fb.checkExistFavouriteBlog(blogId, userId)){
-            fb.insertFavouriteBlog(blogId, userId);
+        if(blog.checkExistFavouriteBlog(blogId, userId)){
+            blog.insertFavouriteBlog(blogId, userId);
         }else{
-            fb.deleteFavouriteBlog(blogId, userId);
+            blog.deleteFavouriteBlog(blogId, userId);
         }
         response.sendRedirect("detailblog?id="+blogId);
     } 

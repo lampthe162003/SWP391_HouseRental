@@ -47,6 +47,7 @@
                                 <div class="form-group">
                                     <a href="forgotpassword" style="text-decoration: none"> Forgot Password?</a>
                                 </div>
+                                <p style="color: red">${errorMess}</p>
                                 <div class="form-group form-button">
                                     <input type="submit" name="signin" id="signin"
                                            class="form-submit" value="Log in" />

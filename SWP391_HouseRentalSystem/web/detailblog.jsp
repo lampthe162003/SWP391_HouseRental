@@ -34,6 +34,8 @@
             }
             .item1{
                 position: relative;
+                position: relative;
+                position: relative;
                 background-color: white;
                 margin: 0.5px auto;
                 width: 50%;
@@ -52,6 +54,16 @@
                 width: 100%;
                 height: 30em;
                 margin: 1em 0;
+            }
+            .item2 p{
+                color: black;
+                font-size: 18px;
+                margin-top: 1.5em;
+            }
+            .item2 p{
+                color: black;
+                font-size: 18px;
+                margin-top: 1.5em;
             }
             .item2 p{
                 color: black;
@@ -112,11 +124,26 @@
             }
             .cmt{
                 border-top: 1px solid black;
+                border-top: 1px solid black;
             }
             .cmtcontent{
                 display: flex;
                 width: 95%;
                 height: auto;
+                margin: 0.5em auto;
+            }
+            .lastcontent{
+                position: relative;
+            }
+            .firstcontent{
+                margin-bottom: 0.5em;
+                margin: 0.5em auto;
+            }
+            .lastcontent{
+                position: relative;
+            }
+            .firstcontent{
+                margin-bottom: 0.5em;
                 margin: 0.5em auto;
             }
             .lastcontent{
@@ -141,6 +168,10 @@
                 height: auto;
             }
             .cmtname{
+                padding-top: 0.2em;
+                height: 1.8em;
+                padding-top: 0.2em;
+                height: 1.8em;
                 padding-top: 0.2em;
                 height: 1.8em;
                 width: 100%;
@@ -231,10 +262,162 @@
                 border-radius: 10px;
                 color: black;
             }
+            .cmtbl p{
+                color: black;
+            }
+            #favoblog{
+                position: absolute;
+                top: 0;
+                right: 0.5em;
+                z-index: 99;
+                cursor: pointer;
+            }
+            #favoblog ion-icon{
+                color:red;
+                font-size: 30px;
+                transition: 0.5s;
+                transition-timing-function: ease;
+            }
+            #favoblog ion-icon:hover{
+                transform: scale(1.2);
+            }
+            #nonfavoblog{
+                position: absolute;
+                top: 0;
+                right: 0.5em;
+                z-index: 99;
+                cursor: pointer;
+            }
+            #nonfavoblog ion-icon{
+                color: black;
+                font-size: 30px;
+                transition: 0.5s;
+                transition-timing-function: ease;
+            }
+            #nonfavoblog ion-icon:hover{
+                transform: scale(1.2);
+            }
+            .optionP{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 5%;
+                height: 2em;
+                position: absolute;
+                top: 0;
+                right: 0;
+                border-radius: 50%;
+            }
+            .optionP:hover{
+                background-color: #cccccc;
+                color: black;
+                cursor: pointer;
+            }
+            .optionP ion-icon{
+                font-size: 20px;
+            }
+            .listOption{
+                background-color: #333333;
+                box-shadow: 0 0 5px black;
+                border-radius: 10px;
+                position: absolute;
+                right: 0;
+                top:2em;
+            }
+            .listOption a{
+                display: inline-flex;
+                text-decoration: none;
+                color: white;
+                padding: 1em 1em;
+                width: 100%;
+                line-height: 1em;
+            }
+            .listOption a:hover{
+                background-color: #cccccc;
+                border-radius: 10px;
+                color: black;
+            }
+            .cmtbl p{
+                color: black;
+            }
+            #favoblog{
+                position: absolute;
+                top: 0;
+                right: 0.5em;
+                z-index: 99;
+                cursor: pointer;
+            }
+            #favoblog ion-icon{
+                color:red;
+                font-size: 30px;
+                transition: 0.5s;
+                transition-timing-function: ease;
+            }
+            #favoblog ion-icon:hover{
+                transform: scale(1.2);
+            }
+            #nonfavoblog{
+                position: absolute;
+                top: 0;
+                right: 0.5em;
+                z-index: 99;
+                cursor: pointer;
+            }
+            #nonfavoblog ion-icon{
+                color: black;
+                font-size: 30px;
+                transition: 0.5s;
+                transition-timing-function: ease;
+            }
+            #nonfavoblog ion-icon:hover{
+                transform: scale(1.2);
+            }
+            .optionP{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 5%;
+                height: 2em;
+                position: absolute;
+                top: 0;
+                right: 0;
+                border-radius: 50%;
+            }
+            .optionP:hover{
+                background-color: #cccccc;
+                color: black;
+                cursor: pointer;
+            }
+            .optionP ion-icon{
+                font-size: 20px;
+            }
+            .listOption{
+                background-color: #333333;
+                box-shadow: 0 0 5px black;
+                border-radius: 10px;
+                position: absolute;
+                right: 0;
+                top:2em;
+            }
+            .listOption a{
+                display: inline-flex;
+                text-decoration: none;
+                color: white;
+                padding: 1em 1em;
+                width: 100%;
+                line-height: 1em;
+            }
+            .listOption a:hover{
+                background-color: #cccccc;
+                border-radius: 10px;
+                color: black;
+            }
         </style>
     </head>
 
     <body>
+        <jsp:include page="header.jsp"></jsp:include>
+        
 
         <!-- Preloader -->
         <div id="preloader">
@@ -380,6 +563,8 @@
                 </div>
             </div>
         </section>
+        <jsp:include page="header.jsp"></jsp:include>
+        
         <!-- ##### Breadcumb Area End ##### -->
 
         <!-- ##### Blog Area Start ##### -->
@@ -388,13 +573,16 @@
                 <div id="${na}">
                     <a href="favouriteblog?blogId=${b.getId()}&userId=${sessionScope.acc.getId()}"><ion-icon name="heart"></ion-icon></a>
                 </div>
+                <div id="${na}">
+                    <a href="favouriteblog?blogId=${b.getId()}&userId=${sessionScope.acc.getId()}"><ion-icon name="heart"></ion-icon></a>
+                </div>
                 <div class="item2">
-                    <h2 style="margin: 1em 0">${b.getTopic()}</h2>
-                    <img  src="./assets/images/${b.getImage()}" alt="alt"/>
+                    <h1>${b.getTopic()}</h1>
+                    <img src="./assets/images/${b.getImage()}" alt="alt"/>
                     <p>${b.getContent()}</p>
                 </div>
                 <div class="cmt">
-                    <h2 style="margin-left: 0.5em;">Comment</h2>
+                    <h2 style="margin-left: 0.5em;">Bình luận</h2>
                     <c:forEach items="${lsC}" var="c">
                         <div class="cmtcontent lastcontent">
                             <div class="cmtimg">
@@ -410,14 +598,6 @@
                                     </form>
                                 </div>
                             </div>
-                            <!-- Fix -->
-                            <c:if test="${c.getCommenterId() == sessionScope.acc.getId()}">
-                                <div class="optionP" onclick="showList('${c.getId()}')"><ion-icon name="ellipsis-horizontal-outline"></ion-icon></div>
-                                    </c:if>
-                            <div id="${c.getId()}" class="listOption" style="display: none;">
-                                <div><a onclick="eidtcom('${c.getId()}a', '${c.getId()}')" href="#"><ion-icon name="pencil-outline"></ion-icon>Edit</a></div>
-                                <div><a href="deletecommentblog?id=${c.getId()}&idBlog=${b.getId()}"><ion-icon name="trash-bin-outline"></ion-icon>Delete</a></div>
-                            </div>
                         </div>
                     </c:forEach>
                     <form action="commentblog" method="post">
@@ -425,34 +605,33 @@
                         <input type="hidden" value="${b.getId()}" name="idBlog">
                         <div class="cmtcontent firstcontent">
                             <div class="cmtimg">
-                                <img src="./assets/images/${sessionScope.acc.getProfile_Picture()}" alt="alt"/>
+                                <img src="./assets/images/${c.getProfilePicture()}" alt="alt"/>
                             </div>
                             <div class="cmttext">
-                                <div class="cmtname"><h6>${sessionScope.acc.getFullname()}</h6></div>
+                                <div class="cmtname"><p>${c.getFullName()}</p></div>
                                 <div class="cmtbl">
-                                    <input type="text" name="ctxt">
-                                    <input style="margin-left: 0.5em;;width: 10%;cursor: pointer;background-color: #6699ff;color: white" type="submit" value="Send">
+                                    <p>${c.getContent()}</p>
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    </c:forEach>
                 </div>
             </div>
 
         </div>
         <!-- ##### Blog Area End ##### -->
-
+        <jsp:include page="footer.jsp"></jsp:include>  
         <!-- ##### Footer Area Start ##### -->
-        <footer class="footer-area section-padding-100-0 bg-img gradient-background-overlay" style="background-image: url(img/bg-img/cta.jpg);">
-            <!-- Main Footer Area -->
+<!--        <footer class="footer-area section-padding-100-0 bg-img gradient-background-overlay" style="background-image: url(img/bg-img/cta.jpg);">
+             Main Footer Area 
             <div class="main-footer-area">
                 <div class="container">
                     <div class="row">
 
-                        <!-- Single Footer Widget -->
+                         Single Footer Widget 
                         <div class="col-12 col-sm-6 col-xl-3">
                             <div class="footer-widget-area mb-100">
-                                <!-- Widget Title -->
+                                 Widget Title 
                                 <div class="widget-title">
                                     <h6>About Us</h6>
                                 </div>
@@ -465,14 +644,14 @@
                             </div>
                         </div>
 
-                        <!-- Single Footer Widget -->
+                         Single Footer Widget 
                         <div class="col-12 col-sm-6 col-xl-3">
                             <div class="footer-widget-area mb-100">
-                                <!-- Widget Title -->
+                                 Widget Title 
                                 <div class="widget-title">
                                     <h6>Hours</h6>
                                 </div>
-                                <!-- Office Hours -->
+                                 Office Hours 
                                 <div class="weekly-office-hours">
                                     <ul>
                                         <li class="d-flex align-items-center justify-content-between"><span>Monday - Friday</span> <span>09 AM - 19 PM</span></li>
@@ -480,7 +659,7 @@
                                         <li class="d-flex align-items-center justify-content-between"><span>Sunday</span> <span>Closed</span></li>
                                     </ul>
                                 </div>
-                                <!-- Address -->
+                                 Address 
                                 <div class="address">
                                     <h6><img src="img/icons/phone-call.png" alt=""> +45 677 8993000 223</h6>
                                     <h6><img src="img/icons/envelope.png" alt=""> office@template.com</h6>
@@ -489,14 +668,14 @@
                             </div>
                         </div>
 
-                        <!-- Single Footer Widget -->
+                         Single Footer Widget 
                         <div class="col-12 col-sm-6 col-xl-3">
                             <div class="footer-widget-area mb-100">
-                                <!-- Widget Title -->
+                                 Widget Title 
                                 <div class="widget-title">
                                     <h6>Useful Links</h6>
                                 </div>
-                                <!-- Nav -->
+                                 Nav 
                                 <ul class="useful-links-nav d-flex align-items-center">
                                     <li><a href="#">Home</a></li>
                                     <li><a href="#">About us</a></li>
@@ -515,24 +694,25 @@
                             </div>
                         </div>
 
-                        <!-- Single Footer Widget -->
+                         Single Footer Widget 
+                         Single Footer Widget 
                         <div class="col-12 col-sm-6 col-xl-3">
                             <div class="footer-widget-area mb-100">
-                                <!-- Widget Title -->
+                                 Widget Title 
                                 <div class="widget-title">
                                     <h6>Featured Properties</h6>
                                 </div>
-                                <!-- Featured Properties Slides -->
+                                 Featured Properties Slides 
                                 <div class="featured-properties-slides owl-carousel">
-                                    <!-- Single Slide -->
+                                     Single Slide 
                                     <div class="single-featured-properties-slide">
                                         <a href="#"><img src="img/bg-img/fea-product.jpg" alt=""></a>
                                     </div>
-                                    <!-- Single Slide -->
+                                     Single Slide 
                                     <div class="single-featured-properties-slide">
                                         <a href="#"><img src="img/bg-img/fea-product.jpg" alt=""></a>
                                     </div>
-                                    <!-- Single Slide -->
+                                     Single Slide 
                                     <div class="single-featured-properties-slide">
                                         <a href="#"><img src="img/bg-img/fea-product.jpg" alt=""></a>
                                     </div>
@@ -544,13 +724,14 @@
                 </div>
             </div>
 
-            <!-- Copywrite Text -->
+             Copywrite Text 
             <div class="copywrite-text d-flex align-items-center justify-content-center">
-                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                <p> Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. 
                     Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                     Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. 
             </div>
-        </footer>
+        </footer>-->
+        </footer>-->
         <!-- ##### Footer Area End ##### -->
 
         <!-- jQuery (Necessary for All JavaScript Plugins) -->
@@ -565,6 +746,25 @@
         <script src="js/jquery-ui.min.js"></script>
         <!-- Active js -->
         <script src="js/active.js"></script>
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+        <script>
+                        function showList(s) {
+                            var m = document.getElementById(s);
+                            if (m.style.display === "none") {
+                                m.style.display = "block";
+                            } else {
+                                m.style.display = "none";
+                            }
+                        }
+                        function eidtcom(x, s) {
+                            var input = document.getElementById(x);
+                            input.style.paddingLeft = '10px';
+                            input.removeAttribute("readonly");
+                            input.focus();
+                            showList(s);
+                        }
+        </script>
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
         <script>

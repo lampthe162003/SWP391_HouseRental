@@ -5,6 +5,7 @@
 package entity;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -12,6 +13,10 @@ import java.sql.Date;
  */
 public class House {
     private int Id,House_Owener_ID,Category_ID,District_ID;
+    private String Full_Address,Description,Title;
+    private float Price,Rating;
+    private String Full_Adress,Description,Title;
+    private float Price,Rating;
     private String Price,Full_Adress,Description,Title;
     private float Rating;
     private Date Added_Date;
@@ -19,18 +24,21 @@ public class House {
     public House() {
     }
 
-    public House(int Id, int House_Owener_ID, int Category_ID, int District_ID, String Price, String Full_Adress, String Description, String Title, float Rating, Date Added_Date) {
+    public House(int Id, int House_Owener_ID, int Category_ID, int District_ID, Float Price, String Full_Address, String Description, String Title, float Rating, Date Added_Date) {
+    public House(int Id, int House_Owener_ID, int Category_ID, int District_ID, Float Price, String Full_Adress, String Description, String Title, float Rating, Date Added_Date) {
         this.Id = Id;
         this.House_Owener_ID = House_Owener_ID;
         this.Category_ID = Category_ID;
         this.District_ID = District_ID;
         this.Price = Price;
-        this.Full_Adress = Full_Adress;
+        this.Full_Address = Full_Address;
         this.Description = Description;
+        this.Title = Title;
         this.Title = Title;
         this.Rating = Rating;
         this.Added_Date = Added_Date;
     }
+
 
     public int getId() {
         return Id;
@@ -64,20 +72,24 @@ public class House {
         this.District_ID = District_ID;
     }
 
-    public String getPrice() {
+    public float getPrice() {
+    public float getPrice() {
         return Price;
     }
 
-    public void setPrice(String Price) {
+    public void setPrice(float Price) {
+    public void setPrice(float Price) {
         this.Price = Price;
     }
 
-    public String getFull_Adress() {
-        return Full_Adress;
+
+
+    public String getFull_Address() {
+        return Full_Address;
     }
 
-    public void setFull_Adress(String Full_Adress) {
-        this.Full_Adress = Full_Adress;
+    public void setFull_Adress(String Full_Address) {
+        this.Full_Address = Full_Address;
     }
 
     public String getDescription() {
@@ -96,6 +108,14 @@ public class House {
         this.Title = Title;
     }
 
+    public String getTitle() {
+        return Title;
+    }
+
+    public void setTitle(String Title) {
+        this.Title = Title;
+    }
+
     public float getRating() {
         return Rating;
     }
@@ -104,13 +124,16 @@ public class House {
         this.Rating = Rating;
     }
 
-    public Date getAdded_Date() {
-        return Added_Date;
+    public String getAdded_Date() {
+        SimpleDateFormat f = new SimpleDateFormat("dd-MM-yyyy");
+        return f.format(Added_Date);
     }
 
     public void setAdded_Date(Date Added_Date) {
         this.Added_Date = Added_Date;
     }
+
+    
 
     
 }

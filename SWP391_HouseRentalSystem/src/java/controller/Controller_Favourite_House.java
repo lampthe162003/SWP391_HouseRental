@@ -5,7 +5,8 @@
 
 package controller;
 
-import dao.DAO_Favourite_House;
+import dao.DAOHouse;
+
 import entity.Account;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -60,11 +61,11 @@ public class Controller_Favourite_House extends HttpServlet {
         Account acc = (Account)session.getAttribute("acc");
         int houseId = Integer.parseInt(request.getParameter("houseId"));
         int userId = acc.getId();
-        DAO_Favourite_House f = new DAO_Favourite_House();
-        if(f.checkExistFavouriteHouse(houseId, userId)){
-            f.deleteFavouriteHouse(houseId, userId);
+        DAOHouse h = new DAOHouse();
+        if(h.checkExistFavouriteHouse(houseId, userId)){
+            h.deleteFavouriteHouse(houseId, userId);
         }else{
-            f.insertFavouriteHouse(houseId, userId);
+            h.insertFavouriteHouse(houseId, userId);
         }
         response.sendRedirect("detailhouse?id="+houseId);
     } 

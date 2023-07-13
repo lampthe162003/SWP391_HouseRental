@@ -6,7 +6,6 @@
 package controller;
 
 import dao.DAOBlog;
-import dao.DAOComment;
 import entity.Account;
 import entity.Blog;
 import entity.Comment_Blog;
@@ -81,7 +80,7 @@ public class Controller_Comment_Blog extends HttpServlet {
         postId = Integer.parseInt(request.getParameter("idBlog"));
         commenterId = a.getId();
         content = request.getParameter("ctxt");
-        DAOComment cmt = new DAOComment();
+        DAOBlog cmt = new DAOBlog();
         cmt.addComment(postId, commenterId, content);
         response.sendRedirect("detailblog?id="+postId);
     }

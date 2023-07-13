@@ -17,22 +17,22 @@
  
         <title>South - Real Estate Agency Template | About Us</title>
 
-        <!-- Favicon  -->
+        <!-- Favio -->
         <link rel="icon" href="img/core-img/favicon.ico">
 
         <!-- Style CSS -->
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <!-- Preloader -->
+        <!-- Preloadesr -->
         <div id="preloader">
             <div class="south-load"></div>
         </div>
 
-        <!-- ##### Header Area Start ##### -->
+        <!-- #####s..HeaArse -->
         <header class="header-area">
 
-            <!-- Top Header Area -->
+            <!-- Top Headsder Aea -->
             <div class="top-header-area">
                 <div class="h-100 d-md-flex justify-content-between align-items-center">
                     <div class="email-address">

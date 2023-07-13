@@ -13,7 +13,7 @@
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- The above 4 meta tt* come first in the head; any other head content must come *after* these tags -->
+    <!-- The above 4 meta tt* come first in ead; any oer head content must come *after* these tags -->
 
     
     <title>South - Real Estate Agency Template | Elements</title>

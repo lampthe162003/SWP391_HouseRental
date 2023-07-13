@@ -4,9 +4,8 @@
  */
 package controller;
 
+import dao.DAOAccount;
 import dao.DAOHouse;
-import dao.DAOMessages;
-import dao.DAO_Favourite_House;
 import entity.Account;
 import entity.Districts;
 import entity.House;
@@ -75,21 +74,24 @@ public class Controller_Detail_House extends HttpServlet {
         Account acc = (Account) session.getAttribute("acc");
         int houseId = Integer.parseInt(request.getParameter("id"));
         DAOHouse h = new DAOHouse();
-        DAOMessages m = new DAOMessages();
-        DAO_Favourite_House f = new DAO_Favourite_House();
+        DAOAccount a = new DAOAccount();
         List<House_Images> lsHI = h.getListHouseImageByHouseId(houseId);
         String firstImg = "./assets/images/";
         String lsImg = "";
-        for (int i = 0; i < lsHI.size(); i++) {
-            if (i != lsHI.size() - 1) {
-                if (i == 0) {
-                    firstImg += lsHI.get(i).getImage();
-                    System.out.println("img: "+firstImg);
+        if (lsHI.size() != 1) {
+            for (int i = 0; i < lsHI.size(); i++) {
+                if (i != lsHI.size() - 1) {
+                    if (i == 0) {
+                        firstImg += lsHI.get(i).getImage();
+                        System.out.println("img: " + firstImg);
+                    }
+                    lsImg += lsHI.get(i).getImage().concat(",");
+                } else {
+                    lsImg += lsHI.get(i).getImage();
                 }
-                lsImg += lsHI.get(i).getImage().concat(",");
-            } else {
-                lsImg += lsHI.get(i).getImage();
             }
+        }else{
+            firstImg += lsHI.get(0).getImage();
         }
 
         House hs = h.getHouseById(houseId);
@@ -98,17 +100,19 @@ public class Controller_Detail_House extends HttpServlet {
         Districts d = h.getDistrictById(houseId);
         House_Category hc = h.getHouseCategoryById(houseId);
         InforOwner io = h.getInforOfOwner(houseId);
-        if (acc.getId() != io.getId()) {
-            List<Messages> lsM = m.getListMessages(acc.getId(), io.getId());
+        if (acc!=null&&acc.getId() != io.getId()) {
+            List<Messages> lsM = a.getListMessages(acc.getId(), io.getId());
+            House_Ratings hr = h.getHouseRating(houseId, acc.getId());
             request.setAttribute("lsM", lsM);
+            request.setAttribute("hr", hr);
         }
-        if(f.checkExistFavouriteHouse(houseId, acc.getId())){
+        if (acc!=null&&h.checkExistFavouriteHouse(houseId, acc.getId())) {
             request.setAttribute("heart", "activeHeart");
-        }else{
+        } else {
             request.setAttribute("heart", "noactiveHeart");
         }
         List<NewsPostHouse> lsH = h.getNewListPost(houseId);
-        House_Ratings hr = h.getHouseRating(houseId, acc.getId());
+        
         request.setAttribute("lsH", lsH);
         request.setAttribute("fhouse", hs);
         request.setAttribute("fhousedetail", hd);
@@ -119,7 +123,7 @@ public class Controller_Detail_House extends HttpServlet {
         request.setAttribute("firstImg", firstImg);
         request.setAttribute("imgPath", lsImg);
         request.setAttribute("houseId", houseId);
-        request.setAttribute("hr", hr);
+        
         request.getRequestDispatcher("detailhouse.jsp").forward(request, response);
     }
 
@@ -134,7 +138,7 @@ public class Controller_Detail_House extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
     }
 
     /**

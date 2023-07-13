@@ -5,7 +5,7 @@
 
 package controller;
 
-import dao.DAOComment;
+import dao.DAOBlog;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -56,7 +56,7 @@ public class Controller_Delete_Comment_Blog extends HttpServlet {
     throws ServletException, IOException {
         int idComment = Integer.parseInt(request.getParameter("id"));
         int idBlog = Integer.parseInt(request.getParameter("idBlog"));
-        DAOComment c = new DAOComment();
+        DAOBlog c = new DAOBlog();
         c.deleteCommentBlog(idComment);
         response.sendRedirect("detailblog?id="+idBlog);
     } 

@@ -1,14 +1,15 @@
 package controller;
 
+package controller;
+
+package controller;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 
 
-import dao.DAOCategory;
-import dao.DAODirections;
-import dao.DAODistricts;
 import dao.DAOHouse;
 import entity.Account;
 import entity.Districts;
@@ -64,12 +65,10 @@ public class Controller_Post_House extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        DAODistricts d = new DAODistricts();
-        DAOCategory c = new DAOCategory();
-        DAODirections dr = new DAODirections();
-        List<Districts> lsD = d.getListDistricts();
-        List<House_Category> lsC = c.getListCategory();
-        List<House_Directions> lsDR = dr.getListDirections();
+        DAOHouse h = new DAOHouse();
+        List<Districts> lsD = h.getListDistricts();
+        List<House_Category> lsC = h.getListCategory();
+        List<House_Directions> lsDR = h.getListDirections();
         request.setAttribute("lsD", lsD);
         request.setAttribute("lsC", lsC);
         request.setAttribute("lsDR", lsDR);
@@ -93,7 +92,7 @@ public class Controller_Post_House extends HttpServlet {
         int category = Integer.parseInt(request.getParameter("category"));
         String title = request.getParameter("title");
         String description = request.getParameter("description").replaceAll("\r\n", "<br/>");
-        String price = request.getParameter("price");
+        Float price = Float.parseFloat(request.getParameter("price"));
         int houseOwnerId = a.getId();
         int nBedroom = Integer.parseInt(request.getParameter("bedroom"));
         int nBathroom = Integer.parseInt(request.getParameter("bathroom"));

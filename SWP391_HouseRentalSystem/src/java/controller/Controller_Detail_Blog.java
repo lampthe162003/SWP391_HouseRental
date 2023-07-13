@@ -65,11 +65,9 @@ public class Controller_Detail_Blog extends HttpServlet {
         Account a = (Account)session.getAttribute("acc");
         int idBlog = Integer.parseInt(request.getParameter("id"));
         DAOBlog blog = new DAOBlog();
-        DAOComment cmt = new DAOComment();
-        DAO_Favourite_Blogs fb = new DAO_Favourite_Blogs();
-        List<Comment_Blog> lsC = cmt.getListComment(idBlog);
+        List<Comment_Blog> lsC = blog .getListComment(idBlog);
         Blog b = blog.getBlogFollowId(idBlog);
-        if(fb.checkExistFavouriteBlog(idBlog, a.getId())){
+        if(blog.checkExistFavouriteBlog(idBlog, a.getId())){
             //inactive
             request.setAttribute("na", "nonfavoblog");
         }else{
