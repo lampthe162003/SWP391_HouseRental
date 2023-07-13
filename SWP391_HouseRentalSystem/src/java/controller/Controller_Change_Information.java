@@ -5,6 +5,7 @@
 package controller;
 
 import dao.DAOAccount;
+import dao.DAOChange;
 import entity.Account;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -91,11 +92,12 @@ public class Controller_Change_Information extends HttpServlet {
         email = a.getEmail();
         password = a.getPassword();
         Pattern f = Pattern.compile("^[a-zA-Z\\s]+$");
+        DAOChange change = new DAOChange();
         DAOAccount account = new DAOAccount();
         if (f.matcher(fullName).find()) {
             Pattern p = Pattern.compile("^[0-9]+$");
             if (p.matcher(phone).find()) {
-                account.changeInformation(fullName, address, phone, gender, picture, email);
+                change.changeInformation(fullName, address, phone, gender, picture, email);
                 session.removeAttribute("acc");
                 Account acc = account.getAccount(email, password);
                 session.setAttribute("acc", acc);
@@ -109,7 +111,6 @@ public class Controller_Change_Information extends HttpServlet {
             request.getRequestDispatcher("changeinformation.jsp").forward(request, response);
         }
     }
-
 
     /**
      * Returns a short description of the servlet.
